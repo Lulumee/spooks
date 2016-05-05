@@ -107,8 +107,7 @@ function paint(){
             p.frame.y = 0;
         }
         player.updatePos();//send posistion to server
-        bgcanvas.style.left = -(((p.x*world.grid)-world.width/4)) + 'px';
-        bgcanvas.style.top = -(((p.y*world.grid)-world.height/4)) + 'px';
+        window.scrollTo(((p.x*world.grid)+p.frame.w)-(screen.width/2), ((p.y*world.grid)+p.frame.h)-(screen.height/2));
     }
     
     var all = [];
@@ -124,7 +123,7 @@ function paint(){
     all = all.concat(world.objects);
     
     all = all.sort(function(a,b){
-        return (a.frame ? a.index-(parseInt(bgcanvas.style.top)/2)+player.info.frame.h : a.index) - (b.frame ? b.index-(parseInt(bgcanvas.style.top/2)+player.info.frame.h) : b.index);
+        return a.index - b.index;
     });
     
     for(var i in all){//Draw all Objects And Players 
@@ -146,8 +145,7 @@ function paint(){
             }
             if(user.nick == player.info.nick){
                 player.updatePos();
-                bgcanvas.style.left = -((player.info.x*world.grid)-(world.width/4)) + 'px';
-                bgcanvas.style.top = -((player.info.y*world.grid)-world.height/4) + 'px';
+                window.scrollTo(((user.x*world.grid)+user.frame.w)-(screen.width/2), ((user.y*world.grid)+user.frame.h)-(screen.height/2));
                 if(user.y == user.ty && user.x == user.tx){
                     player.autowalk = false;
                 }
@@ -169,7 +167,7 @@ function collision(player,dir){
             RightfootX : (xPos+player.frame.w)-1,
             bottomY : (yPos+player.frame.h)
         }
-        console.log(body.RightfootX,body.bottomY)
+        
         switch(dir){
             case 'right':
                 body.RightfootX += 3;
@@ -224,24 +222,19 @@ function Draw(user){
         ctx.strokeStyle = 'black';
         ctx.lineWidth="1";
         var width = ctx.measureText(user.nick).width;
-        ctx.strokeText(user.nick,Math.round(window.innerWidth/2)-(width/2)+(user.frame.w/2),Math.round(window.innerHeight/2)-5);
-        ctx.fillText(user.nick,Math.round(window.innerWidth/2)-(width/2)+(user.frame.w/2),Math.round(window.innerHeight/2)-5);
+        ctx.strokeText(user.nick,(user.x*world.grid)-(width/2)+(user.frame.w/2),(user.y-5)*world.grid);
+        ctx.fillText(user.nick,(user.x*world.grid)-(width/2)+(user.frame.w/2),(user.y-5)*world.grid);
     }
     if(user.message){
         var width = ctx.measureText(user.message).width + 30;
         drawBubble(ctx, (user.x*world.grid)-(width/2)+(user.frame.w/2),(user.y*world.grid)-64,width, 30, 10, user.message);
     }
     if(user.nick){
-        ctx.drawImage(user.avy, (user.frame.x*user.frame.w),(user.frame.y*user.frame.h),user.frame.w,user.frame.h,Math.round(window.innerWidth/2),Math.round(window.innerHeight/2),user.frame.w,user.frame.h)
-        //ctx.drawImage(user.avy, (user.frame.x*user.frame.w), (user.frame.y*user.frame.h), user.frame.w, user.frame.h,user.x*world.grid,user.y*world.grid,user.frame.w,user.frame.h);
+        ctx.drawImage(user.avy, (user.frame.x*user.frame.w), (user.frame.y*user.frame.h), user.frame.w, user.frame.h,user.x*world.grid,user.y*world.grid,user.frame.w,user.frame.h);
     } else if(user.tiles.length){
         for(var i = 0; i < user.tiles.length; i++){
             var ObjectTile = user.tiles[i];
-            ctx.drawImage(TileSheet,ObjectTile.sx,ObjectTile.sy,16,16,((user.x)+ObjectTile.left)+(parseInt(bgcanvas.style.left)),(user.y)+ObjectTile.top+(parseInt(bgcanvas.style.top)),16,16);
-        }
-        if(true){
-            ctx.fillStyle = 'red';
-            ctx.fillRect(user.collision.left+parseInt(bgcanvas.style.left),user.collision.top+parseInt(bgcanvas.style.top),(user.collision.left-user.collision.right),(user.collision.top-user.collision.bottom))
+            ctx.drawImage(TileSheet,ObjectTile.sx,ObjectTile.sy,16,16,(user.x*world.grid)+ObjectTile.left,(user.y*world.grid)+ObjectTile.top,16,16);
         }
     }
 }
@@ -514,8 +507,8 @@ var spooks = {
             var Objects = JSON.parse(MapInfo.objects);
             for(var t in Objects){
                 world.objects.push({
-                    x : Objects[t].left+(world.width/4),
-                    y : Objects[t].top+(world.height/4),
+                    x : (Objects[t].left+(world.width/4))/3,
+                    y : (Objects[t].top+(world.height/4))/3,
                     tiles : Objects[t].tiles,
                     index : Math.round(((Objects[t].top) + (Objects[t].height) + ((world.height/4)))/3)
                 });
@@ -546,8 +539,8 @@ var spooks = {
             bgcanvas.width = world.width;            
             bgcanvas.height = world.height;            
             //set main canvas size           
-            canvas.width = window.innerWidth;            
-            canvas.height = window.innerHeight;  
+            canvas.width = world.width;            
+            canvas.height = world.height;  
 			for(var i = 0; i < world.tiles.length; i++){
 				bg.drawImage(TileSheet,world.tiles[i].sx,world.tiles[i].sy,16,16,(world.tiles[i].x*3)+(world.width/4),(world.tiles[i].y*3)+(world.height/4),16,16);
 			}
