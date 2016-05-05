@@ -1,0 +1,11434 @@
+listening on *:80
+Starting channel /
+core command { flair: '$Source Sans Pro|###white#black/*Mr.Guy',
+  nick: 'Mr.Guy',
+  part: 'http://i.imgur.com/K9uf33T.gif',
+  token: 'geFRZbM8fIoYVOt' }
+USER JOINED { flair: '$Source Sans Pro|###white#black/*Mr.Guy',
+  nick: 'Mr.Guy',
+  part: 'http://i.imgur.com/K9uf33T.gif',
+  token: 'geFRZbM8fIoYVOt' } 71.11.76.194
+core command { flair: '$Atomic Age|/^/^/^#F0FM|||$Ubuntu|#FFF###F0Fishashule',
+  nick: 'Mishashule',
+  token: 'y33S3PlLW0A7aRN' }
+core command { flair: '', nick: 'Spoki', token: 'uPhqAeoK4t2ggfZ' }
+USER JOINED { flair: '$Atomic Age|/^/^/^#F0FM|||$Ubuntu|#FFF###F0Fishashule',
+  nick: 'Mishashule',
+  token: 'y33S3PlLW0A7aRN' } 24.111.119.108
+USER JOINED { flair: '', nick: 'Spoki', token: 'uPhqAeoK4t2ggfZ' } 104.39.63.192
+core command { flair: '$Averia Sans Libre|###a33#a33sam###924#924mic###715#715h',
+  nick: 'sammich',
+  part: 'left left',
+  token: 'K2Izn3l0SAyT1wP' }
+core command { flair: '$Crafty Girls|/*/^/^#90FF#72Dr#54Bo#257g',
+  nick: 'Frog',
+  token: 'QWaQwIa5FRdXxYF' }
+USER JOINED { flair: '$Averia Sans Libre|###a33#a33sam###924#924mic###715#715h',
+  nick: 'sammich',
+  part: 'left left',
+  token: 'K2Izn3l0SAyT1wP' } 70.114.2.45
+USER JOINED { flair: '$Crafty Girls|/*/^/^#90FF#72Dr#54Bo#257g',
+  nick: 'Frog',
+  token: 'QWaQwIa5FRdXxYF' } 50.72.50.117
+reset
+reset
+reset
+login { nick: 'sammich', password: '4815162342' } 4 UnearthlySpine 70.114.2.45
+reset
+reset
+login { nick: 'Mr.Guy', password: '8Add21c742' } 4 Hair-raisingWraith 71.11.76.194
+reset
+login { nick: 'Frog', password: 'WelcomeHome21!' } 4 HauntedScarecrow 50.72.50.117
+login { nick: 'Spoki', password: 'fuckyoufaggo' } 4 GhostlyCauldron 104.39.63.192
+core command { flair: '$Roboto|/^/^#red/%iem|#green/~de|#yellow/*kepten|#bluenao',
+  nick: 'iemdekeptennao',
+  token: 'GUsdoue9SLl0oj2' }
+reset
+USER JOINED { flair: '$Roboto|/^/^#red/%iem|#green/~de|#yellow/*kepten|#bluenao',
+  nick: 'iemdekeptennao',
+  token: 'GUsdoue9SLl0oj2' } 99.13.231.19
+reset
+reset
+reset
+login { nick: 'Spoki', password: 'fuckyoufaggot' } 4 GhostlyCauldron 104.39.63.192
+reset
+reset
+reset
+reset
+core command { flair: '#whitegaybutts',
+  token: 'RjLrhgdoPhzYbSg',
+  part: 'semen in his own butt',
+  nick: 'gaybutts' }
+login { nick: 'Mishashule', password: 'Poll9899' } 4 EerieNightmare 24.111.119.108
+USER JOINED { flair: '#whitegaybutts',
+  token: 'RjLrhgdoPhzYbSg',
+  part: 'semen in his own butt',
+  nick: 'gaybutts' } 107.138.84.117
+reset
+login { nick: 'iemdekeptennao', password: 'mistyluna' } 4 ScaryNightmare 99.13.231.19
+reset
+reset
+reset
+reset
+core command {}
+USER JOINED {} 71.11.76.194
+reset
+reset
+login { nick: 'Moo', password: '8Add21c742' } 4 GhastlyTroll 71.11.76.194
+login { nick: 'gaybutts', password: 'buttsandbutts' } 4 ScaryCadaver 107.138.84.117
+login { nick: 'Moot', password: '8Add21c742' } 4 GhastlyTroll 71.11.76.194
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '#whitegaybutts',
+  token: 'yPYh3pQ8YgtMI6c',
+  part: 'semen in his own butt',
+  nick: 'gaybutts' }
+USER JOINED { flair: '#whitegaybutts',
+  token: 'yPYh3pQ8YgtMI6c',
+  part: 'semen in his own butt',
+  nick: 'gaybutts' } 107.138.84.117
+reset
+reset
+core command { flair: '#whitegaybutts',
+  token: 'yPYh3pQ8YgtMI6c',
+  part: 'semen in his own butt',
+  nick: 'gaybutts' }
+USER JOINED { flair: '#whitegaybutts',
+  token: 'yPYh3pQ8YgtMI6c',
+  part: 'semen in his own butt',
+  nick: 'gaybutts' } 107.138.84.117
+reset
+core command { nick: 'ShadowyMummy' }
+core command { flair: '#whitegaybutts',
+  token: 'yPYh3pQ8YgtMI6c',
+  part: 'semen in his own butt',
+  nick: 'gaybutts' }
+USER JOINED { nick: 'ShadowyMummy' } 60.230.193.121
+USER JOINED { flair: '#whitegaybutts',
+  token: 'yPYh3pQ8YgtMI6c',
+  part: 'semen in his own butt',
+  nick: 'gaybutts' } 107.138.84.117
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+Starting channel /lacy
+core command { nick: 'ShadowyMummy' }
+USER JOINED { nick: 'ShadowyMummy' } 60.230.193.121
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Roboto|/^/^#red/%iem|#green/~de|#yellow/*kepten|#bluenao',
+  nick: 'iemdekeptennao',
+  token: '5uly0icepIjKhRJ' }
+USER JOINED { flair: '$Roboto|/^/^#red/%iem|#green/~de|#yellow/*kepten|#bluenao',
+  nick: 'iemdekeptennao',
+  token: '5uly0icepIjKhRJ' } 99.13.231.19
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Faster One|anon2000',
+  nick: 'sammlch',
+  part: 'part doesn\'t work',
+  token: 'XCbPOYLjEAs2klg' }
+USER JOINED { flair: '$Faster One|anon2000',
+  nick: 'sammlch',
+  part: 'part doesn\'t work',
+  token: 'XCbPOYLjEAs2klg' } 75.80.21.173
+reset
+reset
+reset
+login { nick: 'anon2000', password: 'lololurmom' } 4 sammlch 75.80.21.173
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Chela One|/^/^#aa99ddK#a273e6e#994deev#9126f7i#8800ffn',
+  nick: 'Kevin',
+  token: 'fDKInlZKkQJc0a2' }
+USER JOINED { flair: '$Chela One|/^/^#aa99ddK#a273e6e#994deev#9126f7i#8800ffn',
+  nick: 'Kevin',
+  token: 'fDKInlZKkQJc0a2' } 49.182.11.58
+reset
+nick { nick: 'wewlad' } 4 anon2000 75.80.21.173
+reset
+login { nick: 'Kevin',
+  password: '9KAcA;j58;@3_wrr5_LW6b$*$Z<Jm3u8HCn_oS<QZK3q8,]:T=I#B$CDU9DDd;$p[Talgg$sP()FZ(4y&}j%.VJ9z>txw1zJ;n@F:m)^(-N@=^4!f^osu{UWwS70LshWeUH=s*N&1t{}@uM,o7Y~w[UPT4CD]#rMHhZHy!tUie=.v$NwP?z-5LnOM)7dF<J2aVmE+ujTxxom4%9x5@hBZs{eMzo7l.@XYknUw1@x].(yH%r95NKXlD"9JJUp}pT' } 4 UnnervingDevil 49.182.11.58
+reset
+core command { flair: '$Slabo 13px|/^#E74C3CKit',
+  nick: 'Kit',
+  part: 'your ass full of cum.',
+  token: 'nrexQhZbjyhrTbL' }
+USER JOINED { flair: '$Slabo 13px|/^#E74C3CKit',
+  nick: 'Kit',
+  part: 'your ass full of cum.',
+  token: 'nrexQhZbjyhrTbL' } 199.127.68.161
+reset
+login { nick: 'Kit', password: 'qpmzal7QPMZAL&' } 4 DreadfulCrypt 199.127.68.161
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+me { message: 'touches all the things' } 0 sammich 70.114.2.45
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+give_hat { nick: 'sammich', hat: 'KeivnFace' } 0 sammich 70.114.2.45
+give_hat { nick: 'sammich', hat: 'Keivn' } 0 sammich 70.114.2.45
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { nick: 'FA',
+  flair: '$Unica One|/^#D800E5F#C313C3a#AE26B7l#9A39A0l#854C89e#715F72n#5C725BA#478544n#33982Dg#1EAB16e#0ABF00l',
+  token: '1v0PcrVHWfRwv2B' }
+USER JOINED { nick: 'FA',
+  flair: '$Unica One|/^#D800E5F#C313C3a#AE26B7l#9A39A0l#854C89e#715F72n#5C725BA#478544n#33982Dg#1EAB16e#0ABF00l',
+  token: '1v0PcrVHWfRwv2B' } 106.215.140.117
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { nick: 'ShadowyMummy' }
+USER JOINED { nick: 'ShadowyMummy' } 60.230.193.121
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+Starting channel http://m.baidu.com/?rands=_669250787023155442018880
+Starting channel http://www.sogou.com/?rands=_159748392565509322942316
+Starting channel http://www.1dvj.com/?rands=_3078121405013382462517008
+Starting channel http://www.kuaidaili.com/?rands=_21723342710058139408599428
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+find { ip: '24.147.120.223' } 0 sammich 70.114.2.45
+core command { flair: '$Source Sans Pro|###white#black/*Mr.Guy',
+  nick: 'Mr.Guy',
+  part: 'http://i.imgur.com/HCPYTZX.jpg',
+  token: 'fO7GfnxgqUMCBgG' }
+USER JOINED { flair: '$Source Sans Pro|###white#black/*Mr.Guy',
+  nick: 'Mr.Guy',
+  part: 'http://i.imgur.com/HCPYTZX.jpg',
+  token: 'fO7GfnxgqUMCBgG' } 71.11.76.194
+reset
+reset
+find { ip: '94.142.242.84' } 0 sammich 70.114.2.45
+reset
+find { ip: '188.138.9.49' } 0 sammich 70.114.2.45
+reset
+core command { flair: '$Source Sans Pro|###white#black/*Mr.Guy',
+  nick: 'SpoopyGruesome',
+  part: 'http://i.imgur.com/HCPYTZX.jpg',
+  token: 'fO7GfnxgqUMCBgG' }
+USER JOINED { flair: '$Source Sans Pro|###white#black/*Mr.Guy',
+  nick: 'SpoopyGruesome',
+  part: 'http://i.imgur.com/HCPYTZX.jpg',
+  token: 'fO7GfnxgqUMCBgG' } 71.11.76.194
+reset
+reset
+login { nick: 'Mr.Guy', password: '8Add21c742' } 4 SpoopyGruesome 71.11.76.194
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { nick: 'GrislyDeath' }
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+whois { nick: 'Mr.Guy' } 0 sammich 70.114.2.45
+reset
+nick { nick: 'asdfouadjfvadv' } 0 Mr.Guy 71.11.76.194
+login { nick: 'Mr.Guy', password: '8Add21c742' } 4 asdfouadjfvadv 71.11.76.194
+reset
+reset
+reset
+reset
+reset
+whois { nick: 'Mr.Guy' } 0 sammich 70.114.2.45
+reset
+reset
+reset
+whois { nick: 'Mr.Guy' } 4 Spoki 104.39.63.192
+reset
+reset
+reset
+reset
+reset
+whois { nick: 'Mr.Guy' } 4 gaybutts 107.138.84.117
+reset
+reset
+reset
+login { nick: 'DeezNuts', password: '8Add21c742' } 0 Mr.Guy 71.11.76.194
+reset
+login { nick: 'Wendy', password: '8Add21c742' } 0 Mr.Guy 71.11.76.194
+core command { nick: 'emily' }
+USER JOINED { nick: 'emily' } 149.150.237.208
+reset
+reset
+reset
+reset
+reset
+reset
+core command {}
+USER JOINED {} 106.215.140.117
+core command {}
+USER JOINED {} 75.80.21.173
+reset
+reset
+login { nick: 'Mr.Guy', password: '8Add21c742' } 0 Wendy 71.11.76.194
+core command { nick: 'DarkNight' }
+USER JOINED { nick: 'DarkNight' } 75.80.21.173
+reset
+reset
+reset
+find { ip: 'DarkNight' } 0 Mr.Guy 71.11.76.194
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command {}
+USER JOINED {} 138.9.8.208
+reset
+login { nick: 'Lacy', password: 'hello' } 4 DarkTomb 138.9.8.208
+reset
+find { ip: 'StartlingMonster' } 1 Lacy 138.9.8.208
+find { ip: 'ShadowyMummy' } 1 Lacy 138.9.8.208
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Rochester|/^/^/^/%/*#FF1493L||||/^/^/^#FF69B4acy',
+  nick: 'Lacy',
+  token: '6nKHvA70Xetekry' }
+USER JOINED { flair: '$Rochester|/^/^/^/%/*#FF1493L||||/^/^/^#FF69B4acy',
+  nick: 'Lacy',
+  token: '6nKHvA70Xetekry' } 138.9.8.208
+reset
+reset
+reset
+login { nick: 'Lacy', password: 'hello' } 4 HorribleOgre 138.9.8.208
+reset
+reset
+reset
+reset
+reset
+login { nick: 'Zeus', password: 'chris123' } 4 ShadowyMummy 60.230.193.121
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: 'glow',
+  nick: 'SpoopyMonster',
+  token: 'lCTsmthlgIgh6O7' }
+USER JOINED { flair: 'glow',
+  nick: 'SpoopyMonster',
+  token: 'lCTsmthlgIgh6O7' } 50.30.88.122
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+login { nick: 'GHOUL', password: 'Spiderman1$' } 4 SpoopyMonster 50.30.88.122
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Satisfy|/^/^/*#191970Lovely#4169E1Lauralyn',
+  nick: 'LovelyLauralyn',
+  token: 'pL4X99laRhXi157' }
+USER JOINED { flair: '$Satisfy|/^/^/*#191970Lovely#4169E1Lauralyn',
+  nick: 'LovelyLauralyn',
+  token: 'pL4X99laRhXi157' } 97.32.135.75
+reset
+find { ip: 'EerieSkull' } 0 Mr.Guy 71.11.76.194
+reset
+reset
+reset
+login { nick: 'LovelyLauralyn', password: 'Sunshine21015' } 4 EerieSkull 97.32.135.75
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Chela One|/^/^#aa99ddK#a273e6e#994deev#9126f7i#8800ffn',
+  nick: 'Kevin',
+  token: 'iYhgRBW5Dwd4hBa' }
+USER JOINED { flair: '$Chela One|/^/^#aa99ddK#a273e6e#994deev#9126f7i#8800ffn',
+  nick: 'Kevin',
+  token: 'iYhgRBW5Dwd4hBa' } 49.182.11.136
+reset
+reset
+reset
+reset
+reset
+reset
+login { nick: 'iemdekeptennao', password: 'mistyluna' } 4 StartlingMonster 99.13.231.19
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Satisfy|/^/^/*#191970Lovely#4169E1Lauralyn',
+  nick: 'LovelyLauralyn',
+  token: 'M5oj66Z0OoWOCPS' }
+USER JOINED { flair: '$Satisfy|/^/^/*#191970Lovely#4169E1Lauralyn',
+  nick: 'LovelyLauralyn',
+  token: 'M5oj66Z0OoWOCPS' } 97.32.135.75
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { nick: 'Hair-raisingGhost' }
+USER JOINED { nick: 'Hair-raisingGhost' } 106.215.140.117
+reset
+reset
+login { nick: 'FallenAngel', password: 'hellonearth' } 4 Hair-raisingGhost 106.215.140.117
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Chewy|/^/^/^#ffffffP#000000a#ffffffn#000000d#ffffffa',
+  nick: 'WickedScarecrow',
+  token: 'n6GNqHbiJfWqkmE' }
+core command { flair: '$Averia Sans Libre|###a33#a33sam###924#924mic###715#715h',
+  nick: 'sammich',
+  part: 'left left',
+  token: 'YiZewstZYK5UURX' }
+USER JOINED { flair: '$Chewy|/^/^/^#ffffffP#000000a#ffffffn#000000d#ffffffa',
+  nick: 'WickedScarecrow',
+  token: 'n6GNqHbiJfWqkmE' } 24.200.177.10
+USER JOINED { flair: '$Averia Sans Libre|###a33#a33sam###924#924mic###715#715h',
+  nick: 'sammich',
+  part: 'left left',
+  token: 'YiZewstZYK5UURX' } 70.114.2.45
+reset
+core command { flair: '$Averia Sans Libre|###a33#a33sam###924#924mic###715#715h',
+  nick: 'EerieWraith',
+  part: 'left left',
+  token: 'YiZewstZYK5UURX' }
+USER JOINED { flair: '$Averia Sans Libre|###a33#a33sam###924#924mic###715#715h',
+  nick: 'EerieWraith',
+  part: 'left left',
+  token: 'YiZewstZYK5UURX' } 70.114.2.45
+core command { flair: '$Chewy|/^/^/^#ffffffP#000000a#ffffffn#000000d#ffffffa',
+  nick: 'WickedScarecrow',
+  token: 'n6GNqHbiJfWqkmE' }
+USER JOINED { flair: '$Chewy|/^/^/^#ffffffP#000000a#ffffffn#000000d#ffffffa',
+  nick: 'WickedScarecrow',
+  token: 'n6GNqHbiJfWqkmE' } 24.200.177.10
+reset
+reset
+login { nick: 'Panda', password: '123456' } 4 WickedScarecrow 24.200.177.10
+reset
+login { nick: 'sammich', password: '4815162342' } 4 EerieWraith 70.114.2.45
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+login { nick: 'Panda', password: '123456' } 4 WickedScarecrow 24.200.177.10
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+background { background: '#111' } 0 Mr.Guy 71.11.76.194
+reset
+pm { nick: 'Mr.Guy',
+  message: 'Can I make this my topic? http://i.imgur.com/SKBRGY3.png' } 4 Lacy 138.9.8.208
+reset
+reset
+reset
+theme { InputColor: '#3a3a3a',
+  ButtonColor: '#3a3a3a',
+  ScrollbarColor: '#3a3a3a' } 0 Mr.Guy 71.11.76.194
+reset
+reset
+reset
+reset
+reset
+reset
+pm { nick: 'Lacy', message: 'LOL HAHAAHAHAHA OMG' } 0 Mr.Guy 71.11.76.194
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+background { background: '#111333' } 0 Mr.Guy 71.11.76.194
+reset
+reset
+theme { InputColor: 'red',
+  ButtonColor: 'blue',
+  ScrollbarColor: 'green' } 0 Mr.Guy 71.11.76.194
+reset
+reset
+reset
+reset
+reset
+core command { nick: 'FallenAngel',
+  flair: '$Unica One|/^#D800E5F#C313C3a#AE26B7l#9A39A0l#854C89e#715F72n#5C725BA#478544n#33982Dg#1EAB16e#0ABF00l',
+  token: 'pvaASJjBABBkiWS' }
+USER JOINED { nick: 'FallenAngel',
+  flair: '$Unica One|/^#D800E5F#C313C3a#AE26B7l#9A39A0l#854C89e#715F72n#5C725BA#478544n#33982Dg#1EAB16e#0ABF00l',
+  token: 'pvaASJjBABBkiWS' } 106.215.140.117
+pm { nick: 'Mr.Guy',
+  message: '*goes on to talk* *everyone left and ur sleeping*' } 4 Lacy 138.9.8.208
+reset
+reset
+reset
+reset
+core command { flair: '$Source Sans Pro|###white#black/*Mr.Guy',
+  nick: 'Mr.Guy',
+  part: 'http://i.imgur.com/HCPYTZX.jpg',
+  token: 'ERBWhghz8DXqc2o' }
+USER JOINED { flair: '$Source Sans Pro|###white#black/*Mr.Guy',
+  nick: 'Mr.Guy',
+  part: 'http://i.imgur.com/HCPYTZX.jpg',
+  token: 'ERBWhghz8DXqc2o' } 71.11.76.194
+reset
+find { ip: 'DreadfulDead' } 1 Lacy 138.9.8.208
+reset
+reset
+find { ip: 'MysteriousPumpkin' } 1 Lacy 138.9.8.208
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+login { nick: 'Mr.Guy', password: '8Add21c742' } 4 MysteriousPumpkin 71.11.76.194
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command {}
+USER JOINED {} 49.182.11.136
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+access { nick: 'Mr.Guy', role: '0' } 0 Mr.Guy 71.11.76.194
+{ sammich: '1',
+  Tom: '1',
+  gourami: '2',
+  Bobby: '2',
+  The_Big_Cheese: '0',
+  anon: '0',
+  LovelyLauralyn: '2',
+  Kevita: '2',
+  TIMELORD: '4',
+  Jesse_The_Laser: '3',
+  Mishashule: '2',
+  ShoeShine: '0',
+  Galaxy: '0',
+  Waluigi: '0',
+  Lilly: '0',
+  Danny: '0',
+  this_probably_looks_really_suspicious: '0',
+  I_am_testing_a_bug_so_plz_dont_get_mad: '0',
+  'Ms.Girl': '1',
+  Butter: '0',
+  Wendy: '0',
+  DeezNuts: '0',
+  Applebees: '0',
+  Moot: '0',
+  Moo: '0',
+  Voldemort: '0',
+  VapeNaysh: '3',
+  'Mr.Guy': '0',
+  Panda: '3',
+  InfraRaven: '1',
+  'Lacy­': '1' }
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+topic { message: 'http://i.imgur.com/SKBRGY3.png' } 1 Lacy 138.9.8.208
+reset
+topic { message: 'qt 3.14 http://i.imgur.com/SKBRGY3.png' } 1 Lacy 138.9.8.208
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Satisfy|/^/^/*#191970Lovely#4169E1Lauralyn',
+  nick: 'LovelyLauralyn',
+  token: 'M5oj66Z0OoWOCPS' }
+USER JOINED { flair: '$Satisfy|/^/^/*#191970Lovely#4169E1Lauralyn',
+  nick: 'LovelyLauralyn',
+  token: 'M5oj66Z0OoWOCPS' } 97.32.135.75
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+find { ip: 'wewlad' } 0 Mr.Guy 71.11.76.194
+reset
+core command { flair: '$Satisfy|/^/^/*#191970Lovely#4169E1Lauralyn',
+  nick: 'LovelyLauralyn',
+  token: 'M5oj66Z0OoWOCPS' }
+USER JOINED { flair: '$Satisfy|/^/^/*#191970Lovely#4169E1Lauralyn',
+  nick: 'LovelyLauralyn',
+  token: 'M5oj66Z0OoWOCPS' } 97.32.135.75
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+whois { nick: 'sammich' } 4 Mr.Guy 71.11.76.194
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+whois { nick: 'anon' } 0 Mr.Guy 71.11.76.194
+reset
+reset
+reset
+access { nick: 'anon', role: '0' } 0 Mr.Guy 71.11.76.194
+{ sammich: '1',
+  Tom: '1',
+  gourami: '2',
+  Bobby: '2',
+  The_Big_Cheese: '0',
+  anon: '0',
+  LovelyLauralyn: '2',
+  Kevita: '2',
+  TIMELORD: '4',
+  Jesse_The_Laser: '3',
+  Mishashule: '2',
+  ShoeShine: '0',
+  Galaxy: '0',
+  Waluigi: '0',
+  Lilly: '0',
+  Danny: '0',
+  this_probably_looks_really_suspicious: '0',
+  I_am_testing_a_bug_so_plz_dont_get_mad: '0',
+  'Ms.Girl': '1',
+  Butter: '0',
+  Wendy: '0',
+  DeezNuts: '0',
+  Applebees: '0',
+  Moot: '0',
+  Moo: '0',
+  Voldemort: '0',
+  VapeNaysh: '3',
+  'Mr.Guy': '0',
+  Panda: '3',
+  InfraRaven: '1',
+  'Lacy­': '1' }
+reset
+whois { nick: 'anon' } 0 Mr.Guy 71.11.76.194
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+delete { nick: 'anon' } 0 Mr.Guy 71.11.76.194
+core command { flair: '$Chewy|/^/^/^#ffffffP#000000a#ffffffn#000000d#ffffffa',
+  nick: 'Panda',
+  token: 'F0dnWE3S535Zj3p' }
+USER JOINED { flair: '$Chewy|/^/^/^#ffffffP#000000a#ffffffn#000000d#ffffffa',
+  nick: 'Panda',
+  token: 'F0dnWE3S535Zj3p' } 24.200.177.10
+reset
+whois { nick: 'anon' } 0 Mr.Guy 71.11.76.194
+reset
+nick { nick: 'anon' } 0 Mr.Guy 71.11.76.194
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { nick: 'anon',
+  password: '8Add21c742',
+  question: '{"answer":"Bill Cosby"}' }
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: 'glow', nick: 'GHOUL', token: 'poJelKuU5A89DSe' }
+USER JOINED { flair: 'glow', nick: 'GHOUL', token: 'poJelKuU5A89DSe' } 50.30.88.122
+reset
+reset
+reset
+reset
+core command { flair: '$Satisfy|/^/^/*#191970Lovely#4169E1Lauralyn',
+  nick: 'LovelyLauralyn',
+  token: 'M5oj66Z0OoWOCPS' }
+login { nick: 'Mr.Guy', password: '8Add21c742' } 4 anon 71.11.76.194
+USER JOINED { flair: '$Satisfy|/^/^/*#191970Lovely#4169E1Lauralyn',
+  nick: 'LovelyLauralyn',
+  token: 'M5oj66Z0OoWOCPS' } 97.32.135.75
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+me { message: 'slaps bread' } 0 Kevin 49.182.11.136
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+me { message: 'slaps anon' } 0 Kevin 49.182.11.136
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Source Sans Pro|###white#black/*Mr.Guy',
+  nick: 'Mr.Guy',
+  part: 'http://i.imgur.com/HCPYTZX.jpg',
+  token: 'r9GEdrUP8eIHKjg' }
+USER JOINED { flair: '$Source Sans Pro|###white#black/*Mr.Guy',
+  nick: 'Mr.Guy',
+  part: 'http://i.imgur.com/HCPYTZX.jpg',
+  token: 'r9GEdrUP8eIHKjg' } 71.11.76.194
+reset
+reset
+reset
+reset
+me { message: 'beats meat' } 2 LovelyLauralyn 97.32.135.75
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Source Sans Pro|###white#black/*Mr.Guy',
+  nick: 'Mr.Guy',
+  part: 'http://i.imgur.com/HCPYTZX.jpg',
+  token: 'r9GEdrUP8eIHKjg' }
+USER JOINED { flair: '$Source Sans Pro|###white#black/*Mr.Guy',
+  nick: 'Mr.Guy',
+  part: 'http://i.imgur.com/HCPYTZX.jpg',
+  token: 'r9GEdrUP8eIHKjg' } 71.11.76.194
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+whois { nick: 'Panda' } 0 sammich 70.114.2.45
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { nick: 'Hair-raisingCobweb' }
+USER JOINED { nick: 'Hair-raisingCobweb' } 75.87.249.102
+reset
+me { message: 'puke' } 4 Zeus 60.230.193.121
+reset
+reset
+reset
+reset
+me { message: 'cries' } 4 Mr.Guy 71.11.76.194
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { nick: 'DarkNight' }
+USER JOINED { nick: 'DarkNight' } 75.80.21.173
+reset
+reset
+reset
+reset
+reset
+find { ip: 'DarkNight' } 1 Lacy 138.9.8.208
+reset
+reset
+reset
+reset
+reset
+reset
+login { nick: 'anon2000', password: 'lololurmom' } 4 DarkNight 75.80.21.173
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+find { ip: 'anon2000' } 0 sammich 70.114.2.45
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command {}
+USER JOINED {} 82.95.195.199
+find { ip: 'FrighteningHocuspocus' } 1 Lacy 138.9.8.208
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: 'glow', nick: 'GHOUL', token: 'poJelKuU5A89DSe' }
+USER JOINED { flair: 'glow', nick: 'GHOUL', token: 'poJelKuU5A89DSe' } 50.30.88.122
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command {}
+USER JOINED {} 106.215.140.117
+reset
+reset
+core command { nick: 'Hair-raisingTroll' }
+USER JOINED { nick: 'Hair-raisingTroll' } 106.215.140.117
+nick { nick: 'mr. guy' } 4 DarkNight 75.80.21.173
+reset
+nick { nick: 'Mr.Guys' } 4 DarkNight 75.80.21.173
+reset
+reset
+find { ip: 'Hair-raisingTroll' } 1 Lacy 138.9.8.208
+reset
+reset
+reset
+reset
+reset
+core command { nick: 'Hair-raisingTroll' }
+USER JOINED { nick: 'Hair-raisingTroll' } 106.215.140.117
+reset
+reset
+login { nick: 'FallenAngel', password: 'hellonearth' } 4 Hair-raisingTroll 106.215.140.117
+reset
+reset
+login { nick: 'FallenAngel', password: 'hellonearth' } 4 Hair-raisingTroll 106.215.140.117
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Roboto|/~MR.GIRL',
+  nick: 'MR.GIRL',
+  token: '407BMzhUsr4EdEL' }
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+USER JOINED { flair: '$Roboto|/~MR.GIRL',
+  nick: 'MR.GIRL',
+  token: '407BMzhUsr4EdEL' } 73.201.97.101
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Rubik Mono One|/^#FFD000Z|#FFE055e#FFEFAAu#FFFFFFs',
+  nick: 'Zeus',
+  token: 'X2FFdKQc18l0GNT' }
+USER JOINED { flair: '$Rubik Mono One|/^#FFD000Z|#FFE055e#FFEFAAu#FFFFFFs',
+  nick: 'Zeus',
+  token: 'X2FFdKQc18l0GNT' } 60.230.193.121
+reset
+reset
+reset
+find { ip: 'Mr.Guys' } 0 Mr.Guy 71.11.76.194
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Source Sans Pro|###white#black/*Mr.Guy',
+  nick: 'Mr.Guy',
+  part: 'the club due to crippiling social anxiety',
+  token: 'r9GEdrUP8eIHKjg' }
+USER JOINED { flair: '$Source Sans Pro|###white#black/*Mr.Guy',
+  nick: 'Mr.Guy',
+  part: 'the club due to crippiling social anxiety',
+  token: 'r9GEdrUP8eIHKjg' } 71.11.76.194
+reset
+reset
+reset
+login { nick: 'Mr.Guy', password: '8Add21c742' } 4 SpoopyScream 71.11.76.194
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+topic { message: 'bitch tits =)' } 0 Mr.Guy 71.11.76.194
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+topic { message: '(16) bitch tits =)' } 0 Mr.Guy 71.11.76.194
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+topic { message: 'dont do that' } 2 Mishashule 24.111.119.108
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+topic { message: 'https://www.youtube.com/watch?v=YbYWhdLO43Q' } 2 Mishashule 24.111.119.108
+reset
+reset
+reset
+reset
+core command { flair: '$Atomic Age|/^/^/^#F0FM|||$Ubuntu|#FFF###F0Fishashule',
+  nick: 'Mishashule',
+  token: 'xeX1MOu7tpDYoXQ' }
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+nick { nick: 'Lacy`' } 4 Mr.Guy 71.11.76.194
+reset
+flair { flair: '$Rochester|/^/^/^/%/*#FF1493L||||/^/^/^#FF69B4aey|||$Wire One|/~/~/~/~/~/~/~/~/~#pink`' } 4 Lacy` 71.11.76.194
+reset
+reset
+flair { flair: '$Rochester|/^/^/^/%/*#FF1493L||||/^/^/^#FF69B4aey||$Wire One|/~/~/~/~/~/~/~/~/~#pink`' } 4 Lacy` 71.11.76.194
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '#white/^/^ur2slow',
+  token: 'UAvqSKy1iubsMRQ',
+  nick: 'ur2slow' }
+flair { flair: '$Rochester|/^/^/^/%/*#FF1493L||||/^/^/^#FF69B4aey||||$Wire One|/~/~/~/~/~/~/~/~/~#pink`' } 4 Lacy` 71.11.76.194
+reset
+reset
+flair { flair: '$Rochester|/^/^/^/%/*#FF1493L||||/^/^/^#FF69B4aey|$Wire One|/~/~/~/~/~/~/~/~/~#pink`' } 4 Lacy` 71.11.76.194
+reset
+reset
+reset
+reset
+nick { nick: 'Lacy(Granny)' } 4 GHOUL 50.30.88.122
+reset
+flair { flair: '$Rochester|/^/^/^/%/*#FF1493L||||/^/^/^#FF69B4aey|||$Wire One|/~/~/~/~/~/~/~/~/~#pink`' } 4 Lacy` 71.11.76.194
+reset
+reset
+flair { flair: '$Rochester|/^/^/^/%/*#FF1493L||||/^/^/^#FF69B4aey||||$Wire One|/~/~/~/~/~/~/~/~/~#pink`' } 4 Lacy` 71.11.76.194
+reset
+flair { flair: '$Rochester|/^/^/^/%/*#FF1493L||||/^/^/^#FF69B4aey|||||$Wire One|/~/~/~/~/~/~/~/~/~#pink`' } 4 Lacy` 71.11.76.194
+reset
+flair { flair: '$Rochester|/^/^/^/%/*#FF1493L||||/^/^/^#FF69B4aey||||||$Wire One|/~/~/~/~/~/~/~/~/~#pink`' } 4 Lacy` 71.11.76.194
+reset
+nick { nick: 'Josh' } 4 Lacy(Granny) 50.30.88.122
+reset
+reset
+nick { nick: 'JoshE' } 4 Lacy(Granny) 50.30.88.122
+reset
+reset
+reset
+reset
+login { nick: 'Mr.Guy', password: '8Add21c742' } 4 Lacy` 71.11.76.194
+reset
+reset
+reset
+reset
+nick { nick: 'WakeUp' } 4 Mr.Guy 71.11.76.194
+reset
+reset
+reset
+flair { flair: '#red/*WakeUp' } 4 WakeUp 71.11.76.194
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+login { nick: 'Mr.Guy', password: '8Add21c742' } 4 WakeUp 71.11.76.194
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+nick { nick: 'lacy.' } 4 anon2000 75.80.21.173
+reset
+nick { nick: 'Facy' } 4 Mr.Guy 71.11.76.194
+reset
+login { nick: 'Mr.Guy', password: '8Add21c742' } 4 Facy 71.11.76.194
+nick { nick: 'jayz' } 4 lacy. 75.80.21.173
+reset
+reset
+reset
+reset
+nick { nick: 'Lacy.' } 4 jayz 75.80.21.173
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+nick { nick: 'Lacy`' } 4 Mr.Guy 71.11.76.194
+reset
+reset
+flair { flair: '$Rochester|/^/^/^/%/*#FF1493L||||/^/^/^#FF69B4acy|||$Wire One|/~/~/~/~/~/~/~/~/~#pink`' } 4 Lacy` 71.11.76.194
+flair { flair: '$Rochester|/^/^/^/%/*#FF1493L||||/^/^/^#FF69B4acy||||$Wire One|/~/~/~/~/~/~/~/~/~#pink`' } 4 Lacy` 71.11.76.194
+reset
+hat { hat: 'nohat' } 4 Lacy` 71.11.76.194
+reset
+reset
+reset
+reset
+core command { flair: '$Rochester|/^/^/^/%/*#FF1493L||||/^/^/^#FF69B4acy||||$Wire One|/~/~/~/~/~/~/~/~/~#pink`',
+  nick: 'Lacy`',
+  part: 'the club due to crippiling social anxiety',
+  token: 'KnPiKf10JdpeTFm' }
+USER JOINED { flair: '$Rochester|/^/^/^/%/*#FF1493L||||/^/^/^#FF69B4acy||||$Wire One|/~/~/~/~/~/~/~/~/~#pink`',
+  nick: 'Lacy`',
+  part: 'the club due to crippiling social anxiety',
+  token: 'KnPiKf10JdpeTFm' } 71.11.76.194
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+flair { flair: '$font|Montserrat' } 4 JoshE 50.30.88.122
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+flair { flair: '$font|sans' } 4 JoshE 50.30.88.122
+reset
+reset
+reset
+reset
+reset
+nick { nick: 'unregJosh' } 4 JoshE 50.30.88.122
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+flair { flair: '#blueGHOUL' } 4 unregJosh 50.30.88.122
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+flair { flair: '#redGHOUL' } 4 unregJosh 50.30.88.122
+reset
+reset
+reset
+me { message: 'punch' } 4 unregJosh 50.30.88.122
+reset
+reset
+core command { nick: 'FallenAngel',
+  flair: '$Unica One|/^#D800E5F#C313C3a#AE26B7l#9A39A0l#854C89e#715F72n#5C725BA#478544n#33982Dg#1EAB16e#0ABF00l',
+  token: 'FqiHqh2ZUni9tAQ' }
+USER JOINED { nick: 'FallenAngel',
+  flair: '$Unica One|/^#D800E5F#C313C3a#AE26B7l#9A39A0l#854C89e#715F72n#5C725BA#478544n#33982Dg#1EAB16e#0ABF00l',
+  token: 'FqiHqh2ZUni9tAQ' } 106.215.140.117
+reset
+reset
+reset
+reset
+core command { nick: 'DarkScarecrow',
+  flair: '$Unica One|/^#D800E5F#C313C3a#AE26B7l#9A39A0l#854C89e#715F72n#5C725BA#478544n#33982Dg#1EAB16e#0ABF00l',
+  token: 'FqiHqh2ZUni9tAQ' }
+USER JOINED { nick: 'DarkScarecrow',
+  flair: '$Unica One|/^#D800E5F#C313C3a#AE26B7l#9A39A0l#854C89e#715F72n#5C725BA#478544n#33982Dg#1EAB16e#0ABF00l',
+  token: 'FqiHqh2ZUni9tAQ' } 106.215.140.117
+find { ip: 'DarkScarecrow' } 1 Lacy 138.9.8.208
+reset
+reset
+reset
+nick { nick: 'GM' } 4 unregJosh 50.30.88.122
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+login { nick: 'anon2000', password: 'lololurmom' } 4 Lacy. 75.80.21.173
+reset
+login { nick: 'FallenAngel', password: 'hellonearth' } 4 DarkScarecrow 106.215.140.117
+reset
+reset
+reset
+nick { nick: 'GHOUL' } 4 GM 50.30.88.122
+reset
+reset
+reset
+login { nick: 'GHOUL', password: 'Spiderman1$' } 4 GM 50.30.88.122
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Rochester|/^/^/^/%/*#FF1493L||||/^/^/^#FF69B4acy',
+  nick: 'Lacy',
+  token: 'qmNZzE2A9biJanT' }
+USER JOINED { flair: '$Rochester|/^/^/^/%/*#FF1493L||||/^/^/^#FF69B4acy',
+  nick: 'Lacy',
+  token: 'qmNZzE2A9biJanT' } 138.9.8.208
+reset
+login { nick: 'Lacy', password: 'hello' } 4 GorySpecter 138.9.8.208
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+whois { nick: 'Lacy' } 1 Lacy 138.9.8.208
+reset
+reset
+reset
+reset
+reset
+whois { nick: 'Lacy' } 4 FallenAngel 106.215.140.117
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+login { nick: 'FallenAngel', password: 'hellonearth' } 4 DarkScarecrow 106.215.140.117
+reset
+reset
+reset
+reset
+login { nick: 'anon2000', password: 'lololurmom' } 4 Mr.Guys 75.80.21.173
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+me { message: 'throws a rock at panda' } 4 Zeus 60.230.193.121
+reset
+reset
+reset
+me { message: 'scream and fall down a tree' } 4 Panda 24.200.177.10
+reset
+reset
+reset
+reset
+me { message: 'run' } 4 Zeus 60.230.193.121
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Chela One|/^/^#aa99ddK#a273e6e#994deev#9126f7i#8800ffn',
+  nick: 'Kevin',
+  token: 'iYhgRBW5Dwd4hBa' }
+USER JOINED { flair: '$Chela One|/^/^#aa99ddK#a273e6e#994deev#9126f7i#8800ffn',
+  nick: 'Kevin',
+  token: 'iYhgRBW5Dwd4hBa' } 49.182.11.136
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+me { message: 'pat' } 4 Zeus 60.230.193.121
+reset
+reset
+reset
+reset
+reset
+me { message: 'sigh' } 4 Zeus 60.230.193.121
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+me { message: 'praises higher deities' } 4 Zeus 60.230.193.121
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { nick: 'FallenAngel',
+  flair: '$Unica One|/^#D800E5F#C313C3a#AE26B7l#9A39A0l#854C89e#715F72n#5C725BA#478544n#33982Dg#1EAB16e#0ABF00l',
+  token: '8uloQbdpnK8tbbH' }
+USER JOINED { nick: 'FallenAngel',
+  flair: '$Unica One|/^#D800E5F#C313C3a#AE26B7l#9A39A0l#854C89e#715F72n#5C725BA#478544n#33982Dg#1EAB16e#0ABF00l',
+  token: '8uloQbdpnK8tbbH' } 106.215.167.181
+core command { nick: 'FallenAngel',
+  flair: '$Unica One|/^#D800E5F#C313C3a#AE26B7l#9A39A0l#854C89e#715F72n#5C725BA#478544n#33982Dg#1EAB16e#0ABF00l',
+  token: '8uloQbdpnK8tbbH' }
+USER JOINED { nick: 'FallenAngel',
+  flair: '$Unica One|/^#D800E5F#C313C3a#AE26B7l#9A39A0l#854C89e#715F72n#5C725BA#478544n#33982Dg#1EAB16e#0ABF00l',
+  token: '8uloQbdpnK8tbbH' } 106.215.167.181
+reset
+reset
+login { nick: 'FallenAngel', password: 'hellonearth' } 4 EvilGravestone 106.215.167.181
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+me { message: 'grabs club' } 4 Zeus 60.230.193.121
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+me { message: 'clubs panda on the head' } 4 Zeus 60.230.193.121
+reset
+reset
+me { message: 'drags away' } 4 Zeus 60.230.193.121
+reset
+reset
+reset
+reset
+reset
+reset
+core command { nick: 'FallenAngel',
+  flair: '$Unica One|/^#D800E5F#C313C3a#AE26B7l#9A39A0l#854C89e#715F72n#5C725BA#478544n#33982Dg#1EAB16e#0ABF00l',
+  token: 'b7Rp3iLyOR3XU9B' }
+USER JOINED { nick: 'FallenAngel',
+  flair: '$Unica One|/^#D800E5F#C313C3a#AE26B7l#9A39A0l#854C89e#715F72n#5C725BA#478544n#33982Dg#1EAB16e#0ABF00l',
+  token: 'b7Rp3iLyOR3XU9B' } 106.215.167.181
+reset
+core command { nick: 'FallenAngel',
+  flair: '$Unica One|/^#D800E5F#C313C3a#AE26B7l#9A39A0l#854C89e#715F72n#5C725BA#478544n#33982Dg#1EAB16e#0ABF00l',
+  token: 'b7Rp3iLyOR3XU9B' }
+USER JOINED { nick: 'FallenAngel',
+  flair: '$Unica One|/^#D800E5F#C313C3a#AE26B7l#9A39A0l#854C89e#715F72n#5C725BA#478544n#33982Dg#1EAB16e#0ABF00l',
+  token: 'b7Rp3iLyOR3XU9B' } 106.215.167.181
+reset
+reset
+login { nick: 'FallenAngel', password: 'hellonearth' } 4 GhoulishMidnight 106.215.167.181
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Chewy|/^/^/^#ffffffP#000000a#ffffffn#000000d#ffffffa',
+  nick: 'Panda',
+  token: 'F0dnWE3S535Zj3p' }
+USER JOINED { flair: '$Chewy|/^/^/^#ffffffP#000000a#ffffffn#000000d#ffffffa',
+  nick: 'Panda',
+  token: 'F0dnWE3S535Zj3p' } 24.200.177.10
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command {}
+USER JOINED {} 129.112.109.42
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Atomic Age|/^/^/^#F0FM|||$Ubuntu|#FFF###F0Fishashule',
+  nick: 'Mishashule',
+  token: 'xeX1MOu7tpDYoXQ' }
+reset
+USER JOINED { flair: '$Atomic Age|/^/^/^#F0FM|||$Ubuntu|#FFF###F0Fishashule',
+  nick: 'Mishashule',
+  token: 'xeX1MOu7tpDYoXQ' } 24.111.119.108
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Chewy|/^/^/^#ffffffP#000000a#ffffffn#000000d#ffffffa',
+  nick: 'UnearthlyCrypt',
+  token: 'F0dnWE3S535Zj3p' }
+USER JOINED { flair: '$Chewy|/^/^/^#ffffffP#000000a#ffffffn#000000d#ffffffa',
+  nick: 'UnearthlyCrypt',
+  token: 'F0dnWE3S535Zj3p' } 24.200.177.10
+reset
+reset
+reset
+reset
+login { nick: 'Panda', password: '123456' } 4 UnearthlyCrypt 24.200.177.10
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Caveat Brush|/^',
+  token: '9Yq5yId8s1nTYSP',
+  nick: 'JimmyA' }
+USER JOINED { flair: '$Caveat Brush|/^',
+  token: '9Yq5yId8s1nTYSP',
+  nick: 'JimmyA' } 75.87.249.102
+reset
+reset
+reset
+login { nick: 'JimmyA', password: 'm3noka' } 4 FrighteningPhantasm 75.87.249.102
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Rubik Mono One|/^#FFD000Z|#FFE055e#FFEFAAu#FFFFFFs',
+  nick: 'Zeus',
+  token: 'X2FFdKQc18l0GNT' }
+USER JOINED { flair: '$Rubik Mono One|/^#FFD000Z|#FFE055e#FFEFAAu#FFFFFFs',
+  nick: 'Zeus',
+  token: 'X2FFdKQc18l0GNT' } 60.230.193.121
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Chela One|/^/^#aa99ddK#a273e6e#994deev#9126f7i#8800ffn',
+  nick: 'Kevin',
+  token: 'iYhgRBW5Dwd4hBa' }
+USER JOINED { flair: '$Chela One|/^/^#aa99ddK#a273e6e#994deev#9126f7i#8800ffn',
+  nick: 'Kevin',
+  token: 'iYhgRBW5Dwd4hBa' } 49.182.11.136
+reset
+reset
+reset
+reset
+login { nick: 'Zeus', password: 'chris123' } 4 WickedDead 60.230.193.121
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Roboto|/^/^#red/%iem|#green/~de|#yellow/*kepten|#bluenao',
+  nick: 'iemdekeptennao',
+  token: 'sSEb09Ir797PE2B' }
+USER JOINED { flair: '$Roboto|/^/^#red/%iem|#green/~de|#yellow/*kepten|#bluenao',
+  nick: 'iemdekeptennao',
+  token: 'sSEb09Ir797PE2B' } 99.13.231.19
+reset
+reset
+core command { nick: 'FallenAngel',
+  flair: '$Unica One|/^#D800E5F#C313C3a#AE26B7l#9A39A0l#854C89e#715F72n#5C725BA#478544n#33982Dg#1EAB16e#0ABF00l',
+  token: 'TwrzNRzyl5UM1MR' }
+USER JOINED { nick: 'FallenAngel',
+  flair: '$Unica One|/^#D800E5F#C313C3a#AE26B7l#9A39A0l#854C89e#715F72n#5C725BA#478544n#33982Dg#1EAB16e#0ABF00l',
+  token: 'TwrzNRzyl5UM1MR' } 106.215.167.181
+reset
+core command { nick: 'GhostlyGastly',
+  flair: '$Unica One|/^#D800E5F#C313C3a#AE26B7l#9A39A0l#854C89e#715F72n#5C725BA#478544n#33982Dg#1EAB16e#0ABF00l',
+  token: 'TwrzNRzyl5UM1MR' }
+USER JOINED { nick: 'GhostlyGastly',
+  flair: '$Unica One|/^#D800E5F#C313C3a#AE26B7l#9A39A0l#854C89e#715F72n#5C725BA#478544n#33982Dg#1EAB16e#0ABF00l',
+  token: 'TwrzNRzyl5UM1MR' } 106.215.167.181
+reset
+reset
+login { nick: 'FallenAngel', password: 'hellonearth' } 4 GhostlyGastly 106.215.167.181
+reset
+core command {}
+USER JOINED {} 49.182.11.136
+reset
+nick { nick: 'TestNigger' } 4 HauntedGravestone 49.182.11.136
+reset
+reset
+reset
+kick { nick: 'TestNigger' } 0 Kevin 49.182.11.136
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Sacramento|/^/^/^#ee82eem#ea87eao#e78ce7o#e390e3d#e095e0l#dc9adce#d99fd9s#d5a3d5b#d2a8d2o#ceadceo#cbb2cbd#c7b6c7l#c4bbc4e#c0c0c0s',
+  nick: 'Hair-raisingSpecter',
+  token: '8atq0xnk7v4fYNk' }
+USER JOINED { flair: '$Sacramento|/^/^/^#ee82eem#ea87eao#e78ce7o#e390e3d#e095e0l#dc9adce#d99fd9s#d5a3d5b#d2a8d2o#ceadceo#cbb2cbd#c7b6c7l#c4bbc4e#c0c0c0s',
+  nick: 'Hair-raisingSpecter',
+  token: '8atq0xnk7v4fYNk' } 92.40.249.180
+reset
+core command { nick: 'UnearthlyTombstone',
+  token: 'L9IeUF832itmk0p',
+  flair: '$Montserrat|/^/^#373854El#493267d#9e379fr#e86af0o#7bb3ffn' }
+USER JOINED { nick: 'UnearthlyTombstone',
+  token: 'L9IeUF832itmk0p',
+  flair: '$Montserrat|/^/^#373854El#493267d#9e379fr#e86af0o#7bb3ffn' } 88.97.244.142
+reset
+reset
+reset
+login { nick: 'Eldron', password: 'lellolello12321' } 4 UnearthlyTombstone 88.97.244.142
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+Starting channel /Eldron
+core command { nick: 'Eldron',
+  token: 'yyI3HQjDagt9z1K',
+  flair: '$Montserrat|/^/^#373854El#493267d#9e379fr#e86af0o#7bb3ffn' }
+USER JOINED { nick: 'Eldron',
+  token: 'yyI3HQjDagt9z1K',
+  flair: '$Montserrat|/^/^#373854El#493267d#9e379fr#e86af0o#7bb3ffn' } 82.69.216.6
+reset
+core command { nick: 'Spine-chillingCemetery',
+  token: 'yyI3HQjDagt9z1K',
+  flair: '$Montserrat|/^/^#373854El#493267d#9e379fr#e86af0o#7bb3ffn' }
+USER JOINED { nick: 'Spine-chillingCemetery',
+  token: 'yyI3HQjDagt9z1K',
+  flair: '$Montserrat|/^/^#373854El#493267d#9e379fr#e86af0o#7bb3ffn' } 82.69.216.6
+reset
+reset
+reset
+reset
+reset
+login { nick: 'Eldron', password: 'lellolello12321' } 4 Spine-chillingCemetery 82.69.216.6
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { nick: 'Eldron',
+  token: '2kLZtMMehcFe5P4',
+  flair: '$Montserrat|/^/^#373854El#493267d#9e379fr#e86af0o#7bb3ffn' }
+USER JOINED { nick: 'Eldron',
+  token: '2kLZtMMehcFe5P4',
+  flair: '$Montserrat|/^/^#373854El#493267d#9e379fr#e86af0o#7bb3ffn' } 82.69.216.6
+reset
+reset
+core command { nick: 'FallenAngel',
+  flair: '$Unica One|/^#D800E5F#C313C3a#AE26B7l#9A39A0l#854C89e#715F72n#5C725BA#478544n#33982Dg#1EAB16e#0ABF00l',
+  token: 'DlNz4Jcq89axyM1' }
+USER JOINED { nick: 'FallenAngel',
+  flair: '$Unica One|/^#D800E5F#C313C3a#AE26B7l#9A39A0l#854C89e#715F72n#5C725BA#478544n#33982Dg#1EAB16e#0ABF00l',
+  token: 'DlNz4Jcq89axyM1' } 106.215.167.181
+reset
+reset
+core command { nick: 'MacabreSpirit',
+  flair: '$Unica One|/^#D800E5F#C313C3a#AE26B7l#9A39A0l#854C89e#715F72n#5C725BA#478544n#33982Dg#1EAB16e#0ABF00l',
+  token: 'DlNz4Jcq89axyM1' }
+USER JOINED { nick: 'MacabreSpirit',
+  flair: '$Unica One|/^#D800E5F#C313C3a#AE26B7l#9A39A0l#854C89e#715F72n#5C725BA#478544n#33982Dg#1EAB16e#0ABF00l',
+  token: 'DlNz4Jcq89axyM1' } 106.215.167.181
+reset
+reset
+reset
+reset
+reset
+login { nick: 'FallenAngel', password: 'hellonearth' } 4 MacabreSpirit 106.215.167.181
+reset
+reset
+reset
+reset
+reset
+core command {}
+USER JOINED {} 138.9.8.208
+reset
+reset
+reset
+login { nick: 'Lacy', password: 'hello' } 4 SpoopyBlood 138.9.8.208
+reset
+reset
+reset
+topic { message: 'when u catch bae slippin\' http://i.imgur.com/SKBRGY3.png' } 1 Lacy 138.9.8.208
+reset
+reset
+reset
+find { ip: 'ShockingBoo' } 1 Lacy 138.9.8.208
+reset
+reset
+reset
+reset
+core command { flair: '$Rochester|/^/^/^/%/*#FF1493L||||/^/^/^#FF69B4acy',
+  nick: 'Lacy',
+  token: 'GNJPlfYqpFCZSuz' }
+USER JOINED { flair: '$Rochester|/^/^/^/%/*#FF1493L||||/^/^/^#FF69B4acy',
+  nick: 'Lacy',
+  token: 'GNJPlfYqpFCZSuz' } 138.9.8.208
+reset
+reset
+reset
+reset
+reset
+login { nick: 'Lacy', password: 'hello' } 4 MorbidGruesome 138.9.8.208
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Chewy|/^/^/^#ffffffP#000000a#ffffffn#000000d#ffffffa',
+  nick: 'Panda',
+  token: 'atuiZuKFwFkNsv2' }
+USER JOINED { flair: '$Chewy|/^/^/^#ffffffP#000000a#ffffffn#000000d#ffffffa',
+  nick: 'Panda',
+  token: 'atuiZuKFwFkNsv2' } 24.200.177.10
+reset
+reset
+reset
+login { nick: 'Panda', password: '123456' } 4 MorbidSpecter 24.200.177.10
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { nick: 'FallenAngel',
+  flair: '$Unica One|/^#D800E5F#C313C3a#AE26B7l#9A39A0l#854C89e#715F72n#5C725BA#478544n#33982Dg#1EAB16e#0ABF00l',
+  token: 'VI0z6JQUEQAFTxF' }
+reset
+USER JOINED { nick: 'FallenAngel',
+  flair: '$Unica One|/^#D800E5F#C313C3a#AE26B7l#9A39A0l#854C89e#715F72n#5C725BA#478544n#33982Dg#1EAB16e#0ABF00l',
+  token: 'VI0z6JQUEQAFTxF' } 106.215.153.87
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { nick: 'FallenAngel',
+  flair: '$Unica One|/^#D800E5F#C313C3a#AE26B7l#9A39A0l#854C89e#715F72n#5C725BA#478544n#33982Dg#1EAB16e#0ABF00l',
+  token: 'VI0z6JQUEQAFTxF' }
+USER JOINED { nick: 'FallenAngel',
+  flair: '$Unica One|/^#D800E5F#C313C3a#AE26B7l#9A39A0l#854C89e#715F72n#5C725BA#478544n#33982Dg#1EAB16e#0ABF00l',
+  token: 'VI0z6JQUEQAFTxF' } 106.215.153.87
+reset
+reset
+reset
+reset
+login { nick: 'FallenAngel', password: 'hellonearth' } 4 GhoulishNightmare 106.215.153.87
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Caveat Brush|/^',
+  token: 'obUVeWkgaMEbLG9',
+  nick: 'JimmyA' }
+USER JOINED { flair: '$Caveat Brush|/^',
+  token: 'obUVeWkgaMEbLG9',
+  nick: 'JimmyA' } 75.87.249.102
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { nick: 'FrightfulMausoleum',
+  flair: '$Marcellus SC|/@/^/^/^#fc9/_#dcf2edL||||/@/^/^#ff9/_#b4eaddy|||/^/@#ffc/_#8fe3d0n||/@/*#fff/_#5ee5c7n',
+  token: 'ynrzjYgdyfHN4jR' }
+USER JOINED { nick: 'FrightfulMausoleum',
+  flair: '$Marcellus SC|/@/^/^/^#fc9/_#dcf2edL||||/@/^/^#ff9/_#b4eaddy|||/^/@#ffc/_#8fe3d0n||/@/*#fff/_#5ee5c7n',
+  token: 'ynrzjYgdyfHN4jR' } 78.20.197.37
+reset
+reset
+reset
+reset
+reset
+reset
+core command { nick: 'FallenAngel',
+  flair: '$Unica One|/^#D800E5F#C313C3a#AE26B7l#9A39A0l#854C89e#715F72n#5C725BA#478544n#33982Dg#1EAB16e#0ABF00l',
+  token: '6QOPXH9KckVi2n7' }
+USER JOINED { nick: 'FallenAngel',
+  flair: '$Unica One|/^#D800E5F#C313C3a#AE26B7l#9A39A0l#854C89e#715F72n#5C725BA#478544n#33982Dg#1EAB16e#0ABF00l',
+  token: '6QOPXH9KckVi2n7' } 106.215.132.160
+reset
+core command {}
+USER JOINED {} 106.215.132.160
+core command {}
+reset
+USER JOINED {} 106.215.132.160
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { nick: 'OtherworldlyHeadstone' }
+USER JOINED { nick: 'OtherworldlyHeadstone' } 49.182.11.136
+reset
+reset
+reset
+core command { nick: 'OtherworldlyHeadstone' }
+USER JOINED { nick: 'OtherworldlyHeadstone' } 49.182.11.136
+core command { nick: 'ShadowyOgre' }
+USER JOINED { nick: 'ShadowyOgre' } 49.182.11.136
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { nick: 'RevoltingBat' }
+USER JOINED { nick: 'RevoltingBat' } 106.215.132.160
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { nick: 'FrightfulMausoleum',
+  flair: '$Marcellus SC|/@/^/^/^#fc9/_#dcf2edL||||/@/^/^#ff9/_#b4eaddy|||/^/@#ffc/_#8fe3d0n||/@/*#fff/_#5ee5c7n',
+  token: 'ynrzjYgdyfHN4jR' }
+USER JOINED { nick: 'FrightfulMausoleum',
+  flair: '$Marcellus SC|/@/^/^/^#fc9/_#dcf2edL||||/@/^/^#ff9/_#b4eaddy|||/^/@#ffc/_#8fe3d0n||/@/*#fff/_#5ee5c7n',
+  token: 'ynrzjYgdyfHN4jR' } 78.20.197.37
+core command { nick: 'FrightfulMausoleum',
+  flair: '$Marcellus SC|/@/^/^/^#fc9/_#dcf2edL||||/@/^/^#ff9/_#b4eaddy|||/^/@#ffc/_#8fe3d0n||/@/*#fff/_#5ee5c7n',
+  token: 'ynrzjYgdyfHN4jR' }
+USER JOINED { nick: 'FrightfulMausoleum',
+  flair: '$Marcellus SC|/@/^/^/^#fc9/_#dcf2edL||||/@/^/^#ff9/_#b4eaddy|||/^/@#ffc/_#8fe3d0n||/@/*#fff/_#5ee5c7n',
+  token: 'ynrzjYgdyfHN4jR' } 78.20.197.37
+reset
+reset
+reset
+reset
+reset
+core command { nick: 'GrislyGhost',
+  token: '2kLZtMMehcFe5P4',
+  flair: '$Montserrat|/^/^#373854El#493267d#9e379fr#e86af0o#7bb3ffn' }
+USER JOINED { nick: 'GrislyGhost',
+  token: '2kLZtMMehcFe5P4',
+  flair: '$Montserrat|/^/^#373854El#493267d#9e379fr#e86af0o#7bb3ffn' } 82.69.216.6
+reset
+login { nick: 'Eldron', password: 'lellolello12321' } 4 GrislyGhost 82.69.216.6
+reset
+core command { nick: 'Eldron',
+  token: 'wL9gkAPi78AMTrR',
+  flair: '$Montserrat|/^/^#373854El#493267d#9e379fr#e86af0o#7bb3ffn' }
+USER JOINED { nick: 'Eldron',
+  token: 'wL9gkAPi78AMTrR',
+  flair: '$Montserrat|/^/^#373854El#493267d#9e379fr#e86af0o#7bb3ffn' } 88.97.244.142
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { nick: 'FrightfulMausoleum',
+  flair: '$Marcellus SC|/@/^/^/^#fc9/_#dcf2edL||||/@/^/^#ff9/_#b4eaddy|||/^/@#ffc/_#8fe3d0n||/@/*#fff/_#5ee5c7n',
+  token: 'ynrzjYgdyfHN4jR' }
+USER JOINED { nick: 'FrightfulMausoleum',
+  flair: '$Marcellus SC|/@/^/^/^#fc9/_#dcf2edL||||/@/^/^#ff9/_#b4eaddy|||/^/@#ffc/_#8fe3d0n||/@/*#fff/_#5ee5c7n',
+  token: 'ynrzjYgdyfHN4jR' } 78.20.197.37
+reset
+reset
+core command { nick: 'GhoulishFangs',
+  flair: '$Sevillana|/^/^/%/*#ff2222K#f82c33a#f03544t#e93f55e#e24966r#db5377i#d35c88n#cc6699a',
+  token: 'FJHvNqLcfwzWfYp' }
+USER JOINED { nick: 'GhoulishFangs',
+  flair: '$Sevillana|/^/^/%/*#ff2222K#f82c33a#f03544t#e93f55e#e24966r#db5377i#d35c88n#cc6699a',
+  token: 'FJHvNqLcfwzWfYp' } 98.155.12.23
+core command { nick: 'GhoulishFangs',
+  flair: '$Sevillana|/^/^/%/*#ff2222K#f82c33a#f03544t#e93f55e#e24966r#db5377i#d35c88n#cc6699a',
+  token: 'FJHvNqLcfwzWfYp' }
+USER JOINED { nick: 'GhoulishFangs',
+  flair: '$Sevillana|/^/^/%/*#ff2222K#f82c33a#f03544t#e93f55e#e24966r#db5377i#d35c88n#cc6699a',
+  token: 'FJHvNqLcfwzWfYp' } 98.155.12.23
+reset
+reset
+reset
+reset
+whois { nick: 'SupernaturalPhantasm' } 4 FrightfulMausoleum 78.20.197.37
+reset
+reset
+reset
+login { nick: 'Katerina', password: 'Katerina808' } 4 HorriblePhantom 98.155.12.23
+reset
+reset
+reset
+reset
+reset
+reset
+login { nick: 'Bluessy', password: 'lellolello12321' } 4 Eldron 82.69.216.6
+reset
+login { nick: 'Evelynn', password: 'P15209@k' } 4 FrightfulMausoleum 78.20.197.37
+reset
+reset
+reset
+reset
+core command { nick: 'Bluessy',
+  token: 'AKHRy6nNfaEz5t6',
+  flair: '$Montserrat|/^/^#cyanBlue#grayssy' }
+USER JOINED { nick: 'Bluessy',
+  token: 'AKHRy6nNfaEz5t6',
+  flair: '$Montserrat|/^/^#cyanBlue#grayssy' } 82.69.216.6
+reset
+reset
+login { nick: 'Eldron', password: 'lellolello12321' } 4 Bluessy 82.69.216.6
+reset
+core command {}
+USER JOINED {} 138.9.8.208
+reset
+core command { flair: '$Archivo Narrow|/^#acccli#aabnei',
+  nick: 'clinei',
+  part: 'your mom',
+  token: '4tYINygfhznuexl' }
+USER JOINED { flair: '$Archivo Narrow|/^#acccli#aabnei',
+  nick: 'clinei',
+  part: 'your mom',
+  token: '4tYINygfhznuexl' } 84.50.202.149
+reset
+core command { nick: 'GhostlyFear' }
+USER JOINED { nick: 'GhostlyFear' } 138.9.8.208
+reset
+reset
+login { nick: 'Lacy', password: 'hello' } 4 GhostlyFear 138.9.8.208
+reset
+login { nick: 'Lacy', password: 'hello' } 4 GhostlyFear 138.9.8.208
+login { nick: 'Clinei' } 4 GhostlyHeadstone 84.50.202.149
+reset
+reset
+find { ip: 'ShockingBoo' } 1 Lacy 138.9.8.208
+reset
+reset
+login { nick: 'clinei', password: 'Elevant1' } 4 GhostlyHeadstone 84.50.202.149
+reset
+reset
+core command { flair: '$Amatic SC|/^/^/^#b6ecf4E|||/^#45F/_#c7dcf6v#47F/_#a3c9f6e#49F/_#6daaf4l#6daaf4/_#49Fy#a3c9f6/_#47Fn#c7dcf6/_#45Fn',
+  nick: 'ShadowyPhantom',
+  token: 'B3jZ1ek1VgwhFRc' }
+USER JOINED { flair: '$Amatic SC|/^/^/^#b6ecf4E|||/^#45F/_#c7dcf6v#47F/_#a3c9f6e#49F/_#6daaf4l#6daaf4/_#49Fy#a3c9f6/_#47Fn#c7dcf6/_#45Fn',
+  nick: 'ShadowyPhantom',
+  token: 'B3jZ1ek1VgwhFRc' } 78.20.197.37
+reset
+core command { flair: '$Amatic SC|/^/^/^#b6ecf4E|||/^#45F/_#c7dcf6v#47F/_#a3c9f6e#49F/_#6daaf4l#6daaf4/_#49Fy#a3c9f6/_#47Fn#c7dcf6/_#45Fn',
+  nick: 'ShadowyPhantom',
+  token: 'B3jZ1ek1VgwhFRc' }
+USER JOINED { flair: '$Amatic SC|/^/^/^#b6ecf4E|||/^#45F/_#c7dcf6v#47F/_#a3c9f6e#49F/_#6daaf4l#6daaf4/_#49Fy#a3c9f6/_#47Fn#c7dcf6/_#45Fn',
+  nick: 'ShadowyPhantom',
+  token: 'B3jZ1ek1VgwhFRc' } 78.20.197.37
+reset
+login { nick: 'clinei', password: 'Elevant1' } 4 ShadowyPhantom 78.20.197.37
+reset
+reset
+change_password { oldpassword: 'Shitheadnr1' } 4 clinei 84.50.202.149
+reset
+reset
+reset
+change_password { oldpassword: 'Elevant1', newpassword: 'Shitheadnr1' } 4 clinei 84.50.202.149
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+login { nick: 'FallenAngel', password: 'hellonearth' } 4 RevoltingBat 106.215.132.160
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Archivo Narrow|/^#acccli#aabnei',
+  nick: 'clinei',
+  token: 'E5c10eW5P2XoU1t' }
+USER JOINED { flair: '$Archivo Narrow|/^#acccli#aabnei',
+  nick: 'clinei',
+  token: 'E5c10eW5P2XoU1t' } 78.20.197.37
+reset
+reset
+reset
+core command { flair: '$Archivo Narrow|/^#acccli#aabnei',
+  nick: 'clinei',
+  token: 'E5c10eW5P2XoU1t' }
+USER JOINED { flair: '$Archivo Narrow|/^#acccli#aabnei',
+  nick: 'clinei',
+  token: 'E5c10eW5P2XoU1t' } 78.20.197.37
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Chewy|/^/^/^#ffffffP#000000a#ffffffn#000000d#ffffffa',
+  nick: 'Panda',
+  token: 'sbI438Igi33bLcx' }
+USER JOINED { flair: '$Chewy|/^/^/^#ffffffP#000000a#ffffffn#000000d#ffffffa',
+  nick: 'Panda',
+  token: 'sbI438Igi33bLcx' } 24.200.177.10
+reset
+reset
+reset
+login { nick: 'Panda', password: '123456' } 4 FrightfulMonster 24.200.177.10
+core command { flair: '$Chewy|/^/^/^#ffffffP#000000a#ffffffn#000000d#ffffffa',
+  nick: 'Panda',
+  token: 'sbI438Igi33bLcx' }
+reset
+USER JOINED { flair: '$Chewy|/^/^/^#ffffffP#000000a#ffffffn#000000d#ffffffa',
+  nick: 'Panda',
+  token: 'sbI438Igi33bLcx' } 24.200.177.10
+reset
+login { nick: 'Panda', password: '123456' } 4 HauntedCemetery 24.200.177.10
+reset
+reset
+reset
+reset
+nick { nick: 'KevinInfra' } 4 OtherworldlyHeadstone 49.182.11.136
+reset
+reset
+nick { nick: 'InfraKevin' } 4 KevinInfra 49.182.11.136
+reset
+reset
+reset
+reset
+core command { flair: '$Archivo Narrow|/^#acccli#aabnei',
+  nick: 'MorbidPhantom',
+  token: 'E5c10eW5P2XoU1t' }
+USER JOINED { flair: '$Archivo Narrow|/^#acccli#aabnei',
+  nick: 'MorbidPhantom',
+  token: 'E5c10eW5P2XoU1t' } 78.20.197.37
+reset
+reset
+reset
+core command { flair: '$Rubik Mono One|/^#FFD000Z|#FFE055e#FFEFAAu#FFFFFFs',
+  nick: 'Zeus',
+  token: '43IvJVPYh3lkJD9' }
+USER JOINED { flair: '$Rubik Mono One|/^#FFD000Z|#FFE055e#FFEFAAu#FFFFFFs',
+  nick: 'Zeus',
+  token: '43IvJVPYh3lkJD9' } 60.230.193.121
+reset
+core command { nick: 'InfraKevin',
+  password: 'drunk',
+  question: '{"answer":"rape"}' }
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { nick: 'Eldron',
+  token: '4WSK2uWnANoOLbv',
+  flair: '$Montserrat|/^/^#373854El#493267d#9e379fr#e86af0o#7bb3ffn' }
+USER JOINED { nick: 'Eldron',
+  token: '4WSK2uWnANoOLbv',
+  flair: '$Montserrat|/^/^#373854El#493267d#9e379fr#e86af0o#7bb3ffn' } 82.69.216.6
+reset
+login { nick: 'clinei', password: 'Elevant1' } 4 WickedPumpkin 82.69.216.6
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Archivo Narrow|/^#acccli#aabnei',
+  nick: 'MorbidPhantom',
+  token: 'E5c10eW5P2XoU1t' }
+USER JOINED { flair: '$Archivo Narrow|/^#acccli#aabnei',
+  nick: 'MorbidPhantom',
+  token: 'E5c10eW5P2XoU1t' } 78.20.197.37
+reset
+reset
+reset
+reset
+reset
+reset
+Starting channel http://env.darkbyte.ru/?uUAANFAPA
+reset
+login { nick: 'Evelynn', password: 'P15209@k' } 4 MorbidPhantom 78.20.197.37
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command {}
+reset
+USER JOINED {} 98.155.12.23
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command {}
+USER JOINED {} 66.249.69.24
+reset
+reset
+login { nick: 'DarkMan', password: 'D4rkm4n' } 4 CreepyTomb 129.112.109.42
+reset
+reset
+reset
+reset
+reset
+flair { flair: '$Chewy|#8800ffI#9500ffn#a200fff#b000ffr#bd00ffa#ca00ffK#d700ffe#e500ffv#f200ffi#ff00ffn' } 4 InfraKevin 49.182.11.136
+reset
+reset
+reset
+flair { flair: '$Chewy|/^#8800ffI#9500ffn#a200fff#b000ffr#bd00ffa#ca00ffK#d700ffe#e500ffv#f200ffi#ff00ffn' } 4 InfraKevin 49.182.11.136
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Rochester|/^/^/^/%/*#FF1493L||||/^/^/^#FF69B4acy',
+  nick: 'Lacy',
+  token: 'S3fWpWOxg0A4PbI' }
+USER JOINED { flair: '$Rochester|/^/^/^/%/*#FF1493L||||/^/^/^#FF69B4acy',
+  nick: 'Lacy',
+  token: 'S3fWpWOxg0A4PbI' } 138.9.8.208
+reset
+reset
+reset
+reset
+core command { flair: '$Sacramento|/^/^/^#ee82eem#ea87eao#e78ce7o#e390e3d#e095e0l#dc9adce#d99fd9s#d5a3d5b#d2a8d2o#ceadceo#cbb2cbd#c7b6c7l#c4bbc4e#c0c0c0s',
+  nick: 'Hair-raisingSpecter',
+  token: '8atq0xnk7v4fYNk' }
+USER JOINED { flair: '$Sacramento|/^/^/^#ee82eem#ea87eao#e78ce7o#e390e3d#e095e0l#dc9adce#d99fd9s#d5a3d5b#d2a8d2o#ceadceo#cbb2cbd#c7b6c7l#c4bbc4e#c0c0c0s',
+  nick: 'Hair-raisingSpecter',
+  token: '8atq0xnk7v4fYNk' } 92.40.249.11
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+nick { nick: 'moodles' } 4 Hair-raisingSpecter 92.40.249.11
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { nick: 'WickedPumpkin',
+  token: '4WSK2uWnANoOLbv',
+  flair: '$Montserrat|/^/^#373854El#493267d#9e379fr#e86af0o#7bb3ffn' }
+USER JOINED { nick: 'WickedPumpkin',
+  token: '4WSK2uWnANoOLbv',
+  flair: '$Montserrat|/^/^#373854El#493267d#9e379fr#e86af0o#7bb3ffn' } 88.97.244.142
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+login { nick: 'Eldron', password: 'lellolello12321' } 4 WickedPumpkin 88.97.244.142
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Amatic SC|/^/^/^#b6ecf4E|||/^#45F/_#c7dcf6v#47F/_#a3c9f6e#49F/_#6daaf4l#6daaf4/_#49Fy#a3c9f6/_#47Fn#c7dcf6/_#45Fn',
+  nick: 'Evelynn',
+  token: 'TsRUxuPQmPpuGQz' }
+USER JOINED { flair: '$Amatic SC|/^/^/^#b6ecf4E|||/^#45F/_#c7dcf6v#47F/_#a3c9f6e#49F/_#6daaf4l#6daaf4/_#49Fy#a3c9f6/_#47Fn#c7dcf6/_#45Fn',
+  nick: 'Evelynn',
+  token: 'TsRUxuPQmPpuGQz' } 78.20.197.37
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Chewy|/^/^/^#ffffffP#000000a#ffffffn#000000d#ffffffa',
+  nick: 'Panda',
+  token: 'o0eLLmgIGI111zo' }
+USER JOINED { flair: '$Chewy|/^/^/^#ffffffP#000000a#ffffffn#000000d#ffffffa',
+  nick: 'Panda',
+  token: 'o0eLLmgIGI111zo' } 24.200.177.10
+reset
+reset
+login { nick: 'Panda', password: '123456' } 4 GhoulishHaunter 24.200.177.10
+reset
+reset
+nick { nick: 'L' } 4 BloodcurdlingGengar 78.20.197.37
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Rubik Mono One|/^#FFD000Z|#FFE055e#FFEFAAu#FFFFFFs',
+  nick: 'Zeus',
+  token: '43IvJVPYh3lkJD9' }
+USER JOINED { flair: '$Rubik Mono One|/^#FFD000Z|#FFE055e#FFEFAAu#FFFFFFs',
+  nick: 'Zeus',
+  token: '43IvJVPYh3lkJD9' } 60.230.193.121
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+login { nick: 'moodlesboodles', password: 'incorrect' } 4 moodles 92.40.249.11
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Rochester|/^/^/^/%/*#FF1493L||||/^/^/^#FF69B4acy',
+  nick: 'Lacy',
+  token: 'S3fWpWOxg0A4PbI' }
+USER JOINED { flair: '$Rochester|/^/^/^/%/*#FF1493L||||/^/^/^#FF69B4acy',
+  nick: 'Lacy',
+  token: 'S3fWpWOxg0A4PbI' } 138.9.8.208
+reset
+login { nick: 'Lacy', password: 'hello' } 4 TerribleBlood 138.9.8.208
+reset
+reset
+reset
+reset
+find { ip: 'L' } 1 Lacy 138.9.8.208
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { nick: 'Eldron',
+  token: 'gV4a8u5mEzzM889',
+  flair: '$Montserrat|/^/^#373854El#493267d#9e379fr#e86af0o#7bb3ffn' }
+USER JOINED { nick: 'Eldron',
+  token: 'gV4a8u5mEzzM889',
+  flair: '$Montserrat|/^/^#373854El#493267d#9e379fr#e86af0o#7bb3ffn' } 82.69.216.6
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command {}
+USER JOINED {} 66.249.69.94
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+login { nick: 'Lynn', password: 'P15209@k' } 4 L 78.20.197.37
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Rubik Mono One|/^#FFD000Z|#FFE055e#FFEFAAu#FFFFFFs',
+  nick: 'Zeus',
+  token: '43IvJVPYh3lkJD9' }
+USER JOINED { flair: '$Rubik Mono One|/^#FFD000Z|#FFE055e#FFEFAAu#FFFFFFs',
+  nick: 'Zeus',
+  token: '43IvJVPYh3lkJD9' } 60.230.193.121
+reset
+reset
+me { message: 'fart' } 4 TerribleGrim 60.230.193.121
+reset
+find { ip: 'TerribleGrim' } 1 Lacy 138.9.8.208
+reset
+reset
+reset
+login { nick: 'Zeus', password: 'chris123' } 4 TerribleGrim 60.230.193.121
+reset
+reset
+login { nick: 'Unicorn', password: 'hello' } 4 Lacy 138.9.8.208
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Chewy|/^#8800ffI#9500ffn#a200fff#b000ffr#bd00ffa#ca00ffK#d700ffe#e500ffv#f200ffi#ff00ffn',
+  nick: 'InfraKevin' }
+USER JOINED { flair: '$Chewy|/^#8800ffI#9500ffn#a200fff#b000ffr#bd00ffa#ca00ffK#d700ffe#e500ffv#f200ffi#ff00ffn',
+  nick: 'InfraKevin' } 49.182.11.136
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command {}
+USER JOINED {} 203.213.92.246
+reset
+reset
+reset
+reset
+reset
+core command { nick: 'TerribleAlien' }
+USER JOINED { nick: 'TerribleAlien' } 203.213.92.246
+reset
+reset
+reset
+reset
+reset
+find { ip: 'TerribleAlien' } 1 Lacy 138.9.8.208
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Dawning of a New Day|/*/^/^/@/_#ee2cdeLynn',
+  nick: 'Lynn',
+  token: 'vji97aaumAh8izK' }
+USER JOINED { flair: '$Dawning of a New Day|/*/^/^/@/_#ee2cdeLynn',
+  nick: 'Lynn',
+  token: 'vji97aaumAh8izK' } 78.20.197.37
+reset
+reset
+reset
+reset
+reset
+reset
+whois { nick: 'TerribleAlien' } 4 Lynn 78.20.197.37
+whois { nick: 'Lacy' } 4 Lynn 78.20.197.37
+reset
+reset
+reset
+reset
+reset
+reset
+core command {}
+USER JOINED {} 42.112.80.21
+reset
+define { word: 'Unicorn' } 4 Unicorn 138.9.8.208
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+whois { nick: 'TerribleAlien' } 4 Lynn 78.20.197.37
+whois { nick: 'ShockingBoo' } 4 Lynn 78.20.197.37
+reset
+reset
+whois { nick: 'Zeus' } 4 Lynn 78.20.197.37
+reset
+whois { nick: 'Zeus' } 4 Lynn 78.20.197.37
+whois { nick: 'Lacy' } 4 Lynn 78.20.197.37
+reset
+reset
+nick { nick: 'Illuminati' } 4 RepulsiveDemon 42.112.80.21
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Archivo Narrow|/^#acccli#aabnei',
+  nick: 'clinei',
+  part: 'your mom',
+  token: 'G7eehNe9bqyL05J' }
+USER JOINED { flair: '$Archivo Narrow|/^#acccli#aabnei',
+  nick: 'clinei',
+  part: 'your mom',
+  token: 'G7eehNe9bqyL05J' } 84.50.202.149
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { nick: 'Eldron',
+  token: 'gV4a8u5mEzzM889',
+  flair: '$Montserrat|/^/^#373854El#493267d#9e379fr#e86af0o#7bb3ffn' }
+USER JOINED { nick: 'Eldron',
+  token: 'gV4a8u5mEzzM889',
+  flair: '$Montserrat|/^/^#373854El#493267d#9e379fr#e86af0o#7bb3ffn' } 88.97.244.142
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command {}
+USER JOINED {} 5.155.216.64
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+me { message: 'dies' } 4 Zeus 60.230.193.121
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+me { message: 'bitchslap eldron ' } 4 Illuminati 42.112.80.21
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { nick: 'Eldron',
+  token: 'gV4a8u5mEzzM889',
+  flair: '$Montserrat|/^/^#373854El#493267d#9e379fr#e86af0o#7bb3ffn' }
+USER JOINED { nick: 'Eldron',
+  token: 'gV4a8u5mEzzM889',
+  flair: '$Montserrat|/^/^#373854El#493267d#9e379fr#e86af0o#7bb3ffn' } 88.97.244.142
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { nick: 'TerribleAlien' }
+USER JOINED { nick: 'TerribleAlien' } 203.213.92.246
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+me { message: 'bows her neck.' } 4 Unicorn 138.9.8.208
+reset
+reset
+reset
+me { message: 'decapitates unicorn' } 4 Zeus 60.230.193.121
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+me { message: 'drink unicorn blood' } 4 Zeus 60.230.193.121
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+me { message: 'sows head back on' } 4 Zeus 60.230.193.121
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { nick: 'FallenAngel',
+  flair: '$Unica One|/^#D800E5F#C313C3a#AE26B7l#9A39A0l#854C89e#715F72n#5C725BA#478544n#33982Dg#1EAB16e#0ABF00l',
+  token: 'kePLlqvoUVy3OHB' }
+USER JOINED { nick: 'FallenAngel',
+  flair: '$Unica One|/^#D800E5F#C313C3a#AE26B7l#9A39A0l#854C89e#715F72n#5C725BA#478544n#33982Dg#1EAB16e#0ABF00l',
+  token: 'kePLlqvoUVy3OHB' } 106.215.132.160
+core command { nick: 'Eldron',
+  token: 'gV4a8u5mEzzM889',
+  flair: '$Montserrat|/^/^#373854El#493267d#9e379fr#e86af0o#7bb3ffn' }
+USER JOINED { nick: 'Eldron',
+  token: 'gV4a8u5mEzzM889',
+  flair: '$Montserrat|/^/^#373854El#493267d#9e379fr#e86af0o#7bb3ffn' } 88.97.244.142
+reset
+reset
+reset
+reset
+reset
+reset
+login { nick: 'Eldon', password: 'lellolello12321' } 4 UnearthlyGhost 88.97.244.142
+reset
+reset
+reset
+login { nick: 'Eldron', password: 'lellolello12321' } 4 UnearthlyGhost 88.97.244.142
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { nick: 'Eldron',
+  token: 'xIIZQ54M4nzSQPJ',
+  flair: '$Montserrat|/^/^#373854El#493267d#9e379fr#e86af0o#7bb3ffn' }
+USER JOINED { nick: 'Eldron',
+  token: 'xIIZQ54M4nzSQPJ',
+  flair: '$Montserrat|/^/^#373854El#493267d#9e379fr#e86af0o#7bb3ffn' } 82.69.216.6
+reset
+reset
+reset
+login { nick: 'Eldron', password: 'lellolello12321' } 4 RevoltingScarecrow 82.69.216.6
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { nick: 'Eldron',
+  token: '6tjc4E3FjtsAUeB',
+  flair: '$Montserrat|/^/^#373854El#493267d#9e379fr#e86af0o#7bb3ffn' }
+USER JOINED { nick: 'Eldron',
+  token: '6tjc4E3FjtsAUeB',
+  flair: '$Montserrat|/^/^#373854El#493267d#9e379fr#e86af0o#7bb3ffn' } 82.69.216.6
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+login { nick: 'Eldron', password: 'lellolello12321' } 4 ChillingBlood 82.69.216.6
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { nick: 'GhostlyCasket' }
+USER JOINED { nick: 'GhostlyCasket' } 5.155.216.64
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+me { message: 'cries' } 4 Eldron 88.97.244.142
+reset
+reset
+core command {}
+USER JOINED {} 77.85.2.45
+reset
+me { message: 'drink Eldron tears' } 4 Illuminati 42.112.80.21
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+nick { nick: 'Lucyn' } 4 MorbidAlien 77.85.2.45
+reset
+reset
+reset
+reset
+reset
+core command {}
+USER JOINED {} 138.9.8.208
+reset
+login { nick: 'Unicorn', password: 'hello' } 4 ChillingAlien 138.9.8.208
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Roboto|/~MR.GIRL',
+  nick: 'MR.GIRL',
+  token: '407BMzhUsr4EdEL' }
+USER JOINED { flair: '$Roboto|/~MR.GIRL',
+  nick: 'MR.GIRL',
+  token: '407BMzhUsr4EdEL' } 73.201.97.101
+reset
+reset
+login { nick: 'mr.girl', password: '7287' } 4 GrislyGoblin 73.201.97.101
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+me { message: 'cries.' } 4 Unicorn 138.9.8.208
+reset
+reset
+reset
+reset
+flair { flair: '$Roboto|mr.girl' } 4 mr.girl 73.201.97.101
+reset
+reset
+reset
+reset
+reset
+reset
+flair { flair: '$Roboto|#fff/+mr.girl' } 4 mr.girl 73.201.97.101
+reset
+reset
+reset
+reset
+reset
+flair { flair: '$Roboto|#fffmr.girl' } 4 mr.girl 73.201.97.101
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Rochester|/^/^/^/%/*#FFFFFFU||||/^/^/^#FFFFFFnicorn',
+  nick: 'Unicorn',
+  token: 'AiAISTFgSwW9Sek' }
+USER JOINED { flair: '$Rochester|/^/^/^/%/*#FFFFFFU||||/^/^/^#FFFFFFnicorn',
+  nick: 'Unicorn',
+  token: 'AiAISTFgSwW9Sek' } 138.9.8.208
+reset
+core command { nick: 'Eldron',
+  token: '4cQHOBUyQyHYIrO',
+  flair: '$Montserrat|/^/^#373854El#493267d#9e379fr#e86af0o#7bb3ffn' }
+USER JOINED { nick: 'Eldron',
+  token: '4cQHOBUyQyHYIrO',
+  flair: '$Montserrat|/^/^#373854El#493267d#9e379fr#e86af0o#7bb3ffn' } 88.97.244.142
+login { nick: 'Lacy', password: 'hello' } 4 StartlingDevil 138.9.8.208
+reset
+reset
+reset
+login { nick: 'Eldron', password: 'lellolello12321' } 4 DarkScarecrow 88.97.244.142
+reset
+reset
+reset
+reset
+core command { nick: 'Lucyn' }
+USER JOINED { nick: 'Lucyn' } 77.85.2.45
+flair { flair: '$Pacifico|#purpleLucyn' } 4 Lucyn 77.85.2.45
+reset
+reset
+reset
+reset
+reset
+reset
+flair { flair: '$Pacifico|/*#purpleLucyn' } 4 Lucyn 77.85.2.45
+reset
+reset
+reset
+reset
+reset
+reset
+flair { flair: '$Pacifico|/%#purpleLucyn' } 4 Lucyn 77.85.2.45
+reset
+reset
+flair { flair: '$Pacifico|/%/^#purpleLucyn' } 4 Lucyn 77.85.2.45
+core command { nick: 'StartlingDeath',
+  flair: '$Unica One|/^#D800E5F#C313C3a#AE26B7l#9A39A0l#854C89e#715F72n#5C725BA#478544n#33982Dg#1EAB16e#0ABF00l',
+  token: 'kePLlqvoUVy3OHB' }
+reset
+USER JOINED { nick: 'StartlingDeath',
+  flair: '$Unica One|/^#D800E5F#C313C3a#AE26B7l#9A39A0l#854C89e#715F72n#5C725BA#478544n#33982Dg#1EAB16e#0ABF00l',
+  token: 'kePLlqvoUVy3OHB' } 106.215.132.160
+reset
+reset
+flair { flair: '$Pacifico|/^#purpleLucyn' } 4 Lucyn 77.85.2.45
+reset
+reset
+reset
+reset
+flair { flair: '$Pacifico|/^^#purpleLucyn' } 4 Lucyn 77.85.2.45
+reset
+reset
+flair { flair: '$Pacifico|/^/%#purpleLucyn' } 4 Lucyn 77.85.2.45
+reset
+reset
+reset
+reset
+reset
+login { nick: 'FallenAngel', password: 'hellonearth' } 4 StartlingDeath 106.215.132.160
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { nick: 'Lucyn',
+  password: 'Lucyn',
+  question: '{"answer":"Lucyn"}' }
+reset
+reset
+reset
+whois { nick: 'Panda' } 4 Lucyn 77.85.2.45
+reset
+reset
+whois { nick: 'Lucyn' } 4 Lucyn 77.85.2.45
+reset
+reset
+reset
+reset
+reset
+core command { nick: 'FallenAngel',
+  flair: '$Unica One|/^#D800E5F#C313C3a#AE26B7l#9A39A0l#854C89e#715F72n#5C725BA#478544n#33982Dg#1EAB16e#0ABF00l',
+  token: 'NnQHi9wpLA7F9XS' }
+USER JOINED { nick: 'FallenAngel',
+  flair: '$Unica One|/^#D800E5F#C313C3a#AE26B7l#9A39A0l#854C89e#715F72n#5C725BA#478544n#33982Dg#1EAB16e#0ABF00l',
+  token: 'NnQHi9wpLA7F9XS' } 106.215.132.160
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Rochester|/^/^/^/%/*#FF1493L||||/^/^/^#FF69B4acy',
+  nick: 'Lacy',
+  token: 'GlmdShrIkvQOjXc' }
+USER JOINED { flair: '$Rochester|/^/^/^/%/*#FF1493L||||/^/^/^#FF69B4acy',
+  nick: 'Lacy',
+  token: 'GlmdShrIkvQOjXc' } 138.9.8.208
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { nick: 'GhostlyCasket' }
+USER JOINED { nick: 'GhostlyCasket' } 5.155.27.72
+reset
+reset
+reset
+reset
+reset
+find { ip: 'Lucyn' } 1 Lacy 138.9.8.208
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+me { message: 'signals to unicorn to come to me' } 4 Eldron 88.97.244.142
+reset
+reset
+me { message: 'explodes into glitter.' } 4 Unicorn 138.9.8.208
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+me { message: 'collect all the glitters' } 4 Illuminati 42.112.80.21
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Rubik Mono One|/^#FFD000Z|#FFE055e#FFEFAAu#FFFFFFs',
+  nick: 'Zeus',
+  token: 'TPLbbiQbyy1JkxZ' }
+USER JOINED { flair: '$Rubik Mono One|/^#FFD000Z|#FFE055e#FFEFAAu#FFFFFFs',
+  nick: 'Zeus',
+  token: 'TPLbbiQbyy1JkxZ' } 60.230.193.121
+reset
+reset
+reset
+login { nick: 'Zeus', password: 'chris123' } 4 UnnervingBoo 60.230.193.121
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+me { message: 'spontaneously commits suicide' } 4 Zeus 60.230.193.121
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { nick: 'Eldron',
+  token: 'UB13iHUgnZAKEYv',
+  flair: '$Montserrat|/^/^#373854El#493267d#9e379fr#e86af0o#7bb3ffn' }
+USER JOINED { nick: 'Eldron',
+  token: 'UB13iHUgnZAKEYv',
+  flair: '$Montserrat|/^/^#373854El#493267d#9e379fr#e86af0o#7bb3ffn' } 82.69.216.6
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Rubik Mono One|/^#FFD000Z|#FFE055e#FFEFAAu#FFFFFFs',
+  nick: 'Zeus',
+  token: 'VM75TPSsoHomydo' }
+USER JOINED { flair: '$Rubik Mono One|/^#FFD000Z|#FFE055e#FFEFAAu#FFFFFFs',
+  nick: 'Zeus',
+  token: 'VM75TPSsoHomydo' } 60.230.193.121
+reset
+reset
+reset
+reset
+me { message: 'drops cyanide' } 4 Zeus 60.230.193.121
+reset
+reset
+core command { nick: 'SpookyDeath',
+  flair: '$Unica One|/^#D800E5F#C313C3a#AE26B7l#9A39A0l#854C89e#715F72n#5C725BA#478544n#33982Dg#1EAB16e#0ABF00l',
+  token: 'NnQHi9wpLA7F9XS' }
+USER JOINED { nick: 'SpookyDeath',
+  flair: '$Unica One|/^#D800E5F#C313C3a#AE26B7l#9A39A0l#854C89e#715F72n#5C725BA#478544n#33982Dg#1EAB16e#0ABF00l',
+  token: 'NnQHi9wpLA7F9XS' } 106.215.132.160
+reset
+reset
+login { nick: 'FallenAngel', password: 'hellonearth' } 4 SpookyDeath 106.215.132.160
+reset
+reset
+me { message: 'dies' } 4 Zeus 60.230.193.121
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+me { message: 'triggered' } 4 Zeus 60.230.193.121
+me { message: 'goes and cries' } 4 Zeus 60.230.193.121
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { nick: 'GrislyDeath' }
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { nick: 'TerribleAlien' }
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+me { message: 'bows' } 4 Unicorn 138.9.8.208
+reset
+reset
+me { message: 'clap' } 4 Zeus 60.230.193.121
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command {}
+USER JOINED {} 31.44.69.87
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+login { nick: 'Inquisitor', password: '123iopzxc' } 4 UnnervingShadow 31.44.69.87
+reset
+reset
+reset
+reset
+core command { flair: '$Rubik Mono One|/^#FFD000Z|#FFE055e#FFEFAAu#FFFFFFs',
+  nick: 'Zeus',
+  token: 'VM75TPSsoHomydo' }
+USER JOINED { flair: '$Rubik Mono One|/^#FFD000Z|#FFE055e#FFEFAAu#FFFFFFs',
+  nick: 'Zeus',
+  token: 'VM75TPSsoHomydo' } 60.230.193.121
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '#greenInquisitor',
+  token: 'vRcuUughSoFz1XX',
+  nick: 'Inquisitor' }
+USER JOINED { flair: '#greenInquisitor',
+  token: 'vRcuUughSoFz1XX',
+  nick: 'Inquisitor' } 31.44.69.87
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { nick: 'Eldron',
+  token: 'UB13iHUgnZAKEYv',
+  flair: '$Montserrat|/^/^#373854El#493267d#9e379fr#e86af0o#7bb3ffn' }
+USER JOINED { nick: 'Eldron',
+  token: 'UB13iHUgnZAKEYv',
+  flair: '$Montserrat|/^/^#373854El#493267d#9e379fr#e86af0o#7bb3ffn' } 82.69.216.6
+reset
+reset
+login { nick: 'Eldron', password: 'lellolellolello12321' } 4 RevoltingFangs 82.69.216.6
+reset
+reset
+login { nick: 'Eldron', password: 'lellolello12321' } 4 RevoltingFangs 82.69.216.6
+reset
+reset
+reset
+reset
+reset
+reset
+me { message: 'goes and gets the stapler, stapling lacy\'s heart...again' } 4 Inquisitor 31.44.69.87
+reset
+reset
+reset
+me { message: 'dies happily.' } 1 Lacy 138.9.8.208
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+nick { nick: 'afk' } 4 Eldron 82.69.216.6
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+login { nick: 'Inquisitor', password: '123iopzxc' } 4 HorribleSpecter 31.44.69.87
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+whois { nick: 'Inquisitor' } 1 Lacy 138.9.8.208
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command {}
+USER JOINED {} 66.71.99.143
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+login { nick: 'Spoki', password: 'fuckyoufaggot' } 4 Hair-raisingHocuspocus 66.71.99.143
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+me { message: 'shrugs' } 4 FallenAngel 106.215.132.160
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+whois { nick: 'Lucyn' } 1 Lacy 138.9.8.208
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { nick: 'SpookyCemetery' }
+USER JOINED { nick: 'SpookyCemetery' } 5.155.27.72
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { nick: 'EerieWraith' }
+USER JOINED { nick: 'EerieWraith' } 5.155.27.72
+core command { nick: 'EerieWraith' }
+USER JOINED { nick: 'EerieWraith' } 5.155.27.72
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Rubik Mono One|/^#FFD000Z|#FFE055e#FFEFAAu#FFFFFFs',
+  nick: 'Zeus',
+  token: 'VM75TPSsoHomydo' }
+USER JOINED { flair: '$Rubik Mono One|/^#FFD000Z|#FFE055e#FFEFAAu#FFFFFFs',
+  nick: 'Zeus',
+  token: 'VM75TPSsoHomydo' } 60.230.193.121
+reset
+reset
+reset
+find { ip: 'CreepyCemetery' } 1 Lacy 138.9.8.208
+reset
+reset
+reset
+reset
+login { nick: 'Zeus', password: 'chris123' } 4 CreepyCemetery 60.230.193.121
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+me { message: 'hopes thats japanese' } 4 Zeus 60.230.193.121
+reset
+reset
+reset
+reset
+reset
+reset
+core command { nick: 'FallenAngel',
+  flair: '$Unica One|/^#D800E5F#C313C3a#AE26B7l#9A39A0l#854C89e#715F72n#5C725BA#478544n#33982Dg#1EAB16e#0ABF00l',
+  token: 'MoeOTjJtrWEdOti' }
+USER JOINED { nick: 'FallenAngel',
+  flair: '$Unica One|/^#D800E5F#C313C3a#AE26B7l#9A39A0l#854C89e#715F72n#5C725BA#478544n#33982Dg#1EAB16e#0ABF00l',
+  token: 'MoeOTjJtrWEdOti' } 106.215.132.160
+reset
+reset
+reset
+reset
+core command { nick: 'FallenAngel',
+  flair: '$Unica One|/^#D800E5F#C313C3a#AE26B7l#9A39A0l#854C89e#715F72n#5C725BA#478544n#33982Dg#1EAB16e#0ABF00l',
+  token: 'MoeOTjJtrWEdOti' }
+USER JOINED { nick: 'FallenAngel',
+  flair: '$Unica One|/^#D800E5F#C313C3a#AE26B7l#9A39A0l#854C89e#715F72n#5C725BA#478544n#33982Dg#1EAB16e#0ABF00l',
+  token: 'MoeOTjJtrWEdOti' } 106.215.132.160
+reset
+reset
+reset
+find { ip: 'ScaryScream' } 1 Lacy 138.9.8.208
+whois { nick: 'Inquisitor' } 1 Lacy 138.9.8.208
+reset
+reset
+reset
+reset
+reset
+login { nick: 'FallenAngel', password: 'hellonearth' } 4 ScaryScream 106.215.132.160
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+me { message: 'gives suggestive looks at zeus' } 4 Inquisitor 31.44.69.87
+reset
+reset
+reset
+reset
+reset
+core command { nick: 'GrislyDeath' }
+reset
+reset
+reset
+me { message: 'smites inquisitor' } 4 Zeus 60.230.193.121
+reset
+reset
+reset
+reset
+reset
+me { message: 'does very questionable things to the lightning rod' } 4 Inquisitor 31.44.69.87
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+Starting channel /gaycy
+core command { flair: '$Rochester|/^/^/^/%/*#FF1493L||||/^/^/^#FF69B4acy',
+  nick: 'Lacy',
+  token: 'GlmdShrIkvQOjXc' }
+USER JOINED { flair: '$Rochester|/^/^/^/%/*#FF1493L||||/^/^/^#FF69B4acy',
+  nick: 'Lacy',
+  token: 'GlmdShrIkvQOjXc' } 138.9.8.208
+core command { flair: '$Pacifico|/^/%#purpleLucyn', nick: 'Lucyn' }
+USER JOINED { flair: '$Pacifico|/^/%#purpleLucyn', nick: 'Lucyn' } 77.85.2.45
+reset
+reset
+reset
+core command { flair: '$Rubik Mono One|/^#FFD000Z|#FFE055e#FFEFAAu#FFFFFFs',
+  nick: 'Zeus',
+  token: 'YwSUjc8K13pygIS' }
+USER JOINED { flair: '$Rubik Mono One|/^#FFD000Z|#FFE055e#FFEFAAu#FFFFFFs',
+  nick: 'Zeus',
+  token: 'YwSUjc8K13pygIS' } 60.230.193.121
+core command { flair: '$Rubik Mono One|/^#FFD000Z|#FFE055e#FFEFAAu#FFFFFFs',
+  nick: 'Zeus',
+  token: 'YwSUjc8K13pygIS' }
+USER JOINED { flair: '$Rubik Mono One|/^#FFD000Z|#FFE055e#FFEFAAu#FFFFFFs',
+  nick: 'Zeus',
+  token: 'YwSUjc8K13pygIS' } 60.230.193.121
+reset
+core command { nick: 'FallenAngel',
+  flair: '$Unica One|/^#D800E5F#C313C3a#AE26B7l#9A39A0l#854C89e#715F72n#5C725BA#478544n#33982Dg#1EAB16e#0ABF00l',
+  token: 'e5Wo1ErH6oM7dhy' }
+USER JOINED { nick: 'FallenAngel',
+  flair: '$Unica One|/^#D800E5F#C313C3a#AE26B7l#9A39A0l#854C89e#715F72n#5C725BA#478544n#33982Dg#1EAB16e#0ABF00l',
+  token: 'e5Wo1ErH6oM7dhy' } 106.215.132.160
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+me { message: 'gives FA a goodbye hug' } 4 Inquisitor 31.44.69.87
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+me { message: 'scolds lact' } 4 Zeus 60.230.193.121
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Averia Sans Libre|###a33#a33sam###924#924mic###715#715h',
+  nick: 'sammich',
+  part: 'slep',
+  token: 'Sqyjtixe1zU81LA' }
+USER JOINED { flair: '$Averia Sans Libre|###a33#a33sam###924#924mic###715#715h',
+  nick: 'sammich',
+  part: 'slep',
+  token: 'Sqyjtixe1zU81LA' } 70.114.2.45
+reset
+login { nick: 'sammich', password: '4815162342' } 4 ShadowyEyeball 70.114.2.45
+me { message: 'chockes zeus with a garrot wire and throws his corpse in the sewers' } 4 Inquisitor 31.44.69.87
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Archivo Narrow|/^#acccli#aabnei',
+  nick: 'clinei',
+  part: 'your mom',
+  token: 'G7eehNe9bqyL05J' }
+USER JOINED { flair: '$Archivo Narrow|/^#acccli#aabnei',
+  nick: 'clinei',
+  part: 'your mom',
+  token: 'G7eehNe9bqyL05J' } 84.50.202.149
+reset
+core command { nick: 'TerribleAlien' }
+USER JOINED { nick: 'TerribleAlien' } 203.213.92.246
+reset
+core command { flair: '$Rubik Mono One|/^#FFD000Z|#FFE055e#FFEFAAu#FFFFFFs',
+  nick: 'CreepyShadow',
+  token: 'YwSUjc8K13pygIS' }
+USER JOINED { flair: '$Rubik Mono One|/^#FFD000Z|#FFE055e#FFEFAAu#FFFFFFs',
+  nick: 'CreepyShadow',
+  token: 'YwSUjc8K13pygIS' } 60.230.193.121
+core command { flair: '$Rubik Mono One|/^#FFD000Z|#FFE055e#FFEFAAu#FFFFFFs',
+  nick: 'CreepyShadow',
+  token: 'YwSUjc8K13pygIS' }
+USER JOINED { flair: '$Rubik Mono One|/^#FFD000Z|#FFE055e#FFEFAAu#FFFFFFs',
+  nick: 'CreepyShadow',
+  token: 'YwSUjc8K13pygIS' } 60.230.193.121
+reset
+login { nick: 'Zeus', password: 'chris123' } 4 CreepyShadow 60.230.193.121
+reset
+reset
+reset
+reset
+login { nick: 'Zeus', password: 'chris123' } 4 CreepyShadow 60.230.193.121
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Averia Sans Libre|###a33#a33sam###924#924mic###715#715h',
+  nick: 'sammich',
+  part: 'slep',
+  token: 'rMKlJPsRgrHkhRX' }
+USER JOINED { flair: '$Averia Sans Libre|###a33#a33sam###924#924mic###715#715h',
+  nick: 'sammich',
+  part: 'slep',
+  token: 'rMKlJPsRgrHkhRX' } 70.114.2.45
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '#greenInquisitor',
+  token: 'SjWLPw2XnwdfUPe',
+  nick: 'Inquisitor' }
+USER JOINED { flair: '#greenInquisitor',
+  token: 'SjWLPw2XnwdfUPe',
+  nick: 'Inquisitor' } 31.44.69.87
+reset
+reset
+reset
+reset
+reset
+login { nick: 'Inquisitor', password: '123iopzxc' } 4 GhostlyPhantom 31.44.69.87
+reset
+reset
+core command { flair: '#greenInquisitor',
+  token: 'DOB70AL0yvd2wkw',
+  nick: 'Inquisitor' }
+USER JOINED { flair: '#greenInquisitor',
+  token: 'DOB70AL0yvd2wkw',
+  nick: 'Inquisitor' } 31.44.69.87
+reset
+reset
+me { message: 'bashes inquisitor with shield' } 4 Zeus 60.230.193.121
+reset
+reset
+reset
+reset
+me { message: 'slices the balls off the dragon' } 4 Zeus 60.230.193.121
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '#greenInquisitor',
+  token: 'DOB70AL0yvd2wkw',
+  nick: 'SpookyPumpkin' }
+USER JOINED { flair: '#greenInquisitor',
+  token: 'DOB70AL0yvd2wkw',
+  nick: 'SpookyPumpkin' } 31.44.69.87
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '', nick: 'Spoki', token: 'bN5vZVou4WIfrrc' }
+USER JOINED { flair: '', nick: 'Spoki', token: 'bN5vZVou4WIfrrc' } 104.39.75.155
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { nick: 'GhoulishTroll' }
+USER JOINED { nick: 'GhoulishTroll' } 5.155.27.72
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { nick: 'Jezebel' }
+USER JOINED { nick: 'Jezebel' } 75.139.150.197
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { nick: 'Jezebel' }
+USER JOINED { nick: 'Jezebel' } 75.139.150.197
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+Starting channel http://m.baidu.com/?rands=_166818854202152171562400
+Starting channel http://www.sogou.com/?rands=_6654118888014605445064976
+Starting channel http://www.1dvj.com/?rands=_164521145424152148595232
+Starting channel http://www.kuaidaili.com/?rands=_5250121720018507901028928
+reset
+reset
+reset
+reset
+core command {}
+USER JOINED {} 106.51.129.13
+reset
+reset
+reset
+core command {}
+USER JOINED {} 223.176.140.186
+reset
+reset
+reset
+reset
+reset
+core command { nick: 'ScaryCadaver' }
+USER JOINED { nick: 'ScaryCadaver' } 106.51.129.13
+reset
+reset
+reset
+core command { nick: 'WickedCadaver' }
+USER JOINED { nick: 'WickedCadaver' } 223.176.140.186
+reset
+login { nick: 'FallenAngel', password: 'hellonearth' } 4 WickedCadaver 223.176.140.186
+reset
+reset
+reset
+reset
+core command { flair: '#greenInquisitor',
+  token: 'DOB70AL0yvd2wkw',
+  nick: 'SpookyPumpkin' }
+USER JOINED { flair: '#greenInquisitor',
+  token: 'DOB70AL0yvd2wkw',
+  nick: 'SpookyPumpkin' } 31.44.69.87
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { nick: 'FallenAngel',
+  flair: '$Unica One|/^#D800E5F#C313C3a#AE26B7l#9A39A0l#854C89e#715F72n#5C725BA#478544n#33982Dg#1EAB16e#0ABF00l',
+  token: 'uleivaQfBF415GX' }
+reset
+USER JOINED { nick: 'FallenAngel',
+  flair: '$Unica One|/^#D800E5F#C313C3a#AE26B7l#9A39A0l#854C89e#715F72n#5C725BA#478544n#33982Dg#1EAB16e#0ABF00l',
+  token: 'uleivaQfBF415GX' } 223.176.140.186
+reset
+reset
+reset
+login { nick: 'Inquisitor', password: '123iopzxc' } 4 SpookyPumpkin 31.44.69.87
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+change_password { oldpassword: '123iopzxc', newpassword: 'CODIW' } 4 Inquisitor 31.44.69.87
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { nick: 'FallenAngel',
+  flair: '$Unica One|/^#D800E5F#C313C3a#AE26B7l#9A39A0l#854C89e#715F72n#5C725BA#478544n#33982Dg#1EAB16e#0ABF00l',
+  token: 'uleivaQfBF415GX' }
+USER JOINED { nick: 'FallenAngel',
+  flair: '$Unica One|/^#D800E5F#C313C3a#AE26B7l#9A39A0l#854C89e#715F72n#5C725BA#478544n#33982Dg#1EAB16e#0ABF00l',
+  token: 'uleivaQfBF415GX' } 223.176.140.186
+reset
+reset
+reset
+core command { nick: 'GhoulishTroll' }
+USER JOINED { nick: 'GhoulishTroll' } 5.0.129.186
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+Starting channel /Lacy
+core command { nick: 'FallenAngel',
+  flair: '$Unica One|/^#D800E5F#C313C3a#AE26B7l#9A39A0l#854C89e#715F72n#5C725BA#478544n#33982Dg#1EAB16e#0ABF00l',
+  token: 'uleivaQfBF415GX' }
+USER JOINED { nick: 'FallenAngel',
+  flair: '$Unica One|/^#D800E5F#C313C3a#AE26B7l#9A39A0l#854C89e#715F72n#5C725BA#478544n#33982Dg#1EAB16e#0ABF00l',
+  token: 'uleivaQfBF415GX' } 223.176.140.186
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Pacifico|/^/%#purpleLucyn',
+  nick: 'OtherworldlyPhantom' }
+USER JOINED { flair: '$Pacifico|/^/%#purpleLucyn',
+  nick: 'OtherworldlyPhantom' } 77.85.2.45
+reset
+reset
+reset
+reset
+login { nick: 'Lucyn' } 4 OtherworldlyPhantom 77.85.2.45
+reset
+reset
+reset
+login { nick: 'Lucyn', password: 'Lucyn' } 4 OtherworldlyPhantom 77.85.2.45
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+flair { flair: '$Pacifica|/^#PurpleLucyn' } 4 Lucyn 77.85.2.45
+reset
+reset
+reset
+core command {}
+reset
+reset
+reset
+reset
+flair { flair: '$Pacifico|/^#PurpleLucyn' } 4 Lucyn 77.85.2.45
+reset
+reset
+reset
+reset
+core command {}
+USER JOINED {} 109.69.42.48
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Julius Sans One|/^/^#88E2BAH#71D5AAu#5AC89Ag#43BB8Ae|#2DAE7AWa#43BB8An#5AC89Ak#71D5AAe#88E2BAr|http://poopenis.tk/files/WANKER%20NEW.png',
+  nick: 'HugeWanker',
+  token: 'CgYrMZ98044jwb2' }
+USER JOINED { flair: '$Julius Sans One|/^/^#88E2BAH#71D5AAu#5AC89Ag#43BB8Ae|#2DAE7AWa#43BB8An#5AC89Ak#71D5AAe#88E2BAr|http://poopenis.tk/files/WANKER%20NEW.png',
+  nick: 'HugeWanker',
+  token: 'CgYrMZ98044jwb2' } 95.144.43.216
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+me { message: 'smacks lucyn in the bottom' } 4 Inquisitor 31.44.69.87
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { nick: 'dreamomel' }
+USER JOINED { nick: 'dreamomel' } 96.250.114.91
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+me { message: 'wips FA to get her in gear' } 4 Inquisitor 31.44.69.87
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Kaushan Script|/^/^#blueWil#reddc#yelloward',
+  nick: 'Wildcard',
+  token: 'kI3cV4v9eU0C1dk' }
+USER JOINED { flair: '$Kaushan Script|/^/^#blueWil#reddc#yelloward',
+  nick: 'Wildcard',
+  token: 'kI3cV4v9eU0C1dk' } 71.99.211.152
+reset
+reset
+reset
+reset
+reset
+login { nick: 'Wildcard', password: 'Wildcard' } 4 DevilishBogeyman 71.99.211.152
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+me { message: 'smacks lucyns butt again' } 4 Inquisitor 31.44.69.87
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '#FF0000Bobby',
+  token: 'C9AR3mY8yfsldPg',
+  nick: 'Bobby' }
+USER JOINED { flair: '#FF0000Bobby',
+  token: 'C9AR3mY8yfsldPg',
+  nick: 'Bobby' } 83.93.9.67
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { nick: 'GrislyDeath' }
+reset
+reset
+reset
+login { nick: 'Bobby', password: 'password97' } 4 BloodcurdlingBat 83.93.9.67
+reset
+topic { message: 'I got 99 problems, but a bitch ain\'t one.' } 2 Bobby 83.93.9.67
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Sacramento|/^/^/^#ee82eem#ea87eao#e78ce7o#e390e3d#e095e0l#dc9adce#d99fd9s#d5a3d5b#d2a8d2o#ceadceo#cbb2cbd#c7b6c7l#c4bbc4e#c0c0c0s',
+  nick: 'moodlesboodles',
+  token: 'g1bLPB06aS3ufsn' }
+USER JOINED { flair: '$Sacramento|/^/^/^#ee82eem#ea87eao#e78ce7o#e390e3d#e095e0l#dc9adce#d99fd9s#d5a3d5b#d2a8d2o#ceadceo#cbb2cbd#c7b6c7l#c4bbc4e#c0c0c0s',
+  nick: 'moodlesboodles',
+  token: 'g1bLPB06aS3ufsn' } 92.40.248.71
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command {}
+core command { nick: 'emily' }
+USER JOINED { nick: 'emily' } 149.150.237.208
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+me { message: 'wips emily out of bed' } 4 Inquisitor 31.44.69.87
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+me { message: 'Wips emily again' } 4 Inquisitor 31.44.69.87
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+login { nick: 'HugeWanker', password: 'HugeWanker' } 4 RepulsiveGhost 95.144.43.216
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Source Sans Pro|###white#black/*Mr.Guy',
+  nick: 'EvilCadaver',
+  part: 'with tears in his eyes',
+  token: 'YrwvvWOrpxwI3je' }
+reset
+reset
+reset
+reset
+reset
+reset
+flair { flair: '$Permanent Marker|/^/^/^#8A0F6EH#872471u#843A74g#814F78e|||#064714W#115621a#1D652En#29753Ck#358449e#495rhttp://poopenis.tk/files/WANKER%20NEW.png' } 4 HugeWanker 95.144.43.216
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+me { message: 'zips inquisitor\'s mouth and locks it and swallows the key' } 4 FallenAngel 223.176.140.186
+reset
+reset
+reset
+reset
+me { message: 'writes down on a piece of paper' } 4 Inquisitor 31.44.69.87
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { nick: 'TerribleAlien' }
+USER JOINED { nick: 'TerribleAlien' } 203.213.92.246
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Dancing Script|/@#FC0/_/^#000Lulu',
+  nick: 'FrightfulCasket',
+  token: 'fAHJFgonUmKRuTx' }
+USER JOINED { flair: '$Dancing Script|/@#FC0/_/^#000Lulu',
+  nick: 'FrightfulCasket',
+  token: 'fAHJFgonUmKRuTx' } 5.0.129.186
+reset
+reset
+whois { nick: 'HugeWanker' } 4 TerribleAlien 203.213.92.246
+reset
+reset
+reset
+whois { nick: 'FallenAngel' } 4 TerribleAlien 203.213.92.246
+whois { nick: 'Wildcard' } 4 TerribleAlien 203.213.92.246
+login { nick: 'Lulu', password: 'thisicecreamistoocold' } 4 FrightfulCasket 5.0.129.186
+reset
+reset
+reset
+whois { nick: 'Kevin' } 4 TerribleAlien 203.213.92.246
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command {}
+core command {}
+USER JOINED {} 188.166.161.131
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Sacramento|/^/^/^#ee82eem#ea87eao#e78ce7o#e390e3d#e095e0l#dc9adce#d99fd9s#d5a3d5b#d2a8d2o#ceadceo#cbb2cbd#c7b6c7l#c4bbc4e#c0c0c0s',
+  nick: 'UnnervingDarkness',
+  token: 'q4dsuHj6cF8IV3h' }
+USER JOINED { flair: '$Sacramento|/^/^/^#ee82eem#ea87eao#e78ce7o#e390e3d#e095e0l#dc9adce#d99fd9s#d5a3d5b#d2a8d2o#ceadceo#cbb2cbd#c7b6c7l#c4bbc4e#c0c0c0s',
+  nick: 'UnnervingDarkness',
+  token: 'q4dsuHj6cF8IV3h' } 79.70.64.170
+reset
+reset
+reset
+reset
+login { nick: 'moodlesboodles', password: 'incorrect' } 4 UnnervingDarkness 79.70.64.170
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Dancing Script|/@#FC0/_/^#000Lulu',
+  nick: 'Lulu',
+  token: 'w7OEucO9Kg87SWS' }
+reset
+USER JOINED { flair: '$Dancing Script|/@#FC0/_/^#000Lulu',
+  nick: 'Lulu',
+  token: 'w7OEucO9Kg87SWS' } 5.0.129.186
+reset
+reset
+reset
+reset
+reset
+reset
+core command {}
+reset
+core command { nick: 'GhoulishTroll' }
+reset
+USER JOINED { nick: 'GhoulishTroll' } 5.0.129.186
+reset
+reset
+reset
+reset
+reset
+me { message: 'awards wild card with the most original joke award' } 4 Inquisitor 31.44.69.87
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { nick: 'RevoltingMonster',
+  flair: '$Unica One|/^#D800E5F#C313C3a#AE26B7l#9A39A0l#854C89e#715F72n#5C725BA#478544n#33982Dg#1EAB16e#0ABF00l',
+  token: 'uleivaQfBF415GX' }
+USER JOINED { nick: 'RevoltingMonster',
+  flair: '$Unica One|/^#D800E5F#C313C3a#AE26B7l#9A39A0l#854C89e#715F72n#5C725BA#478544n#33982Dg#1EAB16e#0ABF00l',
+  token: 'uleivaQfBF415GX' } 223.176.140.186
+reset
+reset
+core command { nick: 'ScarySpook' }
+USER JOINED { nick: 'ScarySpook' } 5.0.129.186
+find { ip: 'SupernaturalPhantasm' } 0 Kevin 49.182.11.136
+reset
+reset
+reset
+find { ip: 'GhoulishFangs' } 0 Kevin 49.182.11.136
+find { ip: 'EerieWraith' } 0 Kevin 49.182.11.136
+login { nick: 'FallenAngel', password: 'hellonearth' } 4 RevoltingMonster 223.176.140.186
+reset
+reset
+reset
+find { ip: 'EerieWraith' } 0 Kevin 49.182.11.136
+reset
+reset
+reset
+reset
+kick { nick: 'EerieWraith',
+  message: 'sorry, just checking if you\'re a spooky ghost D:' } 0 Kevin 49.182.11.136
+reset
+reset
+reset
+reset
+reset
+kick { nick: 'GhoulishFangs' } 0 Kevin 49.182.11.136
+reset
+kick { nick: 'SupernaturalPhantasm' } 0 Kevin 49.182.11.136
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Kaushan Script|/^/^#blueWil#reddc#yelloward',
+  nick: 'Wildcard',
+  token: 'yY4oWSgDhcjXGBB' }
+USER JOINED { flair: '$Kaushan Script|/^/^#blueWil#reddc#yelloward',
+  nick: 'Wildcard',
+  token: 'yY4oWSgDhcjXGBB' } 71.99.211.152
+reset
+reset
+reset
+reset
+core command { flair: '#FF0000Bobby',
+  token: 'qRy0x5DznpmkZHy',
+  nick: 'Bobby' }
+USER JOINED { flair: '#FF0000Bobby',
+  token: 'qRy0x5DznpmkZHy',
+  nick: 'Bobby' } 83.93.9.67
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '#greenInquisitor',
+  token: 'quUI2oP3Wpy7To4',
+  nick: 'Inquisitor' }
+USER JOINED { flair: '#greenInquisitor',
+  token: 'quUI2oP3Wpy7To4',
+  nick: 'Inquisitor' } 31.44.69.87
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+topic { message: 'I got 99 problems, but a bobby ain\'t one.' } 0 Kevin 49.182.11.136
+reset
+reset
+reset
+reset
+reset
+topic { message: 'Don\'t bother me, I\'m WORKIN\'.' } 2 Bobby 83.93.9.67
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+topic { message: 'When I was 19, I walked in the house, and I told my momma she could stop workin\'.' } 2 Bobby 83.93.9.67
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+flair { flair: '$Ceviche One|ScarySpook' } 4 ScarySpook 5.0.129.186
+reset
+reset
+reset
+reset
+reset
+core command {}
+USER JOINED {} 85.76.78.27
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command {}
+USER JOINED {} 38.69.4.169
+core command { nick: 'EerieApparition' }
+USER JOINED { nick: 'EerieApparition' } 38.69.4.169
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { nick: 'EerieSkull' }
+USER JOINED { nick: 'EerieSkull' } 38.69.4.169
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Roboto|/^/^#red/%iem|#green/~de|#yellow/*kepten|#bluenao',
+  nick: 'GoryPhantasm',
+  token: 'sSEb09Ir797PE2B' }
+USER JOINED { flair: '$Roboto|/^/^#red/%iem|#green/~de|#yellow/*kepten|#bluenao',
+  nick: 'GoryPhantasm',
+  token: 'sSEb09Ir797PE2B' } 99.13.231.19
+reset
+reset
+core command { flair: '$Roboto|/^/^#red/%iem|#green/~de|#yellow/*kepten|#bluenao',
+  nick: 'GoryPhantasm',
+  token: 'sSEb09Ir797PE2B' }
+USER JOINED { flair: '$Roboto|/^/^#red/%iem|#green/~de|#yellow/*kepten|#bluenao',
+  nick: 'GoryPhantasm',
+  token: 'sSEb09Ir797PE2B' } 99.13.231.19
+reset
+reset
+reset
+me { message: 'slides over some paracetamol to moodles' } 4 Inquisitor 31.44.69.87
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+me { message: 'bangs my head on the wall' } 4 FallenAngel 223.176.140.186
+reset
+reset
+reset
+reset
+reset
+me { message: 'pads the wall for FA' } 4 Inquisitor 31.44.69.87
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Pacifico|alumroF', nick: 'alumroF' }
+reset
+USER JOINED { flair: '$Pacifico|alumroF', nick: 'alumroF' } 80.195.150.251
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { nick: 'Evelynn',
+  flair: '$Amatic SC|/^/^/^#b6ecf4E|||/^#45F/_#c7dcf6v#47F/_#a3c9f6e#49F/_#6daaf4l#6daaf4/_#49Fy#a3c9f6/_#47Fn#c7dcf6/_#45Fn',
+  token: 'c3IOu7XBwNNsCEH' }
+USER JOINED { nick: 'Evelynn',
+  flair: '$Amatic SC|/^/^/^#b6ecf4E|||/^#45F/_#c7dcf6v#47F/_#a3c9f6e#49F/_#6daaf4l#6daaf4/_#49Fy#a3c9f6/_#47Fn#c7dcf6/_#45Fn',
+  token: 'c3IOu7XBwNNsCEH' } 78.20.197.37
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Roboto|/^/^#red/%iem|#green/~de|#yellow/*kepten|#bluenao',
+  nick: 'GoryPhantasm',
+  token: 'sSEb09Ir797PE2B' }
+USER JOINED { flair: '$Roboto|/^/^#red/%iem|#green/~de|#yellow/*kepten|#bluenao',
+  nick: 'GoryPhantasm',
+  token: 'sSEb09Ir797PE2B' } 99.13.231.19
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command {}
+USER JOINED {} 129.112.109.40
+reset
+reset
+reset
+reset
+login { nick: 'DarkMan', password: 'D4rkm4n' } 4 MysteriousOgre 129.112.109.40
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Slabo 13px|/^#E74C3CKit',
+  nick: 'Kit',
+  part: 'your ass full of cum.',
+  token: 'UZj06GDRX4Qql2H' }
+USER JOINED { flair: '$Slabo 13px|/^#E74C3CKit',
+  nick: 'Kit',
+  part: 'your ass full of cum.',
+  token: 'UZj06GDRX4Qql2H' } 199.127.68.161
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command {}
+USER JOINED {} 199.127.68.161
+reset
+reset
+reset
+reset
+core command { flair: '$Roboto|/^/^#red/%iem|#green/~de|#yellow/*kepten|#bluenao',
+  nick: 'GoryPhantasm',
+  token: 'sSEb09Ir797PE2B' }
+USER JOINED { flair: '$Roboto|/^/^#red/%iem|#green/~de|#yellow/*kepten|#bluenao',
+  nick: 'GoryPhantasm',
+  token: 'sSEb09Ir797PE2B' } 99.13.231.19
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { nick: 'SupernaturalHowl' }
+USER JOINED { nick: 'SupernaturalHowl' } 199.127.68.161
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+login { nick: 'iemdekeptennao', password: 'mistyluna' } 4 GoryPhantasm 99.13.231.19
+reset
+reset
+reset
+reset
+reset
+reset
+core command { nick: 'SupernaturalHowl' }
+USER JOINED { nick: 'SupernaturalHowl' } 199.127.68.161
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { nick: 'afk',
+  token: 'P9cK5xAjSlBg3iT',
+  flair: '$Montserrat|/^/^#373854El#493267d#9e379fr#e86af0o#7bb3ffn' }
+USER JOINED { nick: 'afk',
+  token: 'P9cK5xAjSlBg3iT',
+  flair: '$Montserrat|/^/^#373854El#493267d#9e379fr#e86af0o#7bb3ffn' } 88.97.244.142
+reset
+login { nick: 'Eldron', password: 'lellolello12321' } 4 afk 88.97.244.142
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { nick: 'Eldron',
+  token: 'mLQfSFeVIRzGJrz',
+  flair: '$Montserrat|/^/^#373854El#493267d#9e379fr#e86af0o#7bb3ffn' }
+USER JOINED { nick: 'Eldron',
+  token: 'mLQfSFeVIRzGJrz',
+  flair: '$Montserrat|/^/^#373854El#493267d#9e379fr#e86af0o#7bb3ffn' } 88.97.244.142
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Averia Sans Libre|###a33#a33sam###924#924mic###715#715h',
+  nick: 'sammich',
+  part: 'slep',
+  token: 'rMKlJPsRgrHkhRX' }
+USER JOINED { flair: '$Averia Sans Libre|###a33#a33sam###924#924mic###715#715h',
+  nick: 'sammich',
+  part: 'slep',
+  token: 'rMKlJPsRgrHkhRX' } 70.114.2.45
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Faster One|anon2000',
+  nick: 'anon2000',
+  token: 'ZjO79Au8rcOP2T9' }
+USER JOINED { flair: '$Faster One|anon2000',
+  nick: 'anon2000',
+  token: 'ZjO79Au8rcOP2T9' } 75.80.21.173
+reset
+reset
+reset
+reset
+reset
+core command { flair: '#FF0000Bobby',
+  token: 'qRy0x5DznpmkZHy',
+  nick: 'Bobby' }
+USER JOINED { flair: '#FF0000Bobby',
+  token: 'qRy0x5DznpmkZHy',
+  nick: 'Bobby' } 83.93.9.67
+reset
+reset
+reset
+core command { flair: '$Faster One|anon2000',
+  nick: 'anon2000',
+  token: 'ZjO79Au8rcOP2T9' }
+USER JOINED { flair: '$Faster One|anon2000',
+  nick: 'anon2000',
+  token: 'ZjO79Au8rcOP2T9' } 75.80.21.173
+reset
+reset
+reset
+reset
+reset
+core command {}
+USER JOINED {} 98.155.12.23
+reset
+reset
+reset
+login { nick: 'Katerina', password: 'Katerina807' } 4 CreepyDevil 98.155.12.23
+reset
+login { nick: 'Katerina', password: 'Katerina808' } 4 CreepyDevil 98.155.12.23
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { nick: 'TerribleAlien' }
+USER JOINED { nick: 'TerribleAlien' } 203.213.92.246
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command {}
+USER JOINED {} 31.44.69.87
+reset
+login { nick: 'Inquisitor', password: 'CODIW' } 4 EvilGhoul 31.44.69.87
+reset
+reset
+reset
+reset
+core command { nick: 'StartlingGrim',
+  flair: '$Amatic SC|/^/^/^#b6ecf4E|||/^#45F/_#c7dcf6v#47F/_#a3c9f6e#49F/_#6daaf4l#6daaf4/_#49Fy#a3c9f6/_#47Fn#c7dcf6/_#45Fn',
+  token: 'c3IOu7XBwNNsCEH' }
+USER JOINED { nick: 'StartlingGrim',
+  flair: '$Amatic SC|/^/^/^#b6ecf4E|||/^#45F/_#c7dcf6v#47F/_#a3c9f6e#49F/_#6daaf4l#6daaf4/_#49Fy#a3c9f6/_#47Fn#c7dcf6/_#45Fn',
+  token: 'c3IOu7XBwNNsCEH' } 78.20.197.37
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Dawning of a New Day|/*/^/^/@/_#ee2cdeLynn',
+  nick: 'ShockingFangs',
+  token: 'vji97aaumAh8izK' }
+USER JOINED { flair: '$Dawning of a New Day|/*/^/^/@/_#ee2cdeLynn',
+  nick: 'ShockingFangs',
+  token: 'vji97aaumAh8izK' } 78.20.197.37
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Ceviche One|ScarySpook', nick: 'ScarySpook' }
+USER JOINED { flair: '$Ceviche One|ScarySpook', nick: 'ScarySpook' } 5.155.50.229
+reset
+core command { flair: '#greenInquisitor',
+  token: 'ji1C1l5ePvqbDDi',
+  nick: 'Inquisitor' }
+USER JOINED { flair: '#greenInquisitor',
+  token: 'ji1C1l5ePvqbDDi',
+  nick: 'Inquisitor' } 31.44.69.87
+reset
+reset
+core command { nick: 'Eldron',
+  token: 'mLQfSFeVIRzGJrz',
+  flair: '$Montserrat|/^/^#373854El#493267d#9e379fr#e86af0o#7bb3ffn' }
+USER JOINED { nick: 'Eldron',
+  token: 'mLQfSFeVIRzGJrz',
+  flair: '$Montserrat|/^/^#373854El#493267d#9e379fr#e86af0o#7bb3ffn' } 88.97.244.142
+reset
+reset
+core command { flair: '$Kaushan Script|/^/^#blueWil#reddc#yelloward',
+  nick: 'Wildcard',
+  token: 'yY4oWSgDhcjXGBB' }
+USER JOINED { flair: '$Kaushan Script|/^/^#blueWil#reddc#yelloward',
+  nick: 'Wildcard',
+  token: 'yY4oWSgDhcjXGBB' } 71.99.211.152
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command {}
+USER JOINED {} 108.198.119.166
+reset
+reset
+reset
+reset
+core command { nick: 'Eldron',
+  token: 'mLQfSFeVIRzGJrz',
+  flair: '$Montserrat|/^/^#373854El#493267d#9e379fr#e86af0o#7bb3ffn' }
+USER JOINED { nick: 'Eldron',
+  token: 'mLQfSFeVIRzGJrz',
+  flair: '$Montserrat|/^/^#373854El#493267d#9e379fr#e86af0o#7bb3ffn' } 88.97.244.142
+reset
+reset
+reset
+core command { nick: 'Eldron',
+  token: 'mLQfSFeVIRzGJrz',
+  flair: '$Montserrat|/^/^#373854El#493267d#9e379fr#e86af0o#7bb3ffn' }
+USER JOINED { nick: 'Eldron',
+  token: 'mLQfSFeVIRzGJrz',
+  flair: '$Montserrat|/^/^#373854El#493267d#9e379fr#e86af0o#7bb3ffn' } 88.97.244.142
+reset
+reset
+reset
+core command { flair: '$Pacifico|/^#PurpleLucyn',
+  token: 'H2wbizYtYRi08mD',
+  nick: 'Lucyn' }
+USER JOINED { flair: '$Pacifico|/^#PurpleLucyn',
+  token: 'H2wbizYtYRi08mD',
+  nick: 'Lucyn' } 77.85.2.45
+reset
+core command { flair: '#FF0000Bobby',
+  token: 'qRy0x5DznpmkZHy',
+  nick: 'Bobby' }
+USER JOINED { flair: '#FF0000Bobby',
+  token: 'qRy0x5DznpmkZHy',
+  nick: 'Bobby' } 83.93.9.67
+reset
+core command { nick: 'GhostlyEyeball',
+  token: 'mLQfSFeVIRzGJrz',
+  flair: '$Montserrat|/^/^#373854El#493267d#9e379fr#e86af0o#7bb3ffn' }
+USER JOINED { nick: 'GhostlyEyeball',
+  token: 'mLQfSFeVIRzGJrz',
+  flair: '$Montserrat|/^/^#373854El#493267d#9e379fr#e86af0o#7bb3ffn' } 88.97.244.142
+reset
+login { nick: 'Eldron', password: 'lellolello12321' } 4 GhostlyEyeball 88.97.244.142
+reset
+reset
+me { message: 'gives eldron a blowup doll' } 4 Inquisitor 31.44.69.87
+core command { flair: '$Chela One|/^/^#aa99ddK#a273e6e#994deev#9126f7i#8800ffn',
+  nick: 'ShockingBoo',
+  token: 'iYhgRBW5Dwd4hBa' }
+USER JOINED { flair: '$Chela One|/^/^#aa99ddK#a273e6e#994deev#9126f7i#8800ffn',
+  nick: 'ShockingBoo',
+  token: 'iYhgRBW5Dwd4hBa' } 49.182.18.99
+core command { flair: '$Chela One|/^/^#aa99ddK#a273e6e#994deev#9126f7i#8800ffn',
+  nick: 'ShockingBoo',
+  token: 'iYhgRBW5Dwd4hBa' }
+USER JOINED { flair: '$Chela One|/^/^#aa99ddK#a273e6e#994deev#9126f7i#8800ffn',
+  nick: 'ShockingBoo',
+  token: 'iYhgRBW5Dwd4hBa' } 49.182.18.99
+reset
+reset
+reset
+login { nick: 'Kevin',
+  password: '9KAcA;j58;@3_wrr5_LW6b$*$Z<Jm3u8HCn_oS<QZK3q8,]:T=I#B$CDU9DDd;$p[Talgg$sP()FZ(4y&}j%.VJ9z>txw1zJ;n@F:m)^(-N@=^4!f^osu{UWwS70LshWeUH=s*N&1t{}@uM,o7Y~w[UPT4CD]#rMHhZHy!tUie=.v$NwP?z-5LnOM)7dF<J2aVmE+ujTxxom4%9x5@hBZs{eMzo7l.@XYknUw1@x].(yH%r95NKXlD"9JJUp}pT' } 4 ShockingBoo 49.182.18.99
+reset
+reset
+core command { flair: '$Source Sans Pro|###white#black/*Mr.Guy',
+  nick: 'EvilCadaver',
+  part: 'with tears in his eyes',
+  token: 'YrwvvWOrpxwI3je' }
+USER JOINED { flair: '$Source Sans Pro|###white#black/*Mr.Guy',
+  nick: 'EvilCadaver',
+  part: 'with tears in his eyes',
+  token: 'YrwvvWOrpxwI3je' } 69.1.97.58
+reset
+login { nick: 'Mr.Guy', password: '8Add21c742' } 4 EvilCadaver 69.1.97.58
+reset
+core command { flair: '$Century Gothic|#808000DarkMan',
+  token: 'EYmRnXQn87y1aEh',
+  nick: 'DarkMan' }
+USER JOINED { flair: '$Century Gothic|#808000DarkMan',
+  token: 'EYmRnXQn87y1aEh',
+  nick: 'DarkMan' } 129.112.109.40
+reset
+reset
+reset
+core command { flair: '$Source Sans Pro|###white#black/*Mr.Guy',
+  nick: 'Mr.Guy',
+  part: 'with tears in his eyes',
+  token: '4XkT7kswaQ0kfjR' }
+reset
+find { ip: 'Mr.Guy' } 0 sammich 70.114.2.45
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Source Sans Pro|###white#black/*Mr.Guy',
+  nick: 'Mr.Guy',
+  part: 'with tears in his eyes',
+  token: '4XkT7kswaQ0kfjR' }
+USER JOINED { flair: '$Source Sans Pro|###white#black/*Mr.Guy',
+  nick: 'Mr.Guy',
+  part: 'with tears in his eyes',
+  token: '4XkT7kswaQ0kfjR' } 69.1.97.58
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Source Sans Pro|###white#black/*Mr.Guy',
+  nick: 'Mr.Guy',
+  part: 'with tears in his eyes',
+  token: '4XkT7kswaQ0kfjR' }
+USER JOINED { flair: '$Source Sans Pro|###white#black/*Mr.Guy',
+  nick: 'Mr.Guy',
+  part: 'with tears in his eyes',
+  token: '4XkT7kswaQ0kfjR' } 149.202.98.161
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+me { message: 'tips Fedora' } 0 Mr.Guy 149.202.98.161
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+nick { nick: 'Xultra' } 4 Eldron 88.97.244.142
+reset
+core command {}
+USER JOINED {} 185.108.219.44
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+flair { flair: 'none' } 4 ScarySpook 5.155.50.229
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+me { message: 'HOLDS ON' } 4 Eldron 88.97.244.142
+reset
+reset
+reset
+me { message: 'let\'s go' } 0 Mr.Guy 149.202.98.161
+reset
+reset
+reset
+me { message: 'stops clenching' } 4 Eldron 88.97.244.142
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Sacramento|/^/^/^#ee82eem#ea87eao#e78ce7o#e390e3d#e095e0l#dc9adce#d99fd9s#d5a3d5b#d2a8d2o#ceadceo#cbb2cbd#c7b6c7l#c4bbc4e#c0c0c0s',
+  nick: 'moodlesboodles',
+  token: 'nzuuR7RmJHWr96E' }
+USER JOINED { flair: '$Sacramento|/^/^/^#ee82eem#ea87eao#e78ce7o#e390e3d#e095e0l#dc9adce#d99fd9s#d5a3d5b#d2a8d2o#ceadceo#cbb2cbd#c7b6c7l#c4bbc4e#c0c0c0s',
+  nick: 'moodlesboodles',
+  token: 'nzuuR7RmJHWr96E' } 79.70.64.170
+reset
+reset
+reset
+reset
+Starting channel http://m.baidu.com/?rands=_9680156196813261174543672
+Starting channel http://www.sogou.com/?rands=_2355229943030099603830760
+Starting channel http://www.1dvj.com/?rands=_573653460023982422074960
+Starting channel http://www.kuaidaili.com/?rands=_145533052541083759221408
+reset
+reset
+core command { nick: 'Eldron',
+  token: 'd6zUqbOEhMCNwm7',
+  flair: '$Montserrat|/^/^#373854El#493267d#9e379fr#e86af0o#7bb3ffn' }
+USER JOINED { nick: 'Eldron',
+  token: 'd6zUqbOEhMCNwm7',
+  flair: '$Montserrat|/^/^#373854El#493267d#9e379fr#e86af0o#7bb3ffn' } 88.97.244.142
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { nick: 'OtherworldlyTarantula',
+  token: 'd6zUqbOEhMCNwm7',
+  flair: '$Montserrat|/^/^#373854El#493267d#9e379fr#e86af0o#7bb3ffn' }
+USER JOINED { nick: 'OtherworldlyTarantula',
+  token: 'd6zUqbOEhMCNwm7',
+  flair: '$Montserrat|/^/^#373854El#493267d#9e379fr#e86af0o#7bb3ffn' } 88.97.244.142
+reset
+reset
+core command { flair: '$Archivo Narrow|/^#acccli#aabnei',
+  nick: 'clinei',
+  part: 'your mom',
+  token: 'G7eehNe9bqyL05J' }
+USER JOINED { flair: '$Archivo Narrow|/^#acccli#aabnei',
+  nick: 'clinei',
+  part: 'your mom',
+  token: 'G7eehNe9bqyL05J' } 84.50.202.149
+Starting channel /clinei
+reset
+core command { flair: '$Archivo Narrow|/^#acccli#aabnei',
+  nick: 'SpookySpine',
+  part: 'your mom',
+  token: 'G7eehNe9bqyL05J' }
+USER JOINED { flair: '$Archivo Narrow|/^#acccli#aabnei',
+  nick: 'SpookySpine',
+  part: 'your mom',
+  token: 'G7eehNe9bqyL05J' } 84.50.202.149
+reset
+reset
+core command { flair: '$Archivo Narrow|/^#acccli#aabnei',
+  nick: 'SpookySpine',
+  part: 'your mom',
+  token: 'G7eehNe9bqyL05J' }
+USER JOINED { flair: '$Archivo Narrow|/^#acccli#aabnei',
+  nick: 'SpookySpine',
+  part: 'your mom',
+  token: 'G7eehNe9bqyL05J' } 84.50.202.149
+reset
+reset
+reset
+login { nick: 'clinei', password: 'Elevant1' } 4 SpookySpine 84.50.202.149
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { nick: 'OtherworldlyTarantula',
+  token: 'd6zUqbOEhMCNwm7',
+  flair: '$Montserrat|/^/^#373854El#493267d#9e379fr#e86af0o#7bb3ffn' }
+USER JOINED { nick: 'OtherworldlyTarantula',
+  token: 'd6zUqbOEhMCNwm7',
+  flair: '$Montserrat|/^/^#373854El#493267d#9e379fr#e86af0o#7bb3ffn' } 88.97.244.142
+reset
+reset
+reset
+reset
+reset
+login { nick: 'Eldron', password: 'lellolello12321' } 4 MorbidBoogeyman 88.97.244.142
+reset
+reset
+reset
+reset
+core command { nick: 'CRACK_DADDY_JR' }
+USER JOINED { nick: 'CRACK_DADDY_JR' } 184.179.120.252
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '', nick: 'GhostlyGruesome', token: 'ftZ5KrNAEqTAAqM' }
+USER JOINED { flair: '', nick: 'GhostlyGruesome', token: 'ftZ5KrNAEqTAAqM' } 62.64.135.178
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+login { nick: 'KrYnoMoRe', password: '3db7502d5d' } 4 GhostlyGruesome 62.64.135.178
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { nick: 'Eldron',
+  token: 'E6q3oazhPm3ayPW',
+  flair: '$Montserrat|/^/^#373854El#493267d#9e379fr#e86af0o#7bb3ffn' }
+USER JOINED { nick: 'Eldron',
+  token: 'E6q3oazhPm3ayPW',
+  flair: '$Montserrat|/^/^#373854El#493267d#9e379fr#e86af0o#7bb3ffn' } 88.97.244.142
+reset
+reset
+reset
+Starting channel /eldron
+core command { nick: 'FallenAngel',
+  flair: '$Unica One|/^#D800E5F#C313C3a#AE26B7l#9A39A0l#854C89e#715F72n#5C725BA#478544n#33982Dg#1EAB16e#0ABF00l',
+  token: 'BD0rU4xa5L98SJB' }
+USER JOINED { nick: 'FallenAngel',
+  flair: '$Unica One|/^#D800E5F#C313C3a#AE26B7l#9A39A0l#854C89e#715F72n#5C725BA#478544n#33982Dg#1EAB16e#0ABF00l',
+  token: 'BD0rU4xa5L98SJB' } 223.176.140.186
+reset
+reset
+reset
+core command { nick: 'GrislyAlien',
+  flair: '$Unica One|/^#D800E5F#C313C3a#AE26B7l#9A39A0l#854C89e#715F72n#5C725BA#478544n#33982Dg#1EAB16e#0ABF00l',
+  token: 'BD0rU4xa5L98SJB' }
+USER JOINED { nick: 'GrislyAlien',
+  flair: '$Unica One|/^#D800E5F#C313C3a#AE26B7l#9A39A0l#854C89e#715F72n#5C725BA#478544n#33982Dg#1EAB16e#0ABF00l',
+  token: 'BD0rU4xa5L98SJB' } 223.176.140.186
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+whois { nick: 'FallenAngel' } 0 sammich 70.114.2.45
+reset
+reset
+access { nick: 'FallenAngel', role: 'admin' } 0 sammich 70.114.2.45
+core command { flair: '$Sacramento|/^/^/^#ee82eem#ea87eao#e78ce7o#e390e3d#e095e0l#dc9adce#d99fd9s#d5a3d5b#d2a8d2o#ceadceo#cbb2cbd#c7b6c7l#c4bbc4e#c0c0c0s',
+  nick: 'moodlesboodles',
+  token: 'nzuuR7RmJHWr96E' }
+USER JOINED { flair: '$Sacramento|/^/^/^#ee82eem#ea87eao#e78ce7o#e390e3d#e095e0l#dc9adce#d99fd9s#d5a3d5b#d2a8d2o#ceadceo#cbb2cbd#c7b6c7l#c4bbc4e#c0c0c0s',
+  nick: 'moodlesboodles',
+  token: 'nzuuR7RmJHWr96E' } 79.70.64.170
+access { nick: 'FallenAngel', role: '2' } 0 sammich 70.114.2.45
+{ sammich: '1',
+  Tom: '1',
+  gourami: '2',
+  Bobby: '2',
+  The_Big_Cheese: '0',
+  anon: '0',
+  LovelyLauralyn: '2',
+  Kevita: '2',
+  TIMELORD: '4',
+  Jesse_The_Laser: '3',
+  Mishashule: '2',
+  ShoeShine: '0',
+  Galaxy: '0',
+  Waluigi: '0',
+  Lilly: '0',
+  Danny: '0',
+  this_probably_looks_really_suspicious: '0',
+  I_am_testing_a_bug_so_plz_dont_get_mad: '0',
+  'Ms.Girl': '1',
+  Butter: '0',
+  Wendy: '0',
+  DeezNuts: '0',
+  Applebees: '0',
+  Moot: '0',
+  Moo: '0',
+  Voldemort: '0',
+  VapeNaysh: '3',
+  'Mr.Guy': '0',
+  Panda: '3',
+  InfraRaven: '1',
+  'Lacy­': '1',
+  FallenAngel: '2' }
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+whois { nick: 'FallenAngel' } 0 sammich 70.114.2.45
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Archivo Narrow|/^#acccli#aabnei',
+  nick: 'SpookySpine',
+  part: 'your mom',
+  token: 'G7eehNe9bqyL05J' }
+USER JOINED { flair: '$Archivo Narrow|/^#acccli#aabnei',
+  nick: 'SpookySpine',
+  part: 'your mom',
+  token: 'G7eehNe9bqyL05J' } 84.50.202.149
+reset
+login { nick: 'clinei', password: 'Elevant1' } 4 SpookySpine 84.50.202.149
+reset
+reset
+login { nick: 'clinei', password: 'Shitheadnr1' } 4 SpookySpine 84.50.202.149
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '#greenInquisitor',
+  token: 'ji1C1l5ePvqbDDi',
+  nick: 'Inquisitor' }
+USER JOINED { flair: '#greenInquisitor',
+  token: 'ji1C1l5ePvqbDDi',
+  nick: 'Inquisitor' } 31.44.69.87
+reset
+reset
+reset
+reset
+core command { nick: 'GrislyAlien',
+  flair: '$Unica One|/^#D800E5F#C313C3a#AE26B7l#9A39A0l#854C89e#715F72n#5C725BA#478544n#33982Dg#1EAB16e#0ABF00l',
+  token: 'BD0rU4xa5L98SJB' }
+USER JOINED { nick: 'GrislyAlien',
+  flair: '$Unica One|/^#D800E5F#C313C3a#AE26B7l#9A39A0l#854C89e#715F72n#5C725BA#478544n#33982Dg#1EAB16e#0ABF00l',
+  token: 'BD0rU4xa5L98SJB' } 223.176.140.186
+reset
+reset
+login { nick: 'FallenAngel', password: 'hellonearth' } 4 GrislyAlien 223.176.140.186
+reset
+reset
+core command { nick: 'FallenAngel',
+  flair: '$Unica One|/^#D800E5F#C313C3a#AE26B7l#9A39A0l#854C89e#715F72n#5C725BA#478544n#33982Dg#1EAB16e#0ABF00l',
+  token: 'LIFxQxZxYRbqHkU' }
+USER JOINED { nick: 'FallenAngel',
+  flair: '$Unica One|/^#D800E5F#C313C3a#AE26B7l#9A39A0l#854C89e#715F72n#5C725BA#478544n#33982Dg#1EAB16e#0ABF00l',
+  token: 'LIFxQxZxYRbqHkU' } 223.176.140.186
+reset
+login { nick: 'FallenAngel', password: 'hellonearth' } 4 OtherworldlyApparition 223.176.140.186
+reset
+reset
+core command { flair: '$Atomic Age|/^/^/^#F0FM|||$Ubuntu|#FFF###F0Fishashule',
+  nick: 'Mishashule',
+  token: 'xeX1MOu7tpDYoXQ' }
+USER JOINED { flair: '$Atomic Age|/^/^/^#F0FM|||$Ubuntu|#FFF###F0Fishashule',
+  nick: 'Mishashule',
+  token: 'xeX1MOu7tpDYoXQ' } 24.111.119.108
+reset
+core command { nick: 'FallenAngel',
+  flair: '$Unica One|/^#D800E5F#C313C3a#AE26B7l#9A39A0l#854C89e#715F72n#5C725BA#478544n#33982Dg#1EAB16e#0ABF00l',
+  token: 'DnfslvUimwx5Xjh' }
+USER JOINED { nick: 'FallenAngel',
+  flair: '$Unica One|/^#D800E5F#C313C3a#AE26B7l#9A39A0l#854C89e#715F72n#5C725BA#478544n#33982Dg#1EAB16e#0ABF00l',
+  token: 'DnfslvUimwx5Xjh' } 223.176.140.186
+reset
+reset
+reset
+whois { nick: 'FallenAngel' } 0 sammich 70.114.2.45
+core command { flair: '$Atomic Age|/^/^/^#F0FM|||$Ubuntu|#FFF###F0Fishashule',
+  nick: 'Mishashule',
+  token: 'xeX1MOu7tpDYoXQ' }
+USER JOINED { flair: '$Atomic Age|/^/^/^#F0FM|||$Ubuntu|#FFF###F0Fishashule',
+  nick: 'Mishashule',
+  token: 'xeX1MOu7tpDYoXQ' } 24.111.119.108
+reset
+reset
+whois { nick: 'FallenAngel' } 0 sammich 70.114.2.45
+reset
+reset
+reset
+reset
+whois { nick: 'Mishashule' } 0 sammich 70.114.2.45
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command {}
+USER JOINED {} 185.108.219.20
+reset
+core command {}
+USER JOINED {} 31.44.69.87
+reset
+core command { nick: 'MysteriousSpook' }
+USER JOINED { nick: 'MysteriousSpook' } 31.44.69.87
+reset
+login { nick: 'Inquisitor', password: 'CODIW' } 4 MysteriousSpook 31.44.69.87
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '#FF0000Bobby',
+  token: 'qRy0x5DznpmkZHy',
+  nick: 'Bobby' }
+USER JOINED { flair: '#FF0000Bobby',
+  token: 'qRy0x5DznpmkZHy',
+  nick: 'Bobby' } 83.93.9.67
+reset
+reset
+reset
+whois { nick: 'mishashule' } 0 Kevin 49.182.18.99
+whois { nick: 'Mishashule' } 2 Bobby 83.93.9.67
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command {}
+USER JOINED {} 106.215.150.108
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+login { nick: 'FallenAngel', password: 'hellonearth' } 4 SpookyCorpse 106.215.150.108
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Dawning of a New Day|/*/^/^/@/_#ee2cdeLynn',
+  nick: 'ShockingFangs',
+  token: 'vji97aaumAh8izK' }
+USER JOINED { flair: '$Dawning of a New Day|/*/^/^/@/_#ee2cdeLynn',
+  nick: 'ShockingFangs',
+  token: 'vji97aaumAh8izK' } 78.20.197.37
+reset
+reset
+reset
+reset
+whois { nick: 'Mishashule' } 4 ShockingFangs 78.20.197.37
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Source Sans Pro|###white#black/*Mr.Guy',
+  nick: 'Mr.Guy',
+  part: 'with tears in his eyes',
+  token: '4XkT7kswaQ0kfjR' }
+core command { flair: '$Averia Sans Libre|###a33#a33sam###924#924mic###715#715h',
+  nick: 'sammich',
+  part: 'slep',
+  token: 'rMKlJPsRgrHkhRX' }
+USER JOINED { flair: '$Averia Sans Libre|###a33#a33sam###924#924mic###715#715h',
+  nick: 'sammich',
+  part: 'slep',
+  token: 'rMKlJPsRgrHkhRX' } 70.114.2.45
+core command { flair: '$Averia Sans Libre|###a33#a33sam###924#924mic###715#715h',
+  nick: 'TerribleMausoleum',
+  part: 'slep',
+  token: 'rMKlJPsRgrHkhRX' }
+USER JOINED { flair: '$Averia Sans Libre|###a33#a33sam###924#924mic###715#715h',
+  nick: 'TerribleMausoleum',
+  part: 'slep',
+  token: 'rMKlJPsRgrHkhRX' } 70.114.2.45
+reset
+reset
+reset
+reset
+whois { nick: 'Mishashule' } 0 sammich 70.114.2.45
+core command { nick: 'Eldron',
+  token: 'E6q3oazhPm3ayPW',
+  flair: '$Montserrat|/^/^#373854El#493267d#9e379fr#e86af0o#7bb3ffn' }
+USER JOINED { nick: 'Eldron',
+  token: 'E6q3oazhPm3ayPW',
+  flair: '$Montserrat|/^/^#373854El#493267d#9e379fr#e86af0o#7bb3ffn' } 88.97.244.142
+reset
+login { nick: 'sammich', password: '4815162342' } 4 TerribleMausoleum 70.114.2.45
+reset
+reset
+core command { flair: '#greenInquisitor',
+  token: 'O1g0jOll9kNxTOa',
+  nick: 'Inquisitor' }
+USER JOINED { flair: '#greenInquisitor',
+  token: 'O1g0jOll9kNxTOa',
+  nick: 'Inquisitor' } 31.44.69.87
+core command { flair: '#greenInquisitor',
+  token: 'O1g0jOll9kNxTOa',
+  nick: 'Inquisitor' }
+USER JOINED { flair: '#greenInquisitor',
+  token: 'O1g0jOll9kNxTOa',
+  nick: 'Inquisitor' } 31.44.69.87
+reset
+reset
+reset
+reset
+unban { nick: '24.111.119.108' } 0 sammich 70.114.2.45
+reset
+core command { flair: '$Sacramento|/^/^/^#ee82eem#ea87eao#e78ce7o#e390e3d#e095e0l#dc9adce#d99fd9s#d5a3d5b#d2a8d2o#ceadceo#cbb2cbd#c7b6c7l#c4bbc4e#c0c0c0s',
+  nick: 'GoryFear',
+  token: 'nzuuR7RmJHWr96E' }
+USER JOINED { flair: '$Sacramento|/^/^/^#ee82eem#ea87eao#e78ce7o#e390e3d#e095e0l#dc9adce#d99fd9s#d5a3d5b#d2a8d2o#ceadceo#cbb2cbd#c7b6c7l#c4bbc4e#c0c0c0s',
+  nick: 'GoryFear',
+  token: 'nzuuR7RmJHWr96E' } 79.70.64.170
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Atomic Age|/^/^/^#F0FM|||$Ubuntu|#FFF###F0Fishashule',
+  nick: 'Mishashule',
+  token: 'xeX1MOu7tpDYoXQ' }
+USER JOINED { flair: '$Atomic Age|/^/^/^#F0FM|||$Ubuntu|#FFF###F0Fishashule',
+  nick: 'Mishashule',
+  token: 'xeX1MOu7tpDYoXQ' } 24.111.119.108
+reset
+reset
+reset
+reset
+login { nick: 'moodlesboodles', password: 'incorrect' } 4 GoryFear 79.70.64.170
+reset
+reset
+reset
+reset
+reset
+reset
+core command {}
+USER JOINED {} 138.9.8.208
+reset
+reset
+reset
+login { nick: 'Lacy', password: 'hello' } 4 OtherworldlyGrim 138.9.8.208
+reset
+find { ip: 'ShadowyCrypt' } 1 Lacy 138.9.8.208
+reset
+find { ip: 'GhostlyTarantula' } 1 Lacy 138.9.8.208
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Rochester|/^/^/^/%/*#FF1493L||||/^/^/^#FF69B4acy',
+  nick: 'Lacy',
+  token: 'Dny074KXoRC7Xyd' }
+USER JOINED { flair: '$Rochester|/^/^/^/%/*#FF1493L||||/^/^/^#FF69B4acy',
+  nick: 'Lacy',
+  token: 'Dny074KXoRC7Xyd' } 138.9.8.208
+reset
+reset
+reset
+login { nick: 'Lacy', password: 'hello' } 4 HauntedGastly 138.9.8.208
+reset
+core command { nick: 'FallenAngel',
+  flair: '$Unica One|/^#D800E5F#C313C3a#AE26B7l#9A39A0l#854C89e#715F72n#5C725BA#478544n#33982Dg#1EAB16e#0ABF00l',
+  token: 'HgImP7xr7x7g03a' }
+USER JOINED { nick: 'FallenAngel',
+  flair: '$Unica One|/^#D800E5F#C313C3a#AE26B7l#9A39A0l#854C89e#715F72n#5C725BA#478544n#33982Dg#1EAB16e#0ABF00l',
+  token: 'HgImP7xr7x7g03a' } 106.215.150.108
+reset
+reset
+find { ip: 'ChillingHaunter' } 1 Lacy 138.9.8.208
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '#FF0000Bobby',
+  token: 'qRy0x5DznpmkZHy',
+  nick: 'Bobby' }
+USER JOINED { flair: '#FF0000Bobby',
+  token: 'qRy0x5DznpmkZHy',
+  nick: 'Bobby' } 83.93.9.67
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+login { nick: 'Mishashule', password: 'Tape22' } 4 ShadowyCrypt 24.111.119.108
+reset
+reset
+reset
+core command { flair: '#FF0000Bobby',
+  token: 'qRy0x5DznpmkZHy',
+  nick: 'DarkGrimreaper' }
+USER JOINED { flair: '#FF0000Bobby',
+  token: 'qRy0x5DznpmkZHy',
+  nick: 'DarkGrimreaper' } 83.93.9.67
+login { nick: 'Mishashule', password: 'Poll9899' } 4 ShadowyCrypt 24.111.119.108
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '#FF0000Bobby',
+  token: 'qRy0x5DznpmkZHy',
+  nick: 'DarkGrimreaper' }
+USER JOINED { flair: '#FF0000Bobby',
+  token: 'qRy0x5DznpmkZHy',
+  nick: 'DarkGrimreaper' } 83.93.9.67
+reset
+reset
+reset
+reset
+login { nick: 'Bobby', password: 'password97' } 4 DarkGrimreaper 83.93.9.67
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+topic { message: 'Hello.' } 2 Bobby 83.93.9.67
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Dancing Script|/@#FC0/_/^#000Lulu',
+  nick: 'Lulu',
+  token: 'w7OEucO9Kg87SWS' }
+USER JOINED { flair: '$Dancing Script|/@#FC0/_/^#000Lulu',
+  nick: 'Lulu',
+  token: 'w7OEucO9Kg87SWS' } 5.155.50.229
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+theme { InputColor: '#80F',
+  ButtonColor: '#A9D',
+  ScrollbarColor: '#A9D' } 0 Kevin 49.182.18.99
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+background { background: 'url(http://wallpapercave.com/wp/laKZEoX.jpg)center /cover #000' } 0 Kevin 49.182.18.99
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+background { background: 'url(https://wallpaperscraft.com/image/black_background_line_violet_color_graphics_487_1920x1080.jpg)center /cover #000' } 0 Kevin 49.182.18.99
+reset
+reset
+reset
+whois { nick: 'Mishashule' } 0 sammich 70.114.2.45
+reset
+reset
+reset
+core command { flair: '$Amatic SC|/^/^/^#b6ecf4E|||/^#45F/_#c7dcf6v#47F/_#a3c9f6e#49F/_#6daaf4l#6daaf4/_#49Fy#a3c9f6/_#47Fn#c7dcf6/_#45Fn',
+  nick: 'Evelynn',
+  token: 'ru5dkKsqBf7OQd5' }
+USER JOINED { flair: '$Amatic SC|/^/^/^#b6ecf4E|||/^#45F/_#c7dcf6v#47F/_#a3c9f6e#49F/_#6daaf4l#6daaf4/_#49Fy#a3c9f6/_#47Fn#c7dcf6/_#45Fn',
+  nick: 'Evelynn',
+  token: 'ru5dkKsqBf7OQd5' } 78.20.197.37
+reset
+whois { nick: 'lacy' } 0 sammich 70.114.2.45
+reset
+reset
+core command { flair: '$Pacifico|/^#PurpleLucyn',
+  token: 'H2wbizYtYRi08mD',
+  nick: 'Lucyn' }
+USER JOINED { flair: '$Pacifico|/^#PurpleLucyn',
+  token: 'H2wbizYtYRi08mD',
+  nick: 'Lucyn' } 77.85.2.45
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+find { ip: 'Lucyn' } 1 Lacy 138.9.8.208
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+login { nick: 'Evelynn', password: 'P15209@k' } 4 SpoopyNight 78.20.197.37
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+flair { flair: '$Costantia|/*#1c9c30I#2aa136n#37a53cq#45aa42u#53ae48i#60b34fs#6eb755i#7cbc5bt#89c061o#97c567r' } 4 Inquisitor 31.44.69.87
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+flair { flair: '$Constantia|/*#1c9c30I#2aa136n#37a53cq#45aa42u#53ae48i#60b34fs#6eb755i#7cbc5bt#89c061o#97c567r' } 4 Inquisitor 31.44.69.87
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { nick: 'Eldron',
+  token: 'E6q3oazhPm3ayPW',
+  flair: '$Montserrat|/^/^#373854El#493267d#9e379fr#e86af0o#7bb3ffn' }
+USER JOINED { nick: 'Eldron',
+  token: 'E6q3oazhPm3ayPW',
+  flair: '$Montserrat|/^/^#373854El#493267d#9e379fr#e86af0o#7bb3ffn' } 88.97.244.142
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+login { nick: 'Eldron', password: 'lellolello12321' } 4 EerieHobgoblin 88.97.244.142
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+me { message: 'starts the drumroll for lacy' } 4 Wildcard 71.99.211.152
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '#whitegaybutts',
+  token: 'yPYh3pQ8YgtMI6c',
+  part: 'http://i.imgur.com/MoHQ9qN.png',
+  nick: 'gaybutts' }
+USER JOINED { flair: '#whitegaybutts',
+  token: 'yPYh3pQ8YgtMI6c',
+  part: 'http://i.imgur.com/MoHQ9qN.png',
+  nick: 'gaybutts' } 107.138.84.117
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+flair { flair: '$Copperplate Gothic Bold|/^5|/*#1c9c30I#2aa136n#37a53cq#45aa42u#53ae48i#60b34fs#6eb755i#7cbc5bt#89c061o#97c567r' } 4 Inquisitor 31.44.69.87
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '#whitegaybutts',
+  token: 'yPYh3pQ8YgtMI6c',
+  part: 'http://i.imgur.com/MoHQ9qN.png',
+  nick: 'gaybutts' }
+USER JOINED { flair: '#whitegaybutts',
+  token: 'yPYh3pQ8YgtMI6c',
+  part: 'http://i.imgur.com/MoHQ9qN.png',
+  nick: 'gaybutts' } 107.138.84.117
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+flair { flair: '$Copperplate Gothic Bold/^5|/*#1c9c30I#2aa136n#37a53cq#45aa42u#53ae48i#60b34fs#6eb755i#7cbc5bt#89c061o#97c567r' } 4 Inquisitor 31.44.69.87
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+flair { flair: '$Copperplate Gothic Bold|/^5/*#1c9c30I#2aa136n#37a53cq#45aa42u#53ae48i#60b34fs#6eb755i#7cbc5bt#89c061o#97c567r' } 4 Inquisitor 31.44.69.87
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+whois { nick: 'Lucyn' } 1 Lacy 138.9.8.208
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+flair { flair: '$Chela One|/^/^/+#aa99ddK#a273e6e#994deev#9126f7i#8800ffn' } 0 Kevin 49.182.18.99
+reset
+reset
+reset
+reset
+reset
+flair { flair: '$Chela One|/^/^/+/+/+/+/+/+/+/+/+#aa99ddK#a273e6e#994deev#9126f7i#8800ffn' } 0 Kevin 49.182.18.99
+reset
+flair { flair: '$Copperplate Gothic Bold|/^/*#1c9c30I#2aa136n#37a53cq#45aa42u#53ae48i#60b34fs#6eb755i#7cbc5bt#89c061o#97c567r' } 4 Inquisitor 31.44.69.87
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+flair { flair: '$Copperplate Gothic Bold|/^/*#1c9c30I#2aa136n#37a53cq#45aa42u#53ae48i#60b34fs#6eb755i#7cbc5bt#89c061o#97c567r' } 4 Inquisitor 31.44.69.87
+reset
+reset
+reset
+flair { flair: '$Chela One|/^/^#aa99ddK#a273e6e#994deev#9126f7i#8800ffn' } 0 Kevin 49.182.18.99
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+whois { nick: 'lacy' } 4 Lucyn 77.85.2.45
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+flair { flair: '$Constantia|/^/*#1c9c30I#2aa136n#37a53cq#45aa42u#53ae48i#60b34fs#6eb755i#7cbc5bt#89c061o#97c567r' } 4 Inquisitor 31.44.69.87
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+flair { flair: '$Constantia|/^/^/*#1c9c30I#2aa136n#37a53cq#45aa42u#53ae48i#60b34fs#6eb755i#7cbc5bt#89c061o#97c567r' } 4 Inquisitor 31.44.69.87
+reset
+reset
+reset
+reset
+flair { flair: '$Montserrat|/^/^ #170018E #4c004dl #72006dd #980092r #e86af0o#7bb3ffn' } 4 Eldron 88.97.244.142
+reset
+reset
+reset
+reset
+flair { flair: '$Montserrat|/^/^#170018E#4c004dl#72006dd#980092r#e86af0o#7bb3ffn' } 4 Eldron 88.97.244.142
+reset
+reset
+flair { flair: '$Constantia|/^/*#1c9c30I#2aa136n#37a53cq#45aa42u#53ae48i#60b34fs#6eb755i#7cbc5bt#89c061o#97c567r' } 4 Inquisitor 31.44.69.87
+reset
+reset
+reset
+flair { flair: '$Montserrat|/^/^#373854El#493267d#9e379fr#e86af0o#7bb3ffn' } 4 Eldron 88.97.244.142
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { nick: 'Hair-raisingSpook' }
+USER JOINED { nick: 'Hair-raisingSpook' } 185.108.219.20
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+give_hat { nick: 'purplemagic', hat: 'Eldron' } 0 Kevin 49.182.18.99
+reset
+give_hat { nick: 'Eldron', hat: 'purplemagic' } 0 Kevin 49.182.18.99
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Chela One|/^/^#aa99ddK#a273e6e#994deev#9126f7i#8800ffn',
+  nick: 'Kevin',
+  token: '4jHDQCs6R0qbHfn' }
+USER JOINED { flair: '$Chela One|/^/^#aa99ddK#a273e6e#994deev#9126f7i#8800ffn',
+  nick: 'Kevin',
+  token: '4jHDQCs6R0qbHfn' } 49.182.18.99
+reset
+reset
+give_hat { nick: 'Eldron', hat: 'magicpurple' } 0 Kevin 49.182.18.99
+reset
+reset
+force_hat { nick: 'Eldron', hat: 'MagicPurple' } 0 Kevin 49.182.18.99
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Chela One|/^/^#aa99ddK#a273e6e#994deev#9126f7i#8800ffn',
+  nick: 'SpoopyGruesome',
+  token: '4jHDQCs6R0qbHfn' }
+USER JOINED { flair: '$Chela One|/^/^#aa99ddK#a273e6e#994deev#9126f7i#8800ffn',
+  nick: 'SpoopyGruesome',
+  token: '4jHDQCs6R0qbHfn' } 49.182.18.99
+reset
+reset
+core command { nick: 'DarkHeadstone' }
+USER JOINED { nick: 'DarkHeadstone' } 72.48.165.132
+reset
+give_hat { nick: 'Kevin', hat: 'Flametails' } 0 Kevin 49.182.18.99
+reset
+hat { hat: 'flametails' } 0 Kevin 49.182.18.99
+reset
+hat { hat: 'purplemagic' } 4 Eldron 88.97.244.142
+reset
+login { nick: 'Kevin',
+  password: '9KAcA;j58;@3_wrr5_LW6b$*$Z<Jm3u8HCn_oS<QZK3q8,]:T=I#B$CDU9DDd;$p[Talgg$sP()FZ(4y&}j%.VJ9z>txw1zJ;n@F:m)^(-N@=^4!f^osu{UWwS70LshWeUH=s*N&1t{}@uM,o7Y~w[UPT4CD]#rMHhZHy!tUie=.v$NwP?z-5LnOM)7dF<J2aVmE+ujTxxom4%9x5@hBZs{eMzo7l.@XYknUw1@x].(yH%r95NKXlD"9JJUp}pT' } 4 SpoopyGruesome 49.182.18.99
+hat { hat: 'magicpurple' } 4 Eldron 88.97.244.142
+reset
+reset
+reset
+reset
+give_hat { nick: 'Kevin', hat: 'Beret' } 0 Kevin 49.182.18.99
+hat { hat: 'Beret' } 0 Kevin 49.182.18.99
+reset
+reset
+reset
+core command { nick: 'Eldron',
+  token: 'STrvHRI2iUy1CSR',
+  flair: '$Montserrat|/^/^#373854El#493267d#9e379fr#e86af0o#7bb3ffn' }
+USER JOINED { nick: 'Eldron',
+  token: 'STrvHRI2iUy1CSR',
+  flair: '$Montserrat|/^/^#373854El#493267d#9e379fr#e86af0o#7bb3ffn' } 88.97.244.142
+reset
+login { nick: 'Eldron', password: 'lellolello12321' } 4 FrighteningMidnight 88.97.244.142
+reset
+whois { nick: 'Eldron' } 0 Kevin 49.182.18.99
+reset
+hat { hat: 'Beret' } 0 Kevin 49.182.18.99
+reset
+reset
+reset
+reset
+reset
+access { nick: '1', role: 'Eldron' } 0 Kevin 49.182.18.99
+reset
+access { nick: 'Eldron', role: '1' } 0 Kevin 49.182.18.99
+{ Eldron: '1' }
+reset
+whois { nick: 'Eldron' } 0 Kevin 49.182.18.99
+reset
+topic { message: 'testing' } 1 Eldron 88.97.244.142
+whois { nick: 'Eldron' } 0 Kevin 49.182.18.99
+reset
+reset
+reset
+reset
+reset
+reset
+note { note: 'message' } 1 Eldron 88.97.244.142
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { nick: 'Hair-raisingSpook' }
+USER JOINED { nick: 'Hair-raisingSpook' } 185.108.219.20
+reset
+note { note: '/^test' } 1 Eldron 88.97.244.142
+reset
+reset
+reset
+note { note: 'this is Eldron\'s room, please respect eachother unless you are in the ring' } 1 Eldron 88.97.244.142
+reset
+reset
+reset
+reset
+note { note: 'This is Eldron\'s room, please respect eachother unless you are in the ring.' } 1 Eldron 88.97.244.142
+reset
+reset
+core command { flair: '#FF0000Bobby',
+  token: 'Hny63JzFjrZ415Q',
+  nick: 'Bobby' }
+USER JOINED { flair: '#FF0000Bobby',
+  token: 'Hny63JzFjrZ415Q',
+  nick: 'Bobby' } 83.93.9.67
+core command { flair: '$Constantia|/^/*#1c9c30I#2aa136n#37a53cq#45aa42u#53ae48i#60b34fs#6eb755i#7cbc5bt#89c061o#97c567r',
+  token: 'O1g0jOll9kNxTOa',
+  nick: 'Inquisitor' }
+USER JOINED { flair: '$Constantia|/^/*#1c9c30I#2aa136n#37a53cq#45aa42u#53ae48i#60b34fs#6eb755i#7cbc5bt#89c061o#97c567r',
+  token: 'O1g0jOll9kNxTOa',
+  nick: 'Inquisitor' } 31.44.69.87
+reset
+reset
+login { nick: 'Bobby', password: 'password97' } 4 RevoltingCauldron 83.93.9.67
+note { note: 'This is Eldron\'s room, please respect eachother unless you are in the ring.' } 1 Eldron 88.97.244.142
+reset
+reset
+note { note: 'Please be respectful to nobody. Eat shit and die' } 1 Eldron 88.97.244.142
+reset
+reset
+core command { nick: 'Eldron',
+  token: 'g0MVXmlpW5inhZa',
+  flair: '$Montserrat|/^/^#373854El#493267d#9e379fr#e86af0o#7bb3ffn' }
+USER JOINED { nick: 'Eldron',
+  token: 'g0MVXmlpW5inhZa',
+  flair: '$Montserrat|/^/^#373854El#493267d#9e379fr#e86af0o#7bb3ffn' } 88.97.244.142
+reset
+reset
+topic { message: 'Randomness' } 1 Eldron 88.97.244.142
+reset
+core command { nick: 'MacabreShadow',
+  token: 'g0MVXmlpW5inhZa',
+  flair: '$Montserrat|/^/^#373854El#493267d#9e379fr#e86af0o#7bb3ffn' }
+USER JOINED { nick: 'MacabreShadow',
+  token: 'g0MVXmlpW5inhZa',
+  flair: '$Montserrat|/^/^#373854El#493267d#9e379fr#e86af0o#7bb3ffn' } 88.97.244.142
+reset
+login { nick: 'Eldron', password: 'lellolello12321' } 4 DreadfulGengar 88.97.244.142
+core command { nick: 'ChillingHaunter',
+  flair: '$Unica One|/^#D800E5F#C313C3a#AE26B7l#9A39A0l#854C89e#715F72n#5C725BA#478544n#33982Dg#1EAB16e#0ABF00l',
+  token: 'HgImP7xr7x7g03a' }
+USER JOINED { nick: 'ChillingHaunter',
+  flair: '$Unica One|/^#D800E5F#C313C3a#AE26B7l#9A39A0l#854C89e#715F72n#5C725BA#478544n#33982Dg#1EAB16e#0ABF00l',
+  token: 'HgImP7xr7x7g03a' } 106.215.150.108
+core command { nick: 'dreamomel' }
+USER JOINED { nick: 'dreamomel' } 96.250.114.91
+reset
+reset
+reset
+login { nick: 'FallenAngel', password: 'hellonearth' } 4 ChillingHaunter 106.215.150.108
+reset
+reset
+reset
+core command { flair: '$Pacifico|alumroF', nick: 'alumroF' }
+USER JOINED { flair: '$Pacifico|alumroF', nick: 'alumroF' } 80.195.150.251
+reset
+reset
+core command { flair: '$Kaushan Script|/^/^#blueWil#reddc#yelloward',
+  nick: 'Wildcard',
+  token: 'yY4oWSgDhcjXGBB' }
+USER JOINED { flair: '$Kaushan Script|/^/^#blueWil#reddc#yelloward',
+  nick: 'Wildcard',
+  token: 'yY4oWSgDhcjXGBB' } 71.99.211.152
+reset
+reset
+reset
+Starting channel /gaybutts
+core command { flair: '#whitegaybutts',
+  token: 'yPYh3pQ8YgtMI6c',
+  part: 'http://i.imgur.com/MoHQ9qN.png',
+  nick: 'gaybutts' }
+USER JOINED { flair: '#whitegaybutts',
+  token: 'yPYh3pQ8YgtMI6c',
+  part: 'http://i.imgur.com/MoHQ9qN.png',
+  nick: 'gaybutts' } 107.138.84.117
+reset
+reset
+reset
+reset
+reset
+reset
+login { nick: 'Droxium', password: 'Droxium' } 4 ShadowyScarecrow 71.99.211.152
+core command { flair: '#whitegaybutts',
+  token: 'yPYh3pQ8YgtMI6c',
+  part: 'http://i.imgur.com/MoHQ9qN.png',
+  nick: 'GrislyApparition' }
+USER JOINED { flair: '#whitegaybutts',
+  token: 'yPYh3pQ8YgtMI6c',
+  part: 'http://i.imgur.com/MoHQ9qN.png',
+  nick: 'GrislyApparition' } 107.138.84.117
+reset
+reset
+whois { nick: 'Droxium' } 1 Eldron 88.97.244.142
+core command { flair: '#whitegaybutts',
+  token: 'yPYh3pQ8YgtMI6c',
+  part: 'http://i.imgur.com/MoHQ9qN.png',
+  nick: 'GrislyApparition' }
+USER JOINED { flair: '#whitegaybutts',
+  token: 'yPYh3pQ8YgtMI6c',
+  part: 'http://i.imgur.com/MoHQ9qN.png',
+  nick: 'GrislyApparition' } 107.138.84.117
+reset
+reset
+whois { nick: 'GrislyApparition' } 1 Eldron 88.97.244.142
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+kick { nick: 'Droxium' } 1 Eldron 88.97.244.142
+reset
+core command { flair: '$Kaushan Script|/^/^#greenDrox#whiteium',
+  nick: 'Droxium',
+  token: 'fRCR3DSOHKRJABo' }
+USER JOINED { flair: '$Kaushan Script|/^/^#greenDrox#whiteium',
+  nick: 'Droxium',
+  token: 'fRCR3DSOHKRJABo' } 71.99.211.152
+reset
+reset
+kick { nick: 'Droxium' } 1 Eldron 88.97.244.142
+reset
+reset
+reset
+core command { flair: '$Kaushan Script|/^/^#greenDrox#whiteium',
+  nick: 'Droxium',
+  token: 'fRCR3DSOHKRJABo' }
+USER JOINED { flair: '$Kaushan Script|/^/^#greenDrox#whiteium',
+  nick: 'Droxium',
+  token: 'fRCR3DSOHKRJABo' } 71.99.211.152
+reset
+reset
+reset
+kick { nick: 'Droxium' } 1 Eldron 88.97.244.142
+reset
+core command { flair: '$Kaushan Script|/^/^#greenDrox#whiteium',
+  nick: 'Droxium',
+  token: 'fRCR3DSOHKRJABo' }
+USER JOINED { flair: '$Kaushan Script|/^/^#greenDrox#whiteium',
+  nick: 'Droxium',
+  token: 'fRCR3DSOHKRJABo' } 71.99.211.152
+reset
+reset
+banip { nick: 'Droxium' } 1 Eldron 88.97.244.142
+core command { flair: '$Kaushan Script|/^/^#greenDrox#whiteium',
+  nick: 'Droxium',
+  token: 'fRCR3DSOHKRJABo' }
+reset
+reset
+core command { nick: 'FallenAngel',
+  flair: '$Unica One|/^#D800E5F#C313C3a#AE26B7l#9A39A0l#854C89e#715F72n#5C725BA#478544n#33982Dg#1EAB16e#0ABF00l',
+  token: 'n0kEfx6NxcN9Zwd' }
+USER JOINED { nick: 'FallenAngel',
+  flair: '$Unica One|/^#D800E5F#C313C3a#AE26B7l#9A39A0l#854C89e#715F72n#5C725BA#478544n#33982Dg#1EAB16e#0ABF00l',
+  token: 'n0kEfx6NxcN9Zwd' } 106.215.150.108
+reset
+reset
+core command { flair: '$Kaushan Script|/^/^#blueWil#reddc#yelloward',
+  nick: 'Wildcard',
+  token: 'RLsT9dA7FeNmzAA' }
+reset
+reset
+reset
+me { message: 'rolls eyes' } 4 FallenAngel 106.215.150.108
+reset
+reset
+reset
+reset
+core command { flair: '$Kaushan Script|/^/^#greenDuren#whitedium',
+  token: 'sg7UYi0unepQOrp',
+  nick: 'Durendium' }
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Dancing Script|/@#FC0/_/^#000Lulu',
+  nick: 'Lulu',
+  token: 'w7OEucO9Kg87SWS' }
+USER JOINED { flair: '$Dancing Script|/@#FC0/_/^#000Lulu',
+  nick: 'Lulu',
+  token: 'w7OEucO9Kg87SWS' } 5.155.50.229
+reset
+reset
+reset
+reset
+core command {}
+USER JOINED {} 109.163.234.7
+reset
+reset
+login { nick: 'Wildcard', password: 'Wildcard' } 4 ScarySpook 109.163.234.7
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Dancing Script|/@#FC0/_/^#000Lulu',
+  nick: 'SpookyGhost',
+  token: 'w7OEucO9Kg87SWS' }
+USER JOINED { flair: '$Dancing Script|/@#FC0/_/^#000Lulu',
+  nick: 'SpookyGhost',
+  token: 'w7OEucO9Kg87SWS' } 5.155.50.229
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+kick { nick: 'Wildcard' } 1 Eldron 88.97.244.142
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Pacifico|alumroF', nick: 'alumroF' }
+USER JOINED { flair: '$Pacifico|alumroF', nick: 'alumroF' } 80.195.150.251
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+unban { nick: '71.99.211.152' } 1 Eldron 88.97.244.142
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { nick: 'Eldron',
+  token: 'cW7w32rdX4Ngv5j',
+  flair: '$Montserrat|/^/^#373854El#493267d#9e379fr#e86af0o#7bb3ffn' }
+USER JOINED { nick: 'Eldron',
+  token: 'cW7w32rdX4Ngv5j',
+  flair: '$Montserrat|/^/^#373854El#493267d#9e379fr#e86af0o#7bb3ffn' } 88.97.244.142
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+me { message: 'puts on glasses and poops' } 4 gaybutts 107.138.84.117
+reset
+reset
+reset
+reset
+me { message: 'smothers poop on his chin' } 4 gaybutts 107.138.84.117
+reset
+reset
+reset
+core command { flair: '$Kaushan Script|/^/^#greenDrox#whiteium',
+  nick: 'Droxium',
+  token: 'fRCR3DSOHKRJABo' }
+USER JOINED { flair: '$Kaushan Script|/^/^#greenDrox#whiteium',
+  nick: 'Droxium',
+  token: 'fRCR3DSOHKRJABo' } 71.99.211.152
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command {}
+USER JOINED {} 66.102.8.215
+core command {}
+USER JOINED {} 66.102.8.220
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Archivo Narrow|/^#acccli#aabnei',
+  nick: 'clinei',
+  part: 'your mom',
+  token: 'nOzdEbCRyBE7T00' }
+USER JOINED { flair: '$Archivo Narrow|/^#acccli#aabnei',
+  nick: 'clinei',
+  part: 'your mom',
+  token: 'nOzdEbCRyBE7T00' } 84.50.202.149
+reset
+core command { nick: 'Hair-raisingSpook' }
+USER JOINED { nick: 'Hair-raisingSpook' } 185.108.219.20
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { nick: 'Eldron',
+  token: 'cW7w32rdX4Ngv5j',
+  flair: '$Montserrat|/^/^#373854El#493267d#9e379fr#e86af0o#7bb3ffn' }
+USER JOINED { nick: 'Eldron',
+  token: 'cW7w32rdX4Ngv5j',
+  flair: '$Montserrat|/^/^#373854El#493267d#9e379fr#e86af0o#7bb3ffn' } 88.97.244.142
+core command { nick: 'Eldron',
+  token: 'cW7w32rdX4Ngv5j',
+  flair: '$Montserrat|/^/^#373854El#493267d#9e379fr#e86af0o#7bb3ffn' }
+USER JOINED { nick: 'Eldron',
+  token: 'cW7w32rdX4Ngv5j',
+  flair: '$Montserrat|/^/^#373854El#493267d#9e379fr#e86af0o#7bb3ffn' } 88.97.244.142
+reset
+login { nick: 'Eldron', password: 'lellolello12321' } 4 UnnervingAlien 88.97.244.142
+reset
+reset
+reset
+topic { message: 'http://i.imgur.com/0niI0Mk.jpg' } 1 Eldron 88.97.244.142
+reset
+reset
+reset
+reset
+whois { nick: 'Eldorn' } 4 Wildcard 71.99.211.152
+whois { nick: 'Eldron' } 4 Wildcard 71.99.211.152
+reset
+whois { nick: 'Droxium' } 4 Wildcard 71.99.211.152
+reset
+reset
+reset
+reset
+reset
+whois { nick: 'FallenAngel' } 4 Wildcard 71.99.211.152
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Sacramento|/^/^/^#ee82eem#ea87eao#e78ce7o#e390e3d#e095e0l#dc9adce#d99fd9s#d5a3d5b#d2a8d2o#ceadceo#cbb2cbd#c7b6c7l#c4bbc4e#c0c0c0s',
+  nick: 'moodlesboodles',
+  token: 'LGDUpbVe74DSgug' }
+USER JOINED { flair: '$Sacramento|/^/^/^#ee82eem#ea87eao#e78ce7o#e390e3d#e095e0l#dc9adce#d99fd9s#d5a3d5b#d2a8d2o#ceadceo#cbb2cbd#c7b6c7l#c4bbc4e#c0c0c0s',
+  nick: 'moodlesboodles',
+  token: 'LGDUpbVe74DSgug' } 79.70.64.170
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { nick: 'Eldron',
+  token: 'hzRZzJa97a9yvBl',
+  flair: '$Montserrat|/^/^#373854El#493267d#9e379fr#e86af0o#7bb3ffn' }
+USER JOINED { nick: 'Eldron',
+  token: 'hzRZzJa97a9yvBl',
+  flair: '$Montserrat|/^/^#373854El#493267d#9e379fr#e86af0o#7bb3ffn' } 88.97.244.142
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+login { nick: 'Eldron', password: 'lellolello12321' } 4 HorribleDevil 88.97.244.142
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Pacifico|alumroF', nick: 'alumroF' }
+USER JOINED { flair: '$Pacifico|alumroF', nick: 'alumroF' } 80.195.150.251
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { nick: 'Eldron',
+  token: 'dAOX1oAogjf7gRE',
+  flair: '$Montserrat|/^/^#373854El#493267d#9e379fr#e86af0o#7bb3ffn' }
+USER JOINED { nick: 'Eldron',
+  token: 'dAOX1oAogjf7gRE',
+  flair: '$Montserrat|/^/^#373854El#493267d#9e379fr#e86af0o#7bb3ffn' } 88.97.244.142
+reset
+reset
+reset
+login { nick: 'Eldron', password: 'lellolello12321' } 4 GhostlyPhantom 88.97.244.142
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+me { message: 'takes moodles by the hand' } 4 Inquisitor 31.44.69.87
+reset
+reset
+reset
+reset
+core command { nick: 'MacabreTombstone',
+  flair: '$Unica One|/^#D800E5F#C313C3a#AE26B7l#9A39A0l#854C89e#715F72n#5C725BA#478544n#33982Dg#1EAB16e#0ABF00l',
+  token: 'n0kEfx6NxcN9Zwd' }
+USER JOINED { nick: 'MacabreTombstone',
+  flair: '$Unica One|/^#D800E5F#C313C3a#AE26B7l#9A39A0l#854C89e#715F72n#5C725BA#478544n#33982Dg#1EAB16e#0ABF00l',
+  token: 'n0kEfx6NxcN9Zwd' } 106.215.150.108
+core command { nick: 'Eldron',
+  token: 'eWYxNSpR0740blG',
+  flair: '$Montserrat|/^/^#373854El#493267d#9e379fr#e86af0o#7bb3ffn' }
+USER JOINED { nick: 'Eldron',
+  token: 'eWYxNSpR0740blG',
+  flair: '$Montserrat|/^/^#373854El#493267d#9e379fr#e86af0o#7bb3ffn' } 88.97.244.142
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+me { message: 'lets go of moodles hand disappointed' } 4 Inquisitor 31.44.69.87
+reset
+reset
+reset
+reset
+core command { nick: 'Eldron',
+  token: 'eWYxNSpR0740blG',
+  flair: '$Montserrat|/^/^#373854El#493267d#9e379fr#e86af0o#7bb3ffn' }
+USER JOINED { nick: 'Eldron',
+  token: 'eWYxNSpR0740blG',
+  flair: '$Montserrat|/^/^#373854El#493267d#9e379fr#e86af0o#7bb3ffn' } 88.97.244.142
+reset
+reset
+reset
+reset
+reset
+login { nick: 'Eldron', password: 'lellolello12321' } 4 WickedScream 88.97.244.142
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Archivo Narrow|/^#acccli#aabnei',
+  nick: 'clinei',
+  part: 'your mom',
+  token: 'nOzdEbCRyBE7T00' }
+USER JOINED { flair: '$Archivo Narrow|/^#acccli#aabnei',
+  nick: 'clinei',
+  part: 'your mom',
+  token: 'nOzdEbCRyBE7T00' } 84.50.202.149
+reset
+reset
+core command { flair: '$Amatic SC|/^/^/^#b6ecf4E|||/^#45F/_#c7dcf6v#47F/_#a3c9f6e#49F/_#6daaf4l#6daaf4/_#49Fy#a3c9f6/_#47Fn#c7dcf6/_#45Fn',
+  nick: 'Evelynn',
+  token: 'Lv6eiaJcNsD5Y1a' }
+USER JOINED { flair: '$Amatic SC|/^/^/^#b6ecf4E|||/^#45F/_#c7dcf6v#47F/_#a3c9f6e#49F/_#6daaf4l#6daaf4/_#49Fy#a3c9f6/_#47Fn#c7dcf6/_#45Fn',
+  nick: 'Evelynn',
+  token: 'Lv6eiaJcNsD5Y1a' } 78.20.197.37
+core command { nick: 'MacabreTombstone',
+  flair: '$Unica One|/^#D800E5F#C313C3a#AE26B7l#9A39A0l#854C89e#715F72n#5C725BA#478544n#33982Dg#1EAB16e#0ABF00l',
+  token: 'n0kEfx6NxcN9Zwd' }
+USER JOINED { nick: 'MacabreTombstone',
+  flair: '$Unica One|/^#D800E5F#C313C3a#AE26B7l#9A39A0l#854C89e#715F72n#5C725BA#478544n#33982Dg#1EAB16e#0ABF00l',
+  token: 'n0kEfx6NxcN9Zwd' } 106.215.150.108
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Amatic SC|/^/^/^#b6ecf4E|||/^#45F/_#c7dcf6v#47F/_#a3c9f6e#49F/_#6daaf4l#6daaf4/_#49Fy#a3c9f6/_#47Fn#c7dcf6/_#45Fn',
+  nick: 'Hair-raisingBat',
+  token: 'Lv6eiaJcNsD5Y1a' }
+USER JOINED { flair: '$Amatic SC|/^/^/^#b6ecf4E|||/^#45F/_#c7dcf6v#47F/_#a3c9f6e#49F/_#6daaf4l#6daaf4/_#49Fy#a3c9f6/_#47Fn#c7dcf6/_#45Fn',
+  nick: 'Hair-raisingBat',
+  token: 'Lv6eiaJcNsD5Y1a' } 78.20.197.37
+login { nick: 'FallenAngel', password: 'hellonearth' } 4 MacabreTombstone 106.215.150.108
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+topic { message: 'Hang out area http://i.imgur.com/0niI0Mk.jpg' } 1 Eldron 88.97.244.142
+reset
+reset
+reset
+topic { message: 'Hang out area' } 1 Eldron 88.97.244.142
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command {}
+USER JOINED {} 75.80.21.173
+reset
+core command { flair: '$Titillium Web|#FFFJesse_The_Laser',
+  nick: 'Jesse_The_Laser',
+  token: 'zvIn5h4Uvm69uA9' }
+USER JOINED { flair: '$Titillium Web|#FFFJesse_The_Laser',
+  nick: 'Jesse_The_Laser',
+  token: 'zvIn5h4Uvm69uA9' } 76.227.110.216
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+login { nick: 'Jesse_The_Laser', password: '3vksnsvm' } 4 Hair-raisingGengar 76.227.110.216
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+login { nick: 'anon2000', password: 'lololurmom' } 4 FrightfulCauldron 75.80.21.173
+reset
+reset
+reset
+core command { flair: '$Quicksand|/^/^#aa0000S|#ffffffigong|',
+  nick: 'Sigong',
+  part: 'to go eat.',
+  token: 'waBdfacMT4sW4bn' }
+USER JOINED { flair: '$Quicksand|/^/^#aa0000S|#ffffffigong|',
+  nick: 'Sigong',
+  part: 'to go eat.',
+  token: 'waBdfacMT4sW4bn' } 67.140.66.30
+reset
+reset
+reset
+reset
+reset
+login { nick: 'Sigong', password: 'dingding01' } 4 TerribleHeadstone 67.140.66.30
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+pm { nick: 'moodlesboodles',
+  message: 'these fucktards are still here?' } 4 Sigong 67.140.66.30
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: 'glow', nick: 'GHOUL', token: '7SZ8JZOeCFSCCqm' }
+USER JOINED { flair: 'glow', nick: 'GHOUL', token: '7SZ8JZOeCFSCCqm' } 50.30.88.122
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+flair { flair: 'redGHOUL' } 4 GHOUL 50.30.88.122
+reset
+reset
+reset
+reset
+reset
+flair { flair: '#redGHOUL' } 4 GHOUL 50.30.88.122
+reset
+flair { flair: '#blueGHOUL' } 4 GHOUL 50.30.88.122
+reset
+reset
+reset
+reset
+flair { flair: '#greyGHOUL' } 4 GHOUL 50.30.88.122
+reset
+flair { flair: '#grayGHOUL' } 4 GHOUL 50.30.88.122
+reset
+reset
+reset
+flair { flair: '#redG#blueHOUL' } 4 GHOUL 50.30.88.122
+reset
+reset
+reset
+reset
+flair { flair: '#redG#grayHOUL' } 4 GHOUL 50.30.88.122
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Chewy|/^/^/^#ffffffP#000000a#ffffffn#000000d#ffffffa',
+  nick: 'Panda',
+  token: 'ZJJRwUcjSdln05e' }
+USER JOINED { flair: '$Chewy|/^/^/^#ffffffP#000000a#ffffffn#000000d#ffffffa',
+  nick: 'Panda',
+  token: 'ZJJRwUcjSdln05e' } 24.200.177.10
+reset
+reset
+login { nick: 'Panda', password: '123456' } 4 HorribleZombie 24.200.177.10
+reset
+core command { flair: '$Chewy|/^/^/^#ffffffP#000000a#ffffffn#000000d#ffffffa',
+  nick: 'Panda',
+  token: 'bRE8i2zLGYnSSul' }
+USER JOINED { flair: '$Chewy|/^/^/^#ffffffP#000000a#ffffffn#000000d#ffffffa',
+  nick: 'Panda',
+  token: 'bRE8i2zLGYnSSul' } 24.200.177.10
+reset
+login { nick: 'Panda', password: '123456' } 4 BloodcurdlingWraith 24.200.177.10
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Constantia|/^/*#1c9c30I#2aa136n#37a53cq#45aa42u#53ae48i#60b34fs#6eb755i#7cbc5bt#89c061o#97c567r',
+  token: 'O1g0jOll9kNxTOa',
+  nick: 'EvilPumpkin' }
+USER JOINED { flair: '$Constantia|/^/*#1c9c30I#2aa136n#37a53cq#45aa42u#53ae48i#60b34fs#6eb755i#7cbc5bt#89c061o#97c567r',
+  token: 'O1g0jOll9kNxTOa',
+  nick: 'EvilPumpkin' } 31.44.69.87
+reset
+reset
+core command { nick: 'FallenAngel',
+  flair: '$Unica One|/^#D800E5F#C313C3a#AE26B7l#9A39A0l#854C89e#715F72n#5C725BA#478544n#33982Dg#1EAB16e#0ABF00l',
+  token: 'bgFy31GVOmjqRJk' }
+USER JOINED { nick: 'FallenAngel',
+  flair: '$Unica One|/^#D800E5F#C313C3a#AE26B7l#9A39A0l#854C89e#715F72n#5C725BA#478544n#33982Dg#1EAB16e#0ABF00l',
+  token: 'bgFy31GVOmjqRJk' } 106.215.150.108
+reset
+reset
+reset
+reset
+reset
+reset
+login { nick: 'Inquisitor', password: 'CODIW' } 4 EvilPumpkin 31.44.69.87
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Sacramento|/^/^/^#ee82eem#ea87eao#e78ce7o#e390e3d#e095e0l#dc9adce#d99fd9s#d5a3d5b#d2a8d2o#ceadceo#cbb2cbd#c7b6c7l#c4bbc4e#c0c0c0s',
+  nick: 'moodlesboodles',
+  token: 'LGDUpbVe74DSgug' }
+USER JOINED { flair: '$Sacramento|/^/^/^#ee82eem#ea87eao#e78ce7o#e390e3d#e095e0l#dc9adce#d99fd9s#d5a3d5b#d2a8d2o#ceadceo#cbb2cbd#c7b6c7l#c4bbc4e#c0c0c0s',
+  nick: 'moodlesboodles',
+  token: 'LGDUpbVe74DSgug' } 79.70.64.170
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Permanent Marker|/^/^/^#8A0F6EH#872471u#843A74g#814F78e|||#064714W#115621a#1D652En#29753Ck#358449e#495rhttp://poopenis.tk/files/WANKER%20NEW.png',
+  nick: 'HugeWanker',
+  token: '8yJXUIuVYdz0in3' }
+USER JOINED { flair: '$Permanent Marker|/^/^/^#8A0F6EH#872471u#843A74g#814F78e|||#064714W#115621a#1D652En#29753Ck#358449e#495rhttp://poopenis.tk/files/WANKER%20NEW.png',
+  nick: 'HugeWanker',
+  token: '8yJXUIuVYdz0in3' } 95.144.43.216
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { nick: 'Oh' }
+USER JOINED { nick: 'Oh' } 64.126.164.221
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Kaushan Script|/^/^#greenDrox#whiteium',
+  nick: 'Droxium',
+  token: 'fRCR3DSOHKRJABo' }
+USER JOINED { flair: '$Kaushan Script|/^/^#greenDrox#whiteium',
+  nick: 'Droxium',
+  token: 'fRCR3DSOHKRJABo' } 71.99.211.152
+reset
+Starting channel /Wildcard
+core command { flair: '$Kaushan Script|/^/^#greenDrox#whiteium',
+  nick: 'CreepyGrimreaper',
+  token: 'fRCR3DSOHKRJABo' }
+USER JOINED { flair: '$Kaushan Script|/^/^#greenDrox#whiteium',
+  nick: 'CreepyGrimreaper',
+  token: 'fRCR3DSOHKRJABo' } 71.99.211.152
+reset
+reset
+reset
+login { nick: 'Wildcard', password: 'Wildcard' } 4 CreepyGrimreaper 71.99.211.152
+reset
+reset
+reset
+whois { nick: 'Eldron' } 4 Wildcard 71.99.211.152
+reset
+whois { nick: 'FallenAngel' } 4 Wildcard 71.99.211.152
+reset
+reset
+reset
+login { nick: 'Droxium', password: 'Droxium' } 4 Wildcard 71.99.211.152
+reset
+login { nick: 'Droxium', password: 'Droxium' } 4 Wildcard 71.99.211.152
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { nick: 'FallenAngel',
+  flair: '$Unica One|/^#D800E5F#C313C3a#AE26B7l#9A39A0l#854C89e#715F72n#5C725BA#478544n#33982Dg#1EAB16e#0ABF00l',
+  token: 'bgFy31GVOmjqRJk' }
+USER JOINED { nick: 'FallenAngel',
+  flair: '$Unica One|/^#D800E5F#C313C3a#AE26B7l#9A39A0l#854C89e#715F72n#5C725BA#478544n#33982Dg#1EAB16e#0ABF00l',
+  token: 'bgFy31GVOmjqRJk' } 106.215.150.108
+reset
+reset
+reset
+reset
+reset
+reset
+whois { nick: 'Droxium' } 0 sammich 70.114.2.45
+reset
+reset
+reset
+whois { nick: 'Eldorn' } 4 Droxium 71.99.211.152
+whois { nick: 'Eldron' } 4 Droxium 71.99.211.152
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command {}
+USER JOINED {} 66.249.66.92
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Rokkitt|/^/^/^#00CAtlas',
+  nick: 'Atlas',
+  token: 'kuBJPof0omAWZAW' }
+USER JOINED { flair: '$Rokkitt|/^/^/^#00CAtlas',
+  nick: 'Atlas',
+  token: 'kuBJPof0omAWZAW' } 73.64.205.39
+reset
+login { nick: 'Atlas', password: 'Lighty4957' } 4 SpoopySpook 73.64.205.39
+core command {}
+USER JOINED {} 166.137.246.86
+reset
+reset
+reset
+reset
+login { nick: 'Katerina', password: 'Katerina808' } 4 ScaryGoblin 166.137.246.86
+reset
+reset
+reset
+reset
+core command {}
+USER JOINED {} 66.249.66.57
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command {}
+USER JOINED {} 66.249.66.118
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '#whitegaybutts',
+  token: 'yPYh3pQ8YgtMI6c',
+  part: 'http://i.imgur.com/MoHQ9qN.png',
+  nick: 'GrislyApparition' }
+USER JOINED { flair: '#whitegaybutts',
+  token: 'yPYh3pQ8YgtMI6c',
+  part: 'http://i.imgur.com/MoHQ9qN.png',
+  nick: 'GrislyApparition' } 107.138.84.117
+reset
+login { nick: 'gaybutts', password: 'buttsandbutts' } 4 GrislyApparition 107.138.84.117
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command {}
+USER JOINED {} 66.249.66.168
+reset
+core command { flair: '$Crafty Girls|/*/^/^#90FF#72Dr#54Bo#257g',
+  nick: 'Frog',
+  token: '1JueKLTon9Qkiej' }
+USER JOINED { flair: '$Crafty Girls|/*/^/^#90FF#72Dr#54Bo#257g',
+  nick: 'Frog',
+  token: '1JueKLTon9Qkiej' } 50.72.50.117
+reset
+reset
+reset
+Starting channel http://m.baidu.com/?rands=_739967989619682192830912
+Starting channel http://www.sogou.com/?rands=_16681103299012992737678080
+Starting channel http://www.1dvj.com/?rands=_267628015221869403984820
+Starting channel http://www.kuaidaili.com/?rands=_1376026780013747561468152
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+me { message: 'shrugs' } 0 Frog 50.72.50.117
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+me { message: 'busts up some drugs to smoke' } 0 Frog 50.72.50.117
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Atomic Age|/^/^/^#F0FM|||$Ubuntu|#FFF###F0Fishashule',
+  nick: 'Mishashule',
+  token: 'AOzFiiR0PySYx6S' }
+USER JOINED { flair: '$Atomic Age|/^/^/^#F0FM|||$Ubuntu|#FFF###F0Fishashule',
+  nick: 'Mishashule',
+  token: 'AOzFiiR0PySYx6S' } 24.111.119.108
+reset
+reset
+login { nick: 'Mishashule', password: 'Poll9899' } 4 WickedMummy 24.111.119.108
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command {}
+USER JOINED {} 76.227.110.216
+reset
+reset
+core command { flair: '$Titillium Web|#FFFJesse_The_Laser',
+  nick: 'Jesse_The_Laser',
+  token: 'NmGDV2BhzMcCOMZ' }
+USER JOINED { flair: '$Titillium Web|#FFFJesse_The_Laser',
+  nick: 'Jesse_The_Laser',
+  token: 'NmGDV2BhzMcCOMZ' } 76.227.110.216
+reset
+nick { nick: 'EvilBone' } 3 Jesse_The_Laser 76.227.110.216
+reset
+reset
+core command { flair: '$Titillium Web|#FFFJesse_The_Laser',
+  nick: 'EvilBone',
+  token: 'NmGDV2BhzMcCOMZ' }
+USER JOINED { flair: '$Titillium Web|#FFFJesse_The_Laser',
+  nick: 'EvilBone',
+  token: 'NmGDV2BhzMcCOMZ' } 76.227.110.216
+reset
+reset
+reset
+reset
+reset
+login { nick: 'Jesse_The_Laser', password: '3vksnsvm' } 4 EvilBone 76.227.110.216
+reset
+reset
+topic { message: 'I USE VISTA.' } 3 Jesse_The_Laser 76.227.110.216
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Titillium Web|#FFFJesse_The_Laser',
+  nick: 'Jesse_The_Laser',
+  token: 'VAN1AH0QU6iVogD' }
+USER JOINED { flair: '$Titillium Web|#FFFJesse_The_Laser',
+  nick: 'Jesse_The_Laser',
+  token: 'VAN1AH0QU6iVogD' } 76.227.110.216
+reset
+topic { message: 'Welcome to Awakens' } 3 Jesse_The_Laser 76.227.110.216
+reset
+topic { message: 'niggers' } 2 Mishashule 24.111.119.108
+reset
+topic { message: ':)' } 3 Jesse_The_Laser 76.227.110.216
+reset
+topic { message: 'will send dick pics for pizza' } 2 Mishashule 24.111.119.108
+reset
+reset
+core command { nick: 'DarkHocuspocus' }
+USER JOINED { nick: 'DarkHocuspocus' } 78.20.197.37
+reset
+reset
+reset
+reset
+core command { flair: '$Titillium Web|#FFFJesse_The_Laser',
+  nick: 'Jesse_The_Laser',
+  token: 'VAN1AH0QU6iVogD' }
+USER JOINED { flair: '$Titillium Web|#FFFJesse_The_Laser',
+  nick: 'Jesse_The_Laser',
+  token: 'VAN1AH0QU6iVogD' } 76.227.110.216
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Dawning of a New Day|/*/^/^/@/_#ee2cdeLynn',
+  nick: 'ShockingFangs',
+  token: 'vji97aaumAh8izK' }
+USER JOINED { flair: '$Dawning of a New Day|/*/^/^/@/_#ee2cdeLynn',
+  nick: 'ShockingFangs',
+  token: 'vji97aaumAh8izK' } 78.20.197.37
+reset
+reset
+reset
+core command {}
+USER JOINED {} 77.247.181.162
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Source Sans Pro|###white#black/*Mr.Guy',
+  nick: 'Mr.Guy',
+  part: 'http://i.imgur.com/K9uf33T.gif',
+  token: 'fnHyU2qfpvbL1Gt' }
+USER JOINED { flair: '$Source Sans Pro|###white#black/*Mr.Guy',
+  nick: 'Mr.Guy',
+  part: 'http://i.imgur.com/K9uf33T.gif',
+  token: 'fnHyU2qfpvbL1Gt' } 71.11.76.194
+reset
+reset
+reset
+reset
+reset
+core command { nick: 'Hair-raisingCobweb' }
+USER JOINED { nick: 'Hair-raisingCobweb' } 77.247.181.162
+reset
+reset
+login { nick: 'Mr.Guy', password: '8Add21c742' } 4 MysteriousNight 71.11.76.194
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { nick: 'StartlingAlien' }
+USER JOINED { nick: 'StartlingAlien' } 77.247.181.162
+reset
+reset
+reset
+reset
+reset
+core command { nick: 'StartlingAlien' }
+USER JOINED { nick: 'StartlingAlien' } 77.247.181.162
+reset
+reset
+reset
+reset
+pm { nick: 'sammich',
+  message: 'cuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuck' } 4 GhastlyNightmare 77.247.181.162
+pm { nick: 'sammich',
+  message: 'cuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuck' } 4 GhastlyNightmare 77.247.181.162
+pm { nick: 'sammich',
+  message: 'cuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuck' } 4 GhastlyNightmare 77.247.181.162
+pm { nick: 'sammich',
+  message: 'cuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuck' } 4 GhastlyNightmare 77.247.181.162
+pm { nick: 'sammich',
+  message: 'cuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuck' } 4 GhastlyNightmare 77.247.181.162
+reset
+pm { nick: 'sammich',
+  message: 'cuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuck' } 4 GhastlyNightmare 77.247.181.162
+pm { nick: 'sammich',
+  message: 'cuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuck' } 4 GhastlyNightmare 77.247.181.162
+pm { nick: 'sammich',
+  message: 'cuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuck' } 4 GhastlyNightmare 77.247.181.162
+pm { nick: 'sammich',
+  message: 'cuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuck' } 4 GhastlyNightmare 77.247.181.162
+pm { nick: 'sammich',
+  message: 'cuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuck' } 4 GhastlyNightmare 77.247.181.162
+reset
+pm { nick: 'sammich',
+  message: 'cuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuckcuck' } 4 GhastlyNightmare 77.247.181.162
+reset
+reset
+reset
+force_hat { nick: 'Mr.Guy', hat: 'KevinFace' } 0 Mr.Guy 71.11.76.194
+reset
+force_hat { nick: 'Mr.Guy', hat: 'Kevin' } 0 Mr.Guy 71.11.76.194
+reset
+reset
+core command { nick: 'GhastlyNightmare' }
+USER JOINED { nick: 'GhastlyNightmare' } 77.247.181.162
+reset
+reset
+reset
+pm { nick: 'Mr.Guy', message: 'cuckcuckcuckcuckcuck' } 4 GhastlyNightmare 77.247.181.162
+reset
+pm { nick: 'Mr.Guy', message: 'cuckcuckcuckcuckcuck' } 4 GhastlyNightmare 77.247.181.162
+pm { nick: 'Mr.Guy', message: 'cuckcuckcuckcuckcuck' } 4 GhastlyNightmare 77.247.181.162
+reset
+pm { nick: 'Mr.Guy', message: 'cuckcuckcuckcuckcuck' } 4 GhastlyNightmare 77.247.181.162
+pm { nick: 'Mr.Guy', message: 'cuckcuckcuckcuckcuck' } 4 GhastlyNightmare 77.247.181.162
+pm { nick: 'Mr.Guy', message: 'cuckcuckcuckcuckcuck' } 4 GhastlyNightmare 77.247.181.162
+reset
+pm { nick: 'Mr.Guy', message: 'cuckcuckcuckcuckcuck' } 4 GhastlyNightmare 77.247.181.162
+pm { nick: 'Mr.Guy', message: 'cuckcuckcuckcuckcuck' } 4 GhastlyNightmare 77.247.181.162
+reset
+pm { nick: 'Mr.Guy', message: 'cuckcuckcuckcuckcuck' } 4 GhastlyNightmare 77.247.181.162
+reset
+pm { nick: 'Mr.Guy', message: 'cuckcuckcuckcuckcuck' } 4 GhastlyNightmare 77.247.181.162
+reset
+reset
+core command { flair: '$Rubik Mono One|/^#FFD000Z|#FFE055e#FFEFAAu#FFFFFFs',
+  nick: 'Zeus',
+  token: '70b0mK8wJ6EUIFe' }
+USER JOINED { flair: '$Rubik Mono One|/^#FFD000Z|#FFE055e#FFEFAAu#FFFFFFs',
+  nick: 'Zeus',
+  token: '70b0mK8wJ6EUIFe' } 60.230.193.121
+reset
+reset
+core command { flair: '$Rubik Mono One|/^#FFD000Z|#FFE055e#FFEFAAu#FFFFFFs',
+  nick: 'Zeus',
+  token: '70b0mK8wJ6EUIFe' }
+USER JOINED { flair: '$Rubik Mono One|/^#FFD000Z|#FFE055e#FFEFAAu#FFFFFFs',
+  nick: 'Zeus',
+  token: '70b0mK8wJ6EUIFe' } 60.230.193.121
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command { flair: '$Archivo Narrow|/^#acccli#aabnei',
+  nick: 'clinei',
+  part: 'your mom',
+  token: 'nOzdEbCRyBE7T00' }
+USER JOINED { flair: '$Archivo Narrow|/^#acccli#aabnei',
+  nick: 'clinei',
+  part: 'your mom',
+  token: 'nOzdEbCRyBE7T00' } 84.50.202.149
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command {}
+USER JOINED {} 163.172.129.70
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+core command {}
+USER JOINED {} 178.175.128.50
+reset

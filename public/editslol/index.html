@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <title>Map Editor</title>
+        <link rel="icon" type="image/png" href="/images/icon2.ico">
+        <link rel="stylesheet" type="text/css" href="../editslol/theme.css"/>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+    </head>
+    <body>
+        <div id="world">
+            <div id="pen" style="position:absolute;z-index:10;"><img></div>
+            <canvas id="grid"></canvas>
+        </div>
+        <div id="side">
+            <div id="tabs">
+                <ul>
+                    <li class="tab tiles selected">Tile</li>
+                    <li class="tab objects">Object</li>
+                    <li class="tab animation">Animation</li>
+                    <li class="tab settings">Settings</li>
+                </ul>
+            </div>
+            <div id="panel">
+                <div id="tiles"></div>
+                <div id="objects"></div>
+                <div id="animation"></div>
+                <div id="settings">
+                    Special tiles<br>
+                    <div id="spawn" class="extra" style="width:48px;height:48px;background-color:green;">spawn</div>
+                     <div id="cblock" class="extra" style="width:48px;height:48px;background-color:red;">Collision block</div>
+                    <div style="width: 100%;margin-top: 20px;border-bottom: 1px solid black;">Object Settings</div>
+                    <div id="objectSettings" style="width:100%"></div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="/socket.io/socket.io.js"></script>
+    <script language="javascript" type="text/javascript" src="../editslol/client.js"></script>
+</html>

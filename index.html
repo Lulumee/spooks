@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Please leave your sanity in a safe place!</title>
+    <meta name="Description" content="Spooks is an expanding multiverse of pixel art. Come, create and play with your personal animated creations, live!">
+    <link rel="icon" type="image/png" href="/images/icon2.ico">
+    <link rel="stylesheet" type="text/css" href="theme.css"/>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Droid%20Sans"/>
+    <script language="javascript" type="text/javascript" src="dateFormat.js"></script>
+</head>
+
+<body>
+    <div id="menu">
+        <div id="toggle-menu">></div>
+        <nav id="tabs">
+            <ul>
+                <li class="tab">Users</li>
+                <li class="tab selected">Avatars</li>
+                <li class="tab">Options</li>
+            </ul>
+        </nav>
+        <div id="Users" class="panel">
+            
+        </div>
+        <div id="Avatars" class="panel">
+            <input id="upload" type="file"/>
+        </div>
+        <div id="Options" class="panel"></div>
+    </div>
+    <div id="world">
+        <canvas id="players"></canvas>
+        <canvas id="background" style="position:absolute;left:0;top:0;z-index:-1;"></canvas>
+    </div>
+    <div id="chat">
+        <div id="messages"></div>
+        <div id="input-bar"><div><input placeholder="Type anything then press enter"/></div></div>
+    </div>
+</body>
+    <script src="/socket.io/socket.io.js"></script>
+    <script language="javascript" type="text/javascript" src="client.js"></script>
+    <script language="javascript" type="text/javascript" src="libjs.js"></script>
+    <script language="javascript" type="text/javascript" src="minispooks.js"></script>
+</html>

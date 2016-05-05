@@ -1,0 +1,148 @@
+body{
+    margin:0;
+    overflow:hidden;
+}
+
+.noselect{
+    -webkit-user-select: none; /* Chrome/Safari */        
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+ */
+
+    -o-user-select: none;
+    user-select: none;
+}
+
+#world{
+    width: 3000px;
+    height: 3000px;
+    overflow:hidden;
+    background-color:black;
+}
+
+#world:active{
+    cursor:-webkit-grabbing;
+    cursor:grabbing;
+}
+
+#side{
+    position:fixed;
+    z-index:9999;
+    right:0;
+    top:0;
+    width:300px;
+    height:400px;
+    background-color:white;
+}
+
+.item,#pen{
+    -moz-user-select: none; 
+    -khtml-user-select: none; 
+    -webkit-user-select: none; 
+    -o-user-select: none; 
+    z-index:5;
+}
+
+#tabs{
+    height: 47px;
+    background-color:#7F8C9A;
+    border-bottom: 1px solid black;
+}
+
+#tabs ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    padding-top: 30px;
+}
+
+#tabs li{
+    display: inline;
+    border: solid;
+    border-width: 1px 1px 0 1px;
+    margin: 0 -5px 0 0;
+    cursor: pointer;
+}
+
+#tabs li.selected{
+    padding-bottom: 1px;
+    padding-top:5px;
+    background-color:#455865;
+}
+
+#panel{
+    position:absolute;
+    width:100%;
+    height:calc(100% - 47px);
+    -webkit-user-select: none; /* Chrome/Safari */        
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+ */
+
+    /* Rules below not implemented in browsers yet */
+    -o-user-select: none;
+    user-select: none;
+    overflow:scroll;
+}
+
+#objects{
+    display:none;
+}
+
+table{
+    border-spacing:0px;
+}
+
+table tr{
+	height: 16px;
+	display: block;
+    border: 0;
+    border-collapse: collapse;
+}
+table td{
+    padding:0;
+}
+table td img{
+    -webkit-user-select: none; /* Chrome/Safari */        
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+ */
+
+    /* Rules below not implemented in browsers yet */
+    -o-user-select: none;
+    user-select: none;
+}
+.tile.tiles{
+	height:16px;
+	width:16px;
+}
+
+#settings{
+    position:absolute;
+    top:30px;
+    width:100%;
+    margin-top:15px;
+    display:none;
+}
+
+/* Resize handles */
+.resizable-right {
+    cursor: e-resize;
+    width: 7px;
+    right: -5px;
+    top: 0;
+    height: 100%;
+}
+
+.resizable-bottom {
+    cursor: s-resize;
+    height: 7px;
+    width: 100%;
+    bottom: -5px;
+    left: 0;
+}
+
+.resizable-handle {
+    position: absolute;
+    font-size: 0.1px;
+    display: block;
+    -ms-touch-action: none;
+    touch-action: none;
+}
