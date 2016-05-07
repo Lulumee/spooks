@@ -330,8 +330,8 @@ function animate(){
 
 //controls click to walk(or tap)
 canvas.addEventListener('click', function(e){
-    var x = Math.round((e.clientX + document.body.scrollLeft)/3);
-    var y = Math.round((e.clientY + document.body.scrollTop)/3);
+    var x = Math.round((e.clientX)/3);
+    var y = Math.round((e.clientY)/3);
     
     var context = false;
     var keys = Object.keys(ONLINE.players);
@@ -368,7 +368,7 @@ var spooks = {
                     w : 32,
                     h : 64,
                     x : 0,
-                    y : 0,
+                    y : data.frameY || 0,
                     maxX : 1,
                     maxY : 4
                 },
@@ -388,11 +388,6 @@ var spooks = {
             player.updatePos();
             init();
         }
-        CHAT.show({
-            nick : ONLINE.players[id].nick,
-            message : 'has joined',
-            style : 'general'
-        });
         var li = document.createElement('li');
         li.addEventListener('click', function(e){
             $$$.contextMenu(e,e.target.textContent);
@@ -523,7 +518,6 @@ var spooks = {
             world.height *= 2;
             this.DrawTiles(TileSheet);
         }
-        console.log(MapInfo)
         if(MapInfo.objects){
             var Objects = JSON.parse(MapInfo.objects);
             for(var t in Objects){
@@ -633,6 +627,11 @@ document.addEventListener('keyup', function(e){
 //User connected, AddUser
 socket.on('join',function(data){
     spooks.AddUser(data.id,data);
+    CHAT.show({
+        nick : data.nick,
+        message : 'has joined',
+        style : 'general'
+    });
 });
 
 //User disconnected, RemoveUser
@@ -662,14 +661,15 @@ socket.on('message',function(message){
 
 socket.on('MapInfo', function(data){
     for(var i in data.avatars){//load all avatars
-        var id = data.avatars[i].id;
-        var avy = data.avatars[i].avy;
-        var nick = data.avatars[i].nick;
-        if(avy){
-            spooks.loadAvatar(id,avy);
-        }
-        if(nick){
-            spooks.nick(nick,id,true);
+        var UserData = data.avatars[i];
+        spooks.AddUser(UserData.id,{
+            nick : UserData.nick,
+            x : UserData.position.x,
+            y : UserData.position.y,
+            frameY : UserData.position.frameY
+        });
+        if(UserData.avy){
+            spooks.loadAvatar(UserData.id,UserData.avy);
         }
     }
     if(data.map){
@@ -690,9 +690,7 @@ socket.on('positions', function(data){//grab all players positions
                 Player.tx = data[i].x;
                 Player.ty = data[i].y;
                 Player.frame.y = data[i].frameY;
-            } else {//if received data on unknown player, AddUser
-                spooks.AddUser(i,data[i]);
-            }    
+            }  
         }  
     }
 });
