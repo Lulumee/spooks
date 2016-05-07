@@ -20,13 +20,13 @@ var player = {};
 socket.on('connect', function(){
     player = {
         dir : {
-            left : false,
             right : false,
-            up : false,
-            down : false
+            left : false,
+            top : false,
+            bottom : false
         },
         id : socket.id,
-        updatePos :function(){
+        updatePos : function(){
             if(this.info){
                 socket.emit('position',{
                     x : this.info.x,
@@ -39,7 +39,6 @@ socket.on('connect', function(){
 });
 
 var world = {
-    loaded : false,
     width : 0,
     height : 0,
     grid : 3,
@@ -91,7 +90,7 @@ function paint(){
             if(p.frame.maxY > 1)p.frame.y = 2;
         } else if(player.dir.right){
             if(collision(p,'right')){
-                p.x++
+                p.x++;
             }
             if(p.frame.maxY > 2)p.frame.y = 3;
         }
@@ -107,7 +106,7 @@ function paint(){
             p.frame.y = 0;
         }
         player.updatePos();//send posistion to server
-        window.scrollTo(((p.x*world.grid)+p.frame.w)-(screen.width/2), ((p.y*world.grid)+p.frame.h)-(screen.height/2));
+        spooks.DrawTiles(world.tiles);
     }
     
     var all = [];
@@ -127,8 +126,8 @@ function paint(){
     });
     
     for(var i in all){//Draw all Objects And Players 
-        var user = all[i]
-        if(user && (user.nick != player.info.nick || player.autowalk) && user.frame){
+        var user = all[i];
+        if(user && user.frame && (user.nick != player.info.nick || player.autowalk)){
             if(user.x > user.tx){
                 user.x--;
                 if(user.frame.maxY > 1) user.frame.y = 2;
@@ -145,7 +144,7 @@ function paint(){
             }
             if(user.nick == player.info.nick){
                 player.updatePos();
-                window.scrollTo(((user.x*world.grid)+user.frame.w)-(screen.width/2), ((user.y*world.grid)+user.frame.h)-(screen.height/2));
+                spooks.DrawTiles();
                 if(user.y == user.ty && user.x == user.tx){
                     player.autowalk = false;
                 }
@@ -215,6 +214,21 @@ function collision(player,dir){
 
 //draws given player
 function Draw(user){
+    if(user.nick == player.info.nick){
+        var Pleft = window.innerWidth/2;
+        var Ptop = window.innerHeight/2;
+        if(player.info.x*3 < Pleft) Pleft = player.info.x*3;
+        if(player.info.y*3 < Ptop) Ptop = player.info.y*3;
+        Pleft = Math.round(Pleft);
+        Ptop = Math.round(Ptop);
+    } else {
+        Pleft = user.x*3;
+        Ptop = user.y*3;
+        if(player.info.x*3 > window.innerWidth/2) Pleft = Pleft-(player.info.x*3-(window.innerWidth/2));
+        if(player.info.y*3 > window.innerHeight/2) Ptop = Ptop-(player.info.y*3-(window.innerHeight/2));
+        Pleft = Math.round(Pleft);
+        Ptop = Math.round(Ptop);
+    }
     if(user.nick){//if have a nick draw it
         ctx.font = "12pt Droid Sans";
         ctx.fillStyle = 'white';
@@ -222,19 +236,25 @@ function Draw(user){
         ctx.strokeStyle = 'black';
         ctx.lineWidth="1";
         var width = ctx.measureText(user.nick).width;
-        ctx.strokeText(user.nick,(user.x*world.grid)-(width/2)+(user.frame.w/2),(user.y-5)*world.grid);
-        ctx.fillText(user.nick,(user.x*world.grid)-(width/2)+(user.frame.w/2),(user.y-5)*world.grid);
+        ctx.strokeText(user.nick,(Pleft)-(width/2)+(user.frame.w/2),Ptop-5);
+        ctx.fillText(user.nick,(Pleft)-(width/2)+(user.frame.w/2),Ptop-5);
     }
     if(user.message){
         var width = ctx.measureText(user.message).width + 30;
-        drawBubble(ctx, (user.x*world.grid)-(width/2)+(user.frame.w/2),(user.y*world.grid)-64,width, 30, 10, user.message);
+        drawBubble(ctx, (Pleft)-(width/2)+(user.frame.w/2),(Ptop)-64,width, 30, 10, user.message);
     }
     if(user.nick){
-        ctx.drawImage(user.avy, (user.frame.x*user.frame.w), (user.frame.y*user.frame.h), user.frame.w, user.frame.h,user.x*world.grid,user.y*world.grid,user.frame.w,user.frame.h);
+        ctx.drawImage(user.avy, (user.frame.x*user.frame.w), (user.frame.y*user.frame.h), user.frame.w, user.frame.h,Math.round(Pleft),Math.round(Ptop),user.frame.w,user.frame.h);
     } else if(user.tiles.length){
         for(var i = 0; i < user.tiles.length; i++){
             var ObjectTile = user.tiles[i];
-            ctx.drawImage(TileSheet,ObjectTile.sx,ObjectTile.sy,16,16,(user.x*world.grid)+ObjectTile.left,(user.y*world.grid)+ObjectTile.top,16,16);
+            var Pleft = 0;
+            var Ptop = 0;
+            var PlayerX = (player.info && player.info.x || world.spawn[0])*3;
+            var PlayerY = (player.info && player.info.y || world.spawn[1])*3
+            if(PlayerX > window.innerWidth/2) Pleft = (PlayerX)-window.innerWidth/2;
+            if(PlayerY > window.innerHeight/2) Ptop = (PlayerY)-window.innerHeight/2;
+            ctx.drawImage(TileSheet,ObjectTile.sx,ObjectTile.sy,16,16,((user.x*world.grid)+ObjectTile.left)-Pleft,((user.y*world.grid)+ObjectTile.top)-Ptop,16,16);
         }
     }
 }
@@ -274,7 +294,7 @@ function animate(){
         if(p.frame.x > p.frame.maxX){
             p.frame.x = 0;
         }
-    } else if(!p.twitch) {
+    } else if(!p.twitch){
         p.twitch = setInterval(function(){
             if(p.frame.x < p.frame.maxX){
                 p.frame.x++;
@@ -310,8 +330,8 @@ function animate(){
 
 //controls click to walk(or tap)
 canvas.addEventListener('click', function(e){
-    var x = Math.round(((e.clientX + document.body.scrollLeft)/3)/3)*3;
-    var y = Math.round(((e.clientY + document.body.scrollTop)/3)/3)*3;
+    var x = Math.round((e.clientX + document.body.scrollLeft)/3);
+    var y = Math.round((e.clientY + document.body.scrollTop)/3);
     
     var context = false;
     var keys = Object.keys(ONLINE.players);
@@ -328,6 +348,10 @@ canvas.addEventListener('click', function(e){
         player.info.ty = y-Math.round(player.info.frame.h/3);
         player.autowalk = true;   
     }
+});
+
+window.addEventListener('resize', function(){
+    spooks.DrawTiles(world.tiles);
 });
 
 //All the important functions besides the basic ones
@@ -497,12 +521,9 @@ var spooks = {
 			}
             world.width *= 2;
             world.height *= 2;
-            if(screen.width > world.width){
-                document.getElementById('world').style.left = ((screen.width/2) - (screen.width/2)) + 'px';
-                document.getElementById('world').style.top = ((screen.height/2) - (screen.height/2))-32 + 'px';
-            }
-            DrawTiles(TileSheet);
+            this.DrawTiles(TileSheet);
         }
+        console.log(MapInfo)
         if(MapInfo.objects){
             var Objects = JSON.parse(MapInfo.objects);
             for(var t in Objects){
@@ -534,17 +555,25 @@ var spooks = {
                 world.spawn = [0,0];
             }
         }
-        function DrawTiles(TileSheet){//Drawing all tiles
-            //set bgcanvas size
-            bgcanvas.width = world.width;            
-            bgcanvas.height = world.height;            
-            //set main canvas size           
-            canvas.width = world.width;            
-            canvas.height = world.height;  
-			for(var i = 0; i < world.tiles.length; i++){
-				bg.drawImage(TileSheet,world.tiles[i].sx,world.tiles[i].sy,16,16,(world.tiles[i].x*3)+(world.width/4),(world.tiles[i].y*3)+(world.height/4),16,16);
-			}
-        } 
+    },
+    DrawTiles : function(Tiles){
+        bg.clearRect(0,0,window.innerWidth,window.innerHeight);
+        //set bgcanvas size
+        bgcanvas.width = window.innerWidth;            
+        bgcanvas.height = window.innerHeight;            
+        //set main canvas size           
+        canvas.width = window.innerWidth;            
+        canvas.height = window.innerHeight; 
+        //magic
+        var Pleft = 0;
+        var Ptop = 0;
+        var PlayerX = (player.info && player.info.x || world.spawn[0])*3;
+        var PlayerY = (player.info && player.info.y || world.spawn[1])*3
+        if(PlayerX > window.innerWidth/2) Pleft = (PlayerX)-window.innerWidth/2;
+        if(PlayerY > window.innerHeight/2) Ptop = (PlayerY)-window.innerHeight/2;
+		for(var i = 0; i < world.tiles.length; i++){
+			bg.drawImage(TileSheet,world.tiles[i].sx,world.tiles[i].sy,16,16,((world.tiles[i].x*3)+(world.width/4))-Math.round(Pleft),((world.tiles[i].y*3)+(world.height/4))-Math.round(Ptop),16,16);
+		}        
     }
 }
 
@@ -579,10 +608,10 @@ document.getElementById('tabs').addEventListener('click', function(e){
 document.addEventListener('keydown', function(e){
     var key = e.which;
     if(!e.ctrlKey){
-        if(key == "37") player.dir.left = true;//left
-        else if(key == "38") player.dir.up = true;//up
-        else if(key == "39") player.dir.right = true;//right
-        else if(key == "40") player.dir.down = true;//down
+        if(key == "37") player.dir.left = true;
+        else if(key == "38") player.dir.up = true;
+        else if(key == "39") player.dir.right = true;
+        else if(key == "40") player.dir.down = true;
     } else {
         var UserFrame = player.info.frame;
         if(key == "37" && UserFrame.maxY >= 6) UserFrame.y = 6;//left
@@ -595,10 +624,10 @@ document.addEventListener('keydown', function(e){
 
 document.addEventListener('keyup', function(e){
     var key = e.which;
-    if(key == "37") player.dir.left = false;//left
-    else if(key == "38") player.dir.up = false;//up
-    else if(key == "39") player.dir.right = false;//right
-    else if(key == "40") player.dir.down = false;//down
+    if(key == "37") player.dir.left = false;
+    else if(key == "38") player.dir.up = false;
+    else if(key == "39") player.dir.right = false;
+    else if(key == "40") player.dir.down = false;
 });
 
 //User connected, AddUser
@@ -671,7 +700,6 @@ socket.on('positions', function(data){//grab all players positions
 // ----------------------------------------------------
 //  Gets the frame width and height of the given avatar 
 // ----------------------------------------------------
-
 
 //ZOOM IN METHODD
 function FrameSizes(avy){
@@ -858,7 +886,7 @@ function SendAvy(imgdata,name,SpriteFrames){
         var user = player.info;
         TestAvatar = new Image();//update client side immediately
         TestAvatar.src = pixs;
-        var Sizes = SpriteFrames;
+        var Sizes = SpriteFrames || FrameSizes(TestAvatar);
         if(Sizes){
             user.avy = TestAvatar;
             user.frame = Sizes;
@@ -884,7 +912,7 @@ document.getElementById('upload').onchange = function(){
     var reader = new FileReader();
     reader.onload = function(evt){
         if(file.type == 'image/gif'){
-            //SpriteGif(evt.target.result,file.name);
+            SpriteGif(evt.target.result,file.name);
         } else {
             SendAvy(evt.target.result,file.name);
         }
