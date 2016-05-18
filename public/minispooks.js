@@ -404,7 +404,7 @@ var $$$ = {
         
         el.addEventListener('mousedown', function(e){
             var target = e.target || e.srcElement;
-            if(!target.classList.contains('resizable-handle') && !target.classList.contains('nick') && target.nodeName != 'SPAN'){
+            if(target.id === ('drag-bar')){
                 clickX = e.clientX - parseInt(el.style.left);
                 clickY = e.clientY - parseInt(el.style.top);
                 el.addEventListener('mousemove',drag);
@@ -681,7 +681,7 @@ socket.on('chatinfo', function(data){
         input.value = '';
     }
     
-    var input = document.getElementById('input-bar').getElementsByTagName('input')[0];
+    var input = document.getElementById('input-bar').getElementsByTagName('textarea')[0];
     input.onkeydown = function(e){
         if(e.keyCode == 9){
             e.preventDefault();
@@ -708,6 +708,23 @@ socket.on('chatinfo', function(data){
                 }
             }
             break;
+        }
+    };
+    
+    var messegesPanel = document.getElementById('messages');
+    var originalHeight = parseInt(window.getComputedStyle(input).getPropertyValue("height"));
+    
+    input.onkeyup = function(e){
+        var messegesPanelPreviousHeight = messegesPanel.clientHeight;
+        var messegesPanelPreviousScrollTop = messegesPanel.scrollTop;
+        input.style.height = 0 + "px";
+        var height = input.scrollHeight;
+        input.style.height = Math.min(height - parseInt(window.getComputedStyle(input).getPropertyValue("padding-top")) - parseInt(window.getComputedStyle(input).getPropertyValue("padding-bottom")), messegesPanel.parentElement.clientHeight / 3 - (messegesPanel.parentElement.clientHeight / 3 % originalHeight)) + "px";
+        messegesPanel.style.height = messegesPanel.parentElement.clientHeight - document.getElementById('drag-bar').clientHeight - input.parentElement.clientHeight + "px";
+        if(e.shiftKey || (!e.shiftKey && messegesPanel.scrollHeight !== (messegesPanelPreviousScrollTop + messegesPanelPreviousHeight) && messegesPanel.scrollHeight !== (messegesPanel.clientHeight + messegesPanel.scrollTop))) {
+            messegesPanel.scrollTop -= messegesPanel.clientHeight - messegesPanelPreviousHeight;
+        } else {
+            messegesPanel.scrollTop -= messegesPanel.scrollHeight - (messegesPanelPreviousScrollTop + messegesPanelPreviousHeight);
         }
     };
 })();

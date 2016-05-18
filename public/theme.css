@@ -106,43 +106,70 @@ body{
 /*chat css*/
 #chat{
     position:fixed;
-    right:0;
-    bottom:0;
+    right: 0;
+    bottom: 0;
     width: 400px;
     height: 200px;
-    background-color:#111;
-    color:white;
-    border-radius:5px;
+    background-color: #111;
+    color: white;
+    border-radius: 10px;
 }
+
 #chat #input-bar{
     position: absolute;
-    bottom:0;
-    width:100%;
-    background-color:#3A3A3A;
+    bottom: 0;
+    width: calc(100% - 10px);
+    padding: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    background-color: #3A3A3A;
 }
 
-#chat #input-bar div {
-    padding:5px;
-}
-
-#chat input{
-    width:100%;
+#chat textarea{
+    width: calc(100% - 6px);
+    height: 15px;
+    padding: 2px;
     border: 1px solid #0C0D0E;
+    margin: 0;
     border-radius: 5px;
-    color: white;
+    float: left;
     box-shadow: rgba(255, 255, 255, 0.1) 0 1px 0, rgba(0, 0, 0, 0.8) 0 1px 7px 0px inset;
-    background:rgba(20, 20, 20, 0.75);
+    background: rgba(20, 20, 20, 0.75);
+    color: white;
+    resize: none;
 }
 
 #messages{
-    height:calc(100% - 29px);
-    overflow-y:scroll;
-    overflow-x:hidden;
+    position: absolute;
+    height: calc(100% - 46px);
+    width: 100%;
+    top: 15px;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 #messages img{
-    max-height:100px;
-    max-width:100px;
+    max-height: 100px;
+    max-width: 100px;
+}
+
+#drag-bar {
+    position: absolute;
+    height: 15px;
+    width: 100%;
+    top: 0;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    background-color: #3A3A3A;
+}
+
+::-webkit-scrollbar{
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background: #3A3A3A;
 }
 
 /*message styling*/
