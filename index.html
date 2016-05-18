@@ -32,10 +32,13 @@
         <canvas id="background" style="position:absolute;left:0;top:0;z-index:-1;"></canvas>
     </div>
     <div id="chat">
-        <div id="drag-bar"></div>
+        <div id="drag-bar">
+            <div id="minimize">&minus;</div>
+        </div>
         <div id="messages"></div>
         <div id="input-bar"><textarea placeholder="Type anything then press enter"></textarea></div>
     </div>
+    <div id="tabbed"></div>
 </body>
     <script src="/socket.io/socket.io.js"></script>
     <script language="javascript" type="text/javascript" src="client.js"></script>
