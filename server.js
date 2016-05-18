@@ -123,7 +123,8 @@ function createChannel(io, channelName){
 						avatars.push({
 							avy : Juser.avy,
 							id : Juser.socket.id,
-							nick : Juser.nick
+							nick : Juser.nick,
+                            position : positions[Juser.socket.id]
 						});
 					}
 				}
