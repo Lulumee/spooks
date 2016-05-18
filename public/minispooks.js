@@ -112,9 +112,11 @@ var COMMANDS = {
     topic : {
         params : ['topic']
     },
+    whoami : {},
     whois : {
         params : ['nick']
-    }
+    },
+    refresh : {}
 }
 
 //all functions chat related

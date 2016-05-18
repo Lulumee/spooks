@@ -484,6 +484,21 @@ function createChannel(io, channelName){
                 });
             }
         },
+        whoami : {
+            handler : function(user,params){
+                dao.find(user.nick).then(function(dbuser){
+                    var message, info;
+                    var i = indexOf(user.nick);
+                    info = i != -1 ? channel.online[i] : false;
+                    if(info){
+                        message = 'User: ' + info.nick + '\n Role: ' + info.role + '\n IP: ' + info.remote_addr + '\n Mask: null' + '\n Registered: ' + (dbuser ? 'Yes' : 'No');
+                    } else {
+                        message = 'You don\'t exist in the database or the userlist';
+                    }
+                    showMessage(user.socket, message);
+                });
+            }
+        },
         whois : {
             params : ['nick'],
             handler : function(user,params){
@@ -502,6 +517,12 @@ function createChannel(io, channelName){
                     }
                     showMessage(user.socket, message);
                 });
+            }
+        },
+        refresh : {
+            role : 0,
+            handler : function(){
+                roomEmit('refresh');
             }
         }
     }    

@@ -639,6 +639,11 @@ socket.on('left', function(id){
     spooks.removeUser(id);
 });
 
+//refresh page
+socket.on('refresh',function(){
+    location.reload();
+});
+
 //tell user if disconnected from server
 socket.on('disconnect', function() {
     CHAT.show({
