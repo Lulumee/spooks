@@ -329,7 +329,8 @@ function animate(){
 }
 
 //controls click to walk(or tap)
-canvas.addEventListener('click', function(e){
+
+function move(e){
     var x = Math.round((e.clientX)/3);
     var y = Math.round((e.clientY)/3);
     
@@ -348,6 +349,15 @@ canvas.addEventListener('click', function(e){
         player.info.ty = y-Math.round(player.info.frame.h/3);
         player.autowalk = true;   
     }
+}
+
+canvas.addEventListener('mousedown', function(e){
+    e.preventDefault();
+    if(document.activeElement === document.getElementById('world') && e.which===1) {
+        canvas.addEventListener('mouseup', move(e));
+        
+    }
+    document.getElementById('world').focus();
 });
 
 window.addEventListener('resize', function(){
@@ -601,18 +611,20 @@ document.getElementById('tabs').addEventListener('click', function(e){
 //
 document.addEventListener('keydown', function(e){
     var key = e.which;
-    if(!e.ctrlKey){
-        if(key == "37") player.dir.left = true;
-        else if(key == "38") player.dir.up = true;
-        else if(key == "39") player.dir.right = true;
-        else if(key == "40") player.dir.down = true;
-    } else {
-        var UserFrame = player.info.frame;
-        if(key == "37" && UserFrame.maxY >= 6) UserFrame.y = 6;//left
-        else if(key == "38" && UserFrame.maxY >= 5) UserFrame.y = 5;//up
-        else if(key == "39" && UserFrame.maxY >= 7) UserFrame.y = 7;//right
-        else if(key == "40" && UserFrame.maxY >= 4) UserFrame.y = 4;//down   
-        player.updatePos();//send posistion to server
+    if(document.activeElement === document.getElementById('world')) {
+        if(!e.ctrlKey){
+            if(key == "37") player.dir.left = true;
+            else if(key == "38") player.dir.up = true;
+            else if(key == "39") player.dir.right = true;
+            else if(key == "40") player.dir.down = true;
+        } else {
+            var UserFrame = player.info.frame;
+            if(key == "37" && UserFrame.maxY >= 6) UserFrame.y = 6;//left
+            else if(key == "38" && UserFrame.maxY >= 5) UserFrame.y = 5;//up
+            else if(key == "39" && UserFrame.maxY >= 7) UserFrame.y = 7;//right
+            else if(key == "40" && UserFrame.maxY >= 4) UserFrame.y = 4;//down   
+            player.updatePos();//send posistion to server
+        }
     }
 });
 

@@ -15,7 +15,8 @@ body{
 }
 
 #world{
-    position:absolute;
+    position: absolute;
+    outline: none;
 }
 
 #menu{
