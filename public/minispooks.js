@@ -112,9 +112,11 @@ var COMMANDS = {
     topic : {
         params : ['topic']
     },
+    whoami : {},
     whois : {
         params : ['nick']
-    }
+    },
+    refresh : {}
 }
 
 //all functions chat related
@@ -402,7 +404,7 @@ var $$$ = {
         
         el.addEventListener('mousedown', function(e){
             var target = e.target || e.srcElement;
-            if(!target.classList.contains('resizable-handle') && !target.classList.contains('nick') && target.nodeName != 'SPAN'){
+            if(target.id === ('drag-bar')){
                 clickX = e.clientX - parseInt(el.style.left);
                 clickY = e.clientY - parseInt(el.style.top);
                 el.addEventListener('mousemove',drag);
@@ -413,6 +415,56 @@ var $$$ = {
                 
         el.addEventListener('mouseup', remove);
         container.addEventListener('mouseup', remove);
+    },
+    resizeable : function(el){
+        var container = document.getElementById('world');
+        var width = el.offsetWidth;
+        var height = el.offsetHeight;
+        el.style.width = width + 'px';
+        el.style.height = height + 'px';
+        
+        var clickX = 0;
+        var clickY = 0;     
+        function resize(event){
+            var movementX = (event.clientX-clickX) - parseInt(el.style.width);
+            var movementY = (event.clientY-clickY) - parseInt(el.style.height);
+            width = parseInt(el.style.width) + movementX;
+            height = parseInt(el.style.height) + movementY;
+            if((width < container.offsetWidth) && width > 200){
+                el.style.width = width + 'px';
+            }
+            if(((height + parseInt(el.style.top)) < container.offsetHeight) && height > 100){
+                el.style.height = height + 'px';
+            }
+            var messegesPanel = document.getElementById('messages');
+            var input = document.getElementById('input-bar').getElementsByTagName('textarea')[0];
+            messegesPanel.style.height = messegesPanel.parentElement.clientHeight - document.getElementById('drag-bar').clientHeight - input.parentElement.clientHeight + "px";
+        }
+        
+        function remove(){
+            el.removeEventListener('mousemove',resize);
+            container.removeEventListener('mousemove',resize);
+            document.body.classList.remove('noselect');
+        }
+        
+        function add(e){
+            clickX = e.clientX - parseInt(el.style.width);
+            clickY = e.clientY - parseInt(el.style.height);
+            el.addEventListener('mousemove',resize);
+            container.addEventListener('mousemove',resize);
+            document.body.classList.add('noselect');
+        }
+        
+        el.addEventListener('mouseup',remove);     
+        container.addEventListener('mouseup',remove);
+                        
+        //corner resize handle
+        var cornerHandle = document.createElement('div');
+        cornerHandle.className = 'resizable-handle resizable-bottom-right';
+        cornerHandle.addEventListener('mousedown', add);
+        cornerHandle.addEventListener('mouseup',remove);
+        
+        el.appendChild(cornerHandle);
     },
     contextMenu : function(e,name){
         var options = {
@@ -664,12 +716,34 @@ socket.on('chatinfo', function(data){
     
 })();
 
+var tabber = {
+    tab : function(id){
+        var el = document.getElementById('tabbed');
+        var tab = document.createElement('div');
+        tab.className = 'tab';
+        tab.textContent = "Chat";
+        tab.addEventListener('click',function(){
+            var chatWindow = document.getElementById(id);
+            chatWindow.style.display = 'block';
+            tab.parentNode.removeChild(tab);
+        });
+        el.appendChild(tab);
+    }
+};
+
 (function(){
     var history = [];
     var historyIndex = -1;
     
-    var chat = document.getElementById('chat')
-    $$$.draggable(chat)
+    var chat = document.getElementById('chat');
+    $$$.draggable(chat);
+    $$$.resizeable(chat);
+    
+    var minimize = document.getElementById('minimize');
+    minimize.addEventListener('click',function(){
+        chat.style.display = 'none';
+        tabber.tab('chat');
+    });
     
     function submit(){
         var text = input.value;
@@ -679,7 +753,7 @@ socket.on('chatinfo', function(data){
         input.value = '';
     }
     
-    var input = document.getElementById('input-bar').getElementsByTagName('input')[0];
+    var input = document.getElementById('input-bar').getElementsByTagName('textarea')[0];
     input.onkeydown = function(e){
         if(e.keyCode == 9){
             e.preventDefault();
@@ -706,6 +780,23 @@ socket.on('chatinfo', function(data){
                 }
             }
             break;
+        }
+    };
+    
+    var messegesPanel = document.getElementById('messages');
+    var originalHeight = parseInt(window.getComputedStyle(input).getPropertyValue("height"));
+    
+    input.onkeyup = function(e){
+        var messegesPanelPreviousHeight = messegesPanel.clientHeight;
+        var messegesPanelPreviousScrollTop = messegesPanel.scrollTop;
+        input.style.height = 0 + "px";
+        var height = input.scrollHeight;
+        input.style.height = Math.min(height - parseInt(window.getComputedStyle(input).getPropertyValue("padding-top")) - parseInt(window.getComputedStyle(input).getPropertyValue("padding-bottom")), messegesPanel.parentElement.clientHeight / 3 - (messegesPanel.parentElement.clientHeight / 3 % originalHeight)) + "px";
+        messegesPanel.style.height = messegesPanel.parentElement.clientHeight - document.getElementById('drag-bar').clientHeight - input.parentElement.clientHeight + "px";
+        if(e.shiftKey || (!e.shiftKey && messegesPanel.scrollHeight !== (messegesPanelPreviousScrollTop + messegesPanelPreviousHeight) && messegesPanel.scrollHeight !== (messegesPanel.clientHeight + messegesPanel.scrollTop))) {
+            messegesPanel.scrollTop -= messegesPanel.clientHeight - messegesPanelPreviousHeight;
+        } else {
+            messegesPanel.scrollTop -= messegesPanel.scrollHeight - (messegesPanelPreviousScrollTop + messegesPanelPreviousHeight);
         }
     };
 })();
