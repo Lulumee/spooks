@@ -220,7 +220,7 @@ function PlaceTile(x,y,sx,sy){
 		sx : sx,
 		sy : sy
 	});
-    if(index == -1){
+    if(index == -1 && x >= 0 && y >= 0){
         var x = parseInt(x);
         var y = parseInt(y);
         //create Item div
@@ -412,6 +412,7 @@ socket.on('Tiles',function(a){
 	
 	var moving = false;
 	var selected = [];
+    var started = [];
 	
 	tilesheet.onload = function(){
 		table.width = tilesheet.width;
@@ -435,66 +436,56 @@ socket.on('Tiles',function(a){
         document.body.removeChild(tilecanvas);
         
         function mouseDown(e){
-			for(var i = 0; i < selected.length; i++){
+			for(var i = 0; i < selected.length; i++){//remove highlighted tiles
 				selected[i].tile.style.boxShadow = '';
-				selected[i].tile.attributes.selecting = false;
 			}
 			selected = [];
-            if(!e.target.attributes.selecting) pen.innerHTML = '<img draggable="false">';
+            pen.innerHTML = '<img draggable="false">';
             var td = e.target.parentNode;
             var cell = td.cellIndex;
             var row = td.parentNode.rowIndex;
-            td.getElementsByTagName('img')[0].style.boxShadow = '0px 0px 0px 1px #f00';
-            var penImage = pen.getElementsByTagName('img')[0];
-			selected.push({
-				tile : e.target,
-				cell : cell,
-				row : row
-			});
-			penImage.attributes.pos = {
-				x : cell*16,
-				y : row*16,
-                type : e.target.offsetParent.offsetParent.offsetParent.id
-			}
-			penImage.src = e.srcElement.currentSrc;
+            started = [cell,row];
 			moving = true;
         }
         
         function mouseUp(e){
 			moving = false;
-			if(selected.length){
-				pen.innerHTML = '';
-				var sortedRow = selected.sort(function(a, b){ return a.cell-b.cell});
-				var sortedCell = sortedRow.sort(function(a, b){ return a.row-b.row});
-				var minusX = sortedCell[0].cell;
-				var minuxY = sortedCell[0].row;
-                var maxX = 0;
-                var maxY = 0;
-				for(var r = 0; r < sortedCell.length; r++){
-					var TileImage = new Image();
-                    if(maxX < sortedCell[r].cell-minusX) maxX = sortedCell[r].cell-minusX;
-                    if(maxY < sortedCell[r].row-minuxY) maxY = sortedCell[r].row-minuxY;
-					TileImage.src = sortedCell[r].tile.src;
-					TileImage.style.position = 'absolute';
-					TileImage.style.left = ((sortedCell[r].cell*16)-(minusX*16)) + 'px';
-					TileImage.style.top = ((sortedCell[r].row*16)-(minuxY*16)) + 'px';
-                    TileImage.draggable = false;
-					TileImage.attributes.pos = {
-						x : sortedCell[r].cell*16,
-						y : sortedCell[r].row*16
-					}
-                    if(e.target.offsetParent.offsetParent.parentNode.id == 'tiles'){
-                        if(!pen.classList.contains('tiles')){
-                            pen.classList.add('tiles');
-                        }
-                    } else {
-                        pen.classList.remove('tiles');
-                    }
-					pen.appendChild(TileImage);
+            var td = e.target.parentNode;
+            var cell = td.cellIndex;
+            var row = td.parentNode.rowIndex;
+            var finished = [cell+1,row+1];
+            
+			var minusX = selected[0].cell;
+			var minuxY = selected[0].row;
+            var maxX = 0;
+            var maxY = 0;
+            pen.innerHTML = '';
+            
+            for(var r = 0; r < selected.length; r++){
+                var tile = selected[r];
+                var TileImage = new Image();
+                if(maxX < tile.cell-minusX) maxX = tile.cell-minusX;
+                if(maxY < tile.row-minuxY) maxY = tile.row-minuxY;
+                TileImage.src = tile.tile.src;
+                TileImage.style.position = 'absolute';
+				TileImage.style.left = ((tile.cell*16)-(minusX*16)) + 'px';
+				TileImage.style.top = ((tile.row*16)-(minuxY*16)) + 'px';
+                TileImage.draggable = false;
+				TileImage.attributes.pos = {
+					x : tile.cell*16,
+					y : tile.row*16
 				}
-                pen.attributes.maxX = maxX+1;
-                pen.attributes.maxY = maxY+1;
-			}
+                if(e.target.offsetParent.offsetParent.parentNode.id == 'tiles'){
+                    if(!pen.classList.contains('tiles')){
+                        pen.classList.add('tiles');
+                    }
+                } else {
+                    pen.classList.remove('tiles');
+                }
+                pen.appendChild(TileImage);
+            }
+            pen.attributes.maxX = maxX+1;
+            pen.attributes.maxY = maxY+1;
         }
         
         function mouseMove(e){
@@ -507,18 +498,23 @@ socket.on('Tiles',function(a){
                 }
                 return -1;
             }
-            
-			var index = objindex(selected,e.target);
+            var index = objindex(selected,e.target);
 			if(moving && index == -1 && e.target.tagName == 'IMG'){
 				var row = e.target.parentNode.parentNode.rowIndex;
 				var cell = e.target.parentNode.cellIndex;
-				e.target.attributes.selecting = true;
-				selected.push({
-					tile : e.target,
-					cell : cell,
-					row : row
-				}); 
-				e.target.style.boxShadow = '0px 0px 0px 1px #f00';
+                var finished = [cell+1,row+1];
+                var CurrentTable = e.target.parentNode.parentNode.parentNode
+                for(var x = started[0]; x < finished[0]; x++){
+                    for(var y = started[1]; y < finished[1]; y++){
+                        var td = CurrentTable.children[y].children[x];
+                        td.getElementsByTagName('img')[0].style.boxShadow = '0px 0px 0px 1px #f00';
+                        selected.push({
+                            tile : td.getElementsByTagName('img')[0],
+                            cell : x,
+                            row : y
+                        });
+                    }
+                }
 			}
         }
         
