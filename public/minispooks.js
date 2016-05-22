@@ -783,9 +783,20 @@ var tabber = {
         }
     };
     
+    var messegesPanel = document.getElementById('messages');
+    var originalHeight = parseInt(window.getComputedStyle(input).getPropertyValue("height"));
+    
     input.onkeyup = function(e){
-		input.style.height = '0px';
-        var height = Math.min(Math.max(input.scrollHeight - 5, 20), screen.height / 3);
-		input.style.height = height + 'px';
+        var messegesPanelPreviousHeight = messegesPanel.clientHeight;
+        var messegesPanelPreviousScrollTop = messegesPanel.scrollTop;
+        input.style.height = 0 + "px";
+        var height = input.scrollHeight;
+        input.style.height = Math.min(height - parseInt(window.getComputedStyle(input).getPropertyValue("padding-top")) - parseInt(window.getComputedStyle(input).getPropertyValue("padding-bottom")), messegesPanel.parentElement.clientHeight / 3 - (messegesPanel.parentElement.clientHeight / 3 % originalHeight)) + "px";
+        messegesPanel.style.height = messegesPanel.parentElement.clientHeight - document.getElementById('drag-bar').clientHeight - input.parentElement.clientHeight + "px";
+        if(e.shiftKey || (!e.shiftKey && messegesPanel.scrollHeight !== (messegesPanelPreviousScrollTop + messegesPanelPreviousHeight) && messegesPanel.scrollHeight !== (messegesPanel.clientHeight + messegesPanel.scrollTop))) {
+            messegesPanel.scrollTop -= messegesPanel.clientHeight - messegesPanelPreviousHeight;
+        } else {
+            messegesPanel.scrollTop -= messegesPanel.scrollHeight - (messegesPanelPreviousScrollTop + messegesPanelPreviousHeight);
+        }
     };
 })();
