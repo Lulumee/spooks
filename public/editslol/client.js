@@ -282,7 +282,7 @@ function PlaceObject(Tiles,startX,startY,collision){
             var ObjectContainer = document.createElement('div');
             ObjectContainer.id = settings.objects.length;
             ObjectContainer.style.position = 'absolute';
-            ObjectContainer.className = 'item placed-item';
+            ObjectContainer.className = 'item placed-object';
             ObjectContainer.style.left = startX;
             ObjectContainer.style.top = startY;
             //Append all tiles to ObjectContainer
@@ -310,7 +310,7 @@ function PlaceObject(Tiles,startX,startY,collision){
                 if(remove){
                     var Children = ObjectContainer.children;
                     for(var i = 0; i < Children.length; i++){
-                        Children[i].style.border = 'solid 1px red';
+                        Children[i].style.border = 'solid 1px blue';
                     }
                 }
             });
@@ -333,6 +333,11 @@ function PlaceObject(Tiles,startX,startY,collision){
                     document.getElementById('world').removeChild(ObjectContainer);
                 }
             });
+            //Load into object settings on double click
+            ObjectContainer.addEventListener('dblclick',function(){
+                var ThisObject = settings.objects[this.id];
+                setCollison(ThisObject.tiles,ThisObject)
+            });
         } else {//no tiles, collision block
             var cblock = document.getElementById('cblock').cloneNode();
             cblock.style.position = 'absolute';
@@ -340,12 +345,13 @@ function PlaceObject(Tiles,startX,startY,collision){
             cblock.style.left = startX;
             cblock.style.top = startY;
             cblock.style.display = 'none';
+			cblock.id = settings.objects.length;
             cblock.addEventListener('click', function(e){
                 if(remove){
                     var index = TileIndex({
                         left : parseInt(startX),
                         top : parseInt(startY),
-                        order : parseInt(e.target.parentNode.id)
+                        order : parseInt(e.target.id)
                     });
                     settings.objects.splice(index,1);
                     document.getElementById('world').removeChild(cblock);
@@ -377,6 +383,7 @@ function PlaceObject(Tiles,startX,startY,collision){
             tile : item,
             type : 'objects'
         });
+        pen.innerHTML = '<img draggable="false">';
 }
 
 var table;
@@ -455,6 +462,19 @@ socket.on('Tiles',function(a){
             var row = td.parentNode.rowIndex;
             var finished = [cell+1,row+1];
             
+            var CurrentTable = e.target.parentNode.parentNode.parentNode
+            for(var x = started[0]; x < finished[0]; x++){
+                for(var y = started[1]; y < finished[1]; y++){
+                    var td = CurrentTable.children[y].children[x];
+                    td.getElementsByTagName('img')[0].style.boxShadow = '0px 0px 0px 1px #f00';
+                    selected.push({
+                        tile : td.getElementsByTagName('img')[0],
+                        cell : x,
+                        row : y
+                    });
+                }
+            }
+            
 			var minusX = selected[0].cell;
 			var minuxY = selected[0].row;
             var maxX = 0;
@@ -489,17 +509,7 @@ socket.on('Tiles',function(a){
         }
         
         function mouseMove(e){
-            
-            function objindex(array,obj){
-                for(var i = 0; i < array.length; i++){
-                    if(array[i].cell == obj.parentNode.cellIndex && array[i].row == obj.parentNode.parentNode.rowIndex){
-                        return i;
-                    }
-                }
-                return -1;
-            }
-            var index = objindex(selected,e.target);
-			if(moving && index == -1 && e.target.tagName == 'IMG'){
+			if(moving && e.target.tagName == 'IMG'){
 				var row = e.target.parentNode.parentNode.rowIndex;
 				var cell = e.target.parentNode.cellIndex;
                 var finished = [cell+1,row+1];
@@ -508,11 +518,6 @@ socket.on('Tiles',function(a){
                     for(var y = started[1]; y < finished[1]; y++){
                         var td = CurrentTable.children[y].children[x];
                         td.getElementsByTagName('img')[0].style.boxShadow = '0px 0px 0px 1px #f00';
-                        selected.push({
-                            tile : td.getElementsByTagName('img')[0],
-                            cell : x,
-                            row : y
-                        });
                     }
                 }
 			}
@@ -569,22 +574,17 @@ function setCollison(Tiles,obj){
     ColCanvas.height = '275';
     var ctx = ColCanvas.getContext('2d');
     Panel.appendChild(ColCanvas);
-    var LowestLeft = 0;
-    for(var i = 0; i < Tiles.length; i++){//find lowest left
-        var Tile = Tiles[i];
-        if(Tile.left < 0 && Tile.left < LowestLeft) LowestLeft = Math.abs(Tile.left);
-    }
     for(var i = 0; i < Tiles.length; i++){//load images
         var Tile = Tiles[i];
-        ctx.drawImage(tilesheet,Tile.sx,Tile.sy,16,16,Tile.left+LowestLeft,Tile.top,16,16);
+        ctx.drawImage(tilesheet,Tile.sx,Tile.sy,16,16,Tile.left,Tile.top,16,16);
     }
     Cover.appendChild(Panel);;
     var footer = document.createElement('div');
     footer.style.cssText = 'width:100%;height:25px;position:absolute;bottom:0px;background-color:grey;text-align:center;';
     footer.textContent = 'Ok';
     footer.addEventListener('click',function(){
-        obj.collision = [RedBox.offsetLeft-LowestLeft,RedBox.offsetLeft+RedBox.offsetWidth-LowestLeft,RedBox.offsetTop,RedBox.offsetTop+RedBox.offsetHeight];
-        obj.height = RedBox.offsetTop+RedBox.offsetHeight;
+        obj.collision = [RedBox.offsetLeft,RedBox.offsetLeft+RedBox.offsetWidth,RedBox.offsetTop,RedBox.offsetTop+RedBox.offsetHeight];
+        obj.height = HeightLine.offsetTop;
         document.body.removeChild(Cover);
     });
     Panel.appendChild(footer);
@@ -601,6 +601,17 @@ function setCollison(Tiles,obj){
     }).resizable({
         StartPoint: [ 16, 16 ]
     });
+    var HeightLine = document.createElement('div');
+    HeightLine.style.position = 'absolute';
+    HeightLine.style.top = '0px';
+    HeightLine.style.left = '0px';
+    HeightLine.style.width = '100%';
+    HeightLine.style.height = '5px';
+    HeightLine.style.backgroundColor = 'blue';
+    Panel.appendChild(HeightLine);
+    $(HeightLine).draggable({
+        containment : "parent"
+    })
     document.body.appendChild(Cover);
 }
 
@@ -731,20 +742,20 @@ $('#world').mousemove(function(e){
                             var TileNumber = 4;
                             if(Sx == 0 && Sy == 0){
                                 TileNumber = 0;  
-                            } else if(Sx == Px-1 && Sy == 0){
-                                TileNumber = 2; 
-                            } else if(Sx == 0 && Sy == Py-1){
-                                TileNumber = 6;
-                            } else if(Sx == Px-1 && Sy == Py-1){
+                            } else if(Sx == Px-1 && Sy == 0){//top right corner
+                                TileNumber = 6; 
+                            } else if(Sx == 0 && Sy == Py-1){//bottom left corner
+                                TileNumber = 2;
+                            } else if(Sx == Px-1 && Sy == Py-1){//bottom right corner
                                 TileNumber = 8;
-                            } else if(Sy == 0){
-                                TileNumber = 1; 
-                            } else if(Sy == Py-1){
-                                TileNumber = 7;
-                            } else if(Sx == 0){
-                                TileNumber = 3
-                            } else if(Sx == Px-1){
-                                TileNumber = 5; 
+                            } else if(Sy == 0){//top middle
+                                TileNumber = 3; 
+                            } else if(Sy == Py-1){//bottom center
+                                TileNumber = 5;
+                            } else if(Sx == 0){//left center
+                                TileNumber = 1;
+                            } else if(Sx == Px-1){//right center
+                                TileNumber = 7; 
                             }
                             
                             var tile = tiles[TileNumber].cloneNode();
@@ -801,6 +812,33 @@ document.getElementById('tabs').addEventListener('click', function(e){
         tab.classList.add('selected');
         document.getElementById(tab.classList[1]).style.display = 'block';
     }
+});
+
+document.getElementById('OBJdisplay').addEventListener('click', function(e){
+	var checked = e.target.checked;
+	if(checked){
+		var objects = settings.objects;
+		for(var i = 0; i < objects.length; i++){
+			var ThisObj = settings.objects[i];
+			var CollisonBlob = document.createElement('div');
+			CollisonBlob.classList.add('CollisonBlob');
+			console.log(ThisObj)
+			CollisonBlob.style.left = ThisObj.left + ThisObj.collision[0] + 'px';
+			CollisonBlob.style.width = ThisObj.collision[1] - ThisObj.collision[0] + 'px';
+			CollisonBlob.style.top = ThisObj.top + ThisObj.collision[2] + 'px';
+			CollisonBlob.style.height = ThisObj.collision[3] - ThisObj.collision[2] + 'px';
+			CollisonBlob.style.backgroundColor = 'red';
+			CollisonBlob.style.position = 'absolute';
+			CollisonBlob.style.zIndex = '9999';
+			document.getElementById('world').appendChild(CollisonBlob);
+			
+		}
+	} else {
+		var CollisonBlobs = document.getElementsByClassName('CollisonBlob');
+		while(CollisonBlobs.length){
+			document.getElementById('world').removeChild(CollisonBlobs[0]);
+		}
+	}
 });
 
 function save(){
