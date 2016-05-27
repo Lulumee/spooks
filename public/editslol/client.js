@@ -225,7 +225,7 @@ function PlaceTile(x,y,sx,sy){
         var y = parseInt(y);
         //create Item div
         var item = document.createElement('div');
-        document.getElementById('world').appendChild(item);
+        document.getElementById('world-tiles').appendChild(item);
         item.id = settings.tiles.length;
         item.style.position = 'absolute';
         item.className = 'item placed-item';
@@ -252,7 +252,7 @@ function PlaceTile(x,y,sx,sy){
 					sy : sy
 				});
                 settings.tiles.splice(index,1);
-                this.remove();
+				document.getElementById('world-tiles').removeChild(item);
             }
         });
 		
@@ -275,51 +275,49 @@ function PlaceTile(x,y,sx,sy){
     }
 }
 
-function PlaceObject(Tiles,startX,startY,collision){
-        var ObjectData = [];
+function PlaceObject(Tiles,startX,startY,collision,setHeight){
         var Height = 0;
-        if(Tiles && Tiles.length){//If tiles, object
+        
+        //if tiles in old array form convert to object
+        if(Tiles && Tiles.length){
+            //Get Max X and Y
+            var MaxX = 0;
+            var MaxY = 0;
+            for(let i = 0; i < Tiles.length; i++){
+                var Tile = Tiles[i];
+                if(Tile.left > MaxX) MaxX = Tile.left;
+                if(Tile.top > MaxY) MaxY = Tile.top;
+                if(parseInt(Tile.top) > Height) Height = parseInt(Tile.top);
+            }
+            Tiles = {
+                MaxX : MaxX+16,
+                MaxY : MaxY+16,
+                MinX : Tiles[0].sx,
+                MinY : Tiles[0].sy
+            };
+        }
+        
+        if(Tiles && Tiles.MaxX){//If tiles, object
             var ObjectContainer = document.createElement('div');
             ObjectContainer.id = settings.objects.length;
             ObjectContainer.style.position = 'absolute';
             ObjectContainer.className = 'item placed-object';
             ObjectContainer.style.left = startX;
-            ObjectContainer.style.top = startY;
-            //Append all tiles to ObjectContainer
-            for(var o = 0; o < Tiles.length; o++){
-                var Tile = Tiles[o];
-                var item = document.createElement('div');
-                item.style.position = 'absolute';
-                item.style.left = Tile.left + 'px';
-                item.style.top = Tile.top + 'px';
-                item.style.width = '16px';
-                item.style.height = '16px';
-                item.style.background = 'url(\'../images/tiles/Tileset.png\') -' + Tile.sx + 'px -' + Tile.sy + 'px';
-                ObjectContainer.appendChild(item);
-                ObjectData.push({
-                    left : parseInt(item.style.left),
-                    top : parseInt(item.style.top),
-                    sx : Tile.sx,
-                    sy : Tile.sy
-                });
-                if(parseInt(item.style.top) > Height) Height = parseInt(item.style.top);
-            }
-            document.getElementById('world').appendChild(ObjectContainer);
+            ObjectContainer.style.top = startY;            
+            ObjectContainer.style.width = Tiles.MaxX + 'px';
+            ObjectContainer.style.height = Tiles.MaxY + 'px';
+            ObjectContainer.style.background = 'url(\'../images/tiles/Tileset.png\') -' + Tiles.MinX + 'px -' + Tiles.MinY + 'px';
+            
+            document.getElementById('world-objects').appendChild(ObjectContainer);
             //highlight ObjectContainer on hover
             ObjectContainer.addEventListener('mouseover',function(){
                 if(remove){
-                    var Children = ObjectContainer.children;
-                    for(var i = 0; i < Children.length; i++){
-                        Children[i].style.border = 'solid 1px blue';
-                    }
+                    ObjectContainer.style.border = 'solid 1px red';
                 }
             });
             //remove highlight on leave
             ObjectContainer.addEventListener('mouseleave',function(){
-                var Children = ObjectContainer.children;
-                for(var i = 0; i < Children.length; i++){
-                    Children[i].style.border = '';
-                }        
+                ObjectContainer.style.border = '';      
             });
             //remove ObjectContainer on click
             ObjectContainer.addEventListener('click',function(e){
@@ -330,7 +328,7 @@ function PlaceObject(Tiles,startX,startY,collision){
                         order : parseInt(e.target.parentNode.id)
                     });
                     settings.objects.splice(index,1);
-                    document.getElementById('world').removeChild(ObjectContainer);
+                    document.getElementById('world-objects').removeChild(ObjectContainer);
                 }
             });
             //Load into object settings on double click
@@ -345,7 +343,7 @@ function PlaceObject(Tiles,startX,startY,collision){
             cblock.style.left = startX;
             cblock.style.top = startY;
             cblock.style.display = 'none';
-			cblock.id = settings.objects.length;
+            cblock.id = settings.objects.length;
             cblock.addEventListener('click', function(e){
                 if(remove){
                     var index = TileIndex({
@@ -354,18 +352,19 @@ function PlaceObject(Tiles,startX,startY,collision){
                         order : parseInt(e.target.id)
                     });
                     settings.objects.splice(index,1);
-                    document.getElementById('world').removeChild(cblock);
+                    document.getElementById('world-objects').removeChild(cblock);
                 }
             });
-            document.getElementById('world').appendChild(cblock);
+            document.getElementById('world-objects').appendChild(cblock);
         }
         
         //store last move
+        if(!setHeight) setHeight = Height;
         settings.lastclick = {
             left : parseInt(startX),
             top : parseInt(startY),
-            tiles : ObjectData,
-            height : Height + 16,
+            tiles : Tiles,
+            height : setHeight || (Height + 16),
             order : settings.objects.length
         }
 		
@@ -373,6 +372,7 @@ function PlaceObject(Tiles,startX,startY,collision){
         
         //If no collision set collision for object
         if(!collision){
+            settings.objects[settings.objects.length-1].height = setHeight;
             setCollison(Tiles,settings.objects[settings.objects.length-1]);
         } else {
             settings.objects[settings.objects.length-1].collision = collision;
@@ -380,7 +380,7 @@ function PlaceObject(Tiles,startX,startY,collision){
 		
         //add to history
         settings.history.push({
-            tile : item,
+            tile : tiles,
             type : 'objects'
         });
         pen.innerHTML = '<img draggable="false">';
@@ -574,10 +574,10 @@ function setCollison(Tiles,obj){
     ColCanvas.height = '275';
     var ctx = ColCanvas.getContext('2d');
     Panel.appendChild(ColCanvas);
-    for(var i = 0; i < Tiles.length; i++){//load images
-        var Tile = Tiles[i];
-        ctx.drawImage(tilesheet,Tile.sx,Tile.sy,16,16,Tile.left,Tile.top,16,16);
-    }
+    
+    console.log(Tiles)
+    ctx.drawImage(tilesheet,Tiles.MinX,Tiles.MinY,Tiles.MaxX,Tiles.MaxY,0,0,Tiles.MaxX,Tiles.MaxY);
+    
     Cover.appendChild(Panel);;
     var footer = document.createElement('div');
     footer.style.cssText = 'width:100%;height:25px;position:absolute;bottom:0px;background-color:grey;text-align:center;';
@@ -814,30 +814,44 @@ document.getElementById('tabs').addEventListener('click', function(e){
     }
 });
 
-document.getElementById('OBJdisplay').addEventListener('click', function(e){
-	var checked = e.target.checked;
-	if(checked){
-		var objects = settings.objects;
-		for(var i = 0; i < objects.length; i++){
-			var ThisObj = settings.objects[i];
-			var CollisonBlob = document.createElement('div');
-			CollisonBlob.classList.add('CollisonBlob');
-			console.log(ThisObj)
-			CollisonBlob.style.left = ThisObj.left + ThisObj.collision[0] + 'px';
-			CollisonBlob.style.width = ThisObj.collision[1] - ThisObj.collision[0] + 'px';
-			CollisonBlob.style.top = ThisObj.top + ThisObj.collision[2] + 'px';
-			CollisonBlob.style.height = ThisObj.collision[3] - ThisObj.collision[2] + 'px';
-			CollisonBlob.style.backgroundColor = 'red';
-			CollisonBlob.style.position = 'absolute';
-			CollisonBlob.style.zIndex = '9999';
-			document.getElementById('world').appendChild(CollisonBlob);
-			
-		}
-	} else {
-		var CollisonBlobs = document.getElementsByClassName('CollisonBlob');
-		while(CollisonBlobs.length){
-			document.getElementById('world').removeChild(CollisonBlobs[0]);
-		}
+document.getElementById('settingsOptions').addEventListener('click', function(e){
+	let Checkbox = e.target;
+	if(Checkbox.tagName == 'INPUT'){
+		if(Checkbox.id == 'DisplayCollision'){
+			if(Checkbox.checked){
+				var objects = settings.objects;
+                
+                function makeBox(ele,dem){
+                    let cssText = '';
+                    cssText += 'left:' + (ele.left + dem[0]) + 'px;';
+                    cssText += 'width:' + (dem[1] - dem[0]) + 'px;';
+                    cssText += 'top:' + (ele.top + dem[2]) + 'px;';
+                    cssText += 'height:' + (dem[3] - dem[2]) + 'px;';
+                    cssText += 'background-color:red;position:absolute;z-index:999;';
+                    return cssText;
+                }
+                
+                for(let i = 0; i < objects.length; i++){
+                    let ThisObj = settings.objects[i];
+                    let CollisonBlob = document.createElement('div');
+                    CollisonBlob.classList.add('CollisonBlob');
+                    CollisonBlob.style.cssText = makeBox(ThisObj,ThisObj.collision);
+                    document.getElementById('world').appendChild(CollisonBlob);
+                    
+                }
+			} else {
+                var CollisonBlobs = document.getElementsByClassName('CollisonBlob');
+                while(CollisonBlobs.length){
+                    document.getElementById('world').removeChild(CollisonBlobs[0]);
+                }
+			}
+		} else if(Checkbox.id == 'DisplayObjects'){
+            if(Checkbox.checked){
+                document.getElementById('world-objects').style.display = 'block';
+            } else {
+                document.getElementById('world-objects').style.display = 'none';
+            }
+        }
 	}
 });
 

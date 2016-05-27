@@ -12,6 +12,8 @@
     <body>
         <div id="world">
             <div id="pen" style="position:absolute;z-index:10;"><img></div>
+			<div id="world-objects"></div>
+			<div id="world-tiles"></div>
             <canvas id="grid"></canvas>
         </div>
         <div id="side">
@@ -30,7 +32,13 @@
                 <div id="settings">
                     Special tiles<br>
                     <div id="spawn" class="extra" style="width:48px;height:48px;background-color:green;">spawn</div>
-                    <div id="cblock" class="extra" style="width:48px;height:48px;background-color:red;">Collision block</div> <input type="checkbox" id="OBJdisplay">Display Object Collision
+                    <div id="cblock" class="extra" style="width:48px;height:48px;background-color:red;">Collision block</div>
+					
+					<ul id="settingsOptions" style="list-style-type:none;padding:0;">
+						<li><input type="checkbox" id="DisplayObjects" checked>Display Objects</li>
+						<li><input type="checkbox" id="DisplayCollision">Display Object Collision</li>
+					</ul>
+					
                     <div style="width: 100%;margin-top: 20px;border-bottom: 1px solid black;">Object Settings</div>
                     <div id="objectSettings" style="width:100%"></div>
                 </div>

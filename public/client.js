@@ -22,8 +22,8 @@ socket.on('connect', function(){
         dir : {
             right : false,
             left : false,
-            top : false,
-            bottom : false
+            up : false,
+            down : false
         },
         id : socket.id,
         updatePos : function(){
@@ -81,7 +81,7 @@ function init(){
 
 function paint(){
     ctx.clearRect(0,0,world.width,world.height);
-    if(!player.autowalk && (player.dir.left || player.dir.right || player.dir.up || player.dir.down)){
+    if(player.dir.left || player.dir.right || player.dir.up || player.dir.down){
         var p = player.info;//control players movement
         if(player.dir.left){
             if(collision(p,'left')){
@@ -106,7 +106,7 @@ function paint(){
             p.frame.y = 0;
         }
         player.updatePos();//send posistion to server
-        spooks.DrawTiles(world.tiles);
+        spooks.DrawTiles();
     }
     
     var all = [];
@@ -127,7 +127,7 @@ function paint(){
     
     for(var i in all){//Draw all Objects And Players 
         var user = all[i];
-        if(user && user.frame && (user.nick != player.info.nick || player.autowalk)){
+        if(user && user.frame && (user.nick != player.info.nick)){
             if(user.x > user.tx){
                 user.x--;
                 if(user.frame.maxY > 1) user.frame.y = 2;
@@ -141,13 +141,6 @@ function paint(){
             } else if(user.y < user.ty){
                 user.y++;
                 user.frame.y = 0;
-            }
-            if(user.nick == player.info.nick){
-                player.updatePos();
-                spooks.DrawTiles();
-                if(user.y == user.ty && user.x == user.tx){
-                    player.autowalk = false;
-                }
             }
         }
         Draw(user);
@@ -243,19 +236,17 @@ function Draw(user){
         var width = ctx.measureText(user.message).width + 30;
         drawBubble(ctx, (Pleft)-(width/2)+(user.frame.w/2),(Ptop)-64,width, 30, 10, user.message);
     }
-    if(user.nick){
+    if(user.nick){//draw player
         ctx.drawImage(user.avy, (user.frame.x*user.frame.w), (user.frame.y*user.frame.h), user.frame.w, user.frame.h,Math.round(Pleft),Math.round(Ptop),user.frame.w,user.frame.h);
-    } else if(user.tiles.length){
-        for(var i = 0; i < user.tiles.length; i++){
-            var ObjectTile = user.tiles[i];
-            var Pleft = 0;
-            var Ptop = 0;
-            var PlayerX = (player.info && player.info.x || world.spawn[0])*3;
-            var PlayerY = (player.info && player.info.y || world.spawn[1])*3
-            if(PlayerX > window.innerWidth/2) Pleft = (PlayerX)-window.innerWidth/2;
-            if(PlayerY > window.innerHeight/2) Ptop = (PlayerY)-window.innerHeight/2;
-            ctx.drawImage(TileSheet,ObjectTile.sx,ObjectTile.sy,16,16,((user.x*world.grid)+ObjectTile.left)-Pleft,((user.y*world.grid)+ObjectTile.top)-Ptop,16,16);
-        }
+    } else if(user.tiles){//draw object
+        var ObjectTile = user.tiles;
+        var Pleft = 0;
+        var Ptop = 0;
+        var PlayerX = (player.info && player.info.x || world.spawn[0])*3;
+        var PlayerY = (player.info && player.info.y || world.spawn[1])*3
+        if(PlayerX > window.innerWidth/2) Pleft = (PlayerX)-window.innerWidth/2;
+        if(PlayerY > window.innerHeight/2) Ptop = (PlayerY)-window.innerHeight/2;
+        ctx.drawImage(TileSheet,ObjectTile.MinX,ObjectTile.MinY,ObjectTile.MaxX,ObjectTile.MaxY,((user.x*world.grid))-Pleft,((user.y*world.grid))-Ptop,ObjectTile.MaxX,ObjectTile.MaxY);
     }
 }
 function drawBubble(ctx, x, y, w, h, radius, word){
@@ -287,7 +278,7 @@ function drawBubble(ctx, x, y, w, h, radius, word){
 //
 function animate(){
     var p = player.info;
-    if(player.dir.left || player.dir.right || player.dir.up || player.dir.down || player.autowalk){//control plays animations
+    if(player.dir.left || player.dir.right || player.dir.up || player.dir.down){//control plays animations
         clearInterval(p.twitch);
         p.twitch = false;
         p.frame.x++;
@@ -304,19 +295,20 @@ function animate(){
         },1000);
     }
     
-    var keys = Object.keys(ONLINE.players);
-    for(var i = 0; i < keys.length; i++){//everyone eles animations
-        var user = ONLINE.players[keys[i]];
+    let keys = Object.keys(ONLINE.players);
+    for(let i = 0; i < keys.length; i++){//everyone eles animations
+        let user = ONLINE.players[keys[i]];
         if(keys[i] != player.id && user.frame){
             if(user.x != user.tx || user.y != user.ty){
-                clearInterval(p.twitch);
-                p.twitch = false;
+                if(user.twitch) clearInterval(user.twitch);
+                user.twitch = false;
                 user.frame.x++;
                 if(user.frame.x > user.frame.maxX){
                     user.frame.x = 0;
                 }
             } else if(!user.twitch){
                 user.twitch = setInterval(function(){
+                    console.log(keys[i],i,user)
                     if(user.frame.x < user.frame.maxX){
                         user.frame.x++;
                     } else if(user.frame.y < 4){
@@ -333,6 +325,8 @@ function animate(){
 function move(e){
     var x = Math.round((e.clientX)/3);
     var y = Math.round((e.clientY)/3);
+    if(player.info.x*3 > window.innerWidth/2) x += Math.round(((player.info.x*3)-(window.innerWidth/2))/3);
+    if(player.info.y*3 > window.innerHeight/2) y += Math.round(((player.info.y*3)-(window.innerHeight/2))/3);
     
     var context = false;
     var keys = Object.keys(ONLINE.players);
@@ -345,9 +339,22 @@ function move(e){
     }
     
     if(!context){
-        player.info.tx = x;
-        player.info.ty = y-Math.round(player.info.frame.h/3);
-        player.autowalk = true;   
+        if(player.autowalk) clearInterval(player.autowalk);
+        player.autowalk = setInterval(function(){
+            player.dir.left = player.info.x > x;
+            player.dir.right = player.info.x < x
+            player.dir.down = player.info.y < (y-Math.round(player.info.frame.h/3));
+            player.dir.up = player.info.y > (y-Math.round(player.info.frame.h/3));
+            if(player.info.x == x && player.info.y == (y-Math.round(player.info.frame.h/3))){
+                player.dir.left = false;
+                player.dir.right = false;
+                player.dir.down = false;
+                player.dir.up = false;
+                clearInterval(player.autowalk);
+            }
+            //player.info.tx = x;
+            //player.info.ty = y-Math.round(player.info.frame.h/3);
+        },1000/40)  
     }
 }
 
@@ -395,6 +402,7 @@ var spooks = {
         if(id == player.id){//if player loaded start game
             window.scrollTo((world.spawn[0]/2)*3,(world.spawn[1]/2)*3);
             player.info = ONLINE.players[id];
+			spooks.DrawTiles();
             player.updatePos();
             init();
         }
@@ -511,6 +519,20 @@ var spooks = {
     },
     loadMap : function(MapInfo){
         if(MapInfo.tiles){
+            
+            function GetBgImage(){
+                let BgImage = document.createElement('canvas');
+                BgImage.width = world.width;
+                BgImage.height = world.height;
+                let cc = BgImage.getContext('2d');
+                for(let i = 0; i < world.tiles.length; i++){
+                    let Tile = world.tiles[i];
+                    cc.drawImage(TileSheet,Tile.sx,Tile.sy,16,16,((Tile.x*3)+(world.width/4)),((Tile.y*3)+(world.height/4)),16,16);            
+                }
+                world.background = new Image();
+                world.background.src = BgImage.toDataURL();
+            }
+            
             var Tiles = JSON.parse(MapInfo.tiles);
 			for(var t = 0; t < Tiles.length; t++){
                 var OneTile = Tiles[t];
@@ -526,6 +548,7 @@ var spooks = {
 			}
             world.width *= 2;
             world.height *= 2;
+            GetBgImage();
             this.DrawTiles(TileSheet);
         }
         if(MapInfo.objects){
@@ -575,9 +598,7 @@ var spooks = {
         var PlayerY = (player.info && player.info.y || world.spawn[1])*3
         if(PlayerX > window.innerWidth/2) Pleft = (PlayerX)-window.innerWidth/2;
         if(PlayerY > window.innerHeight/2) Ptop = (PlayerY)-window.innerHeight/2;
-		for(var i = 0; i < world.tiles.length; i++){
-			bg.drawImage(TileSheet,world.tiles[i].sx,world.tiles[i].sy,16,16,((world.tiles[i].x*3)+(world.width/4))-Math.round(Pleft),((world.tiles[i].y*3)+(world.height/4))-Math.round(Ptop),16,16);
-		}        
+        bg.drawImage(world.background,0,0,world.width,world.height,-Math.round(Pleft),-Math.round(Ptop),world.width,world.height)     
     }
 }
 
@@ -679,12 +700,14 @@ socket.on('message',function(message){
 socket.on('MapInfo', function(data){
     for(var i in data.avatars){//load all avatars
         var UserData = data.avatars[i];
-        spooks.AddUser(UserData.id,{
-            nick : UserData.nick,
-            x : UserData.position.x,
-            y : UserData.position.y,
-            frameY : UserData.position.frameY
-        });
+        if(!ONLINE.players[UserData.id]){
+            spooks.AddUser(UserData.id,{
+                nick : UserData.nick,
+                x : UserData.position.x,
+                y : UserData.position.y,
+                frameY : UserData.position.frameY
+            });   
+        }
         if(UserData.avy){
             spooks.loadAvatar(UserData.id,UserData.avy);
         }
@@ -711,6 +734,11 @@ socket.on('positions', function(data){//grab all players positions
         }  
     }
 });
+
+
+function ChooseFrameSize(avy){
+    //
+}
 
 // ----------------------------------------------------
 //  Gets the frame width and height of the given avatar 
@@ -739,7 +767,10 @@ function FrameSizes(avy){
     var width = 0;
     var findend = false;
     var pixelCount = 0;
+    var LowestPixelCount = 128;
     var StartingWidth = 0;
+    
+    var bestWidth = 128;
     
     //get width
     for(; height <= 128; height++){
@@ -763,10 +794,22 @@ function FrameSizes(avy){
                 var frameX = Math.round(avy.width/guess);
                 frameW = avy.width/frameX;
                 break;
+            } else {
+                if(LowestPixelCount > pixelCount){
+                    console.log('test')
+                    LowestPixelCount = pixelCount;
+                    bestWidth = width;
+                }
             }
             pixelCount = 0;
             if(width > 128) break;
         }
+    }
+    
+    if(!frameW){
+        var guess = bestWidth;
+        var frameX = Math.round(avy.width/guess);
+        frameW = avy.width/frameX;
     }
     
     var height = 0;
