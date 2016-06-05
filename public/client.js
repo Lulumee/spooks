@@ -39,8 +39,10 @@ socket.on('connect', function(){
 });
 
 var world = {
-    width : 0,
-    height : 0,
+    width : 500,
+    height : 500,
+    screenWidth : Math.floor(window.innerWidth/2),
+    screenHeight : Math.floor(window.innerHeight/2),
     grid : 3,
     tiles : [],
     objects : [],
@@ -69,6 +71,19 @@ var game_loop;
 var animate_loop;
 
 function init(){
+    //set bgcanvas size
+    bgcanvas.width = window.innerWidth;            
+    bgcanvas.height = window.innerHeight;            
+    //set main canvas size           
+    canvas.width = window.innerWidth;            
+    canvas.height = window.innerHeight; 
+    
+    //Draw Map
+	spooks.DrawTiles();
+    //Send position to server
+    player.updatePos();
+    
+    //start game loop
     clearInterval(game_loop);
     game_loop = setInterval(paint, 1000/40);
     clearInterval(animate_loop);
@@ -87,18 +102,18 @@ function paint(){
             if(collision(p,'left')){
                 p.x--;
             }
-            if(p.frame.maxY > 1)p.frame.y = 2;
+            if(p.frame.maxY > 1) p.frame.y = 2;
         } else if(player.dir.right){
             if(collision(p,'right')){
                 p.x++;
             }
-            if(p.frame.maxY > 2)p.frame.y = 3;
+            if(p.frame.maxY > 2) p.frame.y = 3;
         }
         if(player.dir.up){
             if(collision(p,'up')){
                 p.y--;
             }
-            if(p.frame.maxY > 0)p.frame.y = 1;
+            if(p.frame.maxY > 0) p.frame.y = 1;
         } else if(player.dir.down){
             if(collision(p,'down')){
                 p.y++;
@@ -207,22 +222,25 @@ function collision(player,dir){
 
 //draws given player
 function Draw(user){
+    var Pleft;//How far from the left of the screen to draw
+    var Ptop;//How far from the top of the screen to draw
     if(user.nick == player.info.nick){
-        var Pleft = window.innerWidth/2;
-        var Ptop = window.innerHeight/2;
+        Pleft = world.screenWidth;
+        Ptop = world.screenHeight;//Because you are always centered, draw half screen width and half screen height;
         if(player.info.x*3 < Pleft) Pleft = player.info.x*3;
-        if(player.info.y*3 < Ptop) Ptop = player.info.y*3;
-        Pleft = Math.round(Pleft);
-        Ptop = Math.round(Ptop);
+        if(player.info.y*3 < Ptop) Ptop = player.info.y*3;//unless you are less than half the screens width or height, in this case draw actual position
     } else {
+        /*In this game your position on screen doesn't change, you stay centered on the screen, everything elses screen position changes based on your map position
+        So we subtract users position on the map by your position (which causes their position on screen to change) to make it appear that you are moving
+        But really they are moving (away/towards) you*/
         Pleft = user.x*3;
-        Ptop = user.y*3;
-        if(player.info.x*3 > window.innerWidth/2) Pleft = Pleft-(player.info.x*3-(window.innerWidth/2));
-        if(player.info.y*3 > window.innerHeight/2) Ptop = Ptop-(player.info.y*3-(window.innerHeight/2));
-        Pleft = Math.round(Pleft);
-        Ptop = Math.round(Ptop);
+        Ptop = user.y*3;//draw user position
+        if(player.info.x*3 > world.screenWidth) Pleft -= (player.info.x*3)-world.screenWidth;//unless your x or y is more than half of screens width or height
+        if(player.info.y*3 > world.screenHeight) Ptop -= (player.info.y*3)-world.screenHeight;//than subtract users position by your position
     }
-    if(user.nick){//if have a nick draw it
+    
+    if(user.nick){
+        //draw nick
         ctx.font = "12pt Droid Sans";
         ctx.fillStyle = 'white';
         ctx.textBaseline = 'middle';
@@ -231,24 +249,23 @@ function Draw(user){
         var width = ctx.measureText(user.nick).width;
         ctx.strokeText(user.nick,(Pleft)-(width/2)+(user.frame.w/2),Ptop-5);
         ctx.fillText(user.nick,(Pleft)-(width/2)+(user.frame.w/2),Ptop-5);
-    }
-    if(user.message){
-        var width = ctx.measureText(user.message).width + 30;
-        drawBubble(ctx, (Pleft)-(width/2)+(user.frame.w/2),(Ptop)-64,width, 30, 10, user.message);
-    }
-    if(user.nick){//draw player
-        ctx.drawImage(user.avy, (user.frame.x*user.frame.w), (user.frame.y*user.frame.h), user.frame.w, user.frame.h,Math.round(Pleft),Math.round(Ptop),user.frame.w,user.frame.h);
+        if(user.message){
+            var width = ctx.measureText(user.message).width + 30;
+            drawBubble(ctx, (Pleft)-(width/2)+(user.frame.w/2),(Ptop)-64,width, 30, 10, user.message);
+        }
+        ctx.drawImage(user.avy, (user.frame.x*user.frame.w), (user.frame.y*user.frame.h), user.frame.w, user.frame.h,Pleft,Ptop,user.frame.w,user.frame.h);
     } else if(user.tiles){//draw object
         var ObjectTile = user.tiles;
         var Pleft = 0;
         var Ptop = 0;
         var PlayerX = (player.info && player.info.x || world.spawn[0])*3;
         var PlayerY = (player.info && player.info.y || world.spawn[1])*3
-        if(PlayerX > window.innerWidth/2) Pleft = (PlayerX)-window.innerWidth/2;
-        if(PlayerY > window.innerHeight/2) Ptop = (PlayerY)-window.innerHeight/2;
-        ctx.drawImage(TileSheet,ObjectTile.MinX,ObjectTile.MinY,ObjectTile.MaxX,ObjectTile.MaxY,((user.x*world.grid))-Pleft,((user.y*world.grid))-Ptop,ObjectTile.MaxX,ObjectTile.MaxY);
+        if(PlayerX > world.screenWidth) Pleft = (PlayerX)-world.screenWidth;
+        if(PlayerY > world.screenHeight) Ptop = (PlayerY)-world.screenHeight;
+        ctx.drawImage(TileSheet,ObjectTile.MinX,ObjectTile.MinY,ObjectTile.MaxX,ObjectTile.MaxY,(user.x*world.grid)-Pleft,(user.y*world.grid)-Ptop,ObjectTile.MaxX,ObjectTile.MaxY);
     }
 }
+
 function drawBubble(ctx, x, y, w, h, radius, word){
   var r = x + w;
   var b = y + h;
@@ -308,7 +325,6 @@ function animate(){
                 }
             } else if(!user.twitch){
                 user.twitch = setInterval(function(){
-                    console.log(keys[i],i,user)
                     if(user.frame.x < user.frame.maxX){
                         user.frame.x++;
                     } else if(user.frame.y < 4){
@@ -325,8 +341,8 @@ function animate(){
 function move(e){
     var x = Math.round((e.clientX)/3);
     var y = Math.round((e.clientY)/3);
-    if(player.info.x*3 > window.innerWidth/2) x += Math.round(((player.info.x*3)-(window.innerWidth/2))/3);
-    if(player.info.y*3 > window.innerHeight/2) y += Math.round(((player.info.y*3)-(window.innerHeight/2))/3);
+    if(player.info.x*3 > window.innerWidth/2) x += Math.round(((player.info.x*3)-world.screenWidth)/3);
+    if(player.info.y*3 > window.innerHeight/2) y += Math.round(((player.info.y*3)-world.screenHeight)/3);
     
     var context = false;
     var keys = Object.keys(ONLINE.players);
@@ -342,7 +358,7 @@ function move(e){
         if(player.autowalk) clearInterval(player.autowalk);
         player.autowalk = setInterval(function(){
             player.dir.left = player.info.x > x;
-            player.dir.right = player.info.x < x
+            player.dir.right = player.info.x < x;
             player.dir.down = player.info.y < (y-Math.round(player.info.frame.h/3));
             player.dir.up = player.info.y > (y-Math.round(player.info.frame.h/3));
             if(player.info.x == x && player.info.y == (y-Math.round(player.info.frame.h/3))){
@@ -352,8 +368,6 @@ function move(e){
                 player.dir.up = false;
                 clearInterval(player.autowalk);
             }
-            //player.info.tx = x;
-            //player.info.ty = y-Math.round(player.info.frame.h/3);
         },1000/40)  
     }
 }
@@ -367,14 +381,22 @@ canvas.addEventListener('mousedown', function(e){
     document.getElementById('world').focus();
 });
 
-window.addEventListener('resize', function(){
+window.addEventListener('resize', function(){   
+    //set bgcanvas size
+    bgcanvas.width = window.innerWidth;            
+    bgcanvas.height = window.innerHeight;            
+    //set main canvas size           
+    canvas.width = window.innerWidth;            
+    canvas.height = window.innerHeight; 
+    
+    world.screenHeight = Math.floor(window.innerHeight/2);
+    world.screenWidth = Math.floor(window.innerWidth/2);
     spooks.DrawTiles(world.tiles);
 });
 
 //All the important functions besides the basic ones
 var spooks = {
-    AddUser : function(id,data){//add new user
-        if(!data) data = {};
+    AddUser (id, data = {}){//add new user
         if(!ONLINE.players[id]){
             ONLINE.players[id] = {
                 x : data.x || world.spawn[0],
@@ -400,21 +422,18 @@ var spooks = {
             spooks.loadAvatar(id,ONLINE.Penned[id].avy);
         }
         if(id == player.id){//if player loaded start game
-            window.scrollTo((world.spawn[0]/2)*3,(world.spawn[1]/2)*3);
             player.info = ONLINE.players[id];
-			spooks.DrawTiles();
-            player.updatePos();
             init();
         }
         var li = document.createElement('li');
+        li.id = id;
+        li.textContent = ONLINE.players[id].nick;
         li.addEventListener('click', function(e){
             $$$.contextMenu(e,e.target.textContent);
         });
-        li.id = id;
-        li.textContent = ONLINE.players[id].nick;
         document.getElementById('Users').appendChild(li);
     },
-    removeUser : function(id){
+    removeUser (id){
         var UserData = ONLINE.players[id];
         CHAT.show({
             nick : UserData.nick,
@@ -426,18 +445,27 @@ var spooks = {
         var li = document.getElementById(id);
         document.getElementById('Users').removeChild(li);
     },
-    saveAvatar : function(avy,filename){
+    saveAvatar (avy,filename){
         
-        var AvyFrame;
+        var AvyList = document.getElementById('avy-list');
         
-        function save(){
-            var myavy = document.createElement('div');
+        function save(AvyFrame){
+            if(AvyFrame.w > 120) AvyFrame.w = 120;
+            var myavy = document.createElement('li');
             myavy.className = 'myavy';
-            myavy.style.backgroundPosition = '0px 0px';
-            myavy.style.width = AvyFrame.w + 'px';
-            myavy.style.height = AvyFrame.h + 'px';
-            myavy.style.overflow = 'hidden';
+            myavy.style.cssText = `background-position:0px 0px;overflow:hidden;display:block;width:${AvyFrame.w}px;height:${AvyFrame.h}px`;
             myavy.appendChild(avy);
+            
+            var remove = document.createElement('button');
+            remove.style.cssText = `background:none;border:none;cursor:pointer;position:relative;left:${AvyFrame.w}px;top:-${AvyFrame.h/2}px;`;
+            remove.textContent = 'x';
+            myavy.appendChild(remove);
+            
+            remove.addEventListener('click', function(e){
+                CHAT.submit('/removeavy ' + filename);
+                AvyList.removeChild(myavy);
+                AvyList.removeChild(remove);
+            });
             
             function toDataUrl(url, callback, outputFormat){
                 var img = new Image();
@@ -457,31 +485,23 @@ var spooks = {
             }
             
             myavy.addEventListener('click',function(e){
-                toDataUrl(avy.src, function(base64Img){
-                    socket.emit('command',{//send image data to server
-                        name : 'avy',
-                        params : {
-                            avy : base64Img,
-                            name : filename
-                        }
-                    });
+                socket.emit('command',{//send image data to server
+                    name : 'avy',
+                    params : {
+                        name : filename
+                    }
                 });
             });
-            document.getElementById('Avatars').appendChild(myavy);   
-        }
+            AvyList.appendChild(myavy);   
+            AvyList.appendChild(remove);
+        }  
         
-        if(!avy.height){
-            avy.onload = function(){
-                AvyFrame = FrameSizes(avy);
-                save();
-            }
-        } else {
-            AvyFrame = FrameSizes(avy);
-            save();
+        avy.onload = function(){
+            save(FrameSizes(avy));
         }
-        
+                
     },
-    nick : function(nick,id,secret){
+    nick (nick,id,secret){
         var user = ONLINE.players[id];
         if(user){
             if(!secret){
@@ -499,7 +519,7 @@ var spooks = {
             ONLINE.Pend(id,'nick',nick)
         }
     },
-    loadAvatar : function(id,file){
+    loadAvatar (id,file){
         var user = ONLINE.players[id];
         if(user){
             var avatar = new Image();
@@ -517,7 +537,7 @@ var spooks = {
             ONLINE.Pend(id,'avy',file);
         }
     },
-    loadMap : function(MapInfo){
+    loadMap (MapInfo){
         if(MapInfo.tiles){
             
             function GetBgImage(){
@@ -583,22 +603,16 @@ var spooks = {
             }
         }
     },
-    DrawTiles : function(Tiles){
+    DrawTiles (Tiles){
         bg.clearRect(0,0,window.innerWidth,window.innerHeight);
-        //set bgcanvas size
-        bgcanvas.width = window.innerWidth;            
-        bgcanvas.height = window.innerHeight;            
-        //set main canvas size           
-        canvas.width = window.innerWidth;            
-        canvas.height = window.innerHeight; 
         //magic
         var Pleft = 0;
         var Ptop = 0;
         var PlayerX = (player.info && player.info.x || world.spawn[0])*3;
         var PlayerY = (player.info && player.info.y || world.spawn[1])*3
-        if(PlayerX > window.innerWidth/2) Pleft = (PlayerX)-window.innerWidth/2;
-        if(PlayerY > window.innerHeight/2) Ptop = (PlayerY)-window.innerHeight/2;
-        bg.drawImage(world.background,0,0,world.width,world.height,-Math.round(Pleft),-Math.round(Ptop),world.width,world.height)     
+        if(PlayerX > world.screenWidth) Pleft = PlayerX-world.screenWidth;
+        if(PlayerY > world.screenHeight) Ptop = PlayerY-world.screenHeight;
+        bg.drawImage(world.background,0,0,world.width,world.height,-Pleft,-Ptop,world.width,world.height);  
     }
 }
 
@@ -726,7 +740,6 @@ socket.on('positions', function(data){//grab all players positions
         if(i != player.id){
             if(ONLINE.players[i]){
                 var Player = ONLINE.players[i];
-                Player.ping = 0;//received data on player, reset ping
                 Player.tx = data[i].x;
                 Player.ty = data[i].y;
                 Player.frame.y = data[i].frameY;
@@ -761,16 +774,18 @@ function FrameSizes(avy){
         frameY = 0;
         
     var pixels = q.getImageData(0,0,avy.width,avy.height);
-    var cocks = q.getImageData(0,0,avy.width,avy.height);
+    //var cocks = q.getImageData(0,0,avy.width,avy.height);
        
     var height = 16;
     var width = 0;
     var findend = false;
+    
     var pixelCount = 0;
     var LowestPixelCount = 128;
     var StartingWidth = 0;
     
     var bestWidth = 128;
+    var WidthMax = avy.width < 128 ? avy.width : 128;
     
     //get width
     for(; height <= 128; height++){
@@ -787,22 +802,21 @@ function FrameSizes(avy){
         if(height >= 128){
             width++;
             height = 15;
-            if(findend && pixelCount == 0){
+            if(findend && pixelCount == 0){//scaned full height, found no pixels, must be end of frame
                 width += StartingWidth;
                 //guess work
                 var guess = width;
                 var frameX = Math.round(avy.width/guess);
                 frameW = avy.width/frameX;
                 break;
-            } else {
-                if(LowestPixelCount > pixelCount){
-                    console.log('test')
+            } else {//scanned full height
+                if(LowestPixelCount > pixelCount){//found less pixels than before, save width
                     LowestPixelCount = pixelCount;
                     bestWidth = width;
                 }
             }
             pixelCount = 0;
-            if(width > 128) break;
+            if(width > WidthMax) break;//reached end of image, scan is over
         }
     }
     
@@ -860,6 +874,42 @@ function FrameSizes(avy){
     } else {
         return false;
     }
+}
+
+function loadImage(color,pixels){
+    var q = color.getContext('2d');
+    q.putImageData(pixels,0,0);
+    var test = new Image();
+    test.src = color.toDataURL();
+}
+
+function NightTime(source){
+    var color = document.createElement('canvas');
+    document.body.appendChild(color);
+    var q = color.getContext('2d');
+    color.width = source.width;
+    color.height = source.height;
+    q.drawImage(source,0,0);
+    var pixels = q.getImageData(0, 0, source.width, source.height);
+    
+    var i = 0;
+    var loop = setInterval(function(){     
+        
+        var stop = i+10000;
+        for(; i < stop; i+=4){
+            pixels.data[i] += Math.floor(Math.random() * 100) - 51;
+            pixels.data[i+1] += Math.floor(Math.random() * 100) - 51;
+            pixels.data[i+2] += Math.floor(Math.random() * 100) - 51;
+        }
+        
+        if(i >= pixels.data.length){
+            console.log(i,pixels.data.length);
+            loadImage(color,pixels);
+            clearInterval(loop);
+        }
+        console.log(i,pixels.data.length);
+    },100)
+
 }
 
 // -----------------------------------------------------
@@ -949,9 +999,9 @@ function SendAvy(imgdata,name,SpriteFrames){
             user.avy = TestAvatar;
             user.frame = Sizes;
             spooks.saveAvatar(user.avy,name);
-            socket.emit('command',{//send image data to server
-                name : 'avy',
-                params : {
+            socket.emit('core',{//send image data to server
+                command : 'uploadAvy',
+                data : {
                     avy : pixs,
                     name : name
                 }
