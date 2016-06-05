@@ -16,7 +16,7 @@ function createChannel(io, channelName){
     
     setInterval(function(){
         roomEmit('positions', positions);
-    },300);
+    },25);
     
     var tokens = {};
     var channel = {
@@ -28,6 +28,7 @@ function createChannel(io, channelName){
         var user = {
             remote_addr : socket.request.connection.remoteAddress,
             socket : socket,
+            id : dao.makeid(),
             role : 3
         };
         if(user.remote_addr.substr(0,7) == '::ffff:') user.remote_addr = user.remote_addr.substr(7);//if ip contains '::ffff:' remove it
@@ -202,6 +203,31 @@ function createChannel(io, channelName){
                         user.socket.disconnect();
                     }
                 });
+            },
+            uploadAvy : function(data,dbuser){
+                if(!/^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$/.test(data.avy)){
+                    dao.find(user.nick).then(function(dbuser){
+                        var AvyFolder = 'public/images/avatars/';
+                        if(dbuser){
+                            AvyFolder += (dbuser.nick + '/');
+                            if(!fs.existsSync(AvyFolder)){//if folder doesn't exist. make folder
+                                fs.mkdirSync(AvyFolder);
+                            }
+                        }
+                        fs.writeFile(AvyFolder + '/' + data.name, data.avy.replace(/^data:image\/png;base64,/, ''), 'base64', function(err){
+                            if (err) throw err
+                            roomEmit('MapInfo',{
+                                avatars : [{
+                                    avy : AvyFolder.slice(6) + data.name,
+                                    id : user.socket.id
+                                }]
+                            });
+                            user.avy = AvyFolder.slice(6) + data.name;
+                        });
+                    });
+                } else {
+                    console.log('Avatar hack attempt',user.nick,user.remote_addr);
+                }
             }
         }
         
@@ -212,10 +238,10 @@ function createChannel(io, channelName){
                         var command = info.command;
                         var data = info.data;
                         var valid = true;
-                        var accept = 'nick question password token'.split(' ');
+                        var accept = 'nick question password token avy name'.split(' ');
                         for(i in data){//checks that all the params are strings
                             if(accept.indexOf(i) != -1){
-                                if(typeof data[i] != 'string' && data[i].length >= 2000){
+                                if(typeof data[i] != 'string'){
                                     valid = false;
                                 }  
                             } else {
@@ -226,6 +252,7 @@ function createChannel(io, channelName){
                             var channeldata = {};
                             dao.getChannelinfo(channelName).then(function(channelinfo){//get all channel info
                                 dao.find(data.nick).then(function(dbuser){
+                                    console.log(command)
                                     core[command](data,dbuser,channelinfo);
                                 });
                             });   
@@ -248,33 +275,46 @@ function createChannel(io, channelName){
     
     var COMMNADS = {
         avy : {
-            params : ['avy','name'],
+            params : ['name'],
             handler : function(user,params){
-                if(!/^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$/.test(params.avy)){
-                    dao.find(user.nick).then(function(dbuser){
-                        var AvyFolder = 'public/images/avatars/';
-                        if(dbuser){
-                            AvyFolder += (dbuser.nick + '/');
-                            if(!fs.existsSync(AvyFolder)){//if folder doesn't exist. make folder
-                                fs.mkdirSync(AvyFolder);
+                dao.find(user.nick).then(function(dbuser){
+                    if(dbuser){
+                        var Avy = 'public/images/avatars/' + dbuser.nick + '/' + params.name;
+                        fs.access(Avy, fs.F_OK, function(err) {
+                            if(!err){
+                               roomEmit('MapInfo',{
+                                    avatars : [{
+                                        avy : Avy.slice(6),
+                                        id : user.socket.id
+                                    }]
+                                });
+                                user.avy = Avy.slice(6);
+                            } else {
+                                showMessage(user.socket,'Avy not found','error');
                             }
-                        }
-                        fs.writeFile(AvyFolder + '/' + params.name, params.avy.replace(/^data:image\/png;base64,/, ''), 'base64', function(err){
-                            if (err) throw err
-                            roomEmit('MapInfo',{
-                                avatars : [{
-                                    avy : AvyFolder.slice(6) + params.name,
-                                    id : user.socket.id
-                                }]
-                            });
-                            user.avy = AvyFolder.slice(6) + params.name;
                         });
-                    });
-                } else {
-                    console.log('Avatar hack attempt',user.nick,user.remote_addr);
-                }
+                    }
+                });
             }
         }, 
+        removeavy : {
+            params : ['name'],
+            handler : function(user,params){
+                dao.find(user.nick).then(function(dbuser){
+                    if(dbuser){
+                        var AvyFolder = 'public/images/avatars/' + dbuser.nick + '/' + params.name;
+                        fs.access(AvyFolder, fs.F_OK, function(err) {
+                            if(!err){
+                                fs.unlink(AvyFolder);
+                                showMessage(user.socket,'Image removed');
+                            } else {
+                                showMessage(user.socket,'Image doesn\'t exist','error');
+                            }
+                        });
+                    }
+                });
+            }
+        },
         nick : {
             params : ['nick'],
             handler : function(user,params){
