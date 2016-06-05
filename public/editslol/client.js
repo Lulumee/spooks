@@ -170,7 +170,7 @@ socket.on('MapInfo', function(data){
     }
     var Objects = data && JSON.parse(data.objects);
     for(var o in Objects){
-        PlaceObject(Objects[o].tiles,Objects[o].left + 'px',Objects[o].top + 'px',Objects[o].collision);
+        PlaceObject(Objects[o].tiles,Objects[o].left + 'px',Objects[o].top + 'px',Objects[o].collision,Objects[o].height);
     }
     if(data && data.spawn){
         try{
@@ -245,12 +245,7 @@ function PlaceTile(x,y,sx,sy){
         //remove item on click
         item.addEventListener('click',function(){
             if(remove){
-                var index = TileIndex(null,{
-					x : x,
-					y : y,
-					sx : sx,
-					sy : sy
-				});
+                var index = TileIndex(null,{x,y,sx,sy});
                 settings.tiles.splice(index,1);
 				document.getElementById('world-tiles').removeChild(item);
             }
@@ -277,7 +272,7 @@ function PlaceTile(x,y,sx,sy){
 
 function PlaceObject(Tiles,startX,startY,collision,setHeight){
         var Height = 0;
-        
+
         //if tiles in old array form convert to object
         if(Tiles && Tiles.length){
             //Get Max X and Y
@@ -333,8 +328,9 @@ function PlaceObject(Tiles,startX,startY,collision,setHeight){
             });
             //Load into object settings on double click
             ObjectContainer.addEventListener('dblclick',function(){
+                console.log(settings.objects[this.id])
                 var ThisObject = settings.objects[this.id];
-                setCollison(ThisObject.tiles,ThisObject)
+                //setCollison(ThisObject.tiles,ThisObject)
             });
         } else {//no tiles, collision block
             var cblock = document.getElementById('cblock').cloneNode();
@@ -359,12 +355,12 @@ function PlaceObject(Tiles,startX,startY,collision,setHeight){
         }
         
         //store last move
-        if(!setHeight) setHeight = Height;
+        setHeight = undefined;
         settings.lastclick = {
             left : parseInt(startX),
             top : parseInt(startY),
             tiles : Tiles,
-            height : setHeight || (Height + 16),
+            height : setHeight || Tiles.MaxY,
             order : settings.objects.length
         }
 		
@@ -372,7 +368,6 @@ function PlaceObject(Tiles,startX,startY,collision,setHeight){
         
         //If no collision set collision for object
         if(!collision){
-            settings.objects[settings.objects.length-1].height = setHeight;
             setCollison(Tiles,settings.objects[settings.objects.length-1]);
         } else {
             settings.objects[settings.objects.length-1].collision = collision;
@@ -575,7 +570,6 @@ function setCollison(Tiles,obj){
     var ctx = ColCanvas.getContext('2d');
     Panel.appendChild(ColCanvas);
     
-    console.log(Tiles)
     ctx.drawImage(tilesheet,Tiles.MinX,Tiles.MinY,Tiles.MaxX,Tiles.MaxY,0,0,Tiles.MaxX,Tiles.MaxY);
     
     Cover.appendChild(Panel);;
