@@ -22,14 +22,20 @@
                     <li class="tab tiles selected">Tile</li>
                     <li class="tab objects">Object</li>
                     <li class="tab animation">Animation</li>
+                    <li class="tab AI">AI</li>
                     <li class="tab settings">Settings</li>
                 </ul>
             </div>
-            <div id="panel">
-                <div id="tiles"></div>
-                <div id="objects"></div>
-                <div id="animation"></div>
-                <div id="settings">
+            <div id="menus">
+                <div class="panel" id="tiles">
+                    <ul class="tilesets"></ul>
+                    <div class="TabPanels"></div>
+                </div>
+                <div class="panel" id="animation"></div>
+                <div class="panel" id="AI">
+                    <button id="newAI">New AI</button>
+                </div>
+                <div class="panel" id="settings">
                     Special tiles<br>
                     <div id="spawn" class="extra" style="width:48px;height:48px;background-color:green;">spawn</div>
                     <div id="cblock" class="extra" style="width:48px;height:48px;background-color:red;">Collision block</div>
@@ -46,5 +52,6 @@
         </div>
     </body>
     <script src="/socket.io/socket.io.js"></script>
+    <script language="javascript" type="text/javascript" src="../dollarSign.js"></script>
     <script language="javascript" type="text/javascript" src="../editslol/client.js"></script>
 </html>
