@@ -1,7 +1,7 @@
 var socket = io(window.location.pathname);
 
 //main canvas
-var canvas = document.getElementById('players');;
+var canvas = document.getElementById('players');
 var ctx = canvas.getContext('2d');
 //background canvas
 var bgcanvas = document.getElementById('background');
@@ -17,7 +17,7 @@ var TileSheet = new Image();
 TileSheet.src = '/images/tiles/Tileset.png';
 
 var player = {};
-socket.on('connect', function(){
+socket.on('connect', function () {
     player = {
         dir : {
             right : false,
@@ -26,40 +26,41 @@ socket.on('connect', function(){
             down : false
         },
         id : socket.id,
-        updatePos : function(){
-            if(this.info){
-                socket.emit('position',{
+        updatePos : function () {
+            if (this.info) {
+                socket.emit('position', {
                     x : this.info.x,
                     y : this.info.y,
                     frameY : this.info.frame.y
-                });    
-            } 
+                });
+            }
         }
-    }
+    };
 });
 
 var world = {
     width : 500,
     height : 500,
-    screenWidth : Math.floor(window.innerWidth/2),
-    screenHeight : Math.floor(window.innerHeight/2),
+    screenWidth : Math.floor(window.innerWidth / 2),
+    screenHeight : Math.floor(window.innerHeight / 2),
     grid : 3,
-    tiles : [],
+    tiles : {},
     objects : [],
-    spawn : [0,0]
+    spawn : [0, 0],
+    TileSheets : []
 };
 
 var ONLINE = {//All data on other users
-    Pend : function(id,att,data){//pend data for future use
-        if(!this.Penned[id]){
+    Pend : function (id, att, data) {//pend data for future use
+        if (!this.Penned[id]) {
             this.Penned[id] = {};
         }
         this.Penned[id][att] = data;
     },
     Penned : {},
-    getid : function(nick){
-        for(var i in ONLINE.players){
-            if(nick == ONLINE.players[i].nick){
+    getid : function (nick) {
+        for (var i in ONLINE.players) {
+            if (nick === ONLINE.players[i].nick) {
                 return i;
             }
         }
@@ -218,7 +219,7 @@ function collision(player,dir){
     } else {//touching side of map
         return false;
     }
-}
+};
 
 //draws given player
 function Draw(user){
@@ -262,7 +263,7 @@ function Draw(user){
         var PlayerY = (player.info && player.info.y || world.spawn[1])*3
         if(PlayerX > world.screenWidth) Pleft = (PlayerX)-world.screenWidth;
         if(PlayerY > world.screenHeight) Ptop = (PlayerY)-world.screenHeight;
-        ctx.drawImage(TileSheet,ObjectTile.MinX,ObjectTile.MinY,ObjectTile.MaxX,ObjectTile.MaxY,(user.x*world.grid)-Pleft,(user.y*world.grid)-Ptop,ObjectTile.MaxX,ObjectTile.MaxY);
+        ctx.drawImage(world.TileSheets[user.src],ObjectTile.MinX,ObjectTile.MinY,ObjectTile.MaxX,ObjectTile.MaxY,(user.x*world.grid)-Pleft,(user.y*world.grid)-Ptop,ObjectTile.MaxX,ObjectTile.MaxY);
     }
 }
 
@@ -391,7 +392,7 @@ window.addEventListener('resize', function(){
     
     world.screenHeight = Math.floor(window.innerHeight/2);
     world.screenWidth = Math.floor(window.innerWidth/2);
-    spooks.DrawTiles(world.tiles);
+    spooks.DrawTiles();
 });
 
 //All the important functions besides the basic ones
@@ -423,7 +424,6 @@ var spooks = {
         }
         if(id == player.id){//if player loaded start game
             player.info = ONLINE.players[id];
-            init();
         }
         var li = document.createElement('li');
         li.id = id;
@@ -485,7 +485,7 @@ var spooks = {
             }
             
             myavy.addEventListener('click',function(e){
-                socket.emit('command',{//send image data to server
+                socket.emit('command',{//find image on server
                     name : 'avy',
                     params : {
                         name : filename
@@ -538,58 +538,94 @@ var spooks = {
         }
     },
     loadMap (MapInfo){
-        if(MapInfo.tiles){
+        
+        function loadBgTiles(){
             
             function GetBgImage(){
                 let BgImage = document.createElement('canvas');
                 BgImage.width = world.width;
                 BgImage.height = world.height;
                 let cc = BgImage.getContext('2d');
-                for(let i = 0; i < world.tiles.length; i++){
-                    let Tile = world.tiles[i];
-                    cc.drawImage(TileSheet,Tile.sx,Tile.sy,16,16,((Tile.x*3)+(world.width/4)),((Tile.y*3)+(world.height/4)),16,16);            
+                
+                for(var src in AllTiles){
+                    var tilesFromOneSheet = AllTiles[src];
+                    for(var i = 0; i < tilesFromOneSheet.length; i++){
+                        var tile = tilesFromOneSheet[i];
+                        cc.drawImage(world.TileSheets[src],tile.sx,tile.sy,16,16,((tile.left)+(world.width/4)),((tile.top)+(world.height/4)),16,16);
+                    }
                 }
+                
                 world.background = new Image();
                 world.background.src = BgImage.toDataURL();
+                spooks.DrawTiles();
+                loadObjects();//start loading objects
             }
-            
-            var Tiles = JSON.parse(MapInfo.tiles);
-			for(var t = 0; t < Tiles.length; t++){
-                var OneTile = Tiles[t];
-                if(world.width < OneTile.left) world.width = OneTile.left;
-                if(world.height < OneTile.top) world.height = OneTile.top;
-				world.tiles.push({
-					x : OneTile.left/3,
-					y : OneTile.top/3,
-					sx : OneTile.sx,
-					sy : OneTile.sy,
-					order : OneTile.order
-				});
-			}
+                        
+            for(var s = 0; s < AllTilesKeys.length; s++){
+                var sheet = AllTiles[AllTilesKeys[s]];
+                for(var t = 0; t < sheet.length; t++){
+                    var OneTile = sheet[t];
+                    if(world.width < OneTile.left) world.width = OneTile.left;
+                    if(world.height < OneTile.top) world.height = OneTile.top;
+                }
+            }
             world.width *= 2;
             world.height *= 2;
+            
             GetBgImage();
-            this.DrawTiles(TileSheet);
         }
-        if(MapInfo.objects){
+        
+        function loadObjects(){
             var Objects = JSON.parse(MapInfo.objects);
-            for(var t in Objects){
-                world.objects.push({
-                    x : (Objects[t].left+(world.width/4))/3,
-                    y : (Objects[t].top+(world.height/4))/3,
-                    tiles : Objects[t].tiles,
-                    index : Math.round(((Objects[t].top) + (Objects[t].height) + ((world.height/4)))/3)
-                });
-                if(Objects[t].collision.length){
-                    world.objects[t].collision = {
-                        left : Objects[t].collision[0] + Objects[t].left + (world.width/4),
-                        right : Objects[t].collision[1] + Objects[t].left + (world.width/4),
-                        top : Objects[t].collision[2] + Objects[t].top + (world.height/4),
-                        bottom : Objects[t].collision[3] + Objects[t].top + (world.height/4)
+            for(var src in Objects){
+                var objectsFromOneSheet = Objects[src];
+                for(var i = 0; i < objectsFromOneSheet.length; i++){
+                    var object = objectsFromOneSheet[i];
+                    if(object.collision && object.collision.length == 4){
+                        world.objects.push({
+                            x : (object.left+(world.width/4))/3,
+                            y : (object.top+(world.height/4))/3,
+                            tiles : object.tiles,
+                            index : Math.round(((object.top) + (object.height) + ((world.height/4)))/3),
+                            src : src,
+                            collision : {
+                                left : object.collision[0] + object.left + (world.width/4),
+                                right : object.collision[1] + object.left + (world.width/4),
+                                top : object.collision[2] + object.top + (world.height/4),
+                                bottom : object.collision[3] + object.top + (world.height/4)
+                            }
+                        });   
                     }
                 }
             }
+            init();//map is done loading, start game
         }
+        
+        //Load all tilesheets before anything else
+        var AllTiles = JSON.parse(MapInfo.tiles);
+        var AllTilesKeys = Object.keys(AllTiles);
+
+        function loadTileSheet(tilesheetsrc){
+            var Ron = new Image();
+            Ron.src = tilesheetsrc;
+            Ron.onload = function(){
+                world.TileSheets[tilesheetsrc] = Ron;
+            }
+        }
+        
+        for(var i in AllTilesKeys){
+            console.log(i)
+            loadTileSheet(AllTilesKeys[i]);
+        }
+        
+        var load = setInterval(function(){
+            if(Object.keys(world.TileSheets).length == AllTilesKeys.length){
+                loadBgTiles();
+                clearInterval(load);
+            }
+        },2000);
+        
+        
         if(MapInfo.spawn){
             try{
                 var Spawn = JSON.parse(MapInfo.spawn);
@@ -747,283 +783,3 @@ socket.on('positions', function(data){//grab all players positions
         }  
     }
 });
-
-
-function ChooseFrameSize(avy){
-    //
-}
-
-// ----------------------------------------------------
-//  Gets the frame width and height of the given avatar 
-// ----------------------------------------------------
-
-//ZOOM IN METHODD
-function FrameSizes(avy){
-    var frame = document.createElement('canvas');
-    frame.id = 'frame';
-    frame.style.position = 'absolute';
-    frame.style.left = '50px';
-    document.body.appendChild(frame);
-    var q = frame.getContext('2d');
-    frame.width = avy.width;
-    frame.height = avy.height;
-    q.drawImage(avy,0,0);
-    var frameW = false,
-        frameH = false,
-        frameX = 0,
-        frameY = 0;
-        
-    var pixels = q.getImageData(0,0,avy.width,avy.height);
-    //var cocks = q.getImageData(0,0,avy.width,avy.height);
-       
-    var height = 16;
-    var width = 0;
-    var findend = false;
-    
-    var pixelCount = 0;
-    var LowestPixelCount = 128;
-    var StartingWidth = 0;
-    
-    var bestWidth = 128;
-    var WidthMax = avy.width < 128 ? avy.width : 128;
-    
-    //get width
-    for(; height <= 128; height++){
-        var alpha = pixels.data[((width*4)+(height*(avy.width*4)))+3];
-        //cocks.data[((width*4)+(height*(avy.width*4)))+3] = 255;
-        //cocks.data[((width*4)+(height*(avy.width*4)))] = 255;
-        if(alpha){
-            if(!findend){
-                findend = true;
-                StartingWidth = width;
-            }
-            pixelCount++;
-        }
-        if(height >= 128){
-            width++;
-            height = 15;
-            if(findend && pixelCount == 0){//scaned full height, found no pixels, must be end of frame
-                width += StartingWidth;
-                //guess work
-                var guess = width;
-                var frameX = Math.round(avy.width/guess);
-                frameW = avy.width/frameX;
-                break;
-            } else {//scanned full height
-                if(LowestPixelCount > pixelCount){//found less pixels than before, save width
-                    LowestPixelCount = pixelCount;
-                    bestWidth = width;
-                }
-            }
-            pixelCount = 0;
-            if(width > WidthMax) break;//reached end of image, scan is over
-        }
-    }
-    
-    if(!frameW){
-        var guess = bestWidth;
-        var frameX = Math.round(avy.width/guess);
-        frameW = avy.width/frameX;
-    }
-    
-    var height = 0;
-    var width = 0;
-    var findend = false;
-    var pixelCount = 0;
-    var StartingHeight = 0;
-    
-    //get height
-    for(; width <= frameW; width++){
-        var alpha = pixels.data[((width*4)+(height*(avy.width*4)))+3];
-        //cocks.data[((width*4)+(height*(avy.width*4)))+3] = 255;
-        //cocks.data[((width*4)+(height*(avy.width*4)))] = 255;
-        if(alpha){
-            if(!findend){
-                findend = true;
-                StartingHeight = height;
-            }
-            pixelCount++;
-        }
-        if(width >= (frameW-10)){
-            height++;
-            width = 0;
-            if(findend && pixelCount == 0){
-                //guess work
-                var guess = height;
-                var frameY = Math.round(avy.height/guess);
-                if(frameY > 8) frameY = 8;
-                frameH = avy.height/frameY;
-                break;
-            }
-            pixelCount = 0;
-            if(height > avy.height) break;
-        }
-    }
-            
-    document.body.removeChild(frame);
-    //q.putImageData(cocks,0,0);
-    if(frameW && frameH){
-        return {
-            w : frameW,
-            h : frameH,
-            y : 0,
-            x : 0,
-            maxX : frameX-1,
-            maxY : frameY-1
-        };
-    } else {
-        return false;
-    }
-}
-
-function loadImage(color,pixels){
-    var q = color.getContext('2d');
-    q.putImageData(pixels,0,0);
-    var test = new Image();
-    test.src = color.toDataURL();
-}
-
-function NightTime(source){
-    var color = document.createElement('canvas');
-    document.body.appendChild(color);
-    var q = color.getContext('2d');
-    color.width = source.width;
-    color.height = source.height;
-    q.drawImage(source,0,0);
-    var pixels = q.getImageData(0, 0, source.width, source.height);
-    
-    var i = 0;
-    var loop = setInterval(function(){     
-        
-        var stop = i+10000;
-        for(; i < stop; i+=4){
-            pixels.data[i] += Math.floor(Math.random() * 100) - 51;
-            pixels.data[i+1] += Math.floor(Math.random() * 100) - 51;
-            pixels.data[i+2] += Math.floor(Math.random() * 100) - 51;
-        }
-        
-        if(i >= pixels.data.length){
-            console.log(i,pixels.data.length);
-            loadImage(color,pixels);
-            clearInterval(loop);
-        }
-        console.log(i,pixels.data.length);
-    },100)
-
-}
-
-// -----------------------------------------------------
-// Remove the solid background color of the given avatar
-// -----------------------------------------------------
-
-function removebg(source){//remove background color
-    var color = document.createElement('canvas');
-    document.body.appendChild(color);
-    var q = color.getContext('2d');
-    color.width = source.width;
-    color.height = source.height;
-    q.drawImage(source,0,0);
-    var pixels = q.getImageData(0, 0, source.width, source.height);
-    var remove = {
-        r : pixels.data[0],
-        g : pixels.data[1],
-        b : pixels.data[2]
-    };
-    for(var i = 0, len = pixels.data.length; i < len; i += 4){
-        var r = pixels.data[i];
-        var g = pixels.data[i+1];
-        var b = pixels.data[i+2];
-
-        if(r == remove.r && g == remove.g && b == remove.b){
-            if(remove.r || remove.g || remove.b){
-                pixels.data[i+3] = 0;
-            }
-        }
-    }
-    q.putImageData(pixels,0,0);
-    document.body.removeChild(color);
-    return color.toDataURL();
-}
-
-// --------------------------------------------------
-// modify avatar and convert before sending to server
-// --------------------------------------------------
-
-function SpriteGif(imagedata,filename){
-    var img = new Image();
-    img.src = imagedata;
-    img.onload = function(){
-        var width = img.width;
-        var height = img.height;
-        document.getElementById('menu').appendChild(img);
-        var superGif = new SuperGif({ gif: img});
-        var splitCanvas = document.createElement('canvas');
-        splitCanvas.height = height;
-        var sc = splitCanvas.getContext('2d');
-        superGif.load(function(){
-            var TotalFrames = superGif.get_length();
-            splitCanvas.width = width*TotalFrames;
-            superGif.pause();
-            for(var i = 0; i < TotalFrames; i++){
-                superGif.move_to(i);
-                var Gifcanvas = superGif.get_canvas();
-                var IMGdata = Gifcanvas.toDataURL();
-                var frame = new Image();
-                frame.src = IMGdata;
-                sc.drawImage(frame,i*width,0);
-            }
-            var SpriteFrames = {
-                h : height,
-                w : width,
-                maxY : 0,
-                maxX : superGif.get_length(),
-                x : 0,
-                y : 0
-            }
-            var SpriteSheet = splitCanvas.toDataURL();
-            SendAvy(SpriteSheet,filename,SpriteFrames);
-        });
-    };
-}
-
-function SendAvy(imgdata,name,SpriteFrames){
-    var source = new Image();
-    source.src = imgdata;
-    source.onload = function(){
-        var pixs = removebg(source);
-        var user = player.info;
-        TestAvatar = new Image();//update client side immediately
-        TestAvatar.src = pixs;
-        var Sizes = SpriteFrames || FrameSizes(TestAvatar);
-        if(Sizes){
-            user.avy = TestAvatar;
-            user.frame = Sizes;
-            spooks.saveAvatar(user.avy,name);
-            socket.emit('core',{//send image data to server
-                command : 'uploadAvy',
-                data : {
-                    avy : pixs,
-                    name : name
-                }
-            });
-        } else {
-            CHAT.show({
-                message : 'Unable to detect frame sizes',
-                style : 'error'
-            });
-        }
-    };
-}
-
-document.getElementById('upload').onchange = function(){
-    var file = this.files[0];
-    var reader = new FileReader();
-    reader.onload = function(evt){
-        if(file.type == 'image/gif'){
-            SpriteGif(evt.target.result,file.name);
-        } else {
-            SendAvy(evt.target.result,file.name);
-        }
-    };
-    reader.readAsDataURL(file);   
-};

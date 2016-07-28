@@ -84,6 +84,9 @@ var COMMANDS = {
         }
     },
     //server side commands
+    removeavy : {
+        params : ['name']
+    },
     nick : {
         params : ['nick']
     },
@@ -247,8 +250,8 @@ var CHAT = {
         if(att == 'avatars'){
             for(var i = 0; i < value.length; i++){
                 var AvatarImage = new Image();
-                AvatarImage.src = '/images/avatars/' + CHAT.get('nick') + '/' + value[i];
-                spooks.saveAvatar(AvatarImage,value[i])
+                AvatarImage.src = `/images/avatars/${CHAT.get('nick')}/${value[i]}`;
+                spooks.saveAvatar(AvatarImage,value[i]);
             }
         }
     },
@@ -798,5 +801,5 @@ var tabber = {
         } else {
             messegesPanel.scrollTop -= messegesPanel.scrollHeight - (messegesPanelPreviousScrollTop + messegesPanelPreviousHeight);
         }
-    };
+    }
 })();
