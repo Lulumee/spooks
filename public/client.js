@@ -80,7 +80,7 @@ function init(){
     canvas.height = window.innerHeight; 
     
     //Draw Map
-	spooks.DrawTiles();
+	mapControl.drawTiles();
     //Send position to server
     player.updatePos();
     
@@ -122,7 +122,7 @@ function paint(){
             p.frame.y = 0;
         }
         player.updatePos();//send posistion to server
-        spooks.DrawTiles();
+        mapControl.drawTiles();
     }
     
     var all = [];
@@ -392,12 +392,13 @@ window.addEventListener('resize', function(){
     
     world.screenHeight = Math.floor(window.innerHeight/2);
     world.screenWidth = Math.floor(window.innerWidth/2);
-    spooks.DrawTiles();
+    mapControl.drawTiles();
 });
 
 //All the important functions besides the basic ones
-var spooks = {
-    AddUser (id, data = {}){//add new user
+
+var userControl = {
+    addUser : function (id, data) {
         if(!ONLINE.players[id]){
             ONLINE.players[id] = {
                 x : data.x || world.spawn[0],
@@ -414,101 +415,49 @@ var spooks = {
                 },
                 avy : DefaultAvatar,
                 nick : data.nick || id
-            };    
-        }
+            };
+            
+            var li = document.createElement('li');
+            li.id = id;
+            li.textContent = ONLINE.players[id].nick;
+            li.addEventListener('click', function(e){
+                $$$.contextMenu(e,e.target.textContent);
+            });
+            document.getElementById('Users').appendChild(li);
+            
+        };
+        
         if(ONLINE.Penned[id] && ONLINE.Penned[id].nick){//if user had pending nick load now
-            spooks.nick(ONLINE.Penned[id].nick,id,true);
+            userControl.nick(ONLINE.Penned[id].nick,id,true);
         }
         if(ONLINE.Penned[id] && ONLINE.Penned[id].avy){//if user had pending avatar load now
-            spooks.loadAvatar(id,ONLINE.Penned[id].avy);
+            avatarControl.loadAvatar(id,ONLINE.Penned[id].avy);
         }
         if(id == player.id){//if player loaded start game
             player.info = ONLINE.players[id];
         }
-        var li = document.createElement('li');
-        li.id = id;
-        li.textContent = ONLINE.players[id].nick;
-        li.addEventListener('click', function(e){
-            $$$.contextMenu(e,e.target.textContent);
-        });
-        document.getElementById('Users').appendChild(li);
     },
-    removeUser (id){
+    removeUser : function (id) {
         var UserData = ONLINE.players[id];
-        CHAT.show({
-            nick : UserData.nick,
-            message : 'has left',
-            style : 'general'
-        });
-        delete ONLINE.players[id];
-        //remove from menu
-        var li = document.getElementById(id);
-        document.getElementById('Users').removeChild(li);
-    },
-    saveAvatar (avy,filename){
-        
-        var AvyList = document.getElementById('avy-list');
-        
-        function save(AvyFrame){
-            if(AvyFrame.w > 120) AvyFrame.w = 120;
-            var myavy = document.createElement('li');
-            myavy.className = 'myavy';
-            myavy.style.cssText = `background-position:0px 0px;overflow:hidden;display:block;width:${AvyFrame.w}px;height:${AvyFrame.h}px`;
-            myavy.appendChild(avy);
-            
-            var remove = document.createElement('button');
-            remove.style.cssText = `background:none;border:none;cursor:pointer;position:relative;left:${AvyFrame.w}px;top:-${AvyFrame.h/2}px;`;
-            remove.textContent = 'x';
-            myavy.appendChild(remove);
-            
-            remove.addEventListener('click', function(e){
-                CHAT.submit('/removeavy ' + filename);
-                AvyList.removeChild(myavy);
-                AvyList.removeChild(remove);
+        if(UserData){
+            CHAT.show({
+                nick : UserData.nick,
+                message : 'has left',
+                style : 'general'
             });
-            
-            function toDataUrl(url, callback, outputFormat){
-                var img = new Image();
-                img.crossOrigin = 'Anonymous';
-                img.onload = function(){
-                    var canvas = document.createElement('CANVAS');
-                    var ctx = canvas.getContext('2d');
-                    var dataURL;
-                    canvas.height = this.height;
-                    canvas.width = this.width;
-                    ctx.drawImage(this, 0, 0);
-                    dataURL = canvas.toDataURL(outputFormat);
-                    callback(dataURL);
-                    canvas = null; 
-                };
-                img.src = url;
-            }
-            
-            myavy.addEventListener('click',function(e){
-                socket.emit('command',{//find image on server
-                    name : 'avy',
-                    params : {
-                        name : filename
-                    }
-                });
-            });
-            AvyList.appendChild(myavy);   
-            AvyList.appendChild(remove);
-        }  
-        
-        avy.onload = function(){
-            save(FrameSizes(avy));
+            delete ONLINE.players[id];
+            //remove from menu
+            var li = document.getElementById(id);
+            document.getElementById('Users').removeChild(li);
         }
-                
     },
-    nick (nick,id,secret){
+    nick : function (nick, id, secret) {
         var user = ONLINE.players[id];
         if(user){
             if(!secret){
                 CHAT.show({
                     nick : user.nick,
-                    nick2 : nick,
-                    message : 'is now known as',
+                    message : 'is now known as ' + nick,
                     style : 'general'
                 });   
             }
@@ -518,26 +467,11 @@ var spooks = {
         } else {
             ONLINE.Pend(id,'nick',nick)
         }
-    },
-    loadAvatar (id,file){
-        var user = ONLINE.players[id];
-        if(user){
-            var avatar = new Image();
-            avatar.src = file;
-            avatar.onload = function(){
-                var Sizes = FrameSizes(avatar);
-                if(Sizes){
-                    user.avy = avatar;
-                    user.frame = Sizes;
-                } else {
-                    user.avy = DefaultAvatar;
-                }
-            }   
-        } else {//if doesn't show player online, pend data
-            ONLINE.Pend(id,'avy',file);
-        }
-    },
-    loadMap (MapInfo){
+    }
+}
+
+var mapControl = {
+    loadMap : function (MapInfo) {
         
         function loadBgTiles(){
             
@@ -557,7 +491,7 @@ var spooks = {
                 
                 world.background = new Image();
                 world.background.src = BgImage.toDataURL();
-                spooks.DrawTiles();
+                mapControl.drawTiles();
                 loadObjects();//start loading objects
             }
                         
@@ -614,7 +548,6 @@ var spooks = {
         }
         
         for(var i in AllTilesKeys){
-            console.log(i)
             loadTileSheet(AllTilesKeys[i]);
         }
         
@@ -639,7 +572,7 @@ var spooks = {
             }
         }
     },
-    DrawTiles (Tiles){
+    drawTiles : function () {
         bg.clearRect(0,0,window.innerWidth,window.innerHeight);
         //magic
         var Pleft = 0;
@@ -648,29 +581,27 @@ var spooks = {
         var PlayerY = (player.info && player.info.y || world.spawn[1])*3
         if(PlayerX > world.screenWidth) Pleft = PlayerX-world.screenWidth;
         if(PlayerY > world.screenHeight) Ptop = PlayerY-world.screenHeight;
-        bg.drawImage(world.background,0,0,world.width,world.height,-Pleft,-Ptop,world.width,world.height);  
+        bg.drawImage(world.background,0,0,world.width,world.height,-Pleft,-Ptop,world.width,world.height); 
     }
 }
 
 //menu codes
 document.getElementById('toggle-menu').addEventListener('click', function(){//open menu on click
     var menu = document.getElementById('menu');
-    if(menu.classList.contains('slideOpen')){
-        menu.classList.remove('slideOpen');
-        menu.classList.add('slideClose');
+    if(menu.className == 'slideOpen'){
+        menu.className = 'slideClose';
     } else {
-        menu.classList.remove('slideClose');
-        menu.classList.add('slideOpen');
+        menu.className = 'slideOpen';
     }
 });
 
 document.getElementById('tabs').addEventListener('click', function(e){
     var tab = e.target;
     if(tab.className == 'tab'){
-        var otherTabs = document.getElementsByClassName('tab');
-        for(var i = 0; i < otherTabs.length; i++){
-            document.getElementById(otherTabs[i].textContent).style.display = 'none';
-            otherTabs[i].classList.remove('selected');
+        var selectedTab = document.getElementsByClassName('selected')[0];
+        if(selectedTab){
+            document.getElementById(selectedTab.textContent).style.display = 'none';
+            selectedTab.classList.remove('selected');
         }
         tab.classList.add('selected');
         document.getElementById(tab.textContent).style.display = 'block';
@@ -707,9 +638,9 @@ document.addEventListener('keyup', function(e){
     else if(key == "40") player.dir.down = false;
 });
 
-//User connected, AddUser
+//User connected, add new user
 socket.on('join',function(data){
-    spooks.AddUser(data.id,data);
+    userControl.addUser(data.id,data);
     CHAT.show({
         nick : data.nick,
         message : 'has joined',
@@ -719,7 +650,7 @@ socket.on('join',function(data){
 
 //User disconnected, RemoveUser
 socket.on('left', function(id){
-    spooks.removeUser(id);
+    userControl.removeUser(id);
 });
 
 //refresh page
@@ -751,7 +682,7 @@ socket.on('MapInfo', function(data){
     for(var i in data.avatars){//load all avatars
         var UserData = data.avatars[i];
         if(!ONLINE.players[UserData.id]){
-            spooks.AddUser(UserData.id,{
+            userControl.addUser(UserData.id, {
                 nick : UserData.nick,
                 x : UserData.position.x,
                 y : UserData.position.y,
@@ -759,16 +690,16 @@ socket.on('MapInfo', function(data){
             });   
         }
         if(UserData.avy){
-            spooks.loadAvatar(UserData.id,UserData.avy);
+            avatarControl.loadAvatar(UserData.id,UserData.avy);
         }
     }
     if(data.map){
-        spooks.loadMap(data.map);
+        mapControl.loadMap(data.map);
     }
 });
 
 socket.on('nick', function(data){//update players nick
-    spooks.nick(data.nick,data.id);
+    userControl.nick(data.nick,data.id);
 });
 
 socket.on('positions', function(data){//grab all players positions

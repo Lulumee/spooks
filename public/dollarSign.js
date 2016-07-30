@@ -40,41 +40,41 @@ window.$$$ = {
     resizable : function (el) {
         var container = document.getElementById('world'),
             width = el.offsetWidth,
-            height = el.offsetHeight;
+            height = el.offsetHeight,
+            clickX = 0,
+            clickY = 0;
+        
         el.style.width = width + 'px';
         el.style.height = height + 'px';
         
-        var clickX = 0,
-            clickY = 0;
-        
-        function resize(event){
-            var movementX = (event.clientX-clickX) - parseInt(el.style.width);
-            var movementY = (event.clientY-clickY) - parseInt(el.style.height);
+        function resize(event) {
+            var movementX = (event.clientX - clickX) - parseInt(el.style.width, 10),
+                movementY = (event.clientY - clickY) - parseInt(el.style.height, 10);
             width = parseInt(el.style.width) + movementX;
             height = parseInt(el.style.height) + movementY;
-            if((width < container.offsetWidth) && width > 200){
+            if ((width < container.offsetWidth) && width > 200) {
                 el.style.width = width + 'px';
             }
-            if(((height + parseInt(el.style.top)) < container.offsetHeight) && height > 100){
+            if (((height + parseInt(el.style.top)) < container.offsetHeight) && height > 100) {
                 el.style.height = height + 'px';
             }
         }
         
-        function remove(){
-            el.removeEventListener('mousemove',resize);
-            container.removeEventListener('mousemove',resize);
+        function remove() {
+            el.removeEventListener('mousemove', resize);
+            container.removeEventListener('mousemove', resize);
             document.body.classList.remove('noselect');
         }
         
-        function add(e){
+        function add(e) {
             clickX = e.clientX - parseInt(el.style.width);
             clickY = e.clientY - parseInt(el.style.height);
-            el.addEventListener('mousemove',resize);
-            container.addEventListener('mousemove',resize);
+            el.addEventListener('mousemove', resize);
+            container.addEventListener('mousemove', resize);
             document.body.classList.add('noselect');
         }
         
-        el.addEventListener('mouseup',remove);     
+        el.addEventListener('mouseup',remove);    
         container.addEventListener('mouseup',remove);
                         
         //right resize handle
@@ -110,43 +110,59 @@ window.$$$ = {
         })
         container.addEventListener('mousemove', function(e){
             var tile = pen.getElementsByTagName('img')[0];
-            if(grabbed && (!tile.src.length || remove)){
-                var movementX = e.clientX-LastX;
-                var movementY = e.clientY-LastY;
+            if(grabbed && (!tile.src.length || remove)) {
+                var movementX = e.clientX - LastX;
+                var movementY = e.clientY - LastY;
                 el.scrollLeft -= movementX;
                 el.scrollTop -= movementY;
                 LastX = e.clientX;
-                LastY = e.clientY; 
+                LastY = e.clientY;
             }
         });
     },
-    SendAvy : function(imgdata, name, SpriteFrames, channel){
-        var source = new Image();
-        source.src = imgdata;
-        source.onload = function(){
-            var pixs = removebg(source);
-            var user = player.info;
-            TestAvatar = new Image();//update client side immediately
-            TestAvatar.src = pixs;
-            var Sizes = SpriteFrames || FrameSizes(TestAvatar);
-            if(Sizes){
-                user.avy = TestAvatar;
-                user.frame = Sizes;
-                spooks.saveAvatar(user.avy,name);
-                socket.emit('core',{//send image data to server
-                    command : 'uploadAvy',
-                    data : {
-                        avy : pixs,
-                        name : name,
-                        channel : channel
-                    }
-                });
-            } else {
-                CHAT.show({
-                    message : 'Unable to detect frame sizes',
-                    style : 'error'
-                });
+    contextMenu : function(e, name){
+        var options = {
+            Kick : {
+                callback : function(name){
+                    CHAT.submit('/kick ' + name);
+                }
+            },
+            Ban : {
+                callback : function(name){
+                    CHAT.submit('/ban ' + name);
+                }
+            },
+            Whois : {
+                callback : function(name){
+                    CHAT.submit('/whois ' + name);
+                }
             }
-        };
+        }
+        var Oldmenu = document.getElementById('context-menu');
+        if(Oldmenu) document.body.removeChild(Oldmenu);
+        var menu = document.createElement('div');
+        menu.id = 'context-menu';
+        menu.style.cssText = 'position:absolute;z-index:9999999;width:100px;background-color:#EEE;font-family: Verdana, Arial, Helvetica, sans-serif;font-size: 11px';
+        menu.style.left = e.pageX + 'px';
+        menu.style.top = (e.pageY - menu.offsetHeight) + 'px';
+        var header = document.createElement('header');
+        header.style.cssText = 'background-color:#DDD;padding:2px;font-weight:bold;word-wrap: break-word;';
+        header.textContent = name;
+        menu.appendChild(header);
+        menu.addEventListener('mouseleave', function(){
+            document.body.removeChild(menu);
+        });
+        var keys = Object.keys(options);
+        for(var i = 0; i < keys.length; i++){
+            var li = document.createElement('li');
+            var att = keys[i];
+            li.style.cssText = 'height: 15px;cursor: pointer;list-style: none;padding: 2px 2px 2px 24px;';
+            li.onmouseover = function(){ this.style.backgroundColor = '#39F'; }
+            li.onmouseout = function(){ this.style.backgroundColor = ''; }
+            li.textContent = att;
+            li.onclick = function(e){ document.body.removeChild(menu);options[e.target.textContent].callback(name); }
+            menu.appendChild(li);
+        }
+        document.body.appendChild(menu);
     }
 };

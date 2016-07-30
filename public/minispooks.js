@@ -223,7 +223,6 @@ var CHAT = {
             parser.getAllFonts(message.message); //check for missing fonts
             message.message = parser.parse(message.message);
             if(message.nick) message.nick = parser.escape(message.nick);
-            if(message.nick2) message.nick2 = parser.escape(message.nick2);
         } else {
             message.message = parser.escape(message.message);
         }
@@ -251,7 +250,7 @@ var CHAT = {
             for(var i = 0; i < value.length; i++){
                 var AvatarImage = new Image();
                 AvatarImage.src = `/images/avatars/${CHAT.get('nick')}/${value[i]}`;
-                spooks.saveAvatar(AvatarImage,value[i]);
+                avatarControl.saveAvatar(AvatarImage, value[i]);
             }
         }
     },
@@ -293,8 +292,6 @@ var CHAT = {
         if(message.nick){
             if(message.style == 'general'){//if general-message add nick to message instead of creating a new div
                 message.message = message.nick + ' ' + message.message;
-                //if nick2 is given add to end of message
-                if(message.nick2) message.message += ' ' + message.nick2;
             } else {
                 var nick = document.createElement('div');
                 nick.className = 'nick';
@@ -320,6 +317,7 @@ var CHAT = {
 		var container = document.getElementById('messages');
         //append message
         container.appendChild(el);
+        this.pop.play();
         this.scrollToBottom('messages');
     },
     scrollToBottom : function(m){
@@ -359,6 +357,7 @@ var CHAT = {
             scrollTo(m,scrollDelta,200);
         }
     },
+    pop : audio = new Audio('audio/Bing.mp3'),
     attributes : function(){
         var item = {};
         var atts = 'color flair font style nick note role topic part token'.split(' ');
@@ -376,144 +375,6 @@ var CHAT = {
         }
         return item;
     }()
-}
-
-var $$$ = {
-    draggable : function(el){
-        var container = document.getElementById('world');
-        var clickX = 0;
-        var clickY = 0;
-        el.style.left = el.offsetLeft + 'px';
-        el.style.top = el.offsetTop + 'px';
-        
-        function drag(event){
-            var movementX = (event.clientX-(clickX)) - parseInt(el.style.left);
-            var movementY = (event.clientY-(clickY)) - parseInt(el.style.top);
-            var left = parseInt(el.style.left) + (movementX);
-            var top = parseInt(el.style.top) + (movementY);
-            if(((left + el.offsetWidth) <= container.offsetWidth) && left >= container.offsetLeft){
-                el.style.left = left + 'px';
-            }
-            if(((top + el.offsetHeight) < container.offsetHeight) && top >= container.offsetTop){
-                el.style.top = top + 'px';
-            }
-        }
-        
-        function remove(){
-            el.removeEventListener('mousemove',drag);
-            container.removeEventListener('mousemove',drag);
-            document.body.classList.remove('noselect');
-        }
-        
-        el.addEventListener('mousedown', function(e){
-            var target = e.target || e.srcElement;
-            if(target.id === ('drag-bar')){
-                clickX = e.clientX - parseInt(el.style.left);
-                clickY = e.clientY - parseInt(el.style.top);
-                el.addEventListener('mousemove',drag);
-                container.addEventListener('mousemove',drag);
-                document.body.classList.add('noselect');            
-            }
-        });
-                
-        el.addEventListener('mouseup', remove);
-        container.addEventListener('mouseup', remove);
-    },
-    resizeable : function(el){
-        var container = document.getElementById('world');
-        var width = el.offsetWidth;
-        var height = el.offsetHeight;
-        el.style.width = width + 'px';
-        el.style.height = height + 'px';
-        
-        var clickX = 0;
-        var clickY = 0;     
-        function resize(event){
-            var movementX = (event.clientX-clickX) - parseInt(el.style.width);
-            var movementY = (event.clientY-clickY) - parseInt(el.style.height);
-            width = parseInt(el.style.width) + movementX;
-            height = parseInt(el.style.height) + movementY;
-            if((width < container.offsetWidth) && width > 200){
-                el.style.width = width + 'px';
-            }
-            if(((height + parseInt(el.style.top)) < container.offsetHeight) && height > 100){
-                el.style.height = height + 'px';
-            }
-            var messegesPanel = document.getElementById('messages');
-            var input = document.getElementById('input-bar').getElementsByTagName('textarea')[0];
-            messegesPanel.style.height = messegesPanel.parentElement.clientHeight - document.getElementById('drag-bar').clientHeight - input.parentElement.clientHeight + "px";
-        }
-        
-        function remove(){
-            el.removeEventListener('mousemove',resize);
-            container.removeEventListener('mousemove',resize);
-            document.body.classList.remove('noselect');
-        }
-        
-        function add(e){
-            clickX = e.clientX - parseInt(el.style.width);
-            clickY = e.clientY - parseInt(el.style.height);
-            el.addEventListener('mousemove',resize);
-            container.addEventListener('mousemove',resize);
-            document.body.classList.add('noselect');
-        }
-        
-        el.addEventListener('mouseup',remove);     
-        container.addEventListener('mouseup',remove);
-                        
-        //corner resize handle
-        var cornerHandle = document.createElement('div');
-        cornerHandle.className = 'resizable-handle resizable-bottom-right';
-        cornerHandle.addEventListener('mousedown', add);
-        cornerHandle.addEventListener('mouseup',remove);
-        
-        el.appendChild(cornerHandle);
-    },
-    contextMenu : function(e,name){
-        var options = {
-            Kick : {
-                callback : function(name){
-                    CHAT.submit('/kick ' + name);
-                }
-            },
-            Ban : {
-                callback : function(name){
-                    CHAT.submit('/ban ' + name);
-                }
-            },
-            Whois : {
-                callback : function(name){
-                    CHAT.submit('/whois ' + name);
-                }
-            }
-        }
-        var Oldmenu = document.getElementById('context-menu');
-        if(Oldmenu) document.body.removeChild(Oldmenu);
-        var menu = document.createElement('div');
-        menu.id = 'context-menu';
-        menu.style.cssText = 'position:absolute;z-index:9999999;width:100px;background-color:#EEE;font-family: Verdana, Arial, Helvetica, sans-serif;font-size: 11px';
-        menu.style.left = e.pageX + 'px';
-        menu.style.top = (e.pageY - menu.offsetHeight) + 'px';
-        var header = document.createElement('header');
-        header.style.cssText = 'background-color:#DDD;padding:2px;font-weight:bold;word-wrap: break-word;';
-        header.textContent = name;
-        menu.appendChild(header);
-        menu.addEventListener('mouseleave', function(){
-            document.body.removeChild(menu);
-        });
-        var keys = Object.keys(options);
-        for(var i = 0; i < keys.length; i++){
-            var li = document.createElement('li');
-            var att = keys[i];
-            li.style.cssText = 'height: 15px;cursor: pointer;list-style: none;padding: 2px 2px 2px 24px;';
-            li.onmouseover = function(){ this.style.backgroundColor = '#39F'; }
-            li.onmouseout = function(){ this.style.backgroundColor = ''; }
-            li.textContent = att;
-            li.onclick = function(e){ document.body.removeChild(menu);options[e.target.textContent].callback(name); }
-            menu.appendChild(li);
-        }
-        document.body.appendChild(menu);
-    }
 }
 
 var parser = {
@@ -740,7 +601,7 @@ var tabber = {
     
     var chat = document.getElementById('chat');
     $$$.draggable(chat);
-    $$$.resizeable(chat);
+    $$$.resizable(chat);
     
     var minimize = document.getElementById('minimize');
     minimize.addEventListener('click',function(){

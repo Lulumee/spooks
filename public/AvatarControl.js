@@ -1,3 +1,79 @@
+var avatarControl = {
+    loadAvatar : function (id, file) {
+        var user = ONLINE.players[id];
+        if(user){
+            var avatar = new Image();
+            avatar.src = file;
+            avatar.onload = function(){
+                var Sizes = FrameSizes(avatar);
+                if(Sizes){
+                    user.avy = avatar;
+                    user.frame = Sizes;
+                } else {
+                    user.avy = DefaultAvatar;
+                }
+            }   
+        } else {//if doesn't show player online, pend data
+            ONLINE.Pend(id,'avy',file);
+        }
+    },
+    saveAvatar : function (avy, filename) {
+        var AvyList = document.getElementById('Avatars');
+        
+        function save(AvyFrame){
+            if(AvyFrame.w > 120) AvyFrame.w = 120;
+            var myavy = document.createElement('li');
+            myavy.className = 'myavy';
+            myavy.style.cssText = `background-position:0px 0px;overflow:hidden;display:block;width:${AvyFrame.w}px;height:${AvyFrame.h}px`;
+            myavy.appendChild(avy);
+            
+            var remove = document.createElement('button');
+            remove.style.cssText = `background:none;border:none;cursor:pointer;position:relative;left:${AvyFrame.w}px;top:-${AvyFrame.h/2}px;`;
+            remove.textContent = 'x';
+            myavy.appendChild(remove);
+            
+            remove.addEventListener('click', function(e){
+                CHAT.submit('/removeavy ' + filename);
+                AvyList.removeChild(myavy);
+                AvyList.removeChild(remove);
+            });
+            
+            function toDataUrl(url, callback, outputFormat){
+                var img = new Image();
+                img.crossOrigin = 'Anonymous';
+                img.onload = function(){
+                    var canvas = document.createElement('CANVAS');
+                    var ctx = canvas.getContext('2d');
+                    var dataURL;
+                    canvas.height = this.height;
+                    canvas.width = this.width;
+                    ctx.drawImage(this, 0, 0);
+                    dataURL = canvas.toDataURL(outputFormat);
+                    callback(dataURL);
+                    canvas = null; 
+                };
+                img.src = url;
+            }
+            
+            myavy.addEventListener('click',function(e){
+                socket.emit('command',{//find image on server
+                    name : 'avy',
+                    params : {
+                        name : filename
+                    }
+                });
+            });
+            AvyList.appendChild(myavy);   
+            AvyList.appendChild(remove);
+        }  
+        
+        avy.onload = function(){
+            save(FrameSizes(avy));
+        }
+    }
+}
+
+
 // ----------------------------------------------------
 //  Gets the frame width and height of the given avatar 
 // ----------------------------------------------------
