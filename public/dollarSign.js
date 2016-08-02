@@ -1,5 +1,5 @@
 window.$$$ = {
-    draggable : function (el) {
+    draggable : function (el, stopOn) {
         var container = document.getElementById('world'),
             clickX = 0,
             clickY = 0;
@@ -25,7 +25,7 @@ window.$$$ = {
         
         el.addEventListener('mousedown', function (e) {
             var target = e.target || e.srcElement;
-            if (!target.classList.contains('resizable-handle') && target.nodeName !== 'IMG') {
+            if (!target.classList.contains('resizable-handle') && target.nodeName !== stopOn) {
                 clickX = e.clientX - parseInt(el.style.left, 10);
                 clickY = e.clientY - parseInt(el.style.top, 10);
                 el.addEventListener('mousemove', drag);
@@ -109,8 +109,7 @@ window.$$$ = {
             grabbed = false;
         })
         container.addEventListener('mousemove', function(e){
-            var tile = pen.getElementsByTagName('img')[0];
-            if(grabbed && (!tile.src.length || remove)) {
+            if(grabbed && penSettings.tool == 'drag') {
                 var movementX = e.clientX - LastX;
                 var movementY = e.clientY - LastY;
                 el.scrollLeft -= movementX;

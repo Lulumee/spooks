@@ -11,7 +11,7 @@
     </head>
     <body>
         <div id="world">
-            <div id="pen" style="position:absolute;z-index:10;"><img></div>
+            <div id="pen" style="position:absolute;z-index:10;"><canvas></canvas></div>
 			<div id="world-objects"></div>
 			<div id="world-tiles"></div>
             <canvas id="grid"></canvas>
@@ -20,16 +20,16 @@
             <div id="tabs">
                 <ul>
                     <li class="tab tiles selected">Tile</li>
-                    <li class="tab objects">Object</li>
+                    <li class="tab tiles">Object</li>
                     <li class="tab animation">Animation</li>
                     <li class="tab AI">AI</li>
                     <li class="tab settings">Settings</li>
                 </ul>
             </div>
             <div id="menus">
-                <div class="panel" id="tiles">
-                    <ul class="tilesets"></ul>
-                    <div class="TabPanels"></div>
+                <div class="panel" id="tiles" style="display:block;">
+                    <ul class="tileSheetTabs"></ul>
+                    <div class="tileSheetPanels"></div>
                 </div>
                 <div class="panel" id="animation"></div>
                 <div class="panel" id="AI">

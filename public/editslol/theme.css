@@ -44,7 +44,7 @@ body{
     right:0;
     top:0;
     width:300px;
-    height:400px;
+    height:100%;
     background-color:white;
 }
 
@@ -149,7 +149,7 @@ table td img{
 }
 
 #tiles ul li {
-    float: left;
+    display: inline;
     background: #eee;
     border: 1px #aaa solid;
     border-bottom: none;
@@ -159,7 +159,7 @@ table td img{
     width:50px;
 }
 
-.TabPanels div{
+.tileSheetPanels div{
     display:none;
 }
 
