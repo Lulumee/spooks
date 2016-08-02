@@ -614,21 +614,21 @@ function Editor(io,channelName){
     room.on('connection', function(socket){
         console.log(channelName,'connected')
         socket.on('RequestTiles', function(){
-            var objects = [];
+            var TileSheets = [];
             fs.readdir('public/images/tiles',function(err,files){
                 if (err) throw err;
                 files.forEach(function(file){
-                    objects.push(file);
+                    TileSheets.push(file);
                 });
-                socket.emit('Tiles',objects);
+                socket.emit('Tiles',TileSheets);
             }); 
         });
                 
         socket.on('SaveMapTiles',function(data){
-            var Tiles = sort(data.tiles);
-            var Objects = sort(data.objects);
+            var Tiles = data.tiles;
+            var Objects = data.objects;
             var spawn = data.spawn;
-            if(Tiles.length <= 50000 && Objects.length <= 5000){
+            if(typeof Tiles == 'string' && typeof Objects == 'string'){
                 dao.setChannelinfo(Tiles,'tiles',channelName).then(function(err){
                     if(err){
                         console.log(err);
@@ -639,13 +639,6 @@ function Editor(io,channelName){
                 });
             }
         });
-        
-        function sort(Tiles){
-            Tiles.sort(function(a,b){
-                return a.order - b.order;
-            });
-            return Tiles;
-        }
         
         socket.on('GetMap', function(){
             dao.getChannelinfo(channelName).then(function(data){

@@ -90,7 +90,7 @@ module.exports = {
             if(!info){//if channel doesn't exist, create it
                 db.query("INSERT INTO `channels` (`channel`, `objects`,`ai`,`tiles`,`data`) VALUES (?,'{}','{}','{}','{}');", channelName);
             }
-            db.query(sql,[att,JSON.stringify(data),channelName], function(err, rows, fields){
+            db.query(sql,[att, data, channelName], function(err, rows, fields){
                 defer.resolve(err).promise();
             });
         });
@@ -169,15 +169,9 @@ module.exports = {
         var text = "";
         var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
-        for( var i=0; i < 8; i++ )
+        for( var i=0; i < 5; i++ )
             text += possible.charAt(Math.floor(Math.random() * possible.length));
 
         return text;
-    },
-    getNick : function(){
-		//var neadjectives = ['sexy','insane','dylusional',''];
-        var nouns = ["alien", "apparition", "bat", "blood", "bogeyman", "boogeyman", "boo", "bone", "cadaver", "casket", "cauldron", "cemetery", "cobweb", "coffin", "corpse", "crypt", "darkness", "dead", "demon", "devil", "death", "eyeball", "fangs", "fear", "gastly", "gengar", "ghost", "ghoul", "goblin", "grave", "gravestone", "grim", "grimreaper", "gruesome", "haunter", "headstone", "hobgoblin", "hocuspocus", "howl", "jack-o-lantern", "mausoleum", "midnight", "monster", "moon", "mummy", "night", "nightmare", "ogre", "phantasm", "phantom", "poltergeist", "pumpkin", "scarecrow", "scream", "shadow", "skeleton", "skull", "specter", "spider", "spine", "spirit", "spook", "tarantula", "tomb", "tombstone", "troll", "vampire", "werewolf", "witch", "witchcraft", "wraith", "zombie"];
-        var adjectives = ["bloodcurdling", "chilling", "creepy", "dark", "devilish", "dreadful", "eerie", "evil", "frightening", "frightful", "ghastly", "ghostly", "ghoulish", "gory", "grisly", "hair-raising", "haunted", "horrible", "macabre", "morbid", "mysterious", "otherworldly", "repulsive", "revolting", "scary", "shadowy", "shocking", "spine-chilling", "spooky", "spoopy", "startling", "supernatural", "terrible", "unearthly", "unnerving", "wicked"];
-        return ucwords(_.sample(adjectives)) + ucwords(_.sample(nouns));
     }
 }
