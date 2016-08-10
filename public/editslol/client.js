@@ -1,20 +1,27 @@
 /*jslint browser: true*/
-/*global $, io, $$$*/
+/*global $, io, $$$, console, FileReader*/
 
 /*
 newlined speech bubbles
 probably will need login protection for the editor
 */
 
+//10
+//earnistein
+
+/*
+
+
+*/
+
+
 var socket = io(window.location.pathname);
 
 var pen = document.getElementById('pen');
 var penCanvas = pen.getElementsByTagName('canvas')[0];
 var penCtx = penCanvas.getContext('2d');
-var remove = false;
 var QuickPlace = false;
 var srcTable;
-var StartPoint = [];
 
 var settings = {
     tiles : {},
@@ -66,7 +73,7 @@ var penSettings = {
     cx.stroke();
     
     //drag to scroll
-    $$$.scrollable(document.body);    
+    $$$.scrollable(document.body);
 })();
 
 var build = {
@@ -138,72 +145,36 @@ var build = {
     }
 };
 
-function tileIndex (ary, order) {
+function tileIndex(ary, order) {
     var i;
-    for(i = 0; i < ary.length; i++){
-        if(ary[i].order == order){
+    for (i = 0; i < ary.length; i += 1) {
+        if (ary[i].order === order) {
             return i;
         }
     }
     return -1;
 }
 
-function placeTile(x, y, sx, sy, tilesheetsrc) {
-    if (x >= 0 && y >= 0) {
-        //create tile div
-        var tile = build.tile(tilesheetsrc, x, y, sx, sy);
-        
-        //remove item on click
-        tile.addEventListener('click', function () {
-            if (remove) {
-                var index = tileIndex(settings.tiles[tilesheetsrc], parseInt(this.id, 10));
-                settings.tiles[tilesheetsrc].splice(index, 1);
-				document.getElementById('world-tiles').removeChild(tile);
-            }
-        });
-        
-        document.getElementById('world-tiles').appendChild(tile);
-				
-        if (!settings.tiles[tilesheetsrc]) {
-            settings.tiles[tilesheetsrc] = [];
-        }
-        
-		settings.tiles[tilesheetsrc].push({
-            left : x,
-            top : y,
-            sx : sx,
-            sy : sy,
-            order : settings.tiles[tilesheetsrc].length
-        });
-        
-        //add to history
-        settings.history.push({
-            tile : tile,
-            type : 'tiles'
-        });
-    }
-}
-
-function setCollison(tileSheetSrc, startX, startY, tiles) {
+function setCollison(tileData, tileSheetSrc, startX, startY) {
     var editorWindowParts = build.editor(),
         editorWindow = editorWindowParts.main,
         ctx = editorWindowParts.canvas.getContext('2d'),
         RedBox = editorWindowParts.RedBox,
         HeightLine = editorWindowParts.HeightLine,
         tileSheet = new Image(),
-        width = tiles.MaxX - tiles.MinX,
-        height = tiles.MaxY - tiles.MinY;
+        width = tileData.MaxX - tileData.MinX,
+        height = tileData.MaxY - tileData.MinY;
 
     tileSheet.src = tileSheetSrc;
     tileSheet.onload = function () {
-        ctx.drawImage(tileSheet, tiles.MinX * 16, tiles.MinY * 16, width * 16, height * 16, 0, 0, width * 16, height * 16);
+        ctx.drawImage(tileSheet, tileData.MinX * 16, tileData.MinY * 16, width * 16, height * 16, 0, 0, width * 16, height * 16);
     };
     
     editorWindowParts.footer.addEventListener('click', function () {
         var collision = [RedBox.offsetLeft, RedBox.offsetLeft + RedBox.offsetWidth, RedBox.offsetTop, RedBox.offsetTop + RedBox.offsetHeight],
             height = HeightLine.offsetHeight;
         document.body.removeChild(editorWindow);
-        placeObject(tiles, startX, startY, collision, height, tileSheetSrc);
+        placeObject(tileData, startX, startY, collision, height, tileSheetSrc);
     });
     
     $(RedBox).draggable({
@@ -223,7 +194,7 @@ function placeObject(tileInfo, startX, startY, collision, setHeight, tilesheetsr
     
     //remove ObjectContainer on click
     ObjectContainer.addEventListener('click', function (e) {
-        if (remove) {
+        if (penSettings.tool == 'delete') {
             var index = tileIndex(settings.objects[tilesheetsrc], parseInt(this.id, 10));
             settings.objects[tilesheetsrc].splice(index, 1);
             document.getElementById('world-objects').removeChild(ObjectContainer);
@@ -234,7 +205,7 @@ function placeObject(tileInfo, startX, startY, collision, setHeight, tilesheetsr
     ObjectContainer.addEventListener('dblclick', function () {
         var index = tileIndex(settings.objects[tilesheetsrc], parseInt(this.id, 10));
         settings.objects[tilesheetsrc].splice(index, 1);
-        setCollison(tilesheetsrc, startX, startY, tileInfo);
+        setCollison(tileInfo, tilesheetsrc, startX, startY);
     });
     
     document.getElementById('world-objects').appendChild(ObjectContainer);
@@ -271,14 +242,50 @@ function placeColBlock(startX, startY) {
     document.getElementById('world-objects').appendChild(cblock);*/
 }
 
+function placeTile(x, y, sx, sy, tilesheetsrc) {
+    if (x >= 0 && y >= 0) {
+        //create tile div
+        var tile = build.tile(tilesheetsrc, x, y, sx, sy);
+        
+        //remove item on click
+        tile.addEventListener('click', function () {
+            if (penSettings.tool == 'delete') {
+                var index = tileIndex(settings.tiles[tilesheetsrc], parseInt(this.id, 10));
+                settings.tiles[tilesheetsrc].splice(index, 1);
+				document.getElementById('world-tiles').removeChild(tile);
+            }
+        });
+        
+        document.getElementById('world-tiles').appendChild(tile);
+				
+        if (!settings.tiles[tilesheetsrc]) {
+            settings.tiles[tilesheetsrc] = [];
+        }
+        
+		settings.tiles[tilesheetsrc].push({
+            left : x,
+            top : y,
+            sx : sx,
+            sy : sy,
+            order : settings.tiles[tilesheetsrc].length
+        });
+        
+        //add to history
+        settings.history.push({
+            tile : tile,
+            type : 'tiles'
+        });
+    }
+}
+
 function placeTileCluster(tileData, tileSheetSrc, X, Y) {
     var sX,
         sY,
         adjustedX,
         adjustedY;
     
-    for (sX = tileData.MinX; sX < tileData.MaxX; sX++) {
-        for (sY = tileData.MinY; sY < tileData.MaxY; sY++) {
+    for (sX = tileData.MinX; sX < tileData.MaxX; sX += 1) {
+        for (sY = tileData.MinY; sY < tileData.MaxY; sY += 1) {
             adjustedX = X + ((sX - tileData.MinX) * 16);
             adjustedY = Y + ((sY - tileData.MinY) * 16);
             
@@ -305,158 +312,146 @@ function placeTileClusterRepeat(tileData, tileSheetSrc, X, Y, repeatX, repeatY) 
     }
 }
 
-function createSpreadDisplay () {
+function createSpreadDisplay(spreadFrom) {
     var spreadCanvas = document.createElement('canvas');
     
     spreadCanvas.id = 'spreadCanvas';
     spreadCanvas.style.position = 'absolute';
-    spreadCanvas.style.left = StartPoint[0] + 'px';
-    spreadCanvas.style.top = StartPoint[1] + 'px';
+    spreadCanvas.style.left = spreadFrom.x + 'px';
+    spreadCanvas.style.top = spreadFrom.y + 'px';
     spreadCanvas.width = penSettings.pos.x;
     spreadCanvas.height = penSettings.pos.y;
     
     document.getElementById('world').appendChild(spreadCanvas);
 }
 
-function resizeSpread () {
+function resizeSpread(tileData, tileSheetCtx, spreadFrom, pos) {
     var spreadCanvas = document.getElementById('spreadCanvas'),
         spreadCtx = spreadCanvas.getContext('2d'),
-        tileCtx = penSettings.tileSheetInfo.ctx,
-        totalX = penSettings.tileData.MaxX - penSettings.tileData.MinX,
-        totalY = penSettings.tileData.MaxY - penSettings.tileData.MinY,
-        imageData = tileCtx.getImageData(penSettings.tileData.MinX * 16, penSettings.tileData.MinY * 16, totalX * 16, totalY * 16),
+        totalX = (tileData.MaxX - tileData.MinX) * 16,
+        totalY = (tileData.MaxY - tileData.MinY) * 16,
+        imageData = tileSheetCtx.getImageData(tileData.MinX * 16, tileData.MinY * 16, totalX, totalY),
         sX,
         sY;
     
-    spreadCanvas.width = penSettings.pos.x - StartPoint[0];
-    spreadCanvas.height = penSettings.pos.y - StartPoint[1];
+    spreadCanvas.width = pos.x - spreadFrom.x;
+    spreadCanvas.height = pos.y - spreadFrom.y;
     
-    for(sX = 0; sX < spreadCanvas.width; sX += (totalX * 16)){
-        for(sY = 0; sY < spreadCanvas.height; sY += (totalY * 16)){
+    for (sX = 0; sX < spreadCanvas.width; sX += totalX) {
+        for (sY = 0; sY < spreadCanvas.height; sY += totalY) {
             spreadCtx.putImageData(imageData, sX, sY);
         }
     }
 }
 
-document.getElementById('world').addEventListener('mousemove', function (e) {
-    if (!remove) {
-        
-        penSettings.pos.x = Math.floor(((e.clientX + document.body.scrollLeft)) / 16) * 16;
-        penSettings.pos.y = Math.floor(((e.clientY + document.body.scrollTop)) / 16) * 16;
-                
-        if (penSettings.tool == 'tilePlacer') {
-            pen.style.left = penSettings.pos.x + 'px';
-            pen.style.top = penSettings.pos.y + 'px';
+function dealWithSpread(tileData, tileSheetImageSrc, spreadFrom, pos) {
+    var repeatX = Math.abs((spreadFrom.x - pos.x) / 16),
+        repeatY = Math.abs((spreadFrom.y - pos.y) / 16);
+    
+    penSettings.spreadFrom = false;
+    document.getElementById('world').removeChild(document.getElementById('spreadCanvas'));
+    placeTileClusterRepeat(tileData, tileSheetImageSrc, spreadFrom.x, spreadFrom.y, repeatX, repeatY);
+}
+
+function place() {
+    var tileData = penSettings.tileData,
+        tileSheetImageSrc = penSettings.tileSheetInfo.imageSrc,
+        pos = penSettings.pos;
+
+    if (penSettings.type === 'Tile') {
+        if (penSettings.spreadFrom) {
+            dealWithSpread(tileData, tileSheetImageSrc, penSettings.spreadFrom, pos);
+        } else {
+            placeTileCluster(tileData, tileSheetImageSrc, pos.x, pos.y);
         }
-        
-        if (StartPoint.spread && penSettings.type == 'Tile') {
-            if(document.getElementById('spreadCanvas')){
-                resizeSpread();
-            } else {
-                createSpreadDisplay();
-            }
+    } else if (penSettings.type === 'Object') {
+        setCollison(tileData, tileSheetImageSrc, pos.x, pos.y);
+    }
+}
+
+document.getElementById('world').addEventListener('mousemove', function (e) {
+    penSettings.pos.x = Math.floor(((e.clientX + document.body.scrollLeft)) / 16) * 16;
+    penSettings.pos.y = Math.floor(((e.clientY + document.body.scrollTop)) / 16) * 16;
+    
+    if (penSettings.tool === 'tilePlacer') {
+        pen.style.left = penSettings.pos.x + 'px';
+        pen.style.top = penSettings.pos.y + 'px';
+    }
+    
+    if (penSettings.spreadFrom && penSettings.type === 'Tile') {
+        if (document.getElementById('spreadCanvas')) {
+            resizeSpread(penSettings.tileData, penSettings.tileSheetInfo.ctx, penSettings.spreadFrom, penSettings.pos);
+        } else {
+            createSpreadDisplay(penSettings.spreadFrom);
         }
     }
 });
 
 document.getElementById('world').addEventListener('mousedown', function (e) {
-    StartPoint = [penSettings.pos.x, penSettings.pos.y];
-    StartPoint.spread = e.shiftKey;
-});
-
-document.getElementById('world').addEventListener('mouseup', function() {
-    if (remove) return;
-    
-    var extra = pen.getElementsByClassName('extra')[0];
-    if (extra) {
-        //
-    } else {
-        var tiles = pen.getElementsByTagName('img'),
-            penX = penSettings.pos.x,
-            penY = penSettings.pos.y;
-        
-        if (penSettings.type == 'Tile') {
-            if (StartPoint.spread) {
-                var repeatX = Math.abs((StartPoint[0] - penX) / 16),
-                    repeatY = Math.abs((StartPoint[1] - penY) / 16);
-                
-                StartPoint.spread = false;
-                document.getElementById('world').removeChild(document.getElementById('spreadCanvas'));
-                placeTileClusterRepeat(penSettings.tileData, penSettings.tileSheetInfo.imageSrc, StartPoint[0], StartPoint[1], repeatX, repeatY);
-            } else {
-                placeTileCluster(penSettings.tileData, penSettings.tileSheetInfo.imageSrc, penX, penY);
-            }
-        } else if(penSettings.type == 'Object') {            
-            setCollison(penSettings.tileSheetInfo.imageSrc, penSettings.pos.x, penSettings.pos.y, penSettings.tileData);
-        }  
+    if (e.shiftKey) {
+        penSettings.spreadFrom = {
+            x : penSettings.pos.x,
+            y : penSettings.pos.y
+        };
     }
 });
 
-document.getElementById('tabs').addEventListener('click', function(e) {
-    var tab = e.target;
-    if (tab.classList.contains('tab')) {      
-        var selectedTab = document.getElementsByClassName('selected')[0];
-        if(selectedTab){
-            var oldWindowName = selectedTab.classList[1];
+document.getElementById('world').addEventListener('mouseup', function () {
+    if (penSettings.tileSheetInfo !== undefined && penSettings.tool != 'delete') {
+        place();
+    }
+});
+
+//switch menu tabs
+document.getElementById('tabs').addEventListener('click', function (e) {
+    var tab = e.target,
+        oldWindowName,
+        newWindowName,
+        selectedTab = document.getElementsByClassName('selected')[0],
+        extras = document.getElementsByClassName('extra'),
+        i;
+    
+    if (tab.classList.contains('tab')) {
+        if (selectedTab) {
+            oldWindowName = selectedTab.classList[1];
+            newWindowName = tab.classList[1];
+            
             document.getElementById(oldWindowName).style.display = 'none';
             selectedTab.classList.remove('selected');
             
-            var newWindowName = tab.classList[1];
             document.getElementById(newWindowName).style.display = 'block';
             
-            if(newWindowName === 'settings' && oldWindowName !== 'settings') {
-                var extras = document.getElementsByClassName('extra');
-                for(var i = 0; i < extras.length; i++){
+            if (newWindowName === 'settings' && oldWindowName !== 'settings') {
+                for (i = 0; i < extras.length; i += 1) {
                     extras[i].style.display = 'block';
                 }
-            } else if(newWindowName == 'settings'){
-                var extras = document.getElementsByClassName('extra');
-                for(var i = 0; i < extras.length; i++){
+            } else if (oldWindowName === 'settings') {
+                for (i = 0; i < extras.length; i += 1) {
                     extras[i].style.display = 'none';
-                } 
+                }
             }
             tab.classList.add('selected');
         }
         
-        if(tab.classList.contains('tiles')){
+        if (tab.classList.contains('tiles')) {
             penSettings.type = tab.textContent;
         }
     }
 });
 
-document.getElementById('settingsOptions').addEventListener('click', function(e){
-	let Checkbox = e.target;
-	if(Checkbox.tagName == 'INPUT'){
-		if(Checkbox.id == 'DisplayCollision'){
-			if(Checkbox.checked){
-				var objects = settings.objects;
-                
-                function makeBox(ele,dem){
-                    let cssText = '';
-                    cssText += 'left:' + (ele.left + dem[0]) + 'px;';
-                    cssText += 'width:' + (dem[1] - dem[0]) + 'px;';
-                    cssText += 'top:' + (ele.top + dem[2]) + 'px;';
-                    cssText += 'height:' + (dem[3] - dem[2]) + 'px;';
-                    cssText += 'background-color:red;position:absolute;z-index:999;';
-                    return cssText;
-                }
-                
-                for(let i = 0; i < objects.length; i++){
-                    let ThisObj = settings.objects[i];
-                    let CollisonBlob = document.createElement('div');
-                    CollisonBlob.classList.add('CollisonBlob');
-                    CollisonBlob.style.cssText = makeBox(ThisObj,ThisObj.collision);
-                    document.getElementById('world').appendChild(CollisonBlob);
-                    
-                }
+//Display all objects collision
+document.getElementById('settingsOptions').addEventListener('click', function (e) {
+    var checkBox = e.target;
+        
+	if (checkBox.tagName === 'INPUT') {
+		if (checkBox.id === 'DisplayCollision') {
+			if (checkBox.checked) {
+                map.showCollisonOfObjects(settings.objects);
 			} else {
-                var CollisonBlobs = document.getElementsByClassName('CollisonBlob');
-                while(CollisonBlobs.length){
-                    document.getElementById('world').removeChild(CollisonBlobs[0]);
-                }
+                map.hideCollisonOfObjects();
 			}
-		} else if(Checkbox.id == 'DisplayObjects'){
-            if(Checkbox.checked){
+		} else if (checkBox.id === 'DisplayObjects') {
+            if (checkBox.checked) {
                 document.getElementById('world-objects').style.display = 'block';
             } else {
                 document.getElementById('world-objects').style.display = 'none';
@@ -465,8 +460,7 @@ document.getElementById('settingsOptions').addEventListener('click', function(e)
 	}
 });
 
-document.getElementById('newAI').addEventListener('click', function(){
-
+document.getElementById('newAI').addEventListener('click', function () {
     var overlay = document.createElement('div'),
         container = document.createElement('div'),
         holdSpriteSheet = document.createElement('div'),
@@ -493,53 +487,56 @@ document.getElementById('newAI').addEventListener('click', function(){
     holdSpriteSheet.textContent = 'Click here to select sprite sheet';
     dialogTitle.textContent = 'AI dialog';
     nameTitle.textContent = 'AI name';
-    submitButton.textContent = 'create AI'
+    submitButton.textContent = 'create AI';
     
     spriteUploader.type = 'file';
     
-    holdSpriteSheet.addEventListener('click', function(){
+    holdSpriteSheet.addEventListener('click', function () {
         var event;
-        if(document.createEvent){
-          event = document.createEvent("HTMLEvents");
-          event.initEvent("click", true, true);
+        if (document.createEvent) {
+            event = document.createEvent("HTMLEvents");
+            event.initEvent("click", true, true);
         } else {
-          event = document.createEventObject();
-          event.eventType = "click";
+            event = document.createEventObject();
+            event.eventType = "click";
         }
         event.eventName = "click";
 
         if (document.createEvent) {
-          spriteUploader.dispatchEvent(event);
+            spriteUploader.dispatchEvent(event);
         } else {
-          spriteUploader.fireEvent("on" + event.eventType, event);
+            spriteUploader.fireEvent("on" + event.eventType, event);
         }
     });
     
-    spriteUploader.addEventListener('change', function(){
-        var file = this.files[0];
-        var reader = new FileReader();
-        reader.onload = function(evt){
+    spriteUploader.addEventListener('change', function () {
+        var file = this.files[0],
+            reader = new FileReader();
+        
+        reader.onload = function (evt) {
             holdSpriteSheet.textContent = '';
             var newImg = new Image();
             newImg.src = evt.target.result;
             holdSpriteSheet.appendChild(newImg);
         };
-        reader.readAsDataURL(file);   
+        reader.readAsDataURL(file);
     });
     
-    submitButton.addEventListener('click', function(){
+    submitButton.addEventListener('click', function () {
         var firstKey = document.getElementsByClassName('aiTalk')[0],
             answers = document.getElementsByClassName('humanTalk'),
             imageData = holdSpriteSheet.getElementsByTagName('img')[0],
             AIname = document.getElementsByClassName('nameInput')[0].value,
-            aiSettings = {};
+            aiSettings = {},
+            i,
+            answerInput;
         
-        if(AIname){
+        if (AIname) {
             aiSettings[firstKey.value] = {};
 
-            for(var i = 0; i < answers.length; i++){
-                var answerInput = answers[i].value;
-                if(answerInput){
+            for (i = 0; i < answers.length; i += 1) {
+                answerInput = answers[i].value;
+                if (answerInput) {
                     aiSettings[firstKey.value][answerInput] = 'EXIT';
                 }
             }
@@ -553,7 +550,7 @@ document.getElementById('newAI').addEventListener('click', function(){
             settings.AI.push({
                 name : AIname,
                 dialogue : aiSettings
-            }); 
+            });
             
             document.body.removeChild(overlay);
         }
@@ -574,35 +571,32 @@ document.getElementById('newAI').addEventListener('click', function(){
     document.body.appendChild(overlay);
 });
 
-function save(){
-    socket.emit('SaveMapTiles',{
-        tiles : JSON.stringify(settings.tiles),
-        objects : JSON.stringify(settings.objects),
-        spawn : JSON.stringify(settings.spawn),
-        AI : JSON.stringify(settings.AI)
-    });
-}
-
-$(document).keydown(function(e){
-    var key = e.which
-    if(key == 88) QuickPlace = !QuickPlace;
-    if(key == 90){
-        var tile = settings.history.slice(-1)[0];
-        if(tile && tile.tile){
+//map controls
+$(document).keydown(function (e) {
+    var key = e.which,
+        tile;
+    
+    if (key === 88) {
+        QuickPlace = !QuickPlace;
+    }
+    if (key === 90) {
+        tile = settings.history.slice(-1)[0];
+        if (tile && tile.tile) {
             tile.tile.remove();
             settings.history.pop();
-            settings[tile.type].pop();   
+            settings[tile.type].pop();
         }
     }
-    if(key == 17){
-        remove = !remove;
-        if(remove){
+    if (key === 17) {
+        if (penSettings.tool != 'delete') {
+            penSettings.tool = 'delete'
             document.getElementById('world').classList.add('remove');
         } else {
+            penSettings.tool = 'tilePlacer';
             document.getElementById('world').classList.remove('remove');
         }
     }
-    if(key == 67){
+    if (key === 67) {
         penSettings.tool = 'drag';
     }
 });
@@ -618,7 +612,7 @@ function buildPanelandTab(source, name) {
     
     newTab.textContent = name;
     tileSheetTabs.appendChild(newTab);
-    newTab.addEventListener('click', function() {
+    newTab.addEventListener('click', function () {
         var selectedTab = newTab.parentNode.getElementsByClassName('selected')[0];
         if (selectedTab) {
             document.getElementById(selectedTab.textContent).style.display = 'none';
@@ -632,13 +626,13 @@ function buildPanelandTab(source, name) {
 }
 
 function initiateTileSheet(tileSheetImage, name) {
-    
     var tileCanvas = document.createElement('canvas'),
         tileCtx = tileCanvas.getContext('2d'),
         displayCanvas = document.createElement('canvas'),
         displayCtx = displayCanvas.getContext('2d'),
         startingXY = [],
-        dragging = false;
+        dragging = false,
+        panel;
     
     tileCanvas.width = tileSheetImage.width;
     tileCanvas.height = tileSheetImage.height;
@@ -649,7 +643,7 @@ function initiateTileSheet(tileSheetImage, name) {
     displayCanvas.style.position = 'absolute';
     displayCanvas.style.top = '18px';
     
-    function mouseDown (e) {
+    function mouseDown(e) {
         var X = Math.floor(e.offsetX / 16) * 16,
             Y = Math.floor(e.offsetY / 16) * 16;
         
@@ -657,10 +651,10 @@ function initiateTileSheet(tileSheetImage, name) {
         dragging = true;
     }
     
-    function mouseUp (e) {
+    function mouseUp(e) {
         var X = (Math.floor(e.offsetX / 16) * 16) + 16,
             Y = (Math.floor(e.offsetY / 16) * 16) + 16,
-            ImageData = tileCtx.getImageData(startingXY[0], startingXY[1], X , Y);
+            ImageData = tileCtx.getImageData(startingXY[0], startingXY[1], X, Y);
         
         penCanvas.width = X - startingXY[0];
         penCanvas.height = Y - startingXY[1];
@@ -670,18 +664,18 @@ function initiateTileSheet(tileSheetImage, name) {
         penSettings.tileSheetInfo = {
             ctx : tileCtx,
             imageSrc : tileSheetImage.src
-        }
+        };
         penSettings.tileData = {
             MaxX : (penCanvas.width + startingXY[0]) / 16,
             MaxY : (penCanvas.height + startingXY[1]) / 16,
             MinX : startingXY[0] / 16,
             MinY : startingXY[1] / 16
-        }
+        };
         dragging = false;
         pen.classList.add('tiles');
     }
     
-    function mouseMove (e) {
+    function mouseMove(e) {
         var X = (Math.floor(e.offsetX / 16) * 16) + 16,
             Y = (Math.floor(e.offsetY / 16) * 16) + 16;
         
@@ -695,77 +689,174 @@ function initiateTileSheet(tileSheetImage, name) {
         }
     }
     
-    var panel = buildPanelandTab(tileSheetImage.src, name);
+    panel = buildPanelandTab(tileSheetImage.src, name);
     
     panel.addEventListener('mousedown', mouseDown);
     panel.addEventListener('mouseup', mouseUp);
     panel.addEventListener('mousemove', mouseMove);
     
     panel.appendChild(tileCanvas);
-    panel.appendChild(displayCanvas);   
+    panel.appendChild(displayCanvas);
 }
 
 function loadTileSheetCanvas(url, name) {
     var TileSheetImage = new Image();
     TileSheetImage.src = url;
     
-    TileSheetImage.onload = function(){
+    TileSheetImage.onload = function () {
         initiateTileSheet(this, name);
-    };       
+    };
 }
 
-socket.on('connect', function(){
+function save() {
+    socket.emit('SaveMapTiles', {
+        tiles : JSON.stringify(settings.tiles),
+        objects : JSON.stringify(settings.objects),
+        spawn : JSON.stringify(settings.spawn),
+        AI : JSON.stringify(settings.AI)
+    });
+}
+
+socket.on('connect', function () {
    console.log('connected');
 });
 
 //Grab all objects and tiles image name
 socket.emit('RequestTiles');
-socket.on('Tiles',function(urls){
-    for(var i = 0; i < urls.length; i++){
-        var split = urls[i].split('/')
-        var name = split[split.length-1];
+socket.on('Tiles', function (urls) {
+    var i,
+        split,
+        name;
+    
+    for (i = 0; i < urls.length; i += 1) {
+        split = urls[i].split('/');
+        name = split[split.length - 1];
+        
         loadTileSheetCanvas('../images/tiles/' + urls[i], name);
     }
     socket.emit('GetMap');
 });
 
+var map = {
+    loadTiles : function (tiles) {
+        var tileSources = Object.keys(tiles),
+            tilesFromOneSource,
+            t,
+            k,
+            tile;
+            
+        for (t = 0; t < tileSources.length; t += 1) {
+            tilesFromOneSource = tiles[tileSources[t]];
+            for (k = 0; k < tilesFromOneSource.length; k += 1) {
+                tile = tilesFromOneSource[k];
+                placeTile(tile.left, tile.top, tile.sx, tile.sy, tileSources[t]);
+            }
+        }
+    },
+    loadObjects : function (objects) {
+        var objectSources = Object.keys(objects),
+            objectsFromOneSource,
+            t,
+            k,
+            object;
+        
+        for (t = 0; t < objectSources.length; t += 1) {
+            objectsFromOneSource = objects[objectSources[t]];
+            for (k = 0; k < objectsFromOneSource.length; k += 1) {
+                object = objectsFromOneSource[k];
+                placeObject(object.tiles, object.left, object.top, object.collision, object.height, objectSources[t]);
+            }
+        }
+    },
+    placeSpawn : function (X, Y) {
+        var spawnBlock = document.createElement('div');
+        
+        if (document.getElementById('SpawnBlock')) {
+            document.getElementById('world-tiles').removeChild(document.getElementById('SpawnBlock'));
+        }
+        
+        spawnBlock.className = 'SpawnBlock extra';
+        spawnBlock.textContent = 'Spawn';
+        spawnBlock.style.left = X + 'px';
+        spawnBlock.style.top = Y + 'px';
+        settings.spawn = [X, Y];
+        
+        document.getElementById('world-tiles').appendChild(spawnBlock);
+    },
+    showCollisonOfObjects : function (objects) {
+        var objectSrcs = Object.keys(objects),
+            objectsFromOneSrc,
+            oneObj,
+            collisonBlob,
+            t,
+            k;
+            
+        function makeBox(ele, dem) {
+            var cssText = '';
+            cssText += 'left:' + (ele.left + dem[0]) + 'px;';
+            cssText += 'width:' + (dem[1] - dem[0]) + 'px;';
+            cssText += 'top:' + (ele.top + dem[2]) + 'px;';
+            cssText += 'height:' + (dem[3] - dem[2]) + 'px;';
+            return cssText;
+        }
+        
+        for (t = 0; t < objectSrcs.length; t += 1) {
+            objectsFromOneSrc = objects[objectSrcs[t]];
+            for (k = 0; k < objectsFromOneSrc.length; k += 1) {
+                oneObj = objectsFromOneSrc[k];
+                collisonBlob = document.createElement('div');
+                collisonBlob.classList.add('collisonBlob');
+                collisonBlob.style.cssText = makeBox(oneObj, oneObj.collision);
+                document.getElementById('world').appendChild(collisonBlob);   
+            }
+        }
+    },
+    hideCollisonOfObjects : function () {
+        var allCollisonBlobs = document.getElementsByClassName('collisonBlob');
+        while (allCollisonBlobs.length) {
+            document.getElementById('world').removeChild(allCollisonBlobs[0]);
+        }
+    }
+};
+
 //load old map
-socket.on('MapInfo', function(data){
-    console.log(data)
-    var Tiles = data && JSON.parse(data.tiles);
-    for(var t in Tiles){
-        var src = Tiles[t];
-        for(var tile in src){
-            placeTile(src[tile].left, src[tile].top, src[tile].sx, src[tile].sy, t);
+socket.on('MapInfo', function (data) {
+    var tiles,
+        objects,
+        spawn,
+        spawnblock;
+    
+    if (data) {
+        if (data.tiles) {
+            try {
+                tiles = JSON.parse(data.tiles);
+                map.loadTiles(tiles);
+            } catch (err) {
+                console.log('Tiles didn\'t load');
+            }
         }
-    }
-    var Objects = data && JSON.parse(data.objects);
-    for(var o in Objects){
-        var src = Objects[o];
-        for(var obj in src){
-            placeObject(src[obj].tiles, src[obj].left, src[obj].top, src[obj].collision, src[obj].height, o);
+        if (data.objects) {
+            try {
+                objects = JSON.parse(data.objects);
+                map.loadObjects(objects);
+            } catch (err) {
+                console.log('Objects didn\'t load');
+            }
         }
-    }
-    if(data && data.spawn){
-        try{
-            var Spawn = JSON.parse(data.spawn);
-            var SpawnBlock = document.createElement('div');
-            SpawnBlock.addEventListener('mousedown', function(){
-                if(remove){
-                    document.getElementById('world').removeChild(SpawnBlock);
-                    settings.spawn = [];
-                }
-            });
-            settings.spawn = Spawn;
-            SpawnBlock.textContent = 'Spawn';
-            SpawnBlock.style.left = Spawn[0] + 'px';
-            SpawnBlock.style.top = Spawn[1] + 'px';
-            document.getElementById('world').appendChild(SpawnBlock);
-        } catch(err){
-            data.spawn = [0,0];
+        if (data.spawn) {
+            try {
+                spawn = JSON.parse(data.spawn);
+                map.placeSpawn(spawn[0], spawn[1]);
+            } catch (err) {
+                console.log('Spawn didn\'t load', err);
+            }
         }
-    }
-    if(data && data.ai){
-        settings.AI = JSON.parse(data.ai);
+        if (data.ai) {
+            try {
+                settings.AI = JSON.parse(data.ai);
+            } catch (err) {
+                console.log('AI didn\'t load');
+            }
+        }
     }
 });

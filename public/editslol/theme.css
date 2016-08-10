@@ -281,11 +281,20 @@ table td img{
     background-color:blue;
 }
 
+.collisonBlob {
+    background-color:red;
+    position:absolute;
+    z-index:999;
+}
+
 /**/
 
 .SpawnBlock{
     position: absolute;
     z-index: 99;
+    width:48px;
+    height:48px;
+    background-color:green;
     display: none;
 }
 
