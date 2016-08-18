@@ -83,6 +83,36 @@ var COMMANDS = {
             }
         }
     },
+    togglelist : function(){
+        var toggles = CHAT.toggles.valid;
+        var feedback = 'Toggle list\n';
+        for(var i = 0; i < toggles.length; i++){
+            var toggle = toggles[i];
+            feedback += toggle + ': ' + CHAT.toggles.get(toggle) + '\n';
+        }
+        CHAT.show(feedback);
+    },
+    toggle : {
+        params : ['att', 'state'],
+        handler : function(params){
+            var attStates = {on : true, off: false};
+            var toggles = CHAT.toggles.valid;
+            var togglesString = toggles.slice(0, -1).join("', '");
+            if(toggles.indexOf(params.att) != -1){
+                if(attStates[params.state] != undefined){
+                    CHAT.toggles.toggle(params.att, attStates[params.state]);
+                } else {
+                CHAT.show('Valid states are \'on\' and \'off\'.');
+                }
+            } else {
+                CHAT.show('Valid toggles are \'' + togglesString + '\' and \'' + toggles[toggles.length - 1] + '\'.');
+            }
+        }
+    },
+    roll : function(){
+        document.getElementById('chat').classList.add('barrel');
+        setTimeout(function(){document.getElementById('chat').classList.remove('barrel');},3000);
+    },
     //server side commands
     removeavy : {
         params : ['name']
@@ -95,6 +125,9 @@ var COMMANDS = {
     },
     login : {
         params : ['nick','password']
+    },
+    me : {
+        params : ['message']
     },
     kick : {
         params : ['nick|message']
@@ -109,17 +142,28 @@ var COMMANDS = {
         params : ['nick']
     },
     banlist : {},
+    globalrole : {
+        params : ['nick','role']
+    },
     note : {
         params : ['note']
     },
     topic : {
         params : ['topic']
     },
+    background : {
+        params : ['background']
+    },
+    theme : {
+        params : ['TitlebarColor', 'ButtonsColor', 'InputbarColor', 'ScrollbarColor']
+    },
     whoami : {},
     whois : {
         params : ['nick']
     },
-    refresh : {}
+    refresh : {},
+    sleep : {},
+    wakeup : {}
 }
 
 //all functions chat related
@@ -146,6 +190,31 @@ var CHAT = {
                 message : info.topic,
                 style : 'general'
             })
+        }
+        if(info.background){
+            var background = info.background;
+            if(background.slice(-1) == ';'){//remove ; if exist
+                background = background.slice(0,background.length-1);
+            }
+            document.getElementById("chat-background").style.background = background;//apply css   
+        }
+        if(info.themecolors){
+            document.getElementById("title-bar").style.backgroundColor = info.themecolors[0];
+            document.getElementById("minimize").style.backgroundColor = info.themecolors[1];
+            document.getElementById("collapse").style.backgroundColor = info.themecolors[1];
+            let invertedColor = oppColorGen.BW(document.getElementById("minimize").style.backgroundColor.match(/\d+/g)); 
+            document.getElementById("minimize").children[0].style.backgroundColor = invertedColor;
+            //document.getElementById("collapse").children[0].style.borderTop = invertedColor; Doesn't work
+            if(invertedColor === '#333333') {
+                document.getElementById("collapse").children[0].classList.add('triangle-color-hack');
+            } else {
+                document.getElementById("collapse").children[0].classList.remove('triangle-color-hack');
+            }
+            document.getElementById("input-bar").style.backgroundColor = info.themecolors[2];
+            if(navigator.userAgent.toLowerCase().indexOf('chrome') > -1) {
+                document.styleSheets[0].deleteRule(0);
+                document.styleSheets[0].insertRule("::-webkit-scrollbar-thumb { background: " + info.themecolors[3] + "",0);
+            }
         }
     },
     submit : function(message){
@@ -275,7 +344,7 @@ var CHAT = {
 		
         //get time
         var time = new Date();
-        var preferredTime = time.format('shortTime');
+        var preferredTime = CHAT.toggles.get('24h') ? time.format('HH:MM') : time.format('shortTime');
         
         //create time div
         var timeDiv = document.createElement('div');
@@ -317,10 +386,10 @@ var CHAT = {
 		var container = document.getElementById('messages');
         //append message
         container.appendChild(el);
-        this.pop.play();
-        this.scrollToBottom('messages');
+        this.audio.playSound('pop');
+        this.scrollToBottom('messages', el.offsetHeight);
     },
-    scrollToBottom : function(m){
+    scrollToBottom : function(m, messageHeight){
         function scrollTo(element, to, duration){
             var start = element.scrollTop,
                 change = to - start,
@@ -352,12 +421,64 @@ var CHAT = {
             m = document.getElementById(m);
         }
         
+        var msgPanel = document.getElementById('messages');
+        
         var scrollDelta = m.scrollHeight - m.clientHeight;
-        if(scrollDelta - m.scrollTop < 300){
+        if(scrollDelta - m.scrollTop - messageHeight + 15 < msgPanel.clientHeight/3){ //15 is smallest message height
             scrollTo(m,scrollDelta,200);
         }
     },
-    pop : audio = new Audio('audio/Bing.mp3'),
+    audio : {
+        sounds : { pop : new Audio('audio/Bing.mp3')},
+        playSound : function(name) {
+            if(CHAT.toggles.get(name)){
+                this.sounds[name].play();
+            } 
+        }
+    },
+    toggles : function(){
+        var obj = {
+            valid : ['pop', '24h'],
+            states : {pop: true, '24h':false},
+            get : function(att) {
+                return this.states[att];
+            },
+            toggle : function(att, to){
+                this.states[att] = to;
+                if(localStorage.getItem('toggles')){
+                    try{
+                        var storageToggles = JSON.parse(localStorage.getItem('toggles'));
+                        storageToggles[att] = to;
+                        localStorage.setItem('toggles',JSON.stringify(storageToggles));
+                    } catch(e){
+                        localStorage.setItem('toggles','{}');
+                    }
+                }
+                CHAT.show(att + ' has been changed to: ' + to);
+            }
+        };
+        var tempToggles = {};
+        if(localStorage.getItem('toggles')){
+            try{
+                tempToggles = JSON.parse(localStorage.getItem('toggles'));
+            } catch(e){
+                localStorage.setItem('toggles','{}');
+            }
+        } else {
+            localStorage.setItem('toggles','{}');
+        }
+        for(var n in obj.states){
+            var val = tempToggles && tempToggles[n];
+            if(val !== undefined){
+                try{
+                    obj.states[n] = JSON.parse(val);
+                } catch(e){
+                    obj.states[n] = obj.states[n];
+                }
+            }
+        }
+        return obj;
+    }(),
     attributes : function(){
         var item = {};
         var atts = 'color flair font style nick note role topic part token'.split(' ');
@@ -513,11 +634,15 @@ var parser = {
         
         var img = /(<a target="_blank" href="[^"]+?">)([^<]+?\.(?:agif|apng|gif|jpg|jpeg|png|bmp|svg))<\/a>/gi.exec(str);
         if (img) {
-            str = this.multiple(str,img[0], img[1] + '<img src="' + img[2] + '" onload="CHAT.scrollToBottom(null,\'#messsages\');"/></a>',3);
+            str = this.multiple(str,img[0], img[1] + '<img src="' + img[2] + '" onload="CHAT.scrollToBottom(\'messages\',this.clientHeight);"/></a>',3);
         }
         
         //convert spaces
         str = str.replace(/\s{2}/gi, ' &nbsp;');
+        return str;
+    },
+    reLinebreak : function(str){
+        str = str.replace(/<br>/g, '\n');
         return str;
     }
 }
@@ -580,19 +705,46 @@ socket.on('chatinfo', function(data){
     
 })();
 
-var tabber = {
-    tab : function(id){
-        var el = document.getElementById('tabbed');
-        var tab = document.createElement('div');
-        tab.className = 'tab';
-        tab.textContent = "Chat";
-        tab.addEventListener('click',function(){
+var oppColorGen = {
+    BW : function (rgba) {
+    var x =0;
+    for(let i = 0; i < 3 ; i++) {
+        x += (parseInt(rgba[i]) - 127);
+    }
+    return x > 0 ? '#333333' : '#DDDDDD';
+    },
+    HSL : function (rgba) {}
+}
+
+var minimizer = {
+    minimize : function(id){
+        var el = document.getElementById('minimized-area');
+        var label = document.createElement('div');
+        label.className = 'minimized';
+        label.textContent = "Chat";
+        label.addEventListener('click',function(){
             var chatWindow = document.getElementById(id);
             chatWindow.style.display = 'block';
-            tab.parentNode.removeChild(tab);
+            label.parentNode.removeChild(label);
         });
-        el.appendChild(tab);
+        el.appendChild(label);
     }
+};
+
+var buttons = {
+    chatbox : function(el, name){
+        var el = document.getElementById(el);
+        var button = document.createElement('div');
+        button.id = name;
+        var sign = document.createElement('span');
+        el.appendChild(button);
+        button.appendChild(sign);
+    }
+}
+
+function setPopVolume(vol) {
+    CHAT.audio.sounds.pop.volume = vol;
+    CHAT.audio.sounds.pop.play();
 };
 
 (function(){
@@ -603,10 +755,52 @@ var tabber = {
     $$$.draggable(chat);
     $$$.resizable(chat);
     
-    var minimize = document.getElementById('minimize');
-    minimize.addEventListener('click',function(){
+    //Must be after Resizable because...
+    getChatX();
+    getChatY();
+    //...it sets style.top, style.left, style.height, style.width
+    
+    buttons.chatbox('title-bar', 'minimize');
+    buttons.chatbox('title-bar', 'collapse');
+    var messegesPanel = document.getElementById('messages');
+    
+    var minimizeEl = document.getElementById('minimize');
+    minimizeEl.addEventListener('click',function(){
         chat.style.display = 'none';
-        tabber.tab('chat');
+        minimizer.minimize('chat');
+    });
+    
+    var msgH;
+    var collapseEl = document.getElementById('collapse');
+    collapseEl.addEventListener('click', function() {
+        messegesPanel.style.height = '';
+        if(stopChatTranstion) {clearTimeout(stopChatTranstion)};
+        chat.classList.add('move-chat');
+        var sn = collapseEl.getElementsByTagName('span')[0];
+        if(chat.classList.contains('slideCloseChat')){
+            let testTop = (chat.offsetTop - msgsH);
+            chat.style.top = testTop > 0 ? testTop + 'px' : '0px';
+            chat.classList.remove('slideCloseChat');
+            sn.classList.remove('flip-arrow');
+            for(let i = 0; i < 4 ; i++){
+                document.getElementsByClassName('corner-handle')[i].style.display = '';
+            }
+            messegesPanel.tabIndex = 2;
+        } else {
+            msgsH = messegesPanel.clientHeight;
+            chat.style.top = (chat.offsetTop + msgsH) + 'px';
+            chat.classList.add('slideCloseChat');
+            sn.classList.add('flip-arrow');
+            for(let i = 0; i < 4 ; i++){
+                document.getElementsByClassName('corner-handle')[i].style.display = 'none';
+            }
+            messegesPanel.tabIndex = -1;
+        }
+        var stopChatTranstion = setTimeout(function() {
+            chat.classList.remove('move-chat');
+            getChatX();
+            getChatY();
+        }, 1000);
     });
     
     function submit(){
@@ -619,9 +813,10 @@ var tabber = {
     
     var input = document.getElementById('input-bar').getElementsByTagName('textarea')[0];
     input.onkeydown = function(e){
-        if(e.keyCode == 9){
+        if(e.keyCode == 9 && e.shiftKey == false){
             e.preventDefault();
-        }
+            document.getElementsByClassName('first-tabindex')[0].focus();
+        }           
         switch (e.keyCode){
         case 13:
             if(e.keyCode == 13 && !e.shiftKey){
@@ -647,20 +842,28 @@ var tabber = {
         }
     };
     
-    var messegesPanel = document.getElementById('messages');
+    //Resize input bar and message window when making newlines
+    
     var originalHeight = parseInt(window.getComputedStyle(input).getPropertyValue("height"));
     
     input.onkeyup = function(e){
+        //save previous values
         var messegesPanelPreviousHeight = messegesPanel.clientHeight;
         var messegesPanelPreviousScrollTop = messegesPanel.scrollTop;
+        //resize input
         input.style.height = 0 + "px";
         var height = input.scrollHeight;
         input.style.height = Math.min(height - parseInt(window.getComputedStyle(input).getPropertyValue("padding-top")) - parseInt(window.getComputedStyle(input).getPropertyValue("padding-bottom")), messegesPanel.parentElement.clientHeight / 3 - (messegesPanel.parentElement.clientHeight / 3 % originalHeight)) + "px";
-        messegesPanel.style.height = messegesPanel.parentElement.clientHeight - document.getElementById('drag-bar').clientHeight - input.parentElement.clientHeight + "px";
-        if(e.shiftKey || (!e.shiftKey && messegesPanel.scrollHeight !== (messegesPanelPreviousScrollTop + messegesPanelPreviousHeight) && messegesPanel.scrollHeight !== (messegesPanel.clientHeight + messegesPanel.scrollTop))) {
-            messegesPanel.scrollTop -= messegesPanel.clientHeight - messegesPanelPreviousHeight;
-        } else {
+        //resize message panel
+        messegesPanel.style.height = messegesPanel.parentElement.clientHeight - document.getElementById('title-bar').clientHeight - input.parentElement.clientHeight + "px";
+        //adjust scroll position
+        if((e.shiftKey) || (!e.shiftKey && messegesPanel.scrollHeight !== (messegesPanelPreviousScrollTop + messegesPanelPreviousHeight) && messegesPanel.scrollHeight !== (messegesPanel.clientHeight + messegesPanel.scrollTop))) {
+            messegesPanel.scrollTop += (messegesPanelPreviousHeight - messegesPanel.clientHeight);
+        } else if (!e.shiftKey && messegesPanel.scrollHeight !== (messegesPanelPreviousScrollTop + messegesPanelPreviousHeight) && messegesPanel.scrollHeight === (messegesPanel.clientHeight + messegesPanel.scrollTop)) {
             messegesPanel.scrollTop -= messegesPanel.scrollHeight - (messegesPanelPreviousScrollTop + messegesPanelPreviousHeight);
+        } else {
+            messegesPanel.scrollTop += Math.abs(messegesPanelPreviousHeight - messegesPanel.clientHeight);
         }
-    }
+    };
+    
 })();

@@ -15,12 +15,13 @@ function createChannel(io, channelName){
     var positions = {};
     
     setInterval(function(){
-        roomEmit('positions', positions);
+        awakeEmit('positions', positions);
     },25);
     
     var tokens = {};
     var channel = {
-        online : []
+        online : [],
+        awake : []
     };
     
     room.on('connection', function(socket){
@@ -99,10 +100,14 @@ function createChannel(io, channelName){
         
         socket.on('disconnect', function(){
             var i = indexOf(user.nick);
+            var j = awake_indexOf(user.nick);
             if(i != -1){
                 channel.online.splice(i,1);
             } else {
                 console.log('user has disappeared from time and space, he will be missed');
+            }
+            if(i != -1){
+                channel.awake.splice(j,1);
             }
             if(positions[socket.id]){
                 roomEmit('left',socket.id);
@@ -131,7 +136,9 @@ function createChannel(io, channelName){
 				}
 				
 				channel.online.push(user);
+                channel.awake.push(user);
 				socket.join('chat');
+                socket.join('awake');
 				socket.emit('MapInfo',{
                     avatars : avatars,
                     map : {
@@ -404,6 +411,13 @@ function createChannel(io, channelName){
                 });
             }
         },
+        me : {
+            params : ['message'],
+            handler : function(user, params){
+                var message = user.nick + ' ' + params.message.substr(0,5000);
+                emitMessage(message,'action');
+            }
+        },
         kick : {
             role : 0,
             params : ['nick', 'message'],
@@ -416,9 +430,13 @@ function createChannel(io, channelName){
                     //Check if userdata is still here for some reason
                     setTimeout(function(){
                     var Check = indexOf(params.nick);
+                    var Check_Awake = awake_indexOf(params.nick);
                         if(Check != -1){
                             showMessage(user.socket,params.nick + ' was a ghost.');
                             channel.online.splice(Check,1)
+                        }
+                        if(Check_Awake != -1){
+                            channel.awake.splice(Check,1)
                         }
                     },2000);
                     emitMessage(user.nick + ' has kicked ' + params.nick + (params.message ? ': ' + params.message : ''), 'general');
@@ -496,6 +514,37 @@ function createChannel(io, channelName){
                 });
             }
         },
+        globalrole : {
+            role : 0,
+            params : ['nick','role'],
+            handler : function(user,params){
+                if(params.role <= 3 && params.role >= 0){
+                    dao.find(params.nick).then(function(dbuser){
+                        if(dbuser){
+                            dao.setUserinfo(dbuser.nick,'role',params.role).then(function(err){
+                                if(!err){
+                                    showMessage(user.socket, dbuser.nick + ' now has role ' + params.role);
+                                    var index = indexOf(params.nick);
+                                    if(index != -1){
+                                        var auser = channel.online[index];
+                                        auser.role = params.role;
+                                        auser.socket.emit('update', {
+                                            role : auser.role
+                                        });
+                                    }
+                                } else {
+                                    console.log(err);
+                                }
+                            });
+                        } else {
+                            showMessage(user.socket,'Can only give access to registered users.','error');
+                        }
+                    });
+                } else {
+                    showMessage(user.socket,'That isn\'t a valid role.','error');
+                }
+            }
+        },
         note : {
             role : 0,
             params : ['note'],
@@ -520,6 +569,36 @@ function createChannel(io, channelName){
                         roomEmit('chatinfo',JSON.stringify({
                             topic : topic
                         }));
+                    }
+                });
+            }
+        },
+        theme : {
+            role : 0,
+            params : ['TitlebarColor','ButtonsColor','InputbarColor','ScrollbarColor'],
+            handler : function(user,params){
+                var colors = [params.TitlebarColor.substr(0,20),params.ButtonsColor.substr(0,20),params.InputbarColor.substr(0,20),params.ScrollbarColor.substr(0,20)];
+                dao.setChatinfo(channelName,'themecolors',colors).then(function(err){
+                    if(!err){
+                        roomEmit('chatinfo',JSON.stringify({
+                            themecolors : colors
+                        }));
+                        showMessage(user.socket,'Theme colors updated.');
+                    }
+                });
+            }
+        },
+        background : {
+            role : 0,
+            params : ['background'],
+            handler : function(user,params){
+                var background = params.background.substr(0,5000);
+                dao.setChatinfo(channelName,'background',background).then(function(err){
+                    if(!err){
+                        roomEmit('chatinfo',JSON.stringify({
+                            background : background
+                        }));
+                        showMessage(user.socket,'Background updated.');
                     }
                 });
             }
@@ -564,6 +643,32 @@ function createChannel(io, channelName){
             handler : function(){
                 roomEmit('refresh');
             }
+        },
+        sleep : {
+            handler : function(user){
+                var index = channel.awake.indexOf(user);
+                if(index != -1) {
+                    user.socket.leave('awake');
+                    channel.awake.splice(index, 1);
+                    user.socket.emit('bed', 'sleep');
+                    showMessage(user.socket, "Have a spooky night!");
+                } else {
+                    showMessage(user.socket, "You're already asleep.");
+                }
+            }
+        },
+        wakeup : {
+            handler : function(user){
+                var index = channel.awake.indexOf(user);
+                if(index === -1) {
+                    user.socket.join('awake');
+                    channel.awake.push(user);
+                    user.socket.emit('bed', 'wakeup');
+                    showMessage(user.socket, "You're awake!");
+                } else {
+                    showMessage(user.socket, "You're already awake.");
+                }
+            }
         }
     }    
     
@@ -571,6 +676,17 @@ function createChannel(io, channelName){
         if(nick || id) {
             for( var i = 0; i < channel.online.length; i++){
                 if(!id && channel.online[i].nick.toLowerCase() == nick.toLowerCase() || id && channel.online[i].socket.id == id){
+                    return i;
+                }
+            }
+        }
+        return -1;
+    }
+    
+    function awake_indexOf(nick,id){ //Will be merged to above.
+        if(nick || id) {
+            for( var i = 0; i < channel.awake.length; i++){
+                if(!id && channel.awake[i].nick.toLowerCase() == nick.toLowerCase() || id && channel.awake[i].socket.id == id){
                     return i;
                 }
             }
@@ -600,6 +716,10 @@ function createChannel(io, channelName){
     
     function roomEmit(){
         room.in('chat').emit.apply(room, arguments);
+    }
+    
+    function awakeEmit(){
+        room.in('awake').emit.apply(room, arguments);
     }
     
     return true;

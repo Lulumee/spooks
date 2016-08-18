@@ -91,6 +91,16 @@ function init(){
     animate_loop = setInterval(animate, 5000 / 30);
 };
 
+function stop_loop() {
+    clearInterval(game_loop);
+    clearInterval(animate_loop);
+};
+
+function start_loop() {
+    game_loop = setInterval(paint, 1000/40);
+    animate_loop = setInterval(animate, 5000 / 30);
+};
+
 //
 // the main game loop
 //
@@ -250,9 +260,47 @@ function Draw(user){
         var width = ctx.measureText(user.nick).width;
         ctx.strokeText(user.nick,(Pleft)-(width/2)+(user.frame.w/2),Ptop-5);
         ctx.fillText(user.nick,(Pleft)-(width/2)+(user.frame.w/2),Ptop-5);
-        if(user.message){
-            var width = ctx.measureText(user.message).width + 30;
-            drawBubble(ctx, (Pleft)-(width/2)+(user.frame.w/2),(Ptop)-64,width, 30, 10, user.message);
+        if(user.messages[0]){
+            var maxWidth = 200; //Sets message bubble MAX width.
+            var spacing = 0;
+            for(var i = user.messages.length-1; i >= 0; i--){ //Handle breaklines and Wraplines
+                var lines = [];
+                var breakLines = user.messages[i].substr(1).split("\n");
+                for (var j = 0; j < breakLines.length; j++) {
+                    var wrapLines = [];
+                    var lastLine = "";
+                    var words = breakLines[j].split(" ");
+                    for (var k = 0; k < words.length; k++) {
+                        var testLine = lastLine + words[k];
+                        var testWidth = ctx.measureText(testLine).width;
+                        if (testWidth > maxWidth) {
+                            wrapLines.push(testLine); 
+                            lastLine = "";
+                        } else {
+                            lastLine = testLine + " ";
+                        }
+                    }
+                    if(lastLine !== "" && lastLine !== " "){
+                        lastLine = lastLine.substr(0, lastLine.length - 1);
+                        wrapLines.push(lastLine); 
+                    }
+                    lines.push.apply(lines, wrapLines);
+                }
+                var l;
+                var longest = 0;
+                for(var j=0; j < lines.length; j++){
+                    l = ctx.measureText(lines[j]).width;
+                    if(l > longest){
+                        longest = l;
+                    }      
+                }
+                var width = longest + 30;
+                var height = 30 + 20*(lines.length-1);
+                var yy = (Ptop)-64-spacing -20*(lines.length-1);;
+                spacing += height + 5; 
+                var last = i === user.messages.length-1? true : false;
+                drawBubble(ctx, (Pleft)-(width/2)+(user.frame.w/2), yy, width, height , 10, lines, last);
+            }
         }
         ctx.drawImage(user.avy, (user.frame.x*user.frame.w), (user.frame.y*user.frame.h), user.frame.w, user.frame.h,Pleft,Ptop,user.frame.w,user.frame.h);
     } else if(user.tiles){//draw object
@@ -267,29 +315,34 @@ function Draw(user){
     }
 }
 
-function drawBubble(ctx, x, y, w, h, radius, word){
-  var r = x + w;
-  var b = y + h;
-  ctx.beginPath();
-  ctx.strokeStyle="black";
-  ctx.lineWidth="2";
-  ctx.moveTo(x+radius, y);
-  ctx.lineTo(x+radius * 2, y);
-  ctx.lineTo(r-radius, y);
-  ctx.quadraticCurveTo(r, y, r, y+radius);
-  ctx.lineTo(r, y+h-radius);
-  ctx.quadraticCurveTo(r, b, r-radius, b);
-  ctx.lineTo((x+radius)+(w/2), b);
-  ctx.lineTo((x+radius)+(w/2)-10, b+10);
-  ctx.lineTo(x+radius+(w/2)-20, b);
-  ctx.lineTo(x+radius, b);
-  ctx.quadraticCurveTo(x, b, x, b-radius);
-  ctx.lineTo(x, y+radius);
-  ctx.quadraticCurveTo(x, y, x+radius, y);
-  ctx.fill();
-  ctx.stroke();
-  ctx.fillStyle='black';
-  ctx.fillText(word,x+15,y+(h/2));
+function drawBubble(ctx, x, y, w, h, radius, word, arrow){
+    var r = x + w;
+    var b = y + h;
+    ctx.beginPath();
+    ctx.strokeStyle="black";
+    ctx.lineWidth="2";
+    ctx.moveTo(x+radius, y);
+    ctx.lineTo(x+radius * 2, y);
+    ctx.lineTo(r-radius, y);
+    ctx.quadraticCurveTo(r, y, r, y+radius);
+    ctx.lineTo(r, y+h-radius);
+    ctx.quadraticCurveTo(r, b, r-radius, b);
+    ctx.lineTo((x+radius)+(w/2), b);
+    if(arrow){
+        ctx.lineTo((x+radius)+(w/2)-10, b+10);
+        ctx.lineTo(x+radius+(w/2)-20, b);
+    }
+    ctx.lineTo(x+radius, b);
+    ctx.quadraticCurveTo(x, b, x, b-radius);
+    ctx.lineTo(x, y+radius);
+    ctx.quadraticCurveTo(x, y, x+radius, y);
+    ctx.fillStyle= 'rgba(255,255,255,0.5)';
+    ctx.fill();
+    ctx.fillStyle='black';
+    ctx.stroke();
+    for(var i = 0; i <word.length; i++) {
+        ctx.fillText(word[i],x+15,y+(+15)+(20*i));
+    }
 }
 //
 // controls the animations of the dude
@@ -376,11 +429,41 @@ function move(e){
 canvas.addEventListener('mousedown', function(e){
     e.preventDefault();
     if(document.activeElement === document.getElementById('world') && e.which===1) {
-        canvas.addEventListener('mouseup', move(e));
-        
+        canvas.addEventListener('mouseup', move(e));   
     }
     document.getElementById('world').focus();
 });
+
+//Fade chat window
+
+chatDiv = document.getElementById('chat');
+worldDiv = document.getElementById('world');
+
+worldDiv.addEventListener('focus', function(e){
+    chatDiv.style.opacity = "0.8";
+});
+
+worldDiv.addEventListener('blur', function(e){
+    chatDiv.style.opacity = "1";
+});
+
+//Get Chat window X and Y coordinates, 'window' can be 'container' after fixing #world having random values at first, or late initializtion. 
+
+function getChatX() {
+    var cw = document.getElementById('chat');
+    var container = document.getElementById('world');
+    right = (window.innerWidth - (cw.offsetLeft + cw.offsetWidth)) / window.innerWidth; //Postion based on ratio of right to left/top to bottom.
+    //var right = (window.innerWidth - (cw.offsetLeft + cw.clientWidth)); //Position based on right/bottom
+};
+
+function getChatY() {
+    var cw = document.getElementById('chat');
+    var container = document.getElementById('world');
+    bottom = (window.innerHeight - (cw.offsetTop + cw.offsetHeight)) / window.innerHeight; //Same as above
+    //var bottom = (window.innerHeight - (cw.offsetTop + cw.clientHeight)); //Same as above
+};
+
+//Keep Chat widnow on relative cooridnates on resize
 
 window.addEventListener('resize', function(){   
     //set bgcanvas size
@@ -393,6 +476,26 @@ window.addEventListener('resize', function(){
     world.screenHeight = Math.floor(window.innerHeight/2);
     world.screenWidth = Math.floor(window.innerWidth/2);
     mapControl.drawTiles();
+    
+    //Move chat window
+    var cw = document.getElementById('chat');
+    var x = window.innerWidth - (cw.offsetWidth + right * window.innerWidth); //Postion based on ratio of right to left/top to bottom.
+    var y = window.innerHeight - (cw.offsetHeight + bottom * window.innerHeight);
+    //var y = window.innerWidth - (cw.clientWidth + right); //Position based on right/bottom
+    //var x = window.innerHeight - (cw.clientHeight + bottom);
+    if(x >= 0) {
+        cw.style.left = x + "px";
+        getChatX();
+    } else {
+        cw.style.left = 0;
+    }
+    if(y >= 0) {
+        cw.style.top = y + "px";
+        getChatY();
+    } else {
+        cw.style.top = 0;
+    }
+    
 });
 
 //All the important functions besides the basic ones
@@ -414,7 +517,8 @@ var userControl = {
                     maxY : 4
                 },
                 avy : DefaultAvatar,
-                nick : data.nick || id
+                nick : data.nick || id,
+                messages : []
             };
             
             var li = document.createElement('li');
@@ -558,7 +662,6 @@ var mapControl = {
             }
         },2000);
         
-        
         if(MapInfo.spawn){
             try{
                 var Spawn = JSON.parse(MapInfo.spawn);
@@ -653,6 +756,16 @@ socket.on('left', function(id){
     userControl.removeUser(id);
 });
 
+socket.on('bed', function(data){
+    if(data == 'sleep'){
+        stop_loop();
+        document.getElementById('world-curtain').classList.add('world-curtain-down');
+    } else if (data == 'wakeup'){
+        start_loop();
+        document.getElementById('world-curtain').classList.remove('world-curtain-down');
+    }
+});
+
 //refresh page
 socket.on('refresh',function(){
     location.reload();
@@ -670,11 +783,10 @@ socket.on('disconnect', function() {
 socket.on('message',function(message){
 	var id = ONLINE.getid(message.nick);
 	if(ONLINE.players[id]){
-		clearTimeout(ONLINE.players[id].time);
 		ONLINE.players[id].time = setTimeout(function(){
-			ONLINE.players[id].message = '';
-		},5000);
-		ONLINE.players[id].message = parser.removeHTML(parser.parse(message.message));
+			ONLINE.players[id].messages.shift();
+		},8000);
+		ONLINE.players[id].messages.push(parser.removeHTML(parser.reLinebreak(parser.parse(message.message))));
 	}
 });
 

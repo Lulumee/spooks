@@ -25,20 +25,23 @@
         <div id="Avatars" class="panel">
             <input id="upload" type="file"/>
         </div>
-        <div id="Options" class="panel"></div>
+        <div id="Options" class="panel">
+            Chat notification volume
+            <input id="pop-vol" type="range" min="0" max="1" step="0.1" value="1" oninput="setPopVolume(this.value)"/>
+        </div>
     </div>
-    <div id="world" tabindex="0">
+    <div id="world" tabindex="1" class="first-tabindex">
         <canvas id="players"></canvas>
         <canvas id="background" style="position:absolute;left:0;top:0;z-index:-1;"></canvas>
+        <div id="world-curtain"></div>
     </div>
     <div id="chat">
-        <div id="drag-bar">
-            <div id="minimize">&minus;</div>
-        </div>
-        <div id="messages"></div>
-        <div id="input-bar"><textarea placeholder="Type anything then press enter"></textarea></div>
+        <div id="title-bar" tabindex="-1"></div>
+        <div id="chat-background"></div>
+        <div id="messages" tabindex="2" class="css-scrollbar"></div>
+        <div id="input-bar" tabindex="-1"><textarea tabindex="3" class="css-scrollbar" placeholder="Spook me"></textarea></div>
     </div>
-    <div id="tabbed"></div>
+    <div id="minimized-area"></div>
 </body>
     <script src="/socket.io/socket.io.js"></script>
     <script language="javascript" type="text/javascript" src="dollarSign.js"></script>

@@ -21,11 +21,13 @@ window.$$$ = {
             el.removeEventListener('mousemove', drag);
             container.removeEventListener('mousemove', drag);
             document.body.classList.remove('noselect');
+            getChatX();
+            getChatY();
         }
         
         el.addEventListener('mousedown', function (e) {
             var target = e.target || e.srcElement;
-            if (!target.classList.contains('resizable-handle') && target.nodeName !== stopOn) {
+            if (!target.classList.contains('resizable-handle') && target.nodeName !== stopOn && target.id === ('title-bar')) {
                 clickX = e.clientX - parseInt(el.style.left, 10);
                 clickY = e.clientY - parseInt(el.style.top, 10);
                 el.addEventListener('mousemove', drag);
@@ -43,54 +45,75 @@ window.$$$ = {
             height = el.offsetHeight,
             clickX = 0,
             clickY = 0;
-        
         el.style.width = width + 'px';
         el.style.height = height + 'px';
         
-        function resize(event) {
-            var movementX = (event.clientX - clickX) - parseInt(el.style.width, 10),
-                movementY = (event.clientY - clickY) - parseInt(el.style.height, 10);
-            width = parseInt(el.style.width) + movementX;
-            height = parseInt(el.style.height) + movementY;
-            if ((width < container.offsetWidth) && width > 200) {
+        function resize(sign, event) {
+            if(sign[0]) {
+                var movementX = (event.clientX - clickX) - sign[0] * parseInt(el.style.width, 10);
+                width = parseInt(el.style.width) + sign[0] * movementX;
+            }
+            if(sign[1]) {
+                var movementY = (event.clientY - clickY) - sign[1] * parseInt(el.style.height, 10);
+                height = parseInt(el.style.height) + sign[1] * movementY;
+            }
+            if(sign[0] && (width < container.offsetWidth) && width > 200) {
                 el.style.width = width + 'px';
+                if(sign[0] === -1) {
+                    el.style.left = parseInt(el.style.left) + movementX + 'px';
+                }
             }
-            if (((height + parseInt(el.style.top)) < container.offsetHeight) && height > 100) {
+            if(sign[1] && (height < container.offsetHeight) && height > 100) {
                 el.style.height = height + 'px';
+                if(sign[1] === -1) {
+                    el.style.top = parseInt(el.style.top) + movementY + 'px';
+                }
             }
+            
+            //Resize message panel
+            var messegesPanel = document.getElementById('messages');
+            var input = document.getElementById('input-bar').getElementsByTagName('textarea')[0];
+            messegesPanel.style.height = messegesPanel.parentElement.clientHeight - document.getElementById('title-bar').clientHeight - input.parentElement.clientHeight + "px";
         }
         
         function remove() {
-            el.removeEventListener('mousemove', resize);
-            container.removeEventListener('mousemove', resize);
+            el.removeEventListener('mousemove', resizePassArgs);
+            container.removeEventListener('mousemove', resizePassArgs);
             document.body.classList.remove('noselect');
+            getChatX();
+            getChatY();
         }
         
-        function add(e) {
-            clickX = e.clientX - parseInt(el.style.width);
-            clickY = e.clientY - parseInt(el.style.height);
-            el.addEventListener('mousemove', resize);
-            container.addEventListener('mousemove', resize);
+        function add(sign, e) {
+            remove();
+            clickX = e.clientX - sign[0] * parseInt(el.style.width);
+            clickY = e.clientY - sign[1] * parseInt(el.style.height);
+            resizePassArgs = resize.bind(null, sign);
+            el.addEventListener('mousemove', resizePassArgs);
+            container.addEventListener('mousemove', resizePassArgs);
             document.body.classList.add('noselect');
         }
         
         el.addEventListener('mouseup',remove);    
         container.addEventListener('mouseup',remove);
-                        
-        //right resize handle
-        var rightHandle = document.createElement('div');
-        rightHandle.className = 'resizable-handle resizable-right';
-        rightHandle.addEventListener('mousedown', add);
-        rightHandle.addEventListener('mouseup',remove);
+
+        var addPassArgs;
+        var resizePassArgs;
         
-        //bottom resize handle
-        var bottomHandle = document.createElement('div');
-        bottomHandle.className = 'resizable-handle resizable-bottom';
-        bottomHandle.addEventListener('mousedown', add);
-        bottomHandle.addEventListener('mouseup',remove);
-        
-        el.appendChild(rightHandle);
-        el.appendChild(bottomHandle);
+        var handle = [];
+        var handleClasses = ['resizable-top-right', 'resizable-top-left', 'resizable-left', 'resizable-bottom-left', 'resizable-bottom-right', 'resizable-right'];
+        var handleSigns = [[1,-1],[-1,-1],[-1,0],[-1,1],[1,1],[1,0]];
+        for(let i = 0 ; i < handleClasses.length ; i++) {
+            handle[i] = document.createElement('div');
+            handle[i].className = 'resizable-handle ' + handleClasses[i];
+            if(handleSigns[i][0] && handleSigns[i][1]) {
+                handle[i].className += " corner-handle";
+            }
+            addPassArgs = add.bind(null, handleSigns[i]);
+            handle[i].addEventListener('mousedown', addPassArgs);
+            handle[i].addEventListener('mouseup',remove);
+            el.appendChild(handle[i]);
+        };
     },
     scrollable : function(el){
         var container = document.getElementById('world');
