@@ -91,7 +91,7 @@ var build = {
         conatiner.style.top = startY + 'px';
         conatiner.style.width = width + 'px';
         conatiner.style.height = height + 'px';
-        conatiner.style.background = 'url(\'' + tilesheetsrc + '\') -' + (tileInfo.MinX * 16) + 'px -' + (tileInfo.MinY * 16) + 'px';
+        conatiner.style.background = 'url(\'' + window.location.origin + "/images/tiles/" + tilesheetsrc + '\') -' + (tileInfo.MinX * 16) + 'px -' + (tileInfo.MinY * 16) + 'px'; // Change how map data is saved, used to be: tilesheetsrc
         return conatiner;
     },
     tile : function (tilesheetsrc, x, y, sx, sy) {
@@ -105,7 +105,7 @@ var build = {
         conatiner.className = 'item placed-tile';
         conatiner.style.left = x + 'px';
         conatiner.style.top = y + 'px';
-		conatiner.style.background = 'url(\'' + tilesheetsrc + '\') -' + sx + 'px -' + sy + 'px';
+		conatiner.style.background = 'url(\'' + window.location.origin + "/images/tiles/" + tilesheetsrc + '\') -' + sx + 'px -' + sy + 'px'; // Change how map data is saved, used to be: tilesheetsrc
         return conatiner;
     },
     editor : function () {
@@ -663,7 +663,7 @@ function initiateTileSheet(tileSheetImage, name) {
         penSettings.tool = 'tilePlacer';
         penSettings.tileSheetInfo = {
             ctx : tileCtx,
-            imageSrc : tileSheetImage.src
+            imageSrc : tileSheetImage.src.substr(tileSheetImage.src.lastIndexOf('/') + 1) // Change how map data is saved, used to be tileSheetImage.src
         };
         penSettings.tileData = {
             MaxX : (penCanvas.width + startingXY[0]) / 16,

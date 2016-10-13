@@ -139,6 +139,7 @@ function createChannel(io, channelName){
                 channel.awake.push(user);
 				socket.join('chat');
                 socket.join('awake');
+                if(mapdata == undefined) {mapdata = {tiles:'{}',objects:'{}',spawn:'[]',data:'{}'}}
 				socket.emit('MapInfo',{
                     avatars : avatars,
                     map : {
@@ -204,7 +205,14 @@ function createChannel(io, channelName){
             join : function(data,dbuser,channeldata){
                 dao.banlist(channelName).then(function(list){//get ban list
                     if(list.indexOf(data.nick) == -1 && list.indexOf(user.remote_addr) == -1){//make sure user isn't banned
-                        attemptJoin(data,channeldata);
+                        if(channeldata == undefined) {
+                            dao.getChannelinfo('/404').then(function(channel404){//Get default channel info
+                                channeldata = channel404;
+                                attemptJoin(data,channeldata);
+                            }); 
+                        } else {
+                            attemptJoin(data,channeldata);
+                        }
                     } else {//user is banned
                         showMessage(user.socket,'You are banned');
                         user.socket.disconnect();
@@ -577,15 +585,19 @@ function createChannel(io, channelName){
             role : 0,
             params : ['TitlebarColor','ButtonsColor','InputbarColor','ScrollbarColor'],
             handler : function(user,params){
-                var colors = [params.TitlebarColor.substr(0,20),params.ButtonsColor.substr(0,20),params.InputbarColor.substr(0,20),params.ScrollbarColor.substr(0,20)];
-                dao.setChatinfo(channelName,'themecolors',colors).then(function(err){
-                    if(!err){
-                        roomEmit('chatinfo',JSON.stringify({
-                            themecolors : colors
-                        }));
-                        showMessage(user.socket,'Theme colors updated.');
-                    }
-                });
+                if(params.TitlebarColor && params.ButtonsColor && params.InputbarColor && params.ScrollbarColor && params.TitlebarColor.length < 20 && params.ButtonsColor.length < 20 && params.InputbarColor.length < 20 && params.ScrollbarColor.length < 20) {
+                    var colors = [params.TitlebarColor, params.ButtonsColor, params.InputbarColor, params.ScrollbarColor];
+                    dao.setChatinfo(channelName,'themecolors',colors).then(function(err){
+                        if(!err){
+                            roomEmit('chatinfo',JSON.stringify({
+                                themecolors : colors
+                            }));
+                            showMessage(user.socket,'Theme colors updated.');
+                        }
+                    });
+                } else {
+                    showMessage(user.socket,'Parameters incomplete or too long.');
+                }
             }
         },
         background : {

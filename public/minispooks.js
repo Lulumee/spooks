@@ -200,15 +200,20 @@ var CHAT = {
         }
         if(info.themecolors){
             document.getElementById("title-bar").style.backgroundColor = info.themecolors[0];
+            document.querySelector('meta[name="theme-color"]').setAttribute("content", info.themecolors[0]);
             document.getElementById("minimize").style.backgroundColor = info.themecolors[1];
             document.getElementById("collapse").style.backgroundColor = info.themecolors[1];
-            let invertedColor = oppColorGen.BW(document.getElementById("minimize").style.backgroundColor.match(/\d+/g)); 
-            document.getElementById("minimize").children[0].style.backgroundColor = invertedColor;
-            //document.getElementById("collapse").children[0].style.borderTop = invertedColor; Doesn't work
-            if(invertedColor === '#333333') {
-                document.getElementById("collapse").children[0].classList.add('triangle-color-hack');
-            } else {
-                document.getElementById("collapse").children[0].classList.remove('triangle-color-hack');
+            if(/\d+/g.test(document.getElementById("minimize").style.backgroundColor)) {
+                let invertedColor = contrast.bw(document.getElementById("minimize").style.backgroundColor);
+                document.getElementById("minimize").style.boxShadow = invertedColor === 'w' ? '0 0px 1px rgba(255,255,255,1)' : '0 0px 1px rgba(0,0,0,1)';
+                document.getElementById("collapse").style.boxShadow = invertedColor === 'w' ? '0 0px 1px rgba(255,255,255,1)' : '0 0px 1px rgba(0,0,0,1)';
+                document.getElementById("minimize").children[0].style.backgroundColor = invertedColor === 'w' ? '#CCCCCC' : '#333333';
+                //document.getElementById("collapse").children[0].style.borderTop = invertedColor; Doesn't work
+                if(invertedColor === 'b') {
+                    document.getElementById("collapse").children[0].classList.add('triangle-color-hack');
+                } else {
+                    document.getElementById("collapse").children[0].classList.remove('triangle-color-hack');
+                }
             }
             document.getElementById("input-bar").style.backgroundColor = info.themecolors[2];
             if(navigator.userAgent.toLowerCase().indexOf('chrome') > -1) {
@@ -438,8 +443,8 @@ var CHAT = {
     },
     toggles : function(){
         var obj = {
-            valid : ['pop', '24h'],
-            states : {pop: true, '24h':false},
+            valid : ['pop', '24h', 'reconnect'],
+            states : {'pop': true, '24h': false, 'reconnect': true},
             get : function(att) {
                 return this.states[att];
             },
@@ -705,15 +710,18 @@ socket.on('chatinfo', function(data){
     
 })();
 
-var oppColorGen = {
-    BW : function (rgba) {
-    var x =0;
-    for(let i = 0; i < 3 ; i++) {
-        x += (parseInt(rgba[i]) - 127);
-    }
-    return x > 0 ? '#333333' : '#DDDDDD';
+var contrast = {
+    bw : function (rgba) {
+        var components = rgba.match(/\d+/g);
+        var luminance, sRGB = [];
+        for(var i = 0 ; i < 3 ; i++) {
+            sRGB[i] = parseFloat(components[i]).toFixed(5) / 255;
+            sRGB[i] = sRGB[i] <= 0.03928 ? sRGB[i] / 12.92 : Math.pow((sRGB[i] + 0.055) / 1.055, 2.4);
+        }
+        luminance = 0.2126 * sRGB[0] + 0.7152 * sRGB[1] + 0.0722 * sRGB[2];
+        return luminance > 0.179 ? 'b' : 'w';
     },
-    HSL : function (rgba) {}
+    hsl : function (rgba) {}
 }
 
 var minimizer = {
@@ -785,6 +793,7 @@ function setPopVolume(vol) {
             for(let i = 0; i < 4 ; i++){
                 document.getElementsByClassName('corner-handle')[i].style.display = '';
             }
+            document.getElementsByClassName('resizable-bottom')[0].style.display = '';
             messegesPanel.tabIndex = 2;
         } else {
             msgsH = messegesPanel.clientHeight;
@@ -794,6 +803,7 @@ function setPopVolume(vol) {
             for(let i = 0; i < 4 ; i++){
                 document.getElementsByClassName('corner-handle')[i].style.display = 'none';
             }
+            document.getElementsByClassName('resizable-bottom')[0].style.display = 'none';
             messegesPanel.tabIndex = -1;
         }
         var stopChatTranstion = setTimeout(function() {
@@ -802,6 +812,27 @@ function setPopVolume(vol) {
             getChatY();
         }, 1000);
     });
+    
+    var sphereEl = document.getElementById('sphere');
+    var userslistEl = document.getElementById('users-list');
+    sphereEl.addEventListener('click',function(){
+        if(userslistEl.classList.contains('userslist-open')) {
+            userslistEl.classList.remove('userslist-open');
+        } else {
+            userslistEl.classList.add('userslist-open');
+        }
+    });
+    
+    function initializeSound() {
+        if(navigator.userAgent.toString().toLowerCase().indexOf("android") != -1) {
+            let originalVolume = CHAT.audio.sounds.pop.volume;
+            CHAT.audio.sounds.pop.volume = 0;
+            CHAT.audio.playSound('pop');
+            setTimeout(function(){CHAT.audio.sounds.pop.volume = originalVolume;},3000);
+        }
+        document.getElementsByTagName('body')[0].removeEventListener("click", initializeSound);
+    }
+    document.getElementsByTagName('body')[0].addEventListener("click", initializeSound);
     
     function submit(){
         var text = input.value;

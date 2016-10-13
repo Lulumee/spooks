@@ -440,7 +440,7 @@ chatDiv = document.getElementById('chat');
 worldDiv = document.getElementById('world');
 
 worldDiv.addEventListener('focus', function(e){
-    chatDiv.style.opacity = "0.8";
+    chatDiv.style.opacity = "0.7";
 });
 
 worldDiv.addEventListener('blur', function(e){
@@ -527,8 +527,8 @@ var userControl = {
             li.addEventListener('click', function(e){
                 $$$.contextMenu(e,e.target.textContent);
             });
-            document.getElementById('Users').appendChild(li);
-            
+            document.getElementById('users-list').appendChild(li);
+            this.updateUsersCount();
         };
         
         if(ONLINE.Penned[id] && ONLINE.Penned[id].nick){//if user had pending nick load now
@@ -552,7 +552,8 @@ var userControl = {
             delete ONLINE.players[id];
             //remove from menu
             var li = document.getElementById(id);
-            document.getElementById('Users').removeChild(li);
+            document.getElementById('users-list').removeChild(li);
+            this.updateUsersCount();
         }
     },
     nick : function (nick, id, secret) {
@@ -571,6 +572,10 @@ var userControl = {
         } else {
             ONLINE.Pend(id,'nick',nick)
         }
+    },
+    updateUsersCount : function() {
+        var count = Object.keys(ONLINE.players).length;
+        document.getElementById('sphere').textContent = count;
     }
 }
 
@@ -645,7 +650,7 @@ var mapControl = {
 
         function loadTileSheet(tilesheetsrc){
             var Ron = new Image();
-            Ron.src = tilesheetsrc;
+            Ron.src = window.location.origin + "/images/tiles/" + tilesheetsrc; //Change how map data is saved, used to be: tilesheetsrc
             Ron.onload = function(){
                 world.TileSheets[tilesheetsrc] = Ron;
             }
@@ -756,11 +761,24 @@ socket.on('left', function(id){
     userControl.removeUser(id);
 });
 
+
+// Pause map.
+function reposition () {
+    for(var n in ONLINE.players){
+        if(n != player.id){
+            ONLINE.players[n].x = ONLINE.players[n].tx;
+            ONLINE.players[n].y = ONLINE.players[n].ty;
+        }
+    }
+    socket.off('positions', reposition);
+}
+
 socket.on('bed', function(data){
     if(data == 'sleep'){
         stop_loop();
         document.getElementById('world-curtain').classList.add('world-curtain-down');
     } else if (data == 'wakeup'){
+        socket.on('positions', reposition);
         start_loop();
         document.getElementById('world-curtain').classList.remove('world-curtain-down');
     }
@@ -771,12 +789,56 @@ socket.on('refresh',function(){
     location.reload();
 });
 
-//tell user if disconnected from server
-socket.on('disconnect', function() {
+// Reconnect.
+function reconnected() {
     CHAT.show({
-        message : 'Disconnected',
+        message : 'Reconnected',
         style : 'error'
     });
+    for(var n in  ONLINE.players) {
+        var li = document.getElementById(n);
+        li.parentNode.removeChild(li);
+    }
+    ONLINE.players = {};
+    world.width = 500;
+    world.height = 500;
+    socket.emit('core',{
+        command : 'join',
+        data : CHAT.attributes
+    });
+    CHAT.show({
+        message : 'Joining...',
+        style : 'error'
+    });
+    socket.off('reconnect', reconnected);
+}
+
+function reconnecting() {
+    CHAT.show({
+        message : 'Reconnecting...',
+        style : 'error'
+    });
+    socket.off('reconnecting', reconnecting);
+}
+
+// Tell user if disconnected from server and reconnect.
+socket.on('disconnect', function(e) {
+    console.log(e);
+    if( e === 'io client disconnect' || e === 'io server disconnect') {
+        CHAT.show({
+            message : 'Disconnected',
+            style : 'error'
+        });
+    } else {
+        CHAT.show({
+            message : 'Disconnected...',
+            style : 'error'
+        });
+        if(CHAT.toggles.get('reconnect')) {
+            socket.on('reconnecting', reconnecting);
+            socket.on('reconnect', reconnected);  
+        }
+    }
 });
 
 //set user message for speech bubbles

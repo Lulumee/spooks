@@ -101,8 +101,8 @@ window.$$$ = {
         var resizePassArgs;
         
         var handle = [];
-        var handleClasses = ['resizable-top-right', 'resizable-top-left', 'resizable-left', 'resizable-bottom-left', 'resizable-bottom-right', 'resizable-right'];
-        var handleSigns = [[1,-1],[-1,-1],[-1,0],[-1,1],[1,1],[1,0]];
+        var handleClasses = ['resizable-top-right', 'resizable-top-left', 'resizable-left', 'resizable-bottom-left', 'resizable-bottom', 'resizable-bottom-right', 'resizable-right'];
+        var handleSigns = [[1,-1], [-1,-1], [-1,0], [-1,1], [0,1], [1,1], [1,0]];
         for(let i = 0 ; i < handleClasses.length ; i++) {
             handle[i] = document.createElement('div');
             handle[i].className = 'resizable-handle ' + handleClasses[i];

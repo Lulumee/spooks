@@ -1,52 +1,58 @@
 <!doctype html>
 <html lang="en">
-<head>
-    <title>Please leave your sanity in a safe place!</title>
-    <meta name="Description" content="Spooks is an expanding multiverse of pixel art. Come, create and play with your personal animated creations, live!">
-    <link rel="icon" type="image/png" href="/images/icon2.ico">
-    <link rel="stylesheet" type="text/css" href="theme.css"/>
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Droid%20Sans"/>
-    <script language="javascript" type="text/javascript" src="dateFormat.js"></script>
-</head>
-
-<body>
-    <div id="menu">
-        <div id="toggle-menu">></div>
-        <nav id="tabs">
-            <ul>
-                <li class="tab">Users</li>
-                <li class="tab selected">Avatars</li>
-                <li class="tab">Options</li>
-            </ul>
-        </nav>
-        <div id="Users" class="panel">
-            
+    <head>
+        <title>Please leave your sanity in a safe place!</title>
+        <meta name="Description" content="Spooks is an expanding multiverse of pixel art. Come, create and play with your personal animated creations, live!">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="theme-color" content="#808080">
+        <link rel="icon" type="image/png" href="/images/icon2.ico">
+        <link rel="stylesheet" type="text/css" href="theme.css">
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Droid%20Sans">
+        <script type="text/javascript" src="dateFormat.js"></script>
+    </head>
+    <body>
+        <div id="menu">
+            <div id="toggle-menu">></div>
+            <nav id="tabs">
+                <ul>
+                    <li class="tab">User</li>
+                    <li class="tab selected">Avatars</li>
+                    <li class="tab">Options</li>
+                </ul>
+            </nav>
+            <div id="User" class="panel"></div>
+            <div id="Avatars" class="panel">
+                <input id="upload" type="file"/>
+            </div>
+            <div id="Options" class="panel">
+                Chat notification volume
+                <input id="pop-vol" type="range" min="0" max="1" step="0.1" value="1" oninput="setPopVolume(this.value)"/>
+            </div>
         </div>
-        <div id="Avatars" class="panel">
-            <input id="upload" type="file"/>
+        <div id="world" tabindex="1" class="first-tabindex">
+            <canvas id="players"></canvas>
+            <canvas id="background" style="position:absolute;left:0;top:0;z-index:-1;"></canvas>
+            <div id="world-curtain"></div>
         </div>
-        <div id="Options" class="panel">
-            Chat notification volume
-            <input id="pop-vol" type="range" min="0" max="1" step="0.1" value="1" oninput="setPopVolume(this.value)"/>
+        <div id="users">
+            <div id="sphere" class="noselect"></div>
+            <div id="users-list" class="userslist-scrollbar"></div>
         </div>
-    </div>
-    <div id="world" tabindex="1" class="first-tabindex">
-        <canvas id="players"></canvas>
-        <canvas id="background" style="position:absolute;left:0;top:0;z-index:-1;"></canvas>
-        <div id="world-curtain"></div>
-    </div>
-    <div id="chat">
-        <div id="title-bar" tabindex="-1"></div>
-        <div id="chat-background"></div>
-        <div id="messages" tabindex="2" class="css-scrollbar"></div>
-        <div id="input-bar" tabindex="-1"><textarea tabindex="3" class="css-scrollbar" placeholder="Spook me"></textarea></div>
-    </div>
-    <div id="minimized-area"></div>
-</body>
-    <script src="/socket.io/socket.io.js"></script>
-    <script language="javascript" type="text/javascript" src="dollarSign.js"></script>
-    <script language="javascript" type="text/javascript" src="AvatarControl.js"></script>
-    <script language="javascript" type="text/javascript" src="libjs.js"></script>
-    <script language="javascript" type="text/javascript" src="client.js"></script>
-    <script language="javascript" type="text/javascript" src="minispooks.js"></script>
+        <div id="chat">
+            <div id="title-bar" tabindex="-1"></div>
+            <div id="chat-background"></div>
+            <div id="messages" tabindex="2" class="chat-scrollbar"></div>
+            <div id="input-bar" tabindex="-1">
+                <textarea tabindex="3" class="chat-scrollbar" placeholder="Spook me"></textarea>
+            </div>
+        </div>
+        <div id="minimized-area"></div>
+        <script src="/socket.io/socket.io.js"></script>
+        <script language="javascript" type="text/javascript" src="dollarSign.js"></script>
+        <script language="javascript" type="text/javascript" src="AvatarControl.js"></script>
+        <script language="javascript" type="text/javascript" src="libjs.js"></script>
+        <script language="javascript" type="text/javascript" src="client.js"></script>
+        <script language="javascript" type="text/javascript" src="minispooks.js"></script>
+    </body>
 </html>

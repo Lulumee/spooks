@@ -1,4 +1,4 @@
-.css-scrollbar::-webkit-scrollbar-thumb { /* CSS Rule #0 */
+.chat-scrollbar::-webkit-scrollbar-thumb { /* CSS Rule #0 */
     background: #3A3A3A;
 }
 
@@ -83,10 +83,9 @@ body {
     background-color: #455865;
 }
 
-#Users {
+#User {
     display: none;
     text-align: center;
-    cursor: pointer;
     list-style-type: none;
 }
 
@@ -115,6 +114,86 @@ body {
     left: -200px !important;
 }
 
+/* Users list */
+
+#users {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+#sphere:before {
+    content: "";
+    position: absolute;
+    top: 1%;
+    left: 5%;
+    height: 90%;
+    width: 90%;
+    border-radius: 50%;
+    background: radial-gradient(circle at 50% 0px, #FFFFFF, rgba(255, 255, 255, 0) 66%);
+    filter: blur(1px);
+    z-index: -1;
+}
+
+#sphere {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 50% 120%, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0) 30%);
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.7), 0 0 6px rgba(255, 255, 255, 0.7);
+    color:white;
+    font-size: 18px;
+    font-family: Courier;
+    line-height: 40px;
+    text-align: center;
+    text-shadow: 1px 1px #000, -1px -1px #000, 1px -1px #000, -1px 1px #000;
+    cursor:pointer;
+}
+
+#users-list {
+    position:absolute;
+    top:45px;
+    right:10px;
+    height: auto;
+    width: auto;
+    max-height: 300px;
+    min-width: 40px;
+    max-width: 200px;
+    padding: 6px 6px 6px 10px;
+    border-radius:5px;
+    background-color: rgba(0,0,0,0.3);
+    box-shadow: rgba(171, 205, 239, 0.5) 0 0 8px;
+    color: white;
+    text-align: center;
+    text-shadow: 0px 0px 6px #000;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform .5s;
+}
+
+#users-list li {
+    list-style-type: none;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.userslist-open {
+    transform: scaleY(1) !important;
+}
+
+.userslist-scrollbar::-webkit-scrollbar {
+    width: 4px;
+}
+
+.userslist-scrollbar::-webkit-scrollbar-thumb {
+    border-radius: 2px;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: rgba(255, 255, 255, 0.7) 0 0 8px, rgba(0,0,0, 0.7) 0 0 8px;
+}
+
 /* Resize handles */
 
 .resizable-handle {
@@ -137,6 +216,14 @@ body {
     height: 100%;
     width: 12px;
     cursor: w-resize;
+}
+
+.resizable-bottom {
+    bottom: -8px;
+    left: 0;
+    height: 12px;
+    width: 100%;
+    cursor: s-resize;
 }
 
 .resizable-top-right {
@@ -180,7 +267,7 @@ body {
 /* 'N1' 'N2' Connected rules groups, should check all in the group when changing one rule. */
 
 #chat {
-    position: fixed;
+    position: absolute;
     right: 0;
     bottom: 0;
     height: 200px;
@@ -255,6 +342,11 @@ body {
     width: 10px;
 }
 
+#chat #messages textarea::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background: #5A5A5A;
+}
+
 #chat #messages textarea::-webkit-resizer { /* Fix for Chrome's resizer color staying white when textarea background isn't, and it contains a scrollbar. */
     background-image: url('data:image/gif;base64,R0lGODlhCgAKAJEAAJ2dnQQEBP///wAAACH5BAEAAAIALAAAAAAKAAoAAAIRlI+pGysBWFRQmnbqm/tyJxQAOw==');
     background-repeat: no-repeat;
@@ -291,44 +383,43 @@ body {
     cursor: -webkit-grabbing;
 }
 
-.css-scrollbar::-webkit-scrollbar {
+.chat-scrollbar::-webkit-scrollbar {
     width: 10px;
 }
 
-.css-scrollbar::-webkit-scrollbar-thumb {
+.chat-scrollbar::-webkit-scrollbar-thumb {
     border-radius: 5px;
 }
 
 #minimize {
     position: absolute;
-    top: 1px;
+    top: 2px;
     right: 10px;
     height: 12px;
     width: 12px;
-    border: 1px solid #0C0D0E;
+    box-shadow: 0 0px 1px rgba(0,0,0,1);
     border-radius: 5px;
     background: #5A5A5A;
 }
 
 #minimize:hover {
     background: #AA0000 !important;
-    cursor: pointer;
 }
 
 #collapse {
     position: absolute;
-    top: 1px;
+    top: 2px;
     right: 25px;
     height: 12px;
     width: 12px;
-    border: 1px solid #0C0D0E;
+    box-shadow: 0 0px 1px rgba(0,0,0,1);
     border-radius: 5px;
     background: #5A5A5A;
+    cursor: pointer;
 }
 
 #collapse:hover {
     background: #0000AA !important;
-    cursor: pointer;
 }
 
 #minimize span {
@@ -338,7 +429,7 @@ body {
     height: 2px;
     width: 8px;
     border-radius: 1px;
-    background: #DDDDDD;
+    background: #CCCCCC;
 }
 
 #collapse span {
@@ -349,7 +440,7 @@ body {
     width: 0;
     border-left: 4px solid transparent;
     border-right: 4px solid transparent;
-    border-top: 6px solid #DDDDDD;
+    border-top: 6px solid #CCCCCC;
     -webkit-transition: -webkit-transform 1s, top 1s;
             transition: transform 1s, top 1s;
 }
@@ -418,6 +509,7 @@ to   { transform: rotate(360deg) }
     padding-top: .2em;
     padding-left: .4em;
     color: grey;
+    text-shadow: 0 0 1px #000; /* In case of grey-ish background images */
     font-size: .8em;
 }
 
