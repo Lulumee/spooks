@@ -435,6 +435,7 @@ var CHAT = {
     },
     audio : {
         sounds : { pop : new Audio('audio/Bing.mp3')},
+        music: ["Social Sunrise (Day 1).mp3", "We're Still Open (Night 1).mp3", "Celadon.mp3", "Palette Town.mp3", "Pokemon Center.mp3", "Palette Town To Viridian City.mp3"],
         playSound : function(name) {
             if(CHAT.toggles.get(name)){
                 this.sounds[name].play();
@@ -833,6 +834,40 @@ function setPopVolume(vol) {
         document.getElementsByTagName('body')[0].removeEventListener("click", initializeSound);
     }
     document.getElementsByTagName('body')[0].addEventListener("click", initializeSound);
+    
+    var tracks = CHAT.audio.music;
+    for(var i = 0; i < tracks.length; i++) {
+        var track = document.createElement('li');
+        track.textContent = tracks[i];
+        track.addEventListener('click', function(e) {
+            document.getElementById('mp3').src = 'audio/music/' + e.target.textContent;
+            document.getElementById('music').load();
+            document.getElementById('music').play();
+        });
+        document.getElementById('tracks').appendChild(track);
+    }
+    document.getElementById('tracks').appendChild(document.createElement('hr'));
+    
+    var userTracks = {};
+    document.getElementById('upload-music').addEventListener('change', function(){
+        var file = this.files[0];
+        var reader = new FileReader();
+        reader.onload = function(e){
+            userTracks[file.name] = e.target.result;
+            var track = document.createElement('li');
+            track.textContent = file.name;
+            track.addEventListener('click', function(e) {
+                document.getElementById('mp3').src = userTracks[e.target.textContent];
+                document.getElementById('music').load();
+                document.getElementById('music').play();
+            });
+            document.getElementById('tracks').appendChild(track);
+            document.getElementById('mp3').src = userTracks[file.name];
+            document.getElementById('music').load();
+            document.getElementById('music').play();
+        };
+        reader.readAsDataURL(file);   
+    });
     
     function submit(){
         var text = input.value;

@@ -114,6 +114,25 @@ body {
     left: -200px !important;
 }
 
+#music {
+    width: 200px;
+}
+
+#tracks {
+    padding: 2px;
+    cursor:pointer;
+}
+
+#tracks li {
+    list-style-type: none;
+    padding: 2px;
+    border-bottom: 1px solid #0C0D0E; 
+    background: #3A3A3A;
+}
+
+#tracks li:hover {
+    background: #6A6A6A;
+}
 /* Users list */
 
 #users {
@@ -400,6 +419,7 @@ body {
     box-shadow: 0 0px 1px rgba(0,0,0,1);
     border-radius: 5px;
     background: #5A5A5A;
+    cursor: pointer;
 }
 
 #minimize:hover {

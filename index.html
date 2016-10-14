@@ -28,6 +28,9 @@
             <div id="Options" class="panel">
                 Chat notification volume
                 <input id="pop-vol" type="range" min="0" max="1" step="0.1" value="1" oninput="setPopVolume(this.value)"/>
+                <audio id="music" controls loop><source id="mp3" src="" type="audio/mpeg">Your browser doesn't support this Audio element or format.</audio>
+                <input id="upload-music" type="file"/>
+                <div id="tracks"></div>
             </div>
         </div>
         <div id="world" tabindex="1" class="first-tabindex">
@@ -49,10 +52,10 @@
         </div>
         <div id="minimized-area"></div>
         <script src="/socket.io/socket.io.js"></script>
-        <script language="javascript" type="text/javascript" src="dollarSign.js"></script>
-        <script language="javascript" type="text/javascript" src="AvatarControl.js"></script>
-        <script language="javascript" type="text/javascript" src="libjs.js"></script>
-        <script language="javascript" type="text/javascript" src="client.js"></script>
-        <script language="javascript" type="text/javascript" src="minispooks.js"></script>
+        <script type="text/javascript" src="dollarSign.js"></script>
+        <script type="text/javascript" src="AvatarControl.js"></script>
+        <script type="text/javascript" src="libjs.js"></script>
+        <script type="text/javascript" src="client.js"></script>
+        <script type="text/javascript" src="minispooks.js"></script>
     </body>
 </html>

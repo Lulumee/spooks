@@ -104,9 +104,9 @@ function createChannel(io, channelName){
             if(i != -1){
                 channel.online.splice(i,1);
             } else {
-                console.log('user has disappeared from time and space, he will be missed');
+                console.log('User has disappeared from time and space, he will be missed');
             }
-            if(i != -1){
+            if(j != -1){
                 channel.awake.splice(j,1);
             }
             if(positions[socket.id]){
@@ -118,7 +118,7 @@ function createChannel(io, channelName){
         function attemptJoin(data,mapdata,login){
 			
 			function join(){
-				console.log('USER JOINED',data,user.remote_addr);
+				console.log('User joined',data,user.remote_addr);
 				positions[socket.id] = {};
 				if(!user.nick) user.nick = socket.id;//if no nick generate nick
 				//Make array of all online users
