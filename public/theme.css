@@ -334,6 +334,22 @@ body {
     resize: none;
 }
 
+#chat #input-bar textarea::-webkit-input-placeholder {
+    text-shadow: 0 0 2px #FFF;
+}
+
+#chat #input-bar textarea:-moz-placeholder { /* Firefox 18- */
+    text-shadow: 0 0 2px #FFF;
+}
+
+#chat #input-bar textarea::-moz-placeholder {  /* Firefox 19+ */
+    text-shadow: 0 0 2px #FFF;
+}
+
+#chat #input-bar textarea:-ms-input-placeholder {
+    text-shadow: 0 0 2px #FFF;
+}
+
 #messages {
     position: absolute;
     top: 16px; /* N2 */
@@ -495,22 +511,13 @@ body {
 /* Animations */
 
 .barrel {
-    -moz-animation-name: roll;
-    -moz-animation-duration: 3s;
-    -moz-animation-iteration-count: 1;
-    -webkit-animation-name: roll;
-    -webkit-animation-duration: 3s;
-    -webkit-animation-iteration-count: 1;
+    animation: roll 3s;
+    -webkit-animation: roll 3s;
 }
 
 @-webkit-keyframes roll {
 from { -webkit-transform: rotate(0deg) }
 to   { -webkit-transform: rotate(360deg) }
-}
-
-@-moz-keyframes roll {
-from { -moz-transform: rotate(0deg) }
-to   { -moz-transform: rotate(360deg) }
 }
 
 @keyframes roll {

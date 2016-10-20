@@ -1,4 +1,10 @@
-var socket = io(window.location.pathname);
+var mainDomain = 'localhost';
+var name1 = "", name2;
+if (name1 =  window.location.host.substr(0, window.location.host.lastIndexOf(mainDomain) - 1)) {
+    name1 = "/" + name1;
+}
+name2 = window.location.pathname;
+var socket = io(name1 + name2);
 
 //main canvas
 var canvas = document.getElementById('players');
@@ -14,10 +20,11 @@ DefaultAvatar.src = 'images/DefaultAvatar.png';
 
 //load default TileSheet
 var TileSheet = new Image();
-TileSheet.src = '/images/tiles/Tileset.png';
+TileSheet.src = '/images/tiles/tileset.png';
 
 var player = {};
 socket.on('connect', function () {
+    console.log('%cConnected to channel: ' + name1.substr(1) + name2, 'background: #000000; color: #00FF00');
     player = {
         dir : {
             right : false,
@@ -762,10 +769,10 @@ socket.on('left', function(id){
 });
 
 
-// Pause map.
-function reposition () {
-    for(var n in ONLINE.players){
-        if(n != player.id){
+// Snap Avys to their new positions on resuming map.
+function reposition() {
+    for (var n in ONLINE.players) {
+        if (n != player.id) {
             ONLINE.players[n].x = ONLINE.players[n].tx;
             ONLINE.players[n].y = ONLINE.players[n].ty;
         }
@@ -773,68 +780,82 @@ function reposition () {
     socket.off('positions', reposition);
 }
 
-socket.on('bed', function(data){
-    if(data == 'sleep'){
+// Pause or resume map.
+socket.on('bed', function(data) {
+    if (data == 'sleep') {
         stop_loop();
+        CHAT.show({
+            message: 'Have a spooky night!'
+        });
         document.getElementById('world-curtain').classList.add('world-curtain-down');
-    } else if (data == 'wakeup'){
+    } else if (data == 'wakeup') {
         socket.on('positions', reposition);
+        socket.on('positions', function() {
+            console.log("haha");
+            socket.off('positions', this);
+        });
         start_loop();
+        CHAT.show({
+            message: 'You\'re awake!'
+        });
         document.getElementById('world-curtain').classList.remove('world-curtain-down');
     }
 });
 
-//refresh page
+// Refresh page.
 socket.on('refresh',function(){
     location.reload();
 });
 
-// Reconnect.
+// Clear users info, users and avy list, reset map, and join on reconnection.
 function reconnected() {
+    var avyList = document.getElementById('Avatars');
     CHAT.show({
-        message : 'Reconnected',
-        style : 'error'
+        message: 'Joining...',
+        style: 'error'
     });
-    for(var n in  ONLINE.players) {
+    for (var i = 0; i < avyList.children.length; i++) {
+        if (avyList.children[i].nodeName != 'INPUT') {
+            avyList.children[i].parentNode.removeChild(avyList.children[i]);
+        }
+    }
+    for (var n in  ONLINE.players) {
         var li = document.getElementById(n);
         li.parentNode.removeChild(li);
     }
     ONLINE.players = {};
     world.width = 500;
     world.height = 500;
-    socket.emit('core',{
-        command : 'join',
-        data : CHAT.attributes
-    });
-    CHAT.show({
-        message : 'Joining...',
-        style : 'error'
+    socket.emit('core', {
+        command: 'join',
+        data: CHAT.attributes
     });
     socket.off('reconnect', reconnected);
 }
 
+// Show message on reconnecting.
 function reconnecting() {
     CHAT.show({
-        message : 'Reconnecting...',
-        style : 'error'
+        message: 'Reconnecting...',
+        style: 'error'
     });
     socket.off('reconnecting', reconnecting);
 }
 
-// Tell user if disconnected from server and reconnect.
+// Tell user if disconnected from server and listen to reconnect events.
 socket.on('disconnect', function(e) {
-    console.log(e);
-    if( e === 'io client disconnect' || e === 'io server disconnect') {
+    console.log('%cDisconnected, error: ' + e, 'background: #000000; color: #FF0000');
+    if (e === 'io client disconnect' || e === 'io server disconnect') {
         CHAT.show({
-            message : 'Disconnected',
-            style : 'error'
+            message: 'Disconnected',
+            style: 'error'
         });
     } else {
         CHAT.show({
-            message : 'Disconnected...',
-            style : 'error'
+            message: 'Disconnected...',
+            style: 'error'
         });
-        if(CHAT.toggles.get('reconnect')) {
+        if (CHAT.toggles.get('reconnect')) {
             socket.on('reconnecting', reconnecting);
             socket.on('reconnect', reconnected);  
         }

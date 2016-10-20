@@ -177,7 +177,6 @@ var CHAT = {
                 CHAT.set(i,info[i]);
             }
         }
-        console.log(info)
         if(info.note){
             CHAT.show({
                 message : info.note,
@@ -811,6 +810,10 @@ function setPopVolume(vol) {
             chat.classList.remove('move-chat');
             getChatX();
             getChatY();
+            //Resize input bar
+            var e = new Event('keyup'); 
+            e.keyCode = 38;
+            document.getElementById('input-bar').getElementsByTagName('textarea')[0].dispatchEvent(e);
         }, 1000);
     });
     

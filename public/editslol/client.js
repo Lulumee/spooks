@@ -15,7 +15,13 @@ probably will need login protection for the editor
 */
 
 
-var socket = io(window.location.pathname);
+var mainDomain = 'localhost';
+var name1 = "", name2;
+if (name1 =  window.location.host.substr(0, window.location.host.lastIndexOf(mainDomain) - 1)) {
+    name1 = "/" + name1;
+}
+name2 = window.location.pathname;
+var socket = io(name1 + name2);
 
 var pen = document.getElementById('pen');
 var penCanvas = pen.getElementsByTagName('canvas')[0];
@@ -717,8 +723,15 @@ function save() {
     });
 }
 
-socket.on('connect', function () {
-   console.log('connected');
+socket.on('connect', function() {
+    console.log('%cConnected to editor: ' + name1.substr(1) + name2.replace('/edit',''), 'background: #000000; color: #00FF00');
+    if(name2 === '/edit') {
+        console.log('%cWarning: There\'s simply no channel for this map :O\nTip: Type a slash after "/edit"', 'background: #000000; color: #FFFF00');
+    }
+});
+
+socket.on('disconnect', function(e) {
+    console.log('%cDisconnected, error: ' + e, 'background: #000000; color: #FF0000');
 });
 
 //Grab all objects and tiles image name
