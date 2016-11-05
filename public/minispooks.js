@@ -53,6 +53,12 @@ var COMMANDS = {
             CHAT.set('font', params.font);
         }
     },
+    style: {
+        params: ['style'],
+        handler: function(params) {
+            CHAT.set('style', params.style);
+        }
+    },
 	echo: {
 		params: ['message'],
         handler: function(params) {
@@ -288,7 +294,6 @@ var CHAT = {
         if (info.overlay) {
             var overlay = info.overlay;
             rgba = contrast.hslToRgb(overlay[0], overlay[1], overlay[2]);
-            console.log(overlay, rgba);
         document.getElementById("world-curtain").style.background = 'rgba(' + rgba.r + ', ' + rgba.g + ', ' + rgba.b + ', ' + overlay[3] + ')';
         }
     },
@@ -364,12 +369,17 @@ var CHAT = {
             };
         }
         
-        var logged = JSON.parse(JSON.stringify(message));;
-        console.log(logged);
+        var logged = JSON.parse(JSON.stringify(message));
         this.rawLog.push(logged);
-        if (message.style && message.style != 'info') {
+        
+        if (message.style === 'general' && message.nick) {
+            message.message = parser.escape(message.message);
+        } else if (message.style && message.style != 'info') {
             parser.getAllFonts(message.message); // Check for missing fonts
             message.message = parser.parse(message.message);
+            if (message.nick) {
+                message.nick = parser.escape(message.nick);
+            }
         } else {
             message.message = parser.escape(message.message);
         }
@@ -396,7 +406,7 @@ var CHAT = {
         if (att == 'avatars') {
             for (var i = 0; i < value.length; i++) {
                 var AvatarImage = new Image();
-                AvatarImage.src = `/images/avatars/${CHAT.get('nick')}/${value[i]}`;
+                AvatarImage.src = `/data/images/avatars/${CHAT.get('nick')}/${value[i]}`;
                 avatarControl.saveAvatar(AvatarImage, value[i]);
             }
         }
@@ -447,7 +457,7 @@ var CHAT = {
                     parser.getAllFonts(message.flair);
                     nick.innerHTML = parser.parse(message.flair) + ': ';
                 } else {
-                    nick.textContent = message.nick + ': ';
+                    nick.innerHTML = message.nick + ': ';
                 }
                 if (message.toNick) {
                     nick.title = message.toNick;
@@ -741,7 +751,6 @@ var parser = {
         var result = "";
         if (mode === 'basic') {
             for (var i = 0; i < messages.length; i++) {
-                console.log(messages[i].style);
                 if (!messages[i].style || messages[i].style === 'note' || messages[i].style === 'error') {
                     result += messages[i].message + '\n'; 
                 } else if (messages[i].style === 'chat') {
@@ -754,7 +763,6 @@ var parser = {
             }
         } else if (mode === 'verbose') {
             for (var i = 0; i < messages.length; i++) {
-                console.log(messages[i].style);
                 if (!messages[i].style || messages[i].style === 'note' || messages[i].style === 'error') {
                     result += messages[i].message + '\n'; 
                 } else if (messages[i].style === 'chat') {
@@ -1091,8 +1099,7 @@ var buttons = {
         };
         reader.readAsDataURL(file);
     });
-
-
+    
     function submit() {
         var text = input.value;
         text && CHAT.submit(text);

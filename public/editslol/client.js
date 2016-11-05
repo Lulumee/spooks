@@ -14,13 +14,7 @@ probably will need login protection for the editor
 
 */
 
-var mainDomain = 'localhost';
-var name1, name2;
-if (name1 =  window.location.host.substr(0, window.location.host.lastIndexOf(mainDomain) - 1)) {
-    name1 = "/" + name1;
-}
-name2 = window.location.pathname;
-var socket = io(name1 + name2);
+var socket = io('/' + window.location.host + window.location.pathname);
 
 var pen = document.getElementById('pen');
 var penCanvas = pen.getElementsByTagName('canvas')[0];
@@ -45,6 +39,8 @@ var penSettings = {
         y: 0
     }
 };
+
+var defaultTilesheets = ['caves.png', 'house.png', 'sand.png', 'snow.png', 'tileset.png'];
 
 (function() { // Draw grid
     var canvas = document.getElementById('grid'),
@@ -96,7 +92,7 @@ var build = {
         conatiner.style.top = startY + 'px';
         conatiner.style.width = width + 'px';
         conatiner.style.height = height + 'px';
-        conatiner.style.background = 'url(\'' + window.location.origin + "/images/tiles/" + tilesheetsrc + '\') -' + (tileInfo.MinX * 16) + 'px -' + (tileInfo.MinY * 16) + 'px'; // Change how map data is saved, used to be: tilesheetsrc
+        conatiner.style.background = 'url(\'' + window.location.origin + (defaultTilesheets.indexOf(tilesheetsrc) !== -1 ? "/images/tiles/" : "/data/images/tiles/") + tilesheetsrc + '\') -' + (tileInfo.MinX * 16) + 'px -' + (tileInfo.MinY * 16) + 'px'; // Change how map data is saved, used to be: tilesheetsrc
         return conatiner;
     },
     tile: function(tilesheetsrc, x, y, sx, sy) {
@@ -110,7 +106,7 @@ var build = {
         conatiner.className = 'item placed-tile';
         conatiner.style.left = x + 'px';
         conatiner.style.top = y + 'px';
-		conatiner.style.background = 'url(\'' + window.location.origin + "/images/tiles/" + tilesheetsrc + '\') -' + sx + 'px -' + sy + 'px'; // Change how map data is saved, used to be: tilesheetsrc
+		conatiner.style.background = 'url(\'' + window.location.origin + (defaultTilesheets.indexOf(tilesheetsrc) !== -1 ? "/images/tiles/" : "/data/images/tiles/") + tilesheetsrc + '\') -' + sx + 'px -' + sy + 'px'; // Change how map data is saved, used to be: tilesheetsrc
         return conatiner;
     },
     editor: function() {
@@ -725,9 +721,9 @@ function save() {
 }
 
 socket.on('connect', function() {
-    console.log('%cConnected to editor: ' + name1.substr(1) + name2.replace('/edit',''), 'background: #000000; color: #00FF00;');
-    if (name2 === '/edit') {
-        console.log('%cWarning: There\'s simply no channel for this map :O\nTip: Type a slash after "/edit"', 'background: #000000; color: #FFFF00;');
+    console.log('%cConnected to editor: ' + window.location.host + window.location.pathname.replace('/edit', ''), 'background: #000000; color: #00FF00;');
+    if (window.location.pathname === '/edit') {
+        console.log('%cWarning: There\'s simply no channel for this map :O or it points to a completely different channel than the one intended\nTip: Type a slash after "/edit"', 'background: #000000; color: #FFFF00;');
     }
 });
 
@@ -745,8 +741,7 @@ socket.on('Tiles', function(urls) {
     for (i = 0; i < urls.length; i += 1) {
         split = urls[i].split('/');
         name = split[split.length - 1];
-        
-        loadTileSheetCanvas('../images/tiles/' + urls[i], name);
+        loadTileSheetCanvas((defaultTilesheets.indexOf(name) !== -1 ? "../images/tiles/" : "../data/images/tiles/") + urls[i], name);
     }
     socket.emit('GetMap');
 });

@@ -1,10 +1,4 @@
-var mainDomain = 'localhost';
-var name1, name2;
-if (name1 =  window.location.host.substr(0, window.location.host.lastIndexOf(mainDomain) - 1)) {
-    name1 = "/" + name1;
-}
-name2 = window.location.pathname;
-var socket = io(name1 + name2);
+var socket = io('/' + window.location.host + window.location.pathname);
 
 // Main canvas
 var canvas = document.getElementById('players');
@@ -22,9 +16,11 @@ DefaultAvatar.src = 'images/avatars/default-avatar.png';
 var TileSheet = new Image();
 TileSheet.src = '/images/tiles/tileset.png';
 
+var defaultTilesheets = ['caves.png', 'house.png', 'sand.png', 'snow.png', 'tileset.png'];
+
 var player = {};
 socket.on('connect', function() {
-    console.log('%cConnected to channel: ' + name1.substr(1) + name2, 'background: #000000; color: #00FF00;');
+    console.log('%cConnected to channel: ' + window.location.host + window.location.pathname, 'background: #000000; color: #00FF00;');
     player = {
         dir: {
             right: false,
@@ -77,6 +73,7 @@ var ONLINE = { // All data on other users
 
 var game_loop;
 var animate_loop;
+var pinPoint_loop;
 
 function init() {
     // Set bgcanvas size
@@ -96,16 +93,20 @@ function init() {
     game_loop = setInterval(paint, 1000 / 40);
     clearInterval(animate_loop);
     animate_loop = setInterval(animate, 5000 / 30);
+    clearInterval(pinPoint_loop);
+    pinPoint_loop = setInterval(pinPoint, 1000);
 }
 
 function stop_loop() {
     clearInterval(game_loop);
     clearInterval(animate_loop);
+    clearInterval(pinPoint_loop);
 }
 
 function start_loop() {
     game_loop = setInterval(paint, 1000 / 40);
     animate_loop = setInterval(animate, 5000 / 30);
+    pinPoint_loop = setInterval(pinPoint, 1000);
 }
 
 //
@@ -269,8 +270,12 @@ function Draw(user) {
         But really they are moving (away/towards) you */
         Pleft = user.x * 3;
         Ptop = user.y * 3; // Draw user position
-        if (player.info.x * 3 > world.screenWidth) Pleft -= (player.info.x * 3) - world.screenWidth;//unless your x or y is more than half of screens width or height
-        if (player.info.y * 3 > world.screenHeight) Ptop -= (player.info.y * 3) - world.screenHeight;//than subtract users position by your position
+        if (player.info.x * 3 > world.screenWidth) {
+            Pleft -= (player.info.x * 3) - world.screenWidth;//unless your x or y is more than half of screens width or height
+        } 
+        if (player.info.y * 3 > world.screenHeight) {
+            Ptop -= (player.info.y * 3) - world.screenHeight;//than subtract users position by your position
+        }
     }
 
     if (user.nick) {
@@ -486,6 +491,30 @@ canvas.addEventListener('mousedown', function(e) {
     }
     document.getElementById('world').focus();
 });
+
+// Radar Canvas dots.
+var radarSweep = document.getElementById('radar-points'),
+    rpctx = radarSweep.getContext('2d'),
+    radarDot = rpctx.createImageData(3, 3);
+
+for(var i = 0; i < radarDot.data.length; i += 4) {
+    radarDot.data[i] = '255';
+    radarDot.data[i + 1] = '0';
+    radarDot.data[i + 2] = '0';
+    radarDot.data[i + 3] = '255';
+}
+
+radarSweep.width = '60';
+radarSweep.height = '60';
+
+function pinPoint() {
+    rpctx.clearRect(0, 0, 60, 60);
+    for(var n in ONLINE.players) {
+        var x = (ONLINE.players[n].x / world.width) * 60;
+        var y = (ONLINE.players[n].y / world.height) * 60;
+        rpctx.putImageData(radarDot, parseInt(x), parseInt(y));
+    }
+}
 
 // Fade chat window
 
@@ -714,7 +743,7 @@ var mapControl = {
 
         function loadTileSheet(tilesheetsrc) {
             var Ron = new Image();
-            Ron.src = window.location.origin + "/images/tiles/" + tilesheetsrc; // Change how map data is saved, used to be: tilesheetsrc
+            Ron.src = window.location.origin + (defaultTilesheets.indexOf(tilesheetsrc) !== -1 ? "/images/tiles/" : "/data/images/tiles/") + tilesheetsrc; // Change how map data is saved, used to be: tilesheetsrc
             Ron.onload = function() {
                 world.TileSheets[tilesheetsrc] = Ron;
             }

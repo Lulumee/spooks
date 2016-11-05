@@ -10,11 +10,12 @@ var fs = require('fs');
 var channels = {};
 
 function createChannel(io, channelName) {
-
+    var channelNick = channelName.replace(RegExp('.?' + mainDomain + '\/'), '/');
+    
     var room = io.of(channelName);
     var positions = {};
 
-    console.log('{' + 'log: "' + 'channel created' + '", timedate: "' + new Date() + '", channel_name: "' + channelName + '"}');
+    console.log('{' + 'log: "' + 'channel created' + '", timedate: "' + new Date() + '", channel_name: "' + channelName + '", channel_nick: "' + channelNick + '"}');
 
     setInterval(function() {
         awakeEmit('positions', positions);
@@ -34,7 +35,7 @@ function createChannel(io, channelName) {
             awake: true
         };
 
-        console.log('{' + 'log: "' + 'channel user connected' + '", timedate: "' + new Date() + '", channel_name: "' + channelName + '", id: "' + socket.id + '", ip: "' + user.remote_addr + '"}');
+        console.log('{' + 'log: "' + 'channel user connected' + '", timedate: "' + new Date() + '", channel_name: "' + channelName + '", channel_nick: "' + channelNick + '", id: "' + socket.id + '", ip: "' + user.remote_addr + '"}');
 
         if (user.remote_addr.substr(0, 7) == '::ffff:') { // If IP contains '::ffff:', remove it
             user.remote_addr = user.remote_addr.substr(7);
@@ -61,14 +62,14 @@ function createChannel(io, channelName) {
                             style: 'chat'
                         });
                     } else {
-                        console.log('{' + 'log: "' + 'message error' + '", timedate: ' + new Date() + '", channel_name: "' + channelName + '", id: "' + socket.id + '", ip: "' + user.remote_addr + '", nick: "' + user.nick + '", message: "' + message + '"}');
+                        console.log('{' + 'log: "' + 'message error' + '", timedate: ' + new Date() + '", channel_nick: "' + channelNick + '", id: "' + socket.id + '", ip: "' + user.remote_addr + '", nick: "' + user.nick + '", message: "' + message + '"}');
                     }
                 } else { // Give warning if spamming
                     showMessage(user.socket, 'You are spamming, stop or you will be temporarily banned.', 'error');
                     throttle.warn(user.remote_addr);
                 }
             }).fail(function() { // Ban after 3 warnings
-                dao.ban(channelName, user.remote_addr);
+                dao.ban(channelNick, user.remote_addr);
                 showMessage(user.socket, 'You have been banned for spamming.', 'error');
                 socket.disconnect();
             });
@@ -76,10 +77,10 @@ function createChannel(io, channelName) {
 
         // Handle commands
         socket.on('command', function(cmd) {
-            if (cmd.name === 'login' || cmd.name === 'register' || cmd.name === 'me') {
-                console.log('{' + 'log: "' + 'command' + '", timedate: "' + new Date() + '", channel_name: "' + channelName + '", id: "' + socket.id + '", ip: "' + user.remote_addr + '", nick: "' + user.nick + '", command_name: "' + cmd.name + '"}');
+            if (cmd.name === 'login' || cmd.name === 'register' || cmd.name === 'me' || cmd.name === 'pm') {
+                console.log('{' + 'log: "' + 'command' + '", timedate: "' + new Date() + '", channel_nick: "' + channelNick + '", id: "' + socket.id + '", ip: "' + user.remote_addr + '", nick: "' + user.nick + '", command_name: "' + cmd.name + '"}');
             } else {
-                console.log('{' + 'log: "' + 'command' + '", timedate: "' + new Date() + '", channel_name: "' + channelName + '", id: "' + socket.id + '", ip: "' + user.remote_addr + '", nick: "' + user.nick + '", command_data: "', cmd, '"}');
+                console.log('{' + 'log: "' + 'command' + '", timedate: "' + new Date() + '", channel_nick: "' + channelNick + '", id: "' + socket.id + '", ip: "' + user.remote_addr + '", nick: "' + user.nick + '", command_data: "', cmd, '"}');
             }
             if (cmd && cmd.name && typeof cmd.name == 'string') {
                 if (COMMNADS[cmd.name]) { // Check that command exist
@@ -112,7 +113,7 @@ function createChannel(io, channelName) {
         });
 
         socket.on('disconnect', function(e) {
-            console.log('{' + 'log: "' + 'user disconnected' + '", timedate: "' + new Date() + '", channel_name: "' + channelName + '", id: "' + socket.id + '", ip: "' + user.remote_addr + '", disconnect_message: "' + e + '"}');
+            console.log('{' + 'log: "' + 'user disconnected' + '", timedate: "' + new Date() + '", channel_nick: "' + channelNick + '", id: "' + socket.id + '", ip: "' + user.remote_addr + '", disconnect_message: "' + e + '"}');
             var i = indexOf(user.nick);
             if (i != -1) {
                 channel.online.splice(i, 1);
@@ -139,7 +140,7 @@ function createChannel(io, channelName) {
                     user.part = data.part.substr(0, 50);
                 }
                 
-                console.log('{' + 'log: "' + 'user joined' + '", timedate: "' + new Date() + '", channel_name: "' + channelName + '", id: "' + socket.id + '", ip: "' + user.remote_addr + '", nick: "' + user.nick + '", join_data: "', data, '"}');
+                console.log('{' + 'log: "' + 'user joined' + '", timedate: "' + new Date() + '", channel_nick: "' + channelNick + '", id: "' + socket.id + '", ip: "' + user.remote_addr + '", nick: "' + user.nick + '", join_data: "', data, '"}');
 
 				// Make an array of all online users
 				var avatars = [];
@@ -179,7 +180,7 @@ function createChannel(io, channelName) {
                 });
 
                 // Get stored Avys
-                var AvyFolder = 'public/images/avatars/' + user.nick;
+                var AvyFolder = 'public/data/images/avatars/' + user.nick;
                 if (fs.existsSync(AvyFolder)) {
                     fs.readdir(AvyFolder, function(err, files) {
                         if (err) {
@@ -235,7 +236,7 @@ function createChannel(io, channelName) {
 
         var core = {
             join: function(data, dbuser, channeldata) {
-                dao.banlist(channelName).then(function(list) { // Get ban list
+                dao.banlist(channelNick).then(function(list) { // Get ban list
                     if (list.indexOf(data.nick) == -1 && list.indexOf(user.remote_addr) == -1) { // Make sure user isn't banned
                         if (channeldata == undefined) { // Check if there's no channel data.
                             dao.getChannelinfo('/404').then(function(channel404) { // Get default channel data.
@@ -254,7 +255,7 @@ function createChannel(io, channelName) {
             uploadAvy: function(data, dbuser) { // We don't use this var :/ `dbuser`
                 if (!/^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$/.test(data.avy)) {
                     dao.find(user.nick).then(function(dbuser) {
-                        var AvyFolder = 'public/images/avatars/';
+                        var AvyFolder = 'public/data/images/avatars/';
                         if (dbuser) {
                             AvyFolder += (dbuser.nick + '/');
                             if (!fs.existsSync(AvyFolder)) { // If folder doesn't exist, make folder
@@ -283,7 +284,7 @@ function createChannel(io, channelName) {
         socket.on('core', function(info) { // Handle all core functions, and supply functions with necessary information
             throttle.on(user.remote_addr, true).then(function(ok) {
                 if (ok) {
-                    console.log('{' + 'log: "' + 'core request' + '", timedate: "' + new Date() + '", channel_name: "' + channelName + '", id: "' + socket.id + '", ip: "' + user.remote_addr + '", command_name: "' + info.command + '"}');
+                    console.log('{' + 'log: "' + 'core request' + '", timedate: "' + new Date() + '", channel_nick: "' + channelNick + '", id: "' + socket.id + '", ip: "' + user.remote_addr + '", command_name: "' + info.command + '"}');
                     if (info.command && typeof info.command == 'string' && info.data && typeof info.data == 'object') { // Make sure we have basic information
                         var command = info.command;
                         var data = info.data;
@@ -300,10 +301,10 @@ function createChannel(io, channelName) {
                         }
                         if (valid) {
                             var channeldata = {}; // We don't use this var :/
-                            dao.getChannelinfo(channelName).then(function(channelinfo) { // Get all channel info.
+                            dao.getChannelinfo(channelNick).then(function(channelinfo) { // Get all channel info.
                                 dao.find(data.nick).then(function(dbuser) {
                                     // console.log(command); //Old log.
-                                    console.log('{' + 'log: "' + 'core success' + '", timedate: "' + new Date() + '", channel_name: "' + channelName + '", id: "' + socket.id + '", ip: "' + user.remote_addr + '", command_name: "' + info.command + '"}');
+                                    console.log('{' + 'log: "' + 'core success' + '", timedate: "' + new Date() + '", channel_nick: "' + channelNick + '", id: "' + socket.id + '", ip: "' + user.remote_addr + '", command_name: "' + info.command + '"}');
                                     core[command](data, dbuser, channelinfo);
                                 });
                             });
@@ -317,7 +318,7 @@ function createChannel(io, channelName) {
                     throttle.warn(user.remote_addr);
                 }
             }).fail(function() {
-                dao.ban(channelName, user.remote_addr);
+                dao.ban(channelNick, user.remote_addr);
                 showMessage(user.socket, 'You have been banned for spamming.', 'error');
                 socket.disconnect();
             });
@@ -340,7 +341,7 @@ function createChannel(io, channelName) {
             handler: function(user, params) {
                 dao.find(user.nick).then(function(dbuser) {
                     if (dbuser) {
-                        var Avy = 'public/images/avatars/' + dbuser.nick + '/' + params.name;
+                        var Avy = 'public/data/images/avatars/' + dbuser.nick + '/' + params.name;
                         fs.access(Avy, fs.F_OK, function(err) {
                             if (!err) {
                                roomEmit('MapInfo', {
@@ -363,7 +364,7 @@ function createChannel(io, channelName) {
             handler: function(user,params) {
                 dao.find(user.nick).then(function(dbuser) {
                     if (dbuser) {
-                        var AvyFolder = 'public/images/avatars/' + dbuser.nick + '/' + params.name;
+                        var AvyFolder = 'public/data/images/avatars/' + dbuser.nick + '/' + params.name;
                         fs.access(AvyFolder, fs.F_OK, function(err) {
                             if (!err) {
                                 fs.unlink(AvyFolder);
@@ -445,7 +446,7 @@ function createChannel(io, channelName) {
                                     tokens[user.nick] = dao.makeid();
                                     user.token = tokens[user.nick];
                                     // Get stored Avys
-                                    var AvyFolder = 'public/images/avatars/' + dbuser.nick;
+                                    var AvyFolder = 'public/data/images/avatars/' + dbuser.nick;
                                     if (fs.existsSync(AvyFolder)) {
                                         fs.readdir(AvyFolder, function(err, files) {
                                             if (err) {
@@ -543,7 +544,7 @@ function createChannel(io, channelName) {
                     showMessage(s, params.message ? 'You\'ve been banned: ' + params.message : 'You\'ve been banned');
                     s.disconnect();
                 }
-                dao.ban(channelName, params.nick).then(function(err) {
+                dao.ban(channelNick, params.nick).then(function(err) {
                     if (!err) {
                         showMessage(user.socket, params.nick + ' has been banned');
                         emitMessage(user.nick + ' has banned ' + params.nick + (params.message ? ': ' + params.message : ''), 'general');
@@ -564,12 +565,12 @@ function createChannel(io, channelName) {
                     var s = channel.online[i];
                     showMessage(s.socket, params.message ? 'You\'ve been banned: ' + params.message : 'You\'ve been banned');
                     showMessage(user.socket, params.nick + ' has been IP banned');
-                    dao.ban(channelName, s.remote_addr);
+                    dao.ban(channelNick, s.remote_addr);
                     s.socket.disconnect();
                 } else {
                     dao.find(params.nick).then(function(dbuser) {
                         if (dbuser) {
-                            dao.ban(channelName, dbuser.remote_addr);
+                            dao.ban(channelNick, dbuser.remote_addr);
                             showMessage(user.socket, params.nick + ' has been IP banned');
                         } else {
                             showMessage(user.socket, params.nick + ' doesn\'t exist.', 'error');
@@ -582,7 +583,7 @@ function createChannel(io, channelName) {
             role: 4,
             params: ['nick'],
             handler: function(user, params) {
-                dao.unban(channelName, params.nick).then(function(err) {
+                dao.unban(channelNick, params.nick).then(function(err) {
                     if (!err) {
                         showMessage(user.socket, params.nick + ' has been unbanned');
                     } else {
@@ -594,7 +595,7 @@ function createChannel(io, channelName) {
         banlist: {
             role: 4,
             handler: function(user) {
-                dao.banlist(channelName).then(function(list) {
+                dao.banlist(channelNick).then(function(list) {
                     if (list.length) {
                         showMessage(user.socket, 'Channel banned: ' + list.join(', '));
                     } else {
@@ -639,7 +640,7 @@ function createChannel(io, channelName) {
             params: ['note'],
             handler: function(user,params) {
                 var note = params.note.substr(0, 3000);
-                dao.setChannelinfo(channelName, 'data', note, 'note').then(function(err) {
+                dao.setChannelinfo(channelNick, 'data', note, 'note').then(function(err) {
                     if (!err) {
                         roomEmit('chatinfo', JSON.stringify({
                             note: note
@@ -653,7 +654,7 @@ function createChannel(io, channelName) {
             params: ['topic'],
             handler: function(user,params) {
                 var topic = params.topic.substr(0, 500);
-                dao.setChannelinfo(channelName, 'data', topic, 'topic').then(function(err) {
+                dao.setChannelinfo(channelNick, 'data', topic, 'topic').then(function(err) {
                     if (!err) {
                         roomEmit('chatinfo', JSON.stringify({
                             topic: topic
@@ -668,7 +669,7 @@ function createChannel(io, channelName) {
             handler: function(user, params) {
                 if (params.TitlebarColor && params.ButtonsColor && params.InputbarColor && params.ScrollbarColor && params.TitlebarColor.length < 20 && params.ButtonsColor.length < 20 && params.InputbarColor.length < 20 && params.ScrollbarColor.length < 20) {
                     var colors = [params.TitlebarColor, params.ButtonsColor, params.InputbarColor, params.ScrollbarColor];
-                    dao.setChannelinfo(channelName, 'data', colors, 'theme').then(function(err) {
+                    dao.setChannelinfo(channelNick, 'data', colors, 'theme').then(function(err) {
                         if (!err) {
                             roomEmit('chatinfo', JSON.stringify({
                                 theme: colors
@@ -686,7 +687,7 @@ function createChannel(io, channelName) {
             params: ['background'],
             handler: function(user, params) {
                 var background = params.background.substr(0, 5000);
-                dao.setChannelinfo(channelName, 'data', background, 'background').then(function(err) {
+                dao.setChannelinfo(channelNick, 'data', background, 'background').then(function(err) {
                     if (!err) {
                         roomEmit('chatinfo', JSON.stringify({
                             background: background
@@ -765,7 +766,7 @@ function createChannel(io, channelName) {
             handler: function(user, params) {
                 if (params.hue && params.saturation && params.brightness && params.transperancy && params.hue.length < 20 && params.saturation.length < 20 && params.brightness.length < 20 && params.transperancy.length < 20) {
                     var colors = [params.hue, params.saturation, params.brightness, params.transperancy];
-                    dao.setChannelinfo(channelName, 'data', colors, 'overlay').then(function(err) {
+                    dao.setChannelinfo(channelNick, 'data', colors, 'overlay').then(function(err) {
                         if (!err) {
                             roomEmit('chatinfo', JSON.stringify({
                                 overlay: colors
@@ -852,25 +853,35 @@ var Edits = {};
 
 function Editor(io, channelName) {
     var room = io.of(channelName);
-    channelName = channelName.replace('/edit', '');
-
+    channelName = channelName.replace(/edit\//, '');
+    channelNick = channelName.replace(RegExp('.?' + mainDomain + '\/'), '/');
     // console.log('Starting: ' + channelName); // Old log.
-    console.log('{' + 'log: "' + 'editor created' + '", timedate: "' + new Date() + '", channel_name: "' + channelName + '"}');
+    console.log('{' + 'log: "' + 'editor created' + '", timedate: "' + new Date() + '", channel_name: "' + channelName + '", channel_nick: "' + channelNick + '"}');
 
     room.on('connection', function(socket) {
         // console.log(channelName, 'connected'); // Old log.
-        console.log('{' + 'log: "' + 'editor user connected' + '", timedate: "' + new Date() + '", channel_name: "' + channelName + '", id: "' + socket.id + '", ip: "' + socket.request.connection.remoteAddress + '"}');
+        console.log('{' + 'log: "' + 'editor user connected' + '", timedate: "' + new Date() + '", channel_name: "' + channelName + '", channel_nick: "' + channelNick + '", id: "' + socket.id + '", ip: "' + socket.request.connection.remoteAddress + '"}');
 
         socket.on('RequestTiles', function() {
-            var TileSheets = [];
+            var defaultTileSheets = [];
+            var userTileSheets = [];
             fs.readdir('public/images/tiles', function(err, files) {
                 if (err) {
                     throw err;
                 }
                 files.forEach(function(file) {
-                    TileSheets.push(file);
+                    defaultTileSheets.push(file);
                 });
-                socket.emit('Tiles', TileSheets);
+                socket.emit('Tiles', defaultTileSheets);
+            });
+            fs.readdir('public/data/images/tiles', function(err, files) {
+                if (err) {
+                    throw err;
+                }
+                files.forEach(function(file) {
+                    userTileSheets.push(file);
+                });
+                socket.emit('Tiles', userTileSheets);
             });
         });
 
@@ -879,19 +890,19 @@ function Editor(io, channelName) {
             var Objects = data.objects;
             var spawn = data.spawn;
             if (typeof Tiles == 'string' && typeof Objects == 'string') {
-                dao.setChannelinfo(channelName, 'tiles', Tiles).then(function(err) {
+                dao.setChannelinfo(channelNick, 'tiles', Tiles).then(function(err) {
                     if (err) {
                         console.log(err);
                     } else {
-                        dao.setChannelinfo(channelName, 'objects', Objects);
-                        dao.setChannelinfo(channelName, 'spawn', spawn);
+                        dao.setChannelinfo(channelNick, 'objects', Objects);
+                        dao.setChannelinfo(channelNick, 'spawn', spawn);
                     }
                 });
             }
         });
 
         socket.on('GetMap', function() {
-            dao.getChannelinfo(channelName).then(function(data) {
+            dao.getChannelinfo(channelNick).then(function(data) {
                 socket.emit('MapInfo', data);
             });
         });
@@ -910,7 +921,7 @@ function initApp(app, http, editor) {
     app.get(channelRegex, function(req, res) {
         console.log('{' + 'log: "' + 'GET request' + '", timedate: "' + new Date() + '", request_URL: "' + req.originalUrl + '", request_host_header: "' + req.headers.host + '", IP: "' + req.connection.remoteAddress + '"}');
         if (req.headers.host) { // Check for /^[a-z\d]+$/i in the future
-            var name = req.headers.host.substr(0, req.headers.host.lastIndexOf(mainDomain) - 1) + req.originalUrl; // subdomain/subfolder
+            var name = req.headers.host + req.originalUrl; // Full URL
             if (!channels[name]) { // Create channel if it doesn't exist
                 channels[name] = createChannel(io, name);
             }
@@ -924,7 +935,7 @@ function initApp(app, http, editor) {
     editor.get(channelRegex, function(req, res) {
         console.log('{' + 'log: "' + 'GET request for editor' + '", timedate: "' + new Date() + '", request_URL: "' + req.originalUrl + '", request_host_header: "' + req.headers.host + '", IP: "' + req.connection.remoteAddress + '"}');
         if (req.headers.host) {
-            var name = req.headers.host.substr(0, req.headers.host.lastIndexOf(mainDomain) - 1) + req.originalUrl; // subdomain/subfolder
+            var name = req.headers.host + req.originalUrl; // Full URL
             var index = fs.readFileSync(__dirname + '/public/editslol/index.html').toString();
             res.send(index);
             if (!Edits[name]) { // Create channel if it doesn't exist
