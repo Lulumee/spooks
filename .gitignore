@@ -1,0 +1,15 @@
+# Dependency directory
+node_modules
+
+# Logs
+*.log
+*.out
+
+# Site data
+data/
+
+# Configuration file
+config.js
+
+# Windows
+desktop.ini

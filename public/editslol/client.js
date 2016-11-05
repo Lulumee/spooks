@@ -14,9 +14,8 @@ probably will need login protection for the editor
 
 */
 
-
 var mainDomain = 'localhost';
-var name1 = "", name2;
+var name1, name2;
 if (name1 =  window.location.host.substr(0, window.location.host.lastIndexOf(mainDomain) - 1)) {
     name1 = "/" + name1;
 }
@@ -30,24 +29,24 @@ var QuickPlace = false;
 var srcTable;
 
 var settings = {
-    tiles : {},
-    objects : {},
-    history : [],
-    spawn : [],
-    AI : []
+    tiles: {},
+    objects: {},
+    history: [],
+    spawn: [],
+    AI: []
 };
 
 var penSettings = {
-    tool : 'drag',
-    type : 'Tile',
-    tileData : {},
-    pos : {
-        x : 0,
-        y : 0
+    tool: 'drag',
+    type: 'Tile',
+    tileData: {},
+    pos: {
+        x: 0,
+        y: 0
     }
 };
 
-(function () {//draw grid
+(function() { // Draw grid
     var canvas = document.getElementById('grid'),
         cx = canvas.getContext('2d'),
         x;
@@ -78,12 +77,12 @@ var penSettings = {
     cx.strokeStyle = "blue";
     cx.stroke();
     
-    //drag to scroll
+    // Drag to scroll
     $$$.scrollable(document.body);
 })();
 
 var build = {
-    object : function (tilesheetsrc, startX, startY, tileInfo) {
+    object: function(tilesheetsrc, startX, startY, tileInfo) {
         var conatiner = document.createElement('div'),
             width = (tileInfo.MaxX - tileInfo.MinX) * 16,
             height = (tileInfo.MaxY - tileInfo.MinY) * 16;
@@ -100,7 +99,7 @@ var build = {
         conatiner.style.background = 'url(\'' + window.location.origin + "/images/tiles/" + tilesheetsrc + '\') -' + (tileInfo.MinX * 16) + 'px -' + (tileInfo.MinY * 16) + 'px'; // Change how map data is saved, used to be: tilesheetsrc
         return conatiner;
     },
-    tile : function (tilesheetsrc, x, y, sx, sy) {
+    tile: function(tilesheetsrc, x, y, sx, sy) {
         var conatiner = document.createElement('div');
         if (settings.tiles[tilesheetsrc]) {
             conatiner.id = settings.tiles[tilesheetsrc].length;
@@ -114,7 +113,7 @@ var build = {
 		conatiner.style.background = 'url(\'' + window.location.origin + "/images/tiles/" + tilesheetsrc + '\') -' + sx + 'px -' + sy + 'px'; // Change how map data is saved, used to be: tilesheetsrc
         return conatiner;
     },
-    editor : function () {
+    editor: function() {
         var Cover = document.createElement('div'),
             Panel = document.createElement('div'),
             ColCanvas = document.createElement('canvas'),
@@ -142,11 +141,11 @@ var build = {
         Panel.appendChild(RedBox);
         
         return {
-            main : Cover,
-            canvas : ColCanvas,
-            footer : footer,
-            RedBox : RedBox,
-            HeightLine : HeightLine
+            main: Cover,
+            canvas: ColCanvas,
+            footer: footer,
+            RedBox: RedBox,
+            HeightLine: HeightLine
         };
     }
 };
@@ -172,11 +171,11 @@ function setCollison(tileData, tileSheetSrc, startX, startY) {
         height = tileData.MaxY - tileData.MinY;
 
     tileSheet.src = tileSheetSrc;
-    tileSheet.onload = function () {
+    tileSheet.onload = function() {
         ctx.drawImage(tileSheet, tileData.MinX * 16, tileData.MinY * 16, width * 16, height * 16, 0, 0, width * 16, height * 16);
     };
     
-    editorWindowParts.footer.addEventListener('click', function () {
+    editorWindowParts.footer.addEventListener('click', function() {
         var collision = [RedBox.offsetLeft, RedBox.offsetLeft + RedBox.offsetWidth, RedBox.offsetTop, RedBox.offsetTop + RedBox.offsetHeight],
             height = HeightLine.offsetHeight;
         document.body.removeChild(editorWindow);
@@ -188,7 +187,7 @@ function setCollison(tileData, tileSheetSrc, startX, startY) {
     }).resizable();
     
     $(HeightLine).draggable({
-        containment : "parent"
+        containment: "parent"
     });
     
     document.body.appendChild(editorWindow);
@@ -198,8 +197,8 @@ function placeObject(tileInfo, startX, startY, collision, setHeight, tilesheetsr
     
     var ObjectContainer = build.object(tilesheetsrc, startX, startY, tileInfo);
     
-    //remove ObjectContainer on click
-    ObjectContainer.addEventListener('click', function (e) {
+    // Remove ObjectContainer on click
+    ObjectContainer.addEventListener('click', function(e) {
         if (penSettings.tool == 'delete') {
             var index = tileIndex(settings.objects[tilesheetsrc], parseInt(this.id, 10));
             settings.objects[tilesheetsrc].splice(index, 1);
@@ -207,8 +206,8 @@ function placeObject(tileInfo, startX, startY, collision, setHeight, tilesheetsr
         }
     });
     
-    //Load into object settings on double click
-    ObjectContainer.addEventListener('dblclick', function () {
+    // Load into object settings on double click
+    ObjectContainer.addEventListener('dblclick', function() {
         var index = tileIndex(settings.objects[tilesheetsrc], parseInt(this.id, 10));
         settings.objects[tilesheetsrc].splice(index, 1);
         setCollison(tileInfo, tilesheetsrc, startX, startY);
@@ -221,40 +220,42 @@ function placeObject(tileInfo, startX, startY, collision, setHeight, tilesheetsr
     }
     
     settings.objects[tilesheetsrc].push({
-        left : startX,
-        top : startY,
-        tiles : tileInfo,
-        height : setHeight || tileInfo.MaxY,
-        collision : collision
+        left: startX,
+        top: startY,
+        tiles: tileInfo,
+        height: setHeight || tileInfo.MaxY,
+        collision: collision
     });
     
-    //add to history
+    // Add to history
     settings.history.push({
-        tile : tileInfo,
-        type : 'objects'
+        tile: tileInfo,
+        type: 'objects'
     });
 }
 
 function placeColBlock(startX, startY) {
-    /*var cblock = document.createElement('div');
+    /*
+    var cblock = document.createElement('div');
     cblock.style.cssText = 'position:absolute;z-index:99;display:none;left:' + startX + ';top:' + startY;
     cblock.id = settings.objects.length;
-    cblock.addEventListener('click', function (e) {
+    cblock.addEventListener('click', function(e) {
         if (remove) {
             settings.objects.splice(index, 1);
             document.getElementById('world-objects').removeChild(cblock);
         }
     });
-    document.getElementById('world-objects').appendChild(cblock);*/
+    document.getElementById('world-objects').appendChild(cblock);
+    */
 }
 
 function placeTile(x, y, sx, sy, tilesheetsrc) {
     if (x >= 0 && y >= 0) {
-        //create tile div
+        // Create tile div
         var tile = build.tile(tilesheetsrc, x, y, sx, sy);
         
-        //remove item on click
-        tile.addEventListener('click', function () {
+        // Remove item on click
+        tile.addEventListener('click', function() {
             if (penSettings.tool == 'delete') {
                 var index = tileIndex(settings.tiles[tilesheetsrc], parseInt(this.id, 10));
                 settings.tiles[tilesheetsrc].splice(index, 1);
@@ -269,17 +270,17 @@ function placeTile(x, y, sx, sy, tilesheetsrc) {
         }
         
 		settings.tiles[tilesheetsrc].push({
-            left : x,
-            top : y,
-            sx : sx,
-            sy : sy,
-            order : settings.tiles[tilesheetsrc].length
+            left: x,
+            top: y,
+            sx: sx,
+            sy: sy,
+            order: settings.tiles[tilesheetsrc].length
         });
         
-        //add to history
+        // Add to history
         settings.history.push({
-            tile : tile,
-            type : 'tiles'
+            tile: tile,
+            type: 'tiles'
         });
     }
 }
@@ -375,7 +376,7 @@ function place() {
     }
 }
 
-document.getElementById('world').addEventListener('mousemove', function (e) {
+document.getElementById('world').addEventListener('mousemove', function(e) {
     penSettings.pos.x = Math.floor(((e.clientX + document.body.scrollLeft)) / 16) * 16;
     penSettings.pos.y = Math.floor(((e.clientY + document.body.scrollTop)) / 16) * 16;
     
@@ -393,23 +394,23 @@ document.getElementById('world').addEventListener('mousemove', function (e) {
     }
 });
 
-document.getElementById('world').addEventListener('mousedown', function (e) {
+document.getElementById('world').addEventListener('mousedown', function(e) {
     if (e.shiftKey) {
         penSettings.spreadFrom = {
-            x : penSettings.pos.x,
-            y : penSettings.pos.y
+            x: penSettings.pos.x,
+            y: penSettings.pos.y
         };
     }
 });
 
-document.getElementById('world').addEventListener('mouseup', function () {
+document.getElementById('world').addEventListener('mouseup', function() {
     if (penSettings.tileSheetInfo !== undefined && penSettings.tool != 'delete') {
         place();
     }
 });
 
-//switch menu tabs
-document.getElementById('tabs').addEventListener('click', function (e) {
+// Switch menu tabs
+document.getElementById('tabs').addEventListener('click', function(e) {
     var tab = e.target,
         oldWindowName,
         newWindowName,
@@ -445,8 +446,8 @@ document.getElementById('tabs').addEventListener('click', function (e) {
     }
 });
 
-//Display all objects collision
-document.getElementById('settingsOptions').addEventListener('click', function (e) {
+// Display all objects collision
+document.getElementById('settingsOptions').addEventListener('click', function(e) {
     var checkBox = e.target;
         
 	if (checkBox.tagName === 'INPUT') {
@@ -466,7 +467,7 @@ document.getElementById('settingsOptions').addEventListener('click', function (e
 	}
 });
 
-document.getElementById('newAI').addEventListener('click', function () {
+document.getElementById('newAI').addEventListener('click', function() {
     var overlay = document.createElement('div'),
         container = document.createElement('div'),
         holdSpriteSheet = document.createElement('div'),
@@ -497,7 +498,7 @@ document.getElementById('newAI').addEventListener('click', function () {
     
     spriteUploader.type = 'file';
     
-    holdSpriteSheet.addEventListener('click', function () {
+    holdSpriteSheet.addEventListener('click', function() {
         var event;
         if (document.createEvent) {
             event = document.createEvent("HTMLEvents");
@@ -515,11 +516,11 @@ document.getElementById('newAI').addEventListener('click', function () {
         }
     });
     
-    spriteUploader.addEventListener('change', function () {
+    spriteUploader.addEventListener('change', function() {
         var file = this.files[0],
             reader = new FileReader();
         
-        reader.onload = function (evt) {
+        reader.onload = function(evt) {
             holdSpriteSheet.textContent = '';
             var newImg = new Image();
             newImg.src = evt.target.result;
@@ -528,7 +529,7 @@ document.getElementById('newAI').addEventListener('click', function () {
         reader.readAsDataURL(file);
     });
     
-    submitButton.addEventListener('click', function () {
+    submitButton.addEventListener('click', function() {
         var firstKey = document.getElementsByClassName('aiTalk')[0],
             answers = document.getElementsByClassName('humanTalk'),
             imageData = holdSpriteSheet.getElementsByTagName('img')[0],
@@ -548,14 +549,14 @@ document.getElementById('newAI').addEventListener('click', function () {
             }
 
             socket.emit('saveAI', {
-                avy : imageData.src,
-                name : AIname
+                avy: imageData.src,
+                name: AIname
             });
 
 
             settings.AI.push({
-                name : AIname,
-                dialogue : aiSettings
+                name: AIname,
+                dialogue: aiSettings
             });
             
             document.body.removeChild(overlay);
@@ -577,8 +578,8 @@ document.getElementById('newAI').addEventListener('click', function () {
     document.body.appendChild(overlay);
 });
 
-//map controls
-$(document).keydown(function (e) {
+// Map controls
+$(document).keydown(function(e) {
     var key = e.which,
         tile;
     
@@ -618,7 +619,7 @@ function buildPanelandTab(source, name) {
     
     newTab.textContent = name;
     tileSheetTabs.appendChild(newTab);
-    newTab.addEventListener('click', function () {
+    newTab.addEventListener('click', function() {
         var selectedTab = newTab.parentNode.getElementsByClassName('selected')[0];
         if (selectedTab) {
             document.getElementById(selectedTab.textContent).style.display = 'none';
@@ -668,14 +669,14 @@ function initiateTileSheet(tileSheetImage, name) {
         
         penSettings.tool = 'tilePlacer';
         penSettings.tileSheetInfo = {
-            ctx : tileCtx,
-            imageSrc : tileSheetImage.src.substr(tileSheetImage.src.lastIndexOf('/') + 1) // Change how map data is saved, used to be tileSheetImage.src
+            ctx: tileCtx,
+            imageSrc: tileSheetImage.src.substr(tileSheetImage.src.lastIndexOf('/') + 1) // Change how map data is saved, used to be tileSheetImage.src
         };
         penSettings.tileData = {
-            MaxX : (penCanvas.width + startingXY[0]) / 16,
-            MaxY : (penCanvas.height + startingXY[1]) / 16,
-            MinX : startingXY[0] / 16,
-            MinY : startingXY[1] / 16
+            MaxX: (penCanvas.width + startingXY[0]) / 16,
+            MaxY: (penCanvas.height + startingXY[1]) / 16,
+            MinX: startingXY[0] / 16,
+            MinY: startingXY[1] / 16
         };
         dragging = false;
         pen.classList.add('tiles');
@@ -709,34 +710,34 @@ function loadTileSheetCanvas(url, name) {
     var TileSheetImage = new Image();
     TileSheetImage.src = url;
     
-    TileSheetImage.onload = function () {
+    TileSheetImage.onload = function() {
         initiateTileSheet(this, name);
     };
 }
 
 function save() {
     socket.emit('SaveMapTiles', {
-        tiles : JSON.stringify(settings.tiles),
-        objects : JSON.stringify(settings.objects),
-        spawn : JSON.stringify(settings.spawn),
-        AI : JSON.stringify(settings.AI)
+        tiles: JSON.stringify(settings.tiles),
+        objects: JSON.stringify(settings.objects),
+        spawn: JSON.stringify(settings.spawn),
+        AI: JSON.stringify(settings.AI)
     });
 }
 
 socket.on('connect', function() {
-    console.log('%cConnected to editor: ' + name1.substr(1) + name2.replace('/edit',''), 'background: #000000; color: #00FF00');
-    if(name2 === '/edit') {
-        console.log('%cWarning: There\'s simply no channel for this map :O\nTip: Type a slash after "/edit"', 'background: #000000; color: #FFFF00');
+    console.log('%cConnected to editor: ' + name1.substr(1) + name2.replace('/edit',''), 'background: #000000; color: #00FF00;');
+    if (name2 === '/edit') {
+        console.log('%cWarning: There\'s simply no channel for this map :O\nTip: Type a slash after "/edit"', 'background: #000000; color: #FFFF00;');
     }
 });
 
 socket.on('disconnect', function(e) {
-    console.log('%cDisconnected, error: ' + e, 'background: #000000; color: #FF0000');
+    console.log('%cDisconnected, error: ' + e, 'background: #000000; color: #FF0000;');
 });
 
-//Grab all objects and tiles image name
+// Grab all objects and tiles image name
 socket.emit('RequestTiles');
-socket.on('Tiles', function (urls) {
+socket.on('Tiles', function(urls) {
     var i,
         split,
         name;
@@ -751,7 +752,7 @@ socket.on('Tiles', function (urls) {
 });
 
 var map = {
-    loadTiles : function (tiles) {
+    loadTiles: function(tiles) {
         var tileSources = Object.keys(tiles),
             tilesFromOneSource,
             t,
@@ -766,7 +767,7 @@ var map = {
             }
         }
     },
-    loadObjects : function (objects) {
+    loadObjects: function(objects) {
         var objectSources = Object.keys(objects),
             objectsFromOneSource,
             t,
@@ -781,7 +782,7 @@ var map = {
             }
         }
     },
-    placeSpawn : function (X, Y) {
+    placeSpawn: function(X, Y) {
         var spawnBlock = document.createElement('div');
         
         if (document.getElementById('SpawnBlock')) {
@@ -796,7 +797,7 @@ var map = {
         
         document.getElementById('world-tiles').appendChild(spawnBlock);
     },
-    showCollisonOfObjects : function (objects) {
+    showCollisonOfObjects: function(objects) {
         var objectSrcs = Object.keys(objects),
             objectsFromOneSrc,
             oneObj,
@@ -824,7 +825,7 @@ var map = {
             }
         }
     },
-    hideCollisonOfObjects : function () {
+    hideCollisonOfObjects: function() {
         var allCollisonBlobs = document.getElementsByClassName('collisonBlob');
         while (allCollisonBlobs.length) {
             document.getElementById('world').removeChild(allCollisonBlobs[0]);
@@ -832,8 +833,8 @@ var map = {
     }
 };
 
-//load old map
-socket.on('MapInfo', function (data) {
+// Load old map
+socket.on('MapInfo', function(data) {
     var tiles,
         objects,
         spawn,

@@ -1,30 +1,30 @@
 var dao = require('./dao');
 var throttle = require('./throttle');
-var config = require('./config')
+var config = require('./config');
 var request = require('request');
 var _ = require('underscore');
-var $ = require('jquery-deferred');
+var $ = require('jquery-deferred'); // We don't use this.
 var express = require('express');
 var fs = require('fs');
 
 var channels = {};
 
 function createChannel(io, channelName) {
-    
+
     var room = io.of(channelName);
     var positions = {};
-    
+
     console.log('{' + 'log: "' + 'channel created' + '", timedate: "' + new Date() + '", channel_name: "' + channelName + '"}');
-    
+
     setInterval(function() {
         awakeEmit('positions', positions);
     }, 25);
-    
+
     var tokens = {};
     var channel = {
         online: []
     };
-    
+
     room.on('connection', function(socket) {
         var user = {
             remote_addr: socket.request.connection.remoteAddress,
@@ -33,13 +33,13 @@ function createChannel(io, channelName) {
             role: 7,
             awake: true
         };
-        
+
         console.log('{' + 'log: "' + 'channel user connected' + '", timedate: "' + new Date() + '", channel_name: "' + channelName + '", id: "' + socket.id + '", ip: "' + user.remote_addr + '"}');
-        
+
         if (user.remote_addr.substr(0, 7) == '::ffff:') { // If IP contains '::ffff:', remove it
             user.remote_addr = user.remote_addr.substr(7);
         }
-        
+
         socket.on('position', function(data) {
             positions[socket.id] = {
                 x: data.x,
@@ -73,20 +73,20 @@ function createChannel(io, channelName) {
                 socket.disconnect();
             });
         });
-        
+
         // Handle commands
         socket.on('command', function(cmd) {
-            if (cmd.name === 'login' || cmd.name === 'register') {
+            if (cmd.name === 'login' || cmd.name === 'register' || cmd.name === 'me') {
                 console.log('{' + 'log: "' + 'command' + '", timedate: "' + new Date() + '", channel_name: "' + channelName + '", id: "' + socket.id + '", ip: "' + user.remote_addr + '", nick: "' + user.nick + '", command_name: "' + cmd.name + '"}');
             } else {
-                console.log('{' + 'log: "' + 'command' + '", timedate: "' + new Date() + '", channel_name: "' + channelName + '", id: "' + socket.id + '", ip: "' + user.remote_addr + '", nick: "' + user.nick + '", command_name: "', cmd, '"}');
+                console.log('{' + 'log: "' + 'command' + '", timedate: "' + new Date() + '", channel_name: "' + channelName + '", id: "' + socket.id + '", ip: "' + user.remote_addr + '", nick: "' + user.nick + '", command_data: "', cmd, '"}');
             }
             if (cmd && cmd.name && typeof cmd.name == 'string') {
                 if (COMMNADS[cmd.name]) { // Check that command exist
                     if (user.role !== undefined && (COMMNADS[cmd.name].role === undefined || user.role <= COMMNADS[cmd.name].role) && indexOf(user.nick) != -1) { // Make sure user is properly joined
                         if (COMMNADS[cmd.name].params && cmd.params) { // Check if command takes any params
                             var valid = true;
-                            for (i in cmd.params) { // Checks that all the params are strings
+                            for (var i in cmd.params) { // Checks that all the params are strings
                                 if (!cmd.params[i] || typeof cmd.params[i] != 'string') {
                                     valid = false;
                                 }
@@ -110,7 +110,7 @@ function createChannel(io, channelName) {
                 }
             }
         });
-        
+
         socket.on('disconnect', function(e) {
             console.log('{' + 'log: "' + 'user disconnected' + '", timedate: "' + new Date() + '", channel_name: "' + channelName + '", id: "' + socket.id + '", ip: "' + user.remote_addr + '", disconnect_message: "' + e + '"}');
             var i = indexOf(user.nick);
@@ -120,20 +120,27 @@ function createChannel(io, channelName) {
                 console.log('User has disappeared from time and space, he will be missed');
             }
             if (positions[socket.id]) {
-                roomEmit('left', socket.id);
+                roomEmit('left', {
+                    id: socket.id,
+                    part: user.part
+                });
                 delete positions[socket.id];
             }
         });
-        
+
         function attemptJoin(data, mapdata, login) {
-			
 			function join() {
-				// console.log('User joined', data, user.remote_addr); // Old log. 
-                console.log('{' + 'log: "' + 'user joined' + '", timedate: "' + new Date() + '", channel_name: "' + channelName + '", id: "' + socket.id + '", ip: "' + user.remote_addr + '", nick: "' + user.nick + '", join_data: "', data, '"}');
+				// console.log('User joined', data, user.remote_addr); // Old log.
 				positions[socket.id] = {};
 				if (!user.nick) {
                     user.nick = dao.makeNick(); // If no nick, generate nick
                 }
+                if (data.part) {
+                    user.part = data.part.substr(0, 50);
+                }
+                
+                console.log('{' + 'log: "' + 'user joined' + '", timedate: "' + new Date() + '", channel_name: "' + channelName + '", id: "' + socket.id + '", ip: "' + user.remote_addr + '", nick: "' + user.nick + '", join_data: "', data, '"}');
+
 				// Make an array of all online users
 				var avatars = [];
 				for (var i in channel.online) {
@@ -147,7 +154,7 @@ function createChannel(io, channelName) {
 						});
 					}
 				}
-				
+
 				channel.online.push(user);
 				socket.join('chat');
                 socket.join('awake');
@@ -163,11 +170,14 @@ function createChannel(io, channelName) {
                     }
                 });
                 socket.emit('chatinfo', mapdata.data);
+                socket.emit('update', {
+                    nick: user.nick
+                });
                 roomEmit('join', {
                     nick: user.nick,
                     id: socket.id
                 });
-                
+
                 // Get stored Avys
                 var AvyFolder = 'public/images/avatars/' + user.nick;
                 if (fs.existsSync(AvyFolder)) {
@@ -181,7 +191,7 @@ function createChannel(io, channelName) {
                     });
                 }
 			}
-			
+
             var joincount = 0;
             for (var i in channel.online) {
                 if (channel.online[i].remote_addr == user.remote_addr) { // Check how many users have the same IP
@@ -191,10 +201,10 @@ function createChannel(io, channelName) {
                     }
                 }
             }
-			
+
             var nickslist = [];
             if (data.nick && indexOf(data.nick) == -1) { // If nick is given, make sure nobody else is using it
-                if (!/^[\x20-\x7E]*$/i.test(data.nick)) { // Make sure nick doesn't contain funny characters
+                if (!/^[\x21-\x7E]*$/i.test(data.nick)) { // Make sure nick doesn't contain funny characters
                     showMessage(socket, 'Nick contained invalid characters.', 'error');
                     join();
                 } else {
@@ -202,7 +212,7 @@ function createChannel(io, channelName) {
                         if (!dbuser) { // If not registered, make sure nick isn't too long
                             user.nick = data.nick.substr(0, 50);
                         } else {
-                            if (login || (tokens[data.nick] && data.token == tokens[data.nick])) { // Compare token, check if login is valid 
+                            if (login || (tokens[data.nick] && data.token == tokens[data.nick])) { // Compare token, check if login is valid
                                 user.nick = dbuser.nick;
                                 user.role = dbuser.role;
                                 dao.setUserinfo(dbuser.nick, 'remote_addr', user.remote_addr); // Update users IP
@@ -222,7 +232,7 @@ function createChannel(io, channelName) {
                 join();
             }
         }
-        
+
         var core = {
             join: function(data, dbuser, channeldata) {
                 dao.banlist(channelName).then(function(list) { // Get ban list
@@ -231,7 +241,7 @@ function createChannel(io, channelName) {
                             dao.getChannelinfo('/404').then(function(channel404) { // Get default channel data.
                                 channeldata = channel404;
                                 attemptJoin(data, channeldata);
-                            }); 
+                            });
                         } else {
                             attemptJoin(data, channeldata);
                         }
@@ -241,7 +251,7 @@ function createChannel(io, channelName) {
                     }
                 });
             },
-            uploadAvy: function(data, dbuser) {
+            uploadAvy: function(data, dbuser) { // We don't use this var :/ `dbuser`
                 if (!/^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$/.test(data.avy)) {
                     dao.find(user.nick).then(function(dbuser) {
                         var AvyFolder = 'public/images/avatars/';
@@ -252,7 +262,7 @@ function createChannel(io, channelName) {
                             }
                         }
                         fs.writeFile(AvyFolder + '/' + data.name, data.avy.replace(/^data:image\/png;base64,/, ''), 'base64', function(err) {
-                            if (err) { 
+                            if (err) {
                                 throw err;
                             }
                             roomEmit('MapInfo', {
@@ -269,7 +279,7 @@ function createChannel(io, channelName) {
                 }
             }
         }
-        
+
         socket.on('core', function(info) { // Handle all core functions, and supply functions with necessary information
             throttle.on(user.remote_addr, true).then(function(ok) {
                 if (ok) {
@@ -278,29 +288,29 @@ function createChannel(io, channelName) {
                         var command = info.command;
                         var data = info.data;
                         var valid = true;
-                        var accept = 'nick question password token avy name'.split(' ');
-                        for (i in data) { // Checks that all the params are strings
+                        var accept = 'nick question password token avy name part'.split(' ');
+                        for (var i in data) { // Checks that all the params are strings
                             if (accept.indexOf(i) != -1) {
                                 if (typeof data[i] != 'string') {
                                     valid = false;
-                                }  
+                                }
                             } else {
                                 delete data[i];
                             }
                         }
                         if (valid) {
-                            var channeldata = {};
+                            var channeldata = {}; // We don't use this var :/
                             dao.getChannelinfo(channelName).then(function(channelinfo) { // Get all channel info.
                                 dao.find(data.nick).then(function(dbuser) {
                                     // console.log(command); //Old log.
                                     console.log('{' + 'log: "' + 'core success' + '", timedate: "' + new Date() + '", channel_name: "' + channelName + '", id: "' + socket.id + '", ip: "' + user.remote_addr + '", command_name: "' + info.command + '"}');
                                     core[command](data, dbuser, channelinfo);
                                 });
-                            });   
+                            });
                         } else {
                             showMessage(socket, 'core error, let the sammich know', 'error');
-                            console.log('Core error');
-                        } 
+                            console.log('core error');
+                        }
                     }
                 } else {
                     showMessage(user.socket, 'You are spamming, stop or you will be temporarily banned.', 'error');
@@ -313,7 +323,7 @@ function createChannel(io, channelName) {
             });
         });
     });
-    
+
     /*
         Roles:
         0, 1: God, Dev/Super
@@ -323,7 +333,7 @@ function createChannel(io, channelName) {
         7: Unregistered
         8: Poop
     */
-    
+
     var COMMNADS = {
         avy: {
             params: ['name'],
@@ -347,7 +357,7 @@ function createChannel(io, channelName) {
                     }
                 });
             }
-        }, 
+        },
         removeavy: {
             params: ['name'],
             handler: function(user,params) {
@@ -371,7 +381,7 @@ function createChannel(io, channelName) {
             handler: function(user, params) {
                 dao.find(params.nick).then(function(dbuser) {
                     if (!dbuser) {
-                        if (/^[\x20-\x7F]*$/i.test(params.nick)) {
+                        if (/^[\x21-\x7F]*$/i.test(params.nick)) {
                             var nick = params.nick.substr(0, 50);
                             var index = indexOf(nick);
                             if (index == -1) {
@@ -449,7 +459,7 @@ function createChannel(io, channelName) {
                                     // Updating info, client side
                                     user.socket.emit('update', {
                                         token: user.token,
-                                        nick: user.nick, 
+                                        nick: user.nick,
                                         role: dbuser.role
                                     });
                                 } else {
@@ -468,6 +478,36 @@ function createChannel(io, channelName) {
             handler: function(user, params) {
                 var message = user.nick + ' ' + params.message.substr(0, 5000);
                 emitMessage(message, 'action');
+            }
+        },
+        pm: {
+            params : ['nick', 'message'],
+            handler : function (user, params) {
+                var i = indexOf(params.nick), pmTo;
+                if (i !== -1) {
+                    if (params.message && params.message.length < 5000) {
+                        pmTo = channel.online[i];
+                        pmTo.socket.emit('message', {
+                            message: ' ' + params.message,
+                            style: 'personal',
+                            nick: user.nick
+                        });
+
+                        if (pmTo.id !== user.id) {
+                            user.socket.emit('message', {
+                                message: ' ' + params.message,
+                                style: 'personal',
+                                nick: user.nick,
+                                toNick: pmTo.nick
+                            });   
+                        }
+                    } else {
+                        showMessage(user.socket, 'Personal message invalid or very large.', 'error');
+                    }
+                } else {
+                    showMessage(user.socket, 'The user you\'re trying to message isn\'t online.', 'error');
+                }
+                
             }
         },
         kick: {
@@ -525,7 +565,7 @@ function createChannel(io, channelName) {
                     showMessage(s.socket, params.message ? 'You\'ve been banned: ' + params.message : 'You\'ve been banned');
                     showMessage(user.socket, params.nick + ' has been IP banned');
                     dao.ban(channelName, s.remote_addr);
-                    s.socket.disconnect();   
+                    s.socket.disconnect();
                 } else {
                     dao.find(params.nick).then(function(dbuser) {
                         if (dbuser) {
@@ -628,10 +668,10 @@ function createChannel(io, channelName) {
             handler: function(user, params) {
                 if (params.TitlebarColor && params.ButtonsColor && params.InputbarColor && params.ScrollbarColor && params.TitlebarColor.length < 20 && params.ButtonsColor.length < 20 && params.InputbarColor.length < 20 && params.ScrollbarColor.length < 20) {
                     var colors = [params.TitlebarColor, params.ButtonsColor, params.InputbarColor, params.ScrollbarColor];
-                    dao.setChannelinfo(channelName, 'data', colors, 'themecolors').then(function(err) {
+                    dao.setChannelinfo(channelName, 'data', colors, 'theme').then(function(err) {
                         if (!err) {
                             roomEmit('chatinfo', JSON.stringify({
-                                themecolors: colors
+                                theme: colors
                             }));
                             showMessage(user.socket, 'Theme colors updated.');
                         }
@@ -657,7 +697,7 @@ function createChannel(io, channelName) {
             }
         },
         whoami: {
-            handler: function(user, params) {
+            handler: function(user) {
                 dao.find(user.nick).then(function(dbuser) {
                     var message, info;
                     var i = indexOf(user.nick);
@@ -718,9 +758,54 @@ function createChannel(io, channelName) {
                     showMessage(user.socket, "You're already awake.");
                 }
             }
+        },
+        overlay: {
+            role: 2,
+            params: ['hue', 'saturation', 'brightness', 'transperancy'],
+            handler: function(user, params) {
+                if (params.hue && params.saturation && params.brightness && params.transperancy && params.hue.length < 20 && params.saturation.length < 20 && params.brightness.length < 20 && params.transperancy.length < 20) {
+                    var colors = [params.hue, params.saturation, params.brightness, params.transperancy];
+                    dao.setChannelinfo(channelName, 'data', colors, 'overlay').then(function(err) {
+                        if (!err) {
+                            roomEmit('chatinfo', JSON.stringify({
+                                overlay: colors
+                            }));
+                            showMessage(user.socket, 'Overlay colors updated.');
+                        }
+                    });
+                } else {
+                    showMessage(user.socket, 'Parameters incomplete or too long.');
+                }
+            }
+        },
+        part: {
+            params: ['part'],
+            handler: function(user, params) {
+                if (params.part) {
+                    user.part = params.part.substr(0, 50);
+                    user.socket.emit('update', {
+                        part: user.part
+                    });
+                    showMessage(user.socket, 'Your leave message is now set to: ' + user.nick + ' has left ' + params.part);
+                } else {
+                    showMessage(user.socket, 'Parameters incomplete');
+                }
+            }
+        },
+        leave: {
+            params: ['part'],
+            handler: function(user, params) {
+                if (params.part) {
+                    user.part = params.part.substr(0, 50);
+                    showMessage(user.socket, 'Disconnecting...');
+                    user.socket.disconnect();
+                } else {
+                    showMessage(user.socket, 'Parameters incomplete');
+                }
+            }
         }
-    }    
-    
+    }
+
     function indexOf(nick, id) {
         if (nick || id) {
             for (var i = 0; i < channel.online.length; i++) {
@@ -731,7 +816,7 @@ function createChannel(io, channelName) {
         }
         return -1;
     }
-    
+
     function showMessage(socket, message, style) {
         if (typeof message == 'string') {
             message = {
@@ -741,7 +826,7 @@ function createChannel(io, channelName) {
         message.style = style ? style : message.style;
         socket.emit('message', message);
     }
-    
+
     function emitMessage(message,style) {
         if (typeof message == 'string') {
             message = {
@@ -751,15 +836,15 @@ function createChannel(io, channelName) {
         message.style = style ? style : message.style;
         roomEmit('message', message);
     }
-    
+
     function roomEmit() {
         room.in('chat').emit.apply(room, arguments);
     }
-    
+
     function awakeEmit() {
         room.in('awake').emit.apply(room, arguments);
     }
-    
+
     return true;
 }
 
@@ -768,14 +853,14 @@ var Edits = {};
 function Editor(io, channelName) {
     var room = io.of(channelName);
     channelName = channelName.replace('/edit', '');
-    
+
     // console.log('Starting: ' + channelName); // Old log.
     console.log('{' + 'log: "' + 'editor created' + '", timedate: "' + new Date() + '", channel_name: "' + channelName + '"}');
-    
+
     room.on('connection', function(socket) {
         // console.log(channelName, 'connected'); // Old log.
         console.log('{' + 'log: "' + 'editor user connected' + '", timedate: "' + new Date() + '", channel_name: "' + channelName + '", id: "' + socket.id + '", ip: "' + socket.request.connection.remoteAddress + '"}');
-        
+
         socket.on('RequestTiles', function() {
             var TileSheets = [];
             fs.readdir('public/images/tiles', function(err, files) {
@@ -786,7 +871,7 @@ function Editor(io, channelName) {
                     TileSheets.push(file);
                 });
                 socket.emit('Tiles', TileSheets);
-            }); 
+            });
         });
 
         socket.on('SaveMapTiles', function(data) {
@@ -804,13 +889,13 @@ function Editor(io, channelName) {
                 });
             }
         });
-        
+
         socket.on('GetMap', function() {
             dao.getChannelinfo(channelName).then(function(data) {
                 socket.emit('MapInfo', data);
             });
         });
-        
+
     });
     return true;
 }
@@ -823,23 +908,33 @@ function initApp(app, http, editor) {
     var io = require('socket.io')(http);
     app.use(express.static(__dirname + '/public'));
     app.get(channelRegex, function(req, res) {
-        var name = req.headers.host.substr(0, req.headers.host.lastIndexOf(mainDomain) - 1) + req.originalUrl; // subdomain / subfolder
-        if (!channels[name]) { // Create channel if it doesn't exist
-            channels[name] = createChannel(io, name);
+        console.log('{' + 'log: "' + 'GET request' + '", timedate: "' + new Date() + '", request_URL: "' + req.originalUrl + '", request_host_header: "' + req.headers.host + '", IP: "' + req.connection.remoteAddress + '"}');
+        if (req.headers.host) { // Check for /^[a-z\d]+$/i in the future
+            var name = req.headers.host.substr(0, req.headers.host.lastIndexOf(mainDomain) - 1) + req.originalUrl; // subdomain/subfolder
+            if (!channels[name]) { // Create channel if it doesn't exist
+                channels[name] = createChannel(io, name);
+            }
+            var index = fs.readFileSync(__dirname + '/index.html').toString();
+            res.send(index);
+        } else {
+            res.send("Invalid header?");
         }
-        var index = fs.readFileSync(__dirname + '/index.html').toString();
-        res.send(index);
     });
-    
+
     editor.get(channelRegex, function(req, res) {
-        var name = req.headers.host.substr(0, req.headers.host.lastIndexOf(mainDomain) - 1) + req.originalUrl; // subdomain / subfolder
-        var index = fs.readFileSync(__dirname + '/public/editslol/index.html').toString();
-        res.send(index);
-        if (!Edits[name]) { // Create channel if it doesn't exist
-            Edits[name] = Editor(io, name);
+        console.log('{' + 'log: "' + 'GET request for editor' + '", timedate: "' + new Date() + '", request_URL: "' + req.originalUrl + '", request_host_header: "' + req.headers.host + '", IP: "' + req.connection.remoteAddress + '"}');
+        if (req.headers.host) {
+            var name = req.headers.host.substr(0, req.headers.host.lastIndexOf(mainDomain) - 1) + req.originalUrl; // subdomain/subfolder
+            var index = fs.readFileSync(__dirname + '/public/editslol/index.html').toString();
+            res.send(index);
+            if (!Edits[name]) { // Create channel if it doesn't exist
+                Edits[name] = Editor(io, name);
+            }
+        } else {
+            res.send("Invalid header?");
         }
     });
-    
+
     app.use(['/edit/*', '/edit/', '/edit', 'edit'], editor);
 }
 

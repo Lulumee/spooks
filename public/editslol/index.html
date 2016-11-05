@@ -1,17 +1,20 @@
 <!doctype html>
 <html lang="en">
     <head>
-        <meta charset="utf-8"/>
         <title>Map Editor</title>
-        <link rel="icon" type="image/png" href="/images/icon2.ico">
-        <link rel="stylesheet" type="text/css" href="../editslol/theme.css"/>
+        <meta charset="utf-8"/>
+        <meta name="theme-color" content="#808080">
+        <link rel="apple-touch-icon" sizes="180x180" href="/images/icons/pixel/apple-touch-icon.png">
+        <link rel="icon" type="image/png" href="/images/icons/pixel/favicon-32x32.png" sizes="32x32">
+        <link rel="icon" type="image/png" href="/images/icons/pixel/favicon-16x16.png" sizes="16x16">
+        <link rel="stylesheet" type="text/css" href="../editslol/theme.css">
         <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
         <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
     </head>
     <body>
         <div id="world">
-            <div id="pen" style="position:absolute;z-index:10;"><canvas></canvas></div>
+            <div id="pen" style="position: absolute; z-index: 10;"><canvas></canvas></div>
 			<div id="world-objects"></div>
 			<div id="world-tiles"></div>
             <canvas id="grid"></canvas>
@@ -27,7 +30,7 @@
                 </ul>
             </div>
             <div id="menus">
-                <div class="panel" id="tiles" style="display:block;">
+                <div class="panel" id="tiles" style="display: block;">
                     <ul class="tileSheetTabs"></ul>
                     <div class="tileSheetPanels"></div>
                 </div>
@@ -37,21 +40,21 @@
                 </div>
                 <div class="panel" id="settings">
                     Special tiles<br>
-                    <div id="spawn" class="extra spawn" style="width:48px;height:48px;background-color:green;">spawn</div>
-                    <div id="cblock" class="extra" style="width:48px;height:48px;background-color:red;">Collision block</div>
+                    <div id="spawn" class="extra spawn" style="width: 48px; height: 48px; background-color: green;">spawn</div>
+                    <div id="cblock" class="extra" style="width: 48px; height: 48px; background-color: red;">Collision block</div>
 					
-					<ul id="settingsOptions" style="list-style-type:none;padding:0;">
+					<ul id="settingsOptions" style="list-style-type: none; padding: 0;">
 						<li><input type="checkbox" id="DisplayObjects" checked>Display Objects</li>
 						<li><input type="checkbox" id="DisplayCollision">Display Object Collision</li>
 					</ul>
 					
-                    <div style="width: 100%;margin-top: 20px;border-bottom: 1px solid black;">Object Settings</div>
-                    <div id="objectSettings" style="width:100%"></div>
+                    <div style="width: 100%; margin-top: 20px; border-bottom: 1px solid black;">Object Settings</div>
+                    <div id="objectSettings" style="width:100%;"></div>
                 </div>
             </div>
         </div>
+        <script src="/socket.io/socket.io.js"></script>
+        <script type="text/javascript" src="../dollarSign.js"></script>
+        <script type="text/javascript" src="../editslol/client.js"></script>
     </body>
-    <script src="/socket.io/socket.io.js"></script>
-    <script language="javascript" type="text/javascript" src="../dollarSign.js"></script>
-    <script language="javascript" type="text/javascript" src="../editslol/client.js"></script>
 </html>

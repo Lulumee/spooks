@@ -3,7 +3,7 @@ var _ = require('underscore');
 var $ = require('jquery-deferred');
 var mysql = require('mysql');
 var bcrypt = require('bcrypt-nodejs');
-var fs = require('fs');
+var fs = require('fs'); // We don't use this.
 
 var db;
 
@@ -168,9 +168,9 @@ module.exports = {
     },
     makeNick: function() {
         var nouns = ["alien", "apparition", "bat", "blood", "bogeyman", "boogeyman", "boo", "bone", "cadaver", "casket", "cauldron", "cemetery", "cobweb", "coffin", "corpse", "crypt", "darkness", "dead", "demon", "devil", "death", "eyeball", "fangs", "fear", "fiend", "fog", "gastly", "gengar", "ghost", "ghoul", "goblin", "grave", "gravestone", "grim", "grimreaper", "gruesome", "haunter", "headstone", "hobgoblin", "hocuspocus", "howl", "jack-o-lantern", "mausoleum", "midnight", "mist", "monster", "moon", "mummy", "night", "nightmare", "ogre", "owl", "phantasm", "phantom", "poltergeist", "pumpkin", "scarecrow", "scream", "shadow", "skeleton", "skull", "specter", "spider", "spine", "spirit", "spook", "tarantula", "tomb", "tombstone", "troll", "vampire", "werewolf", "witch", "witchcraft", "wraith", "zombie"];
-        
+
         var adjectives = ["bloodcurdling", "chilling", "creepy", "cold", "crying", "dark", "devilish", "dreadful", "eerie", "evil", "frightening", "frightful", "ghastly", "ghostly", "ghoulish", "gory", "grisly", "hair-raising", "haunted", "horrible", "horrifying", "macabre", "morbid", "mysterious", "ominous", "otherworldly", "repulsive", "revolting", "scary", "shadowy", "shocking", "sinister", "spine-chilling", "spooky", "spoopy", "startling", "supernatural", "terrible", "terrifying", "unearthly", "unnerving", "wicked"];
-        
+
         return ucwords(_.sample(adjectives)) + ucwords(_.sample(nouns));
     }
 }
