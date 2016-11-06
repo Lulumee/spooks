@@ -172,6 +172,26 @@ var COMMANDS = {
             });
         }
     },
+    locate: {
+        params: ['nick'],
+        handler: function(params) {
+            if (player.info.nick !== params.nick) {
+                for (var n in ONLINE.players) {
+                    if (ONLINE.players[n].nick === params.nick && !ONLINE.players[n].beacon) {
+                        ONLINE.players[n].beacon = true;
+                        setTimeout(function() {
+                            ONLINE.players[n].beacon = false;
+                        }, 10E3);
+                        return true;
+                    }
+                }
+            }
+            CHAT.show({
+                message: 'User not online, already located or are you trying to locate yourself??',
+                style: 'error'
+            });
+        }
+    },
     // Server side commands
     removeavy: {
         params: ['name']
@@ -521,8 +541,12 @@ var CHAT = {
         }
     },
     audio: {
-        sounds: { pop: new Audio('audio/notifications/Bing.mp3')},
-        music: ["Social Sunrise (Day 1).mp3", "We're Still Open (Night 1).mp3", "Celadon.mp3", "Palette Town.mp3", "Pokemon Center.mp3", "Palette Town To Viridian City.mp3"],
+        sounds: {
+            pop: new Audio('audio/notifications/Bing.mp3'),
+            pm: new Audio('audio/notifications/Bing.mp3'),
+            alert: new Audio('audio/notifications/Bing.mp3')
+        },
+        defaultMusic: ["Social Sunrise.mp3", "We're Still Open.mp3"],
         playSound: function(name) {
             if (CHAT.toggles.get(name)) {
                 this.sounds[name].play();
@@ -1066,7 +1090,7 @@ var buttons = {
     }
     document.getElementsByTagName('body')[0].addEventListener("click", initializeSound);
 
-    var tracks = CHAT.audio.music;
+    var tracks = CHAT.audio.defaultMusic;
     for (var i = 0; i < tracks.length; i++) {
         var track = document.createElement('li');
         track.textContent = tracks[i];
@@ -1099,6 +1123,37 @@ var buttons = {
         };
         reader.readAsDataURL(file);
     });
+
+    var radar = document.getElementById('radar'),
+        radarctx = radar.getContext('2d'),
+        radarRadius = 30,
+        radarRings = 4;
+    
+    radarctx.lineWidth = '1px';
+    radar.width = '60';
+    radar.height = '60';
+        
+    function drawRadarRings() {
+        for (var i = 0; i < radarRings; i++ ) {
+            radarctx.beginPath();
+            radarctx.arc(radarRadius, radarRadius, radarRadius / radarRings * (i + 1), 0, 2 * Math.PI, true); // 'true' Because I live in the northern hemisphere.
+            radarctx.strokeStyle = 'rgba(171, 205, 239, 0.6)'; // #ABCDEF
+            radarctx.stroke();
+        }
+    }
+
+    function drawRadarGrid() {
+        radarctx.beginPath();
+        radarctx.moveTo(radarRadius, 0);
+        radarctx.lineTo(radarRadius, radarRadius * 2);
+        radarctx.moveTo(0, radarRadius);
+        radarctx.lineTo(radarRadius * 2, radarRadius);
+        radarctx.strokeStyle = 'rgba(0, 255, 0, 0.5)';
+        radarctx.stroke();
+    }
+    
+    drawRadarGrid();
+    drawRadarRings();
     
     function submit() {
         var text = input.value;

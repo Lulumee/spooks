@@ -292,7 +292,7 @@ function SendAvy(imgdata, name, SpriteFrames) {
         if (Sizes) {
             user.avy = TestAvatar;
             user.frame = Sizes;
-            spooks.saveAvatar(user.avy, name);
+            avatarControl.saveAvatar(user.avy, name);
             socket.emit('core', { // Send image data to server
                 command: 'uploadAvy',
                 data: {

@@ -495,13 +495,17 @@ canvas.addEventListener('mousedown', function(e) {
 // Radar Canvas dots.
 var radarSweep = document.getElementById('radar-points'),
     rpctx = radarSweep.getContext('2d'),
-    radarDot = rpctx.createImageData(3, 3);
+    radarDotNormal = rpctx.createImageData(4, 4);
+    radarDotFlash = rpctx.createImageData(4, 4);
 
-for(var i = 0; i < radarDot.data.length; i += 4) {
-    radarDot.data[i] = '255';
-    radarDot.data[i + 1] = '0';
-    radarDot.data[i + 2] = '0';
-    radarDot.data[i + 3] = '255';
+for (var i = 0; i < radarDotNormal.data.length; i += 4) {
+    if(i !== 0 && i !== 12 && i !== 48 && i !== 60) {
+        radarDotNormal.data[i] = '255';
+        radarDotNormal.data[i + 1] = '0';
+        radarDotNormal.data[i + 2] = '0';
+        radarDotNormal.data[i + 3] = '255';
+        radarDotFlash.data[i + 3] = '255';
+    }
 }
 
 radarSweep.width = '60';
@@ -509,10 +513,24 @@ radarSweep.height = '60';
 
 function pinPoint() {
     rpctx.clearRect(0, 0, 60, 60);
-    for(var n in ONLINE.players) {
-        var x = (ONLINE.players[n].x / world.width) * 60;
-        var y = (ONLINE.players[n].y / world.height) * 60;
-        rpctx.putImageData(radarDot, parseInt(x), parseInt(y));
+    for (var n in ONLINE.players) {
+        if (ONLINE.players[n].nick !== player.info.nick) {
+            var x = ((ONLINE.players[n].x - player.info.x) / world.width) * 60;
+            var y = ((ONLINE.players[n].y - player.info.y) / world.height) * 60;
+            if (ONLINE.players[n].beacon) {
+                let randomColor = contrast.hslToRgb(parseFloat(Math.random()).toFixed(3), 1, 1);
+                for (var i = 0; i < radarDotNormal.data.length; i += 4) {
+                    if(i !== 0 && i !== 12 && i !== 48 && i !== 60) {
+                        radarDotFlash.data[i] = randomColor.r;
+                        radarDotFlash.data[i + 1] = randomColor.g;
+                        radarDotFlash.data[i + 2] = randomColor.b;
+                    }
+                }
+                rpctx.putImageData(radarDotFlash, parseInt(x) + 28, parseInt(y) + 28);
+            } else {
+                rpctx.putImageData(radarDotNormal, parseInt(x) + 28, parseInt(y) + 28); // -1 because it starts on 0 to 59, -1 because the dot is 4 x 4 and it starts drawing on the left upper side of the dot. 
+            }
+        }
     }
 }
 
