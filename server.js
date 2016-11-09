@@ -10,8 +10,8 @@ var fs = require('fs');
 var channels = {};
 
 function createChannel(io, channelName) {
-    var channelNick = channelName.replace(RegExp('.?' + mainDomain + '\/'), '/');
-    
+    var channelNick = channelName.replace(new RegExp('.?' + mainDomain + '(:\\d+)?\/'), '/');
+
     var room = io.of(channelName);
     var positions = {};
 
@@ -54,9 +54,8 @@ function createChannel(io, channelName) {
             throttle.on(user.remote_addr).then(function(ok) {// Throttle all messages
                 if (ok) {
                     if (indexOf(user.nick) != -1 && message && message.message) {
-                        var msg = message.message.length > 1000 ? '/`' + message.message : message.message;
 						emitMessage({
-                            message: msg.substr(0, 10000),
+                            message: message.message.substr(0, 10000),
                             nick: user.nick || socket.id,
                             flair: message.flair,
                             style: 'chat'
@@ -638,7 +637,7 @@ function createChannel(io, channelName) {
         note: {
             role: 3,
             params: ['note'],
-            handler: function(user,params) {
+            handler: function(user, params) {
                 var note = params.note.substr(0, 3000);
                 dao.setChannelinfo(channelNick, 'data', note, 'note').then(function(err) {
                     if (!err) {
@@ -652,7 +651,7 @@ function createChannel(io, channelName) {
         topic: {
             role: 5,
             params: ['topic'],
-            handler: function(user,params) {
+            handler: function(user, params) {
                 var topic = params.topic.substr(0, 500);
                 dao.setChannelinfo(channelNick, 'data', topic, 'topic').then(function(err) {
                     if (!err) {
@@ -793,6 +792,15 @@ function createChannel(io, channelName) {
                 }
             }
         },
+        unpart: {
+            handler: function(user) {
+                if (user.part) {
+                    showMessage(user.socket, 'Your leave message is now set to: ' + user.nick + ' has left\nIt will reset on your next join unless you remove it from your storage: /remove part');
+                } else {
+                    showMessage(user.socket, 'You have no part message.');
+                }
+            }
+        },
         leave: {
             params: ['part'],
             handler: function(user, params) {
@@ -854,7 +862,7 @@ var Edits = {};
 function Editor(io, channelName) {
     var room = io.of(channelName);
     channelName = channelName.replace(/edit\//, '');
-    channelNick = channelName.replace(RegExp('.?' + mainDomain + '\/'), '/');
+    channelNick = channelName.replace(RegExp('.?' + mainDomain + '(:\\d+)?\/'), '/');
     // console.log('Starting: ' + channelName); // Old log.
     console.log('{' + 'log: "' + 'editor created' + '", timedate: "' + new Date() + '", channel_name: "' + channelName + '", channel_nick: "' + channelNick + '"}');
 

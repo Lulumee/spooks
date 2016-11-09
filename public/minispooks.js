@@ -74,7 +74,7 @@ var COMMANDS = {
         params: ['att'],
         handler: function(params) {
             var value = CHAT.get(params.att);
-            var valid = 'color flair font note topic background bg role whitelist images part style alert theme overlay'.split(' ');
+            var valid = 'color flair font style note topic background bg role whitelist images part style alerts theme overlay lastpm'.split(' ');
             if (valid.indexOf(params.att) != -1) {
                 if (value !== undefined) {
                     if (typeof value == 'object') {
@@ -83,6 +83,23 @@ var COMMANDS = {
                     CHAT.show(params.att + ' is currently set to: ' + value);
                 } else {
                     CHAT.show(params.att + ' is set to nothing');
+                }
+            } else {
+                CHAT.show('Variable can be one of [' + valid.join(', ') + ']');
+            }
+        }
+    },
+    remove: {
+        params: ['att'],
+        handler: function(params) {
+            var value = CHAT.get(params.att);
+            var valid = 'color flair style font part'.split(' ');
+            if (valid.indexOf(params.att) != -1) {
+                if (value !== undefined) {
+                    CHAT.remove(params.att);
+                    CHAT.show(params.att + ' was removed');
+                } else {
+                    CHAT.show(params.att + ' is not set');
                 }
             } else {
                 CHAT.show('Variable can be one of [' + valid.join(', ') + ']');
@@ -187,9 +204,69 @@ var COMMANDS = {
                 }
             }
             CHAT.show({
-                message: 'User not online, already located or are you trying to locate yourself??',
+                message: 'User not online, already located or are you trying to locate yourself?',
                 style: 'error'
             });
+        }
+    },
+    alert: {
+        params: ['keyword'],
+        handler: function(params) {
+            var alerts = CHAT.get('alerts');
+            params.keyword = params.keyword.toLowerCase();
+            if (!alerts) {
+                alerts = [];
+            }
+            if (alerts.indexOf(params.keyword) == -1) {
+                alerts.push(params.keyword);
+                CHAT.set('alerts', alerts);
+                CHAT.show('Keyword: "' + params.keyword + '" is added to your alerts');
+            } else {
+                CHAT.show('This keyword already exists in your alerts', 'error');
+            }
+        }
+    },
+    unalert : {
+        params: ['keyword'],
+        handler: function(params) {
+            var alerts = CHAT.get('alerts');
+            params.keyword = params.keyword.toLowerCase();
+            if (alerts) {
+                var index = alerts.indexOf(params.keyword);
+                if (index !== -1) {
+                    alerts.splice(index, 1);
+                    CHAT.set('alerts', alerts);
+                    CHAT.show('Keyword: "' + params.keyword + '" is removed from your alerts');
+                } else {
+                    CHAT.show('This keyword doesn\'t exist in your alerts.', 'error');
+                }
+            } else {
+                CHAT.show('You have no alerts.', 'error');
+            }
+        }
+    },
+    r : {
+        params: ['message'],
+        handler: function(params) {
+            if (CHAT.get('lastpm')) {
+                CHAT.submit('/pm ' + CHAT.get('lastpm') + '|' + params.message);
+            }
+        }
+    },
+    mute: {
+        handler: function() {
+            var sounds = ['chatpop', 'pmpop', 'mentionpop', 'alertpop', 'music'];
+            for (var i = 0; i < sounds.length; i++) {
+                CHAT.submit('/toggle ' + sounds[i] + ' off');
+            }
+        }
+    },
+    unmute: {
+        handler: function() {
+            var sounds = ['chatpop', 'pmpop', 'mentionpop', 'alertpop', 'music'];
+            for (var i = 0; i < sounds.length; i++) {
+                CHAT.submit('/toggle ' + sounds[i] + ' on');
+            }
         }
     },
     // Server side commands
@@ -252,6 +329,7 @@ var COMMANDS = {
     part: {
         params: ['part']
     },
+    unpart: {},
     leave: {
         params: ['part']
     }
@@ -388,13 +466,17 @@ var CHAT = {
                 message: message
             };
         }
-        
+
         var logged = JSON.parse(JSON.stringify(message));
         this.rawLog.push(logged);
-        
+
+        message.message = message.message.replace(/[\u0300-\u036F\u0AB0-\u1AFF\u1DC0-\u1DFF\u20D0-\u20FF\uFE20-\uFE2F]{3}/gi, '');
+        message.message = message.message.length > 1000 ? '/`' + message.message : message.message;
+
         if (message.style === 'general' && message.nick) {
             message.message = parser.escape(message.message);
-        } else if (message.style && message.style != 'info') {
+            message.nick = parser.escape(message.nick);
+        } else if (message.style && message.style != 'info' && message.style !== 'action') {
             parser.getAllFonts(message.message); // Check for missing fonts
             message.message = parser.parse(message.message);
             if (message.nick) {
@@ -403,7 +485,27 @@ var CHAT = {
         } else {
             message.message = parser.escape(message.message);
         }
+        
         var el = this.buildmessage(message);
+        
+        
+            
+        var alerts = CHAT.get('alerts');
+        if (message.style === 'personal' && message.nick !== CHAT.get('nick')) {
+            CHAT.set('lastpm', message.nick);
+            this.audio.playSound('pmpop');
+        } else if (message.style == 'chat' && message.nick !== CHAT.get('nick') && new RegExp('(^|\\s|\\n)' + parser.regexpEscape(CHAT.get('nick')) + '($|\\s|\\n)', 'i').test(el.textContent)) {
+            this.audio.playSound('mentionpop');
+            el.getElementsByClassName('time')[0].style.color = 'yellow';
+            document.querySelector("link[rel='icon']").href = window.location.origin + "/images/icons/pixel/favicon-red-32x32.png";
+        } else if (message.style == 'chat' && message.nick !== CHAT.get('nick') && alerts && alerts[0] && new RegExp('(\\s|^)' + (alerts.map(parser.regexpEscape)).join('(\\s|$)|(\\s|^)') + '(\\s|$)', 'i').test(el.textContent)) {
+            this.audio.playSound('alertpop');
+            el.getElementsByClassName('time')[0].style.color = 'orange';
+            document.querySelector("link[rel='icon']").href = window.location.origin + "/images/icons/pixel/favicon-red-32x32.png";
+        } else {
+            this.audio.playSound('chatpop');
+        }
+        
         this.append(el, '#messages');
     },
     decorate: function(message) {
@@ -434,13 +536,16 @@ var CHAT = {
     get: function(att) {
         return this.attributes[att];
     },
+    remove: function(att) {
+        delete this.attributes[att];
+        localStorage.removeItem(att);
+    },
     buildmessage: function(message) {
         if (typeof message == 'string') { // If string convert into object
             message = {
                 message: message
             };
         }
-
 		var container = document.createElement('div');
 
 		// Assign message style
@@ -467,7 +572,6 @@ var CHAT = {
         
         // Create nick div
         if (message.nick) {
-            
             if (message.style == 'general') { // If general-message add nick to message instead of creating a new div
                 message.message = message.nick + ' ' + message.message;
             } else {
@@ -480,7 +584,11 @@ var CHAT = {
                     nick.innerHTML = message.nick + ': ';
                 }
                 if (message.toNick) {
-                    nick.title = message.toNick;
+                    // nick.title = message.toNick; No longer need this.
+                    var toNick = document.createElement('div');
+                    toNick.className = 'to-nick';
+                    toNick.innerHTML = message.toNick;
+                    container.appendChild(toNick);
                 }
                 container.appendChild(nick);
             }
@@ -498,7 +606,6 @@ var CHAT = {
 		var container = document.getElementById('messages');
         // Append message
         container.appendChild(el);
-        this.audio.playSound('pop');
         this.scrollToBottom('messages', el.offsetHeight);
     },
     scrollToBottom: function(m, messageHeight) {
@@ -542,11 +649,16 @@ var CHAT = {
     },
     audio: {
         sounds: {
-            pop: new Audio('audio/notifications/Bing.mp3'),
-            pm: new Audio('audio/notifications/Bing.mp3'),
-            alert: new Audio('audio/notifications/Bing.mp3')
+            chatpop: new Audio('audio/notifications/bing.mp3'),
+            pmpop: new Audio('audio/notifications/pm.mp3'),
+            mentionpop: new Audio('audio/notifications/bwoop.wav'),
+            alertpop: new Audio('audio/notifications/bwoop.wav')
         },
-        defaultMusic: ["Social Sunrise.mp3", "We're Still Open.mp3"],
+        defaultMusic: {
+            day: "Social Sunrise.mp3",
+            night: "We're Still Open.mp3"
+        },
+        musicPlayer: document.createElement('audio'),
         playSound: function(name) {
             if (CHAT.toggles.get(name)) {
                 this.sounds[name].play();
@@ -555,12 +667,17 @@ var CHAT = {
     },
     toggles: function() {
         var obj = {
-            valid: ['pop', '24h', 'reconnect'],
-            states: {'pop': true, '24h': false, 'reconnect': true},
+            valid: ['chatpop', 'pmpop', 'mentionpop', 'alertpop', 'music', '24h', 'reconnect'],
+            states: {'chatpop': true, 'pmpop': true, 'mentionpop': true, 'alertpop': true, 'music': true, '24h': false, 'reconnect': true},
             get: function(att) {
                 return this.states[att];
             },
             toggle: function(att, to) {
+                if (att === 'music' && to && CHAT.audio.musicPlayer.paused) {
+                    CHAT.audio.musicPlayer.play();
+                } else if (att ==='music' && !to && !CHAT.audio.musicPlayer.paused) {
+                    CHAT.audio.musicPlayer.pause();
+                }
                 this.states[att] = to;
                 if (localStorage.getItem('toggles')) {
                     try{
@@ -598,7 +715,7 @@ var CHAT = {
     }(),
     attributes: function() {
         var item = {};
-        var atts = 'color flair font style nick note role topic theme overlay part token'.split(' ');
+        var atts = 'color flair font style nick note role topic theme overlay alerts part token lastpm'.split(' ');
         for (var i in window.localStorage) {
             if (i != '__proto__') {
                 var val = localStorage.getItem(i);
@@ -775,19 +892,24 @@ var parser = {
         var result = "";
         if (mode === 'basic') {
             for (var i = 0; i < messages.length; i++) {
-                if (!messages[i].style || messages[i].style === 'note' || messages[i].style === 'error') {
+                if (!messages[i].style || messages[i].style === 'error') {
                     result += messages[i].message + '\n'; 
+                } else if (messages[i].style === 'note' || messages[i].style === 'action') {
+                    result += parser.removeHTML(parser.reLinebreak(parser.parse2(messages[i].message))) + '\n'; 
                 } else if (messages[i].style === 'chat') {
-                    result += messages[i].nick + ':' + parser.removeHTML(parser.parse2(messages[i].message)) + '\n'; 
-                } else if (messages[i].style === 'general') {
-                    result += (messages[i].nick ? messages[i].nick + ' ' : '') + messages[i].message + '\n'; 
+                    result += messages[i].nick + ':' + parser.removeHTML(parser.reLinebreak(parser.parse2(messages[i].message))) + '\n'; 
+                } else if (messages[i].style === 'general' && messages[i].nick) {
+                    result += messages[i].nick + ' ' + messages[i].message + '\n'; 
+                } else if (messages[i].style === 'general' && !messages[i].nick) {
+                    result += parser.removeHTML(parser.reLinebreak(parser.parse2(messages[i].message))) + '\n'; 
                 } else if (messages[i].style === 'personal') {
                     result += (messages[i].toNick ? (messages[i].toNick + " ") : '') + "<<<< " + messages[i].nick + ":" + parser.removeHTML(parser.parse2(messages[i].message)) + '\n'; 
                 }
             }
+            result = result.replace(/\n/g, '\r\n'); // Everyone loves Windows OS.
         } else if (mode === 'verbose') {
             for (var i = 0; i < messages.length; i++) {
-                if (!messages[i].style || messages[i].style === 'note' || messages[i].style === 'error') {
+                if (!messages[i].style || messages[i].style === 'note' || messages[i].style === 'error' || messages[i].style === 'action') {
                     result += messages[i].message + '\n'; 
                 } else if (messages[i].style === 'chat') {
                     result += messages[i].nick + ': ' + messages[i].message + (messages[i].flair ? (' (flair: ' + messages[i].flair  + ')') : '') + '\n';
@@ -797,12 +919,12 @@ var parser = {
                     result += (messages[i].toNick ? (messages[i].toNick + " ") : '') + "<<<< " + messages[i].nick + ":" + messages[i].message + '\n'; 
                 }
             }
+            result = result.replace(/\n/g, '\r\n');
         } else if (mode === 'raw') {
             for (var i = 0; i < messages.length; i++) {
-                result += JSON.stringify(messages[i]) + '\n';
+                result += JSON.stringify(messages[i]) + '\r\n';
             }
         }
-        result = result.replace(/\n/g, '\r\n'); // Everyone loves Windows OS.
         return result !== '' ? result : null;
     },
     parse2: function(str) {
@@ -851,6 +973,9 @@ var parser = {
         }
         return str;
     },
+    regexpEscape: function(str) {
+        return str.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+    }
 }
 
 // Request to join
@@ -884,8 +1009,7 @@ socket.on('chatinfo', function(data) {
         var topic = CHAT.get('topic');
         if (topic) {
             if (blurred && window.unread > 0) {
-                document.title = '(' + window.unread + ') ' + parser.removeHTML(parser.reLinebreak(parser.parse(topic))).replace(/[\s\s|\n\n]+/g, ' ');  
-                document.querySelector("link[rel='icon']").href = window.location.origin + "/images/icons/pixel/favicon-red-32x32.png";
+                document.title = '(' + window.unread + ') ' + parser.removeHTML(parser.reLinebreak(parser.parse(topic))).replace(/[\s\s|\n\n]+/g, ' ');
             } else {
                 document.title = parser.removeHTML(parser.reLinebreak(parser.parse(topic))).replace(/[\s\s|\n\n]+/g, ' '); 
                 document.querySelector("link[rel='icon']").href = window.location.origin + "/images/icons/pixel/favicon-32x32.png";
@@ -1074,35 +1198,78 @@ var buttons = {
         }
     });
 
-    document.getElementById('pop-vol').addEventListener('input', function(e) {
-        CHAT.audio.sounds.pop.volume = e.target.value;
-        CHAT.audio.sounds.pop.play();
-    });
-
     function initializeSound() {
         if (navigator.userAgent.toString().toLowerCase().indexOf("android") != -1) {
             let originalVolume = CHAT.audio.sounds.pop.volume;
-            CHAT.audio.sounds.pop.volume = 0;
-            CHAT.audio.playSound('pop');
-            setTimeout(function() {CHAT.audio.sounds.pop.volume = originalVolume;}, 3000);
+            CHAT.audio.sounds.chatpop.volume = 0;
+            CHAT.audio.sounds.pmpop.volume = 0;
+            CHAT.audio.sounds.alertpop.volume = 0;
+            CHAT.audio.sounds.mentionpop.volume = 0;
+            CHAT.audio.playSound('chatpop');
+            CHAT.audio.playSound('pmpop');
+            CHAT.audio.playSound('alertpop');
+            CHAT.audio.playSound('mentionpop');
+            setTimeout(function() {CHAT.audio.sounds.chatpop.volume = originalVolume;}, 3000);
+            setTimeout(function() {CHAT.audio.sounds.pmpop.volume = originalVolume;}, 3000);
+            setTimeout(function() {CHAT.audio.sounds.alertpop.volume = originalVolume;}, 3000);
+            setTimeout(function() {CHAT.audio.sounds.mentionpop.volume = originalVolume;}, 3000);
         }
         document.getElementsByTagName('body')[0].removeEventListener("click", initializeSound);
     }
     document.getElementsByTagName('body')[0].addEventListener("click", initializeSound);
-
+    
+    var musicPlayerFile = document.createElement('source');
+    CHAT.audio.musicPlayer.appendChild(musicPlayerFile);
+    CHAT.audio.musicPlayer.loop = true;
+    CHAT.audio.musicPlayer.volume = 0.1;
     var tracks = CHAT.audio.defaultMusic;
-    for (var i = 0; i < tracks.length; i++) {
+    for (let i in tracks) {
+        musicPlayerFile.src = 'audio/music/' + tracks['day'];
+        CHAT.audio.musicPlayer.load();
+        
         var track = document.createElement('li');
-        track.textContent = tracks[i];
+        track.textContent = i;
         track.addEventListener('click', function(e) {
-            document.getElementById('mp3').src = 'audio/music/' + e.target.textContent;
-            document.getElementById('music').load();
-            document.getElementById('music').play();
+            if (CHAT.audio.playing !== i) {
+                CHAT.audio.playing = i;
+                musicPlayerFile.src = 'audio/music/' + tracks[i];
+                CHAT.audio.musicPlayer.load();
+                CHAT.audio.musicPlayer.play();
+            }
         });
         document.getElementById('tracks').appendChild(track);
     }
-    document.getElementById('tracks').appendChild(document.createElement('hr'));
+    
+    document.getElementById('chatpop-vol').addEventListener('input', function(e) {
+        CHAT.audio.sounds.chatpop.volume = e.target.value;
+        CHAT.audio.sounds.chatpop.play();
+    });
+    
+    document.getElementById('pmpop-vol').addEventListener('input', function(e) {
+        CHAT.audio.sounds.pmpop.volume = e.target.value;
+        CHAT.audio.sounds.pmpop.play();
+    });
+    
+    document.getElementById('alertpop-vol').addEventListener('input', function(e) {
+        CHAT.audio.sounds.alertpop.volume = e.target.value;
+        CHAT.audio.sounds.alertpop.play();
+    });
+    
+    document.getElementById('mentionpop-vol').addEventListener('input', function(e) {
+        CHAT.audio.sounds.mentionpop.volume = e.target.value;
+        CHAT.audio.sounds.mentionpop.play();
+    });
+    
+    document.getElementById('mentionpop-vol').addEventListener('input', function(e) {
+        CHAT.audio.sounds.mentionpop.volume = e.target.value;
+        CHAT.audio.sounds.mentionpop.play();
+    });
+    
+    document.getElementById('music-vol').addEventListener('input', function(e) {
+        CHAT.audio.musicPlayer.volume = e.target.value;
+    });
 
+    /*
     var userTracks = {};
     document.getElementById('upload-music').addEventListener('change', function() {
         var file = this.files[0];
@@ -1123,6 +1290,7 @@ var buttons = {
         };
         reader.readAsDataURL(file);
     });
+    */
 
     var radar = document.getElementById('radar'),
         radarctx = radar.getContext('2d'),

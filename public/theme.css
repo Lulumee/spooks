@@ -564,7 +564,7 @@ to   { transform: rotate(360deg) }
 
 /* message styling */
 
-.nick {
+.nick, .to-nick {
     color: #6464C0;
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
@@ -586,7 +586,7 @@ a {
 .message {
     position: relative;
     padding-left: 3.9em;
-    width: calc(90% - 10px);
+    width: calc(90% - 18px); /* Increased from 10 to 18 to compensate for the timeDiv left-padding. */
     color: white;
     text-indent: -3.9em;
     word-wrap: break-word;
@@ -609,6 +609,11 @@ a {
 .personal-message .nick:before {
     color: RosyBrown;
     content: '<<<< ';
+}
+
+.personal-message .to-nick:after {
+    color: RosyBrown;
+    content: ' ';
 }
 
 .action-message {

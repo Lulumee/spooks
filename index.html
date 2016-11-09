@@ -16,6 +16,16 @@
         <script type="text/javascript" src="dateFormat.js"></script>
     </head>
     <body>
+        <div id="main">
+            <div id="square"></div>
+            <div id="button-list">
+                <div id="donate"></div>
+                <div id="about"></div>
+                <div id="help"></div>
+                <div id="fullscreen"></div>
+                <div id="sound"></div>
+            </div>
+        </div>
         <div id="menu">
             <nav id="tabs">
                 <ul>
@@ -30,16 +40,17 @@
             </div>
             <div id="Options" class="panel">
                 <p>Chat notification volume</p>
-                <input id="pop-vol" type="range" min="0" max="1" step="0.1" value="1"/>
+                <input id="chatpop-vol" type="range" min="0" max="1" step="0.1" value="1"/>
+                <p>PM notification volume</p>
+                <input id="pmpop-vol" type="range" min="0" max="1" step="0.1" value="1"/>
+                <p>Alert notification volume</p>
+                <input id="alertpop-vol" type="range" min="0" max="1" step="0.1" value="1"/>
+                <p>Mention notification volume</p>
+                <input id="mentionpop-vol" type="range" min="0" max="1" step="0.1" value="1"/>
+                <p>Music volume</p>
+                <input id="music-vol" type="range" min="0" max="1" step="0.1" value="0.1"/>
                 <p>Music</p>
-                <audio id="music" controls loop><source id="mp3" src="" type="audio/mpeg">Your browser doesn't support this Audio element or format.</source></audio>
-                <input id="upload-music" type="file"/>
                 <div id="tracks"></div>
-                <p>Overlay</p>
-                <input id="world-hue" type="range" min="0" max="255" step="1" value="0"/>
-                <input id="world-saturation" type="range" min="0" max="255" step="1" value="0"/>
-                <input id="world-brightness" type="range" min="0" max="255" step="1" value="0"/>
-                <input id="world-transperancy" type="range" min="0" max="255" step="1" value="0"/>
             </div>
         </div>
         <div id="world" tabindex="1" class="first-tabindex">

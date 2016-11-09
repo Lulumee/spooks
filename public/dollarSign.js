@@ -144,6 +144,11 @@ window.$$$ = {
     },
     contextMenu: function(e, name){
         var options = {
+            Locate: {
+                callback: function(name) {
+                    CHAT.submit('/locate ' + name);
+                }
+            },
             Whois: {
                 callback: function(name) {
                     CHAT.submit('/whois ' + name);
@@ -161,7 +166,9 @@ window.$$$ = {
             }
         }
         var Oldmenu = document.getElementById('context-menu');
-        if(Oldmenu) document.body.removeChild(Oldmenu);
+        if (Oldmenu) {
+            document.body.removeChild(Oldmenu);
+        }
         var menu = document.createElement('div');
         menu.id = 'context-menu';
         menu.style.cssText = 'position: absolute; z-index: 9999999; width: 100px; background-color: #EEE; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 11px;';
